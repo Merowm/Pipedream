@@ -44,7 +44,7 @@ public class MoveAround : MonoBehaviour {
 		result.y = gravityDirection.x * Mathf.Sin(deltaAngle) +
 			gravityDirection.y * Mathf.Cos(deltaAngle);
 		result.z = gravityDirection.z;
-		rigidbody.MoveRotation(new Quaternion(0, 0, PlayerAngle(), 0));
+		//rigidbody.MoveRotation(new Quaternion(0, 0, PlayerAngle(), 0));
 
 		return result;
 		}
