@@ -20,20 +20,20 @@ public class Movement : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		direction = new Vector3 (0,0,direction.z);
+		//direction = new Vector3 (0,0,direction.z);
 
 		if (Input.GetKey(KeyCode.D))
 		{
-			direction = new Vector3(direction.x + 10,0,direction.z);
+			//direction = new Vector3(direction.x + 10,0,direction.z);
 			//rbody.AddForce(new Vector3(50,0,0));
-			//tunnel.transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
+			tunnel.transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
 			//mainCamera.transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
-			direction = new Vector3(direction.x - 10,0,direction.z);
+			//direction = new Vector3(direction.x - 10,0,direction.z);
 			//rbody.AddForce(new Vector3(-50,0,0));
-			//tunnel.transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
+			tunnel.transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
 			//mainCamera.transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
 		}
 
