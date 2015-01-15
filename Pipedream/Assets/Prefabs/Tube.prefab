@@ -13,7 +13,7 @@ GameObject:
   - 95: {fileID: 9500000}
   - 64: {fileID: 6400000}
   m_Layer: 0
-  m_Name: TubePart
+  m_Name: Tube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 81.4012451}
-  m_LocalScale: {x: .0500000007, y: .0500000007, z: .0500000007}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 52a70921e7c029541b8bf3d1e4cb20f8, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 39b7ac06dcc3c7942a19e7dd82f1cef3, type: 3}
 --- !u!64 &6400000
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -70,7 +70,7 @@ MeshCollider:
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 52a70921e7c029541b8bf3d1e4cb20f8, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 39b7ac06dcc3c7942a19e7dd82f1cef3, type: 3}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
