@@ -8,11 +8,18 @@ public class CameraFollow : MonoBehaviour
 	public Transform target;
 
 	private Vector3 velocity = Vector3.zero;
-	
+
+	void Awake ()
+	{
+
+	}
+
 	void FixedUpdate ()
 	{
 		if (target)
 		{
+			distanceFromPlayer = target.GetComponent<Movement>().speed;
+			//distanceFromPlayer = target.GetComponent<LaneMovement>().speed;
 			Vector3 point = camera.WorldToViewportPoint(target.position);
 			Vector3 delta = target.position - camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
 			Vector3 destination = transform.position + delta;

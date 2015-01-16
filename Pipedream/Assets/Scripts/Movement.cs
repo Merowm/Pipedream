@@ -4,16 +4,18 @@ using System.Collections;
 public class Movement : MonoBehaviour
 {
 	public float speed;
+	public float maxSpeed;
+	public float minSpeed;
+	public float acceleration;
+	public float deceleration;
 	public Vector3 direction;
 	public float rotationSpeed = 100f;
 
-	private Rigidbody rbody;
 	private Transform tunnel;
 	private Transform mainCamera;
 
 	void Start ()
 	{
-		rbody = transform.GetComponent<Rigidbody> ();
 		tunnel = GameObject.FindGameObjectWithTag("Tunnel").transform;
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
 	}
@@ -37,6 +39,14 @@ public class Movement : MonoBehaviour
 			//tunnel.transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
 			transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
 			//mainCamera.transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
+		}
+		if (Input.GetKey(KeyCode.W) && speed < maxSpeed)
+		{
+			speed += acceleration * Time.deltaTime;
+		}
+		if (Input.GetKey(KeyCode.S) && speed > minSpeed)
+		{
+			speed -= deceleration * Time.deltaTime;
 		}
 
 		Vector3 position = transform.position;
