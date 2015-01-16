@@ -7,6 +7,7 @@ public class CountScore : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		guiText.text = points.ToString ();
+		guiText.pixelOffset = new Vector2 (30 - Screen.width / 2, Screen.height / 2 - 30);
 	}
 	
 	// Update is called once per frame
