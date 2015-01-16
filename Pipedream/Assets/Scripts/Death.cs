@@ -7,8 +7,9 @@ public class Death : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Obstacle")
 		{
+			Application.LoadLevel(0);
 			Debug.Log("collision");
-			Debug.Break();
+			//Debug.Break();
 		}
 	}
 }

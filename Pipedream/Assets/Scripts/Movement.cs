@@ -48,6 +48,10 @@ public class Movement : MonoBehaviour
 		{
 			speed -= deceleration * Time.deltaTime;
 		}
+		if (Input.GetKey(KeyCode.Q) && speed > minSpeed)
+		{
+			Application.Quit();
+		}
 
 		Vector3 position = transform.position;
 		position += direction * speed * Time.deltaTime;
