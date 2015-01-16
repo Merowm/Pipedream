@@ -10,12 +10,16 @@ public class LaneMovement : MonoBehaviour
 	public float deceleration;
 	public Vector3 direction;
 	public float rotationSpeed = 100f;
+	public float rotationSpeed2 = 100f;
 
-	private float temp;
 	private Transform tunnel;
 	private Transform mainCamera;
+
+	private float rotation = 0; 
+	public float targetRotation = 0;
+
 	
-	void Start ()
+	void Awake ()
 	{
 		tunnel = GameObject.FindGameObjectWithTag("Tunnel").transform;
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
@@ -23,29 +27,27 @@ public class LaneMovement : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		if (Input.GetKeyDown(KeyCode.D))
-		{
-			temp = transform.rotation.z + rotationSpeed;
-			Debug.Log (temp);
-		}
-		if (transform.rotation.z < temp)
-		{
-			transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
-		}
-		Debug.Log (temp);
+		float rotationAmt = rotationSpeed * Time.deltaTime;
+		//if (Input.GetKeyDown (KeyCode.D))
+		//{
+			if(rotation!= targetRotation) 
+			{
+				if((rotation-targetRotation) < rotationAmt)
+				{
+					transform.Rotate(0, 0, rotation-targetRotation);
+					rotation += rotation-targetRotation;
+				}
+				else
+				{
+					transform.Rotate(0, 0, rotationAmt);
+					rotation += rotationAmt;
+				}
+			}
+		//}
 
 		if (Input.GetKeyDown(KeyCode.A))
 		{
-			//transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
-			transform.Rotate(-Vector3.forward * rotationSpeed);
-		}
-		if (Input.GetKey(KeyCode.W) && speed < maxSpeed)
-		{
-			speed += acceleration * Time.deltaTime;
-		}
-		if (Input.GetKey(KeyCode.S) && speed > minSpeed)
-		{
-			speed -= deceleration * Time.deltaTime;
+
 		}
 		
 		Vector3 position = transform.position;

@@ -46,6 +46,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400000}
+  - 75: {fileID: 7500000}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -133,6 +134,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!75 &7500000
+ConstantForce:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1
