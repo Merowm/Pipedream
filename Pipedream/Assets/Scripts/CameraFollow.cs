@@ -19,11 +19,12 @@ public class CameraFollow : MonoBehaviour
 		if (target)
 		{
 			distanceFromPlayer = target.GetComponent<Movement>().speed;
-			//distanceFromPlayer = target.GetComponent<LaneMovement>().speed;
 			Vector3 point = camera.WorldToViewportPoint(target.position);
 			Vector3 delta = target.position - camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
 			Vector3 destination = transform.position + delta;
-			transform.position = Vector3.SmoothDamp(transform.position, new Vector3(0,0,destination.z - distanceFromPlayer), ref velocity, dampTime);
+			transform.position = Vector3.SmoothDamp(transform.position,
+                                                    new Vector3(0,0,destination.z - distanceFromPlayer),
+                                                    ref velocity, dampTime);
 		}
 	}
 }

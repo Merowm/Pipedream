@@ -9,7 +9,6 @@ public class Death : MonoBehaviour
 		{
 			Application.LoadLevel(0);
 			Debug.Log("collision");
-			//Debug.Break();
 		}
 	}
 }

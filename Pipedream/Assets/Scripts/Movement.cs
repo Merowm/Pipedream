@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
 	private Transform tunnel;
 	private Transform mainCamera;
 
-	void Start ()
+	void Awake ()
 	{
 		tunnel = GameObject.FindGameObjectWithTag("Tunnel").transform;
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
