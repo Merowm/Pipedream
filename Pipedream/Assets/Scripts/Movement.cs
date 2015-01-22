@@ -1,60 +1,118 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TODO: Delete this script when MovementForward and MovementHorizontal are done
 public class Movement : MonoBehaviour
 {
-	public float speed;
+	public float currentSpeed;
+    public float hyperspaceSpeed;
+    public float spaceSpeed;
 	public float maxSpeed;
 	public float minSpeed;
 	public float acceleration;
 	public float deceleration;
 	public Vector3 direction;
-	public float rotationSpeed = 100f;
+	public float circularSpeed = 100f;
+    public float horizontalSpeed;
+    public float spaceBoundaries = 5f;
+    public bool inHyperSpace = false;
 
-	private Transform tunnel;
+    public bool stopInitialAcceleration = false;
 	private Transform mainCamera;
 
 	void Awake ()
 	{
-		tunnel = GameObject.FindGameObjectWithTag("Tunnel").transform;
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
 	}
 
 	void FixedUpdate ()
 	{
-		//direction = new Vector3 (0,0,direction.z);
+        while (!stopInitialAcceleration)
+        {
+            InitialAcceleration();
+            Debug.Log("asd");
+        }
 
-		if (Input.GetKey(KeyCode.D))
+        if (inHyperSpace)
+        {
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.forward * Time.deltaTime * circularSpeed);
+                //mainCamera.transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(-Vector3.forward * Time.deltaTime * circularSpeed);
+                //mainCamera.transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
+            }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.D) && transform.position.x - 50 < spaceBoundaries)
+            {
+                transform.position = new Vector3(transform.position.x + horizontalSpeed * Time.deltaTime,
+                                                 transform.position.y,
+                                                 transform.position.z);
+            }
+            if (Input.GetKey(KeyCode.A) && transform.position.x - 50> -spaceBoundaries)
+            {
+                transform.position = new Vector3(transform.position.x - horizontalSpeed * Time.deltaTime,
+                                                 transform.position.y,
+                                                 transform.position.z);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.W) && currentSpeed < maxSpeed)
 		{
-			//direction = new Vector3(direction.x + 10,0,direction.z);
-			//rbody.AddForce(new Vector3(50,0,0));
-			//tunnel.transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
-			transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
-			//mainCamera.transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
+            currentSpeed += acceleration * Time.deltaTime;
 		}
-		if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.S) && currentSpeed > minSpeed)
 		{
-			//direction = new Vector3(direction.x - 10,0,direction.z);
-			//rbody.AddForce(new Vector3(-50,0,0));
-			//tunnel.transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
-			transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
-			//mainCamera.transform.Rotate(-Vector3.forward * Time.deltaTime * rotationSpeed);
-		}
-		if (Input.GetKey(KeyCode.W) && speed < maxSpeed)
-		{
-			speed += acceleration * Time.deltaTime;
-		}
-		if (Input.GetKey(KeyCode.S) && speed > minSpeed)
-		{
-			speed -= deceleration * Time.deltaTime;
-		}
-		if (Input.GetKey(KeyCode.Q) && speed > minSpeed)
-		{
-			Application.Quit();
+            currentSpeed -= deceleration * Time.deltaTime;
 		}
 
-		Vector3 position = transform.position;
-		position += direction * speed * Time.deltaTime;
-		transform.position = position;
+        if (currentSpeed <= minSpeed)
+        {
+           // EnteringHyperSpace();
+        }
+        else if (currentSpeed >= maxSpeed)
+        {
+           // ExitingHyperSpace();
+        }
+        transform.position += direction * currentSpeed * Time.deltaTime;
 	}
+
+    void EnteringHyperSpace()
+    {
+        inHyperSpace = true;
+        transform.rotation = new Quaternion(0,0,0,0);
+        transform.position = new Vector3(0,0,0);
+        mainCamera.transform.position = new Vector3(transform.position.x,
+                                                    mainCamera.transform.position.y,
+                                                    mainCamera.transform.position.z);
+    }
+    
+    void ExitingHyperSpace()
+    {
+        inHyperSpace = false;
+        transform.rotation = new Quaternion(0,0,0,0);
+        transform.position = new Vector3(50,0,0);
+        mainCamera.transform.position = new Vector3(transform.position.x,
+                                                    mainCamera.transform.position.y,
+                                                    mainCamera.transform.position.z);
+    }
+
+    void InitialAcceleration()
+    {
+        if (currentSpeed < hyperspaceSpeed && (Input.GetKey(KeyCode.W)))
+        {
+            currentSpeed += acceleration * Time.deltaTime;
+        }
+        else
+        {
+            stopInitialAcceleration = true;
+            EnteringHyperSpace();
+        }
+        transform.position += direction * currentSpeed * Time.deltaTime;
+    }
 }
