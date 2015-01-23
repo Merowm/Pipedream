@@ -3,17 +3,19 @@ using System.Collections;
 
 public class MovementHorizontal : MonoBehaviour
 {
+    //In hyperspace
     public float currentRotationSpeed;
-    public float hyperspaceSpeed;
-    public float spaceSpeed;
     public float maxRotationSpeed;
-    public float minSpeed;
     public float hyperspaceAcceleration;
     public float hyperspaceDeceleration;
+    //Out of hyperspace
+    public float currentHorizontalSpeed;
+    public float maxHorizontalSpeed;
     public float spaceAcceleration;
     public float spaceDeceleration;
-    public float horizontalSpeed;
     public float spaceBoundaries;
+    public float rightPower;
+    public float leftPower;
 
     private MovementForward movementForward;
 
@@ -30,7 +32,7 @@ public class MovementHorizontal : MonoBehaviour
             //Moves right, slowly accelerating
             if (Input.GetKey(KeyCode.D))
             {
-                if (currentRotationSpeed <= maxRotationSpeed)
+                if (currentRotationSpeed < maxRotationSpeed)
                 {
                     currentRotationSpeed += hyperspaceAcceleration * Time.deltaTime;
                 }
@@ -38,7 +40,7 @@ public class MovementHorizontal : MonoBehaviour
             //Moves left, slowly accelerating
             else if (Input.GetKey(KeyCode.A))
             {
-                if (currentRotationSpeed >= -maxRotationSpeed)
+                if (currentRotationSpeed > -maxRotationSpeed)
                 {
                     currentRotationSpeed -= hyperspaceAcceleration * Time.deltaTime;
                 }
@@ -59,25 +61,69 @@ public class MovementHorizontal : MonoBehaviour
                     currentRotationSpeed += hyperspaceDeceleration * Time.deltaTime;
                 }
             }
-
+            //Rotates the player inside hyperspace
             transform.Rotate(Vector3.forward * Time.deltaTime * currentRotationSpeed);
         }
         //Movement while out of hyperspace
         else
         {
-            //TODO: acceleration/deceleration
+            //Moves right, slowly accelerating
             if (Input.GetKey(KeyCode.D) && transform.position.x - 50 < spaceBoundaries)
             {
-                float x = transform.position.x + horizontalSpeed * Time.deltaTime * spaceAcceleration;
-
-                transform.position = new Vector3(x,transform.position.y,transform.position.z);
+                if (currentHorizontalSpeed < maxHorizontalSpeed)
+                {
+                    rightPower += spaceAcceleration * Time.deltaTime;
+                    //currentHorizontalSpeed += spaceAcceleration * Time.deltaTime;
+                }
             }
+            else
+            {
+                if(rightPower >= 0)
+                {
+                    rightPower -= spaceDeceleration * Time.deltaTime;
+                }
+                else rightPower = 0;
+            }
+
+            //Moves left, slowly accelerating
             if (Input.GetKey(KeyCode.A) && transform.position.x - 50 > -spaceBoundaries)
             {
-                transform.position = new Vector3(transform.position.x - horizontalSpeed * Time.deltaTime,
-                                                 transform.position.y,
-                                                 transform.position.z);
+                if (currentHorizontalSpeed > -maxHorizontalSpeed)
+                {
+                    leftPower += spaceAcceleration * Time.deltaTime;
+                    //currentHorizontalSpeed -= spaceAcceleration * Time.deltaTime;
+                }
             }
+            else
+            {
+                if(leftPower >= 0)
+                {
+                    leftPower -= spaceDeceleration * Time.deltaTime;
+                }
+                else leftPower = 0;
+            }
+
+            //Slowy decelerates to a halt
+            /*else
+            {
+                //Right side
+                if (currentHorizontalSpeed > 0)
+                {
+                    //TODO: Add rounding up/down to zero to eliminate unwanted rotation
+                    currentHorizontalSpeed -= spaceDeceleration * Time.deltaTime;
+                }
+                //Left side
+                else if (currentHorizontalSpeed < 0)
+                {
+                    //TODO: Add rounding up/down to zero to eliminate unwanted rotation
+                    currentHorizontalSpeed += spaceDeceleration * Time.deltaTime;
+                }
+            }*/
+
+            currentHorizontalSpeed += rightPower;
+
+            float x = transform.position.x + currentHorizontalSpeed * Time.deltaTime;
+            transform.position = new Vector3(x,transform.position.y,transform.position.z);
         }
 	}
 }
