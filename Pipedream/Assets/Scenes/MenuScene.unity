@@ -74,76 +74,6 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
---- !u!1 &1463753257
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1463753260}
-  - 23: {fileID: 1463753259}
-  - 102: {fileID: 1463753258}
-  m_Layer: 0
-  m_Name: New Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!102 &1463753258
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1463753257}
-  m_Text: floating score test
-  m_OffsetZ: 0
-  m_CharacterSize: 1
-  m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
-  m_TabSize: 4
-  m_FontSize: 0
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
---- !u!23 &1463753259
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1463753257}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!4 &1463753260
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1463753257}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0893743038, y: 4.56310987, z: -4.89081192}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1 &2129906641
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +87,7 @@ GameObject:
   - 124: {fileID: 2129906643}
   - 81: {fileID: 2129906642}
   - 114: {fileID: 2129906647}
+  - 114: {fileID: 2129906648}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -240,5 +171,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9aa6418e0a498e4a9e9aade978ff0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 63
+  nextScene: 1
+  textObject: {fileID: 400000, guid: b79ad7d84ce7b644793fb6cc2fda9eeb, type: 2}
   buttontex: {fileID: 2800000, guid: 4f266d40b5e26a442a9c233e8b07b54b, type: 3}
+--- !u!114 &2129906648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2129906641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82dc177e7fa9adc45860218e50a653ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuSceneNumber: 1
+  isActive: 0
+  isSoundOn: 1
+  isMusicOn: 1
+  optionsButton: {fileID: 0}
+  closeOptionsButton: {fileID: 0}
+  soundOn: {fileID: 0}
+  soundOff: {fileID: 2800000, guid: 1eb3f64accd4d0b408a3224c4bb69ced, type: 3}
+  musicOn: {fileID: 0}
+  musicOff: {fileID: 2800000, guid: 1eb3f64accd4d0b408a3224c4bb69ced, type: 3}
+  goToMenuButton: {fileID: 2800000, guid: 07596f69372941b488e7629be7301c53, type: 3}
