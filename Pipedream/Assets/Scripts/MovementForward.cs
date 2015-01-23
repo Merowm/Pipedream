@@ -3,10 +3,11 @@ using System.Collections;
 
 public class MovementForward : MonoBehaviour
 {
-    public float currentSpeed = 1.0f;
-    public float hyperspaceSpeed = 1.0f;
-    public float maxSpaceSpeed = 1.0f;
-    public float minSpaceSpeed = 1.0f;
+    public float currentSpeed;
+    public float hyperspaceSpeed;
+    public float spaceSpeed;
+    public float maxSpeed;
+    public float minSpeed;
     public float acceleration;
     public float deceleration;
     public bool inHyperSpace = false;
@@ -28,11 +29,11 @@ public class MovementForward : MonoBehaviour
            // Debug.Log("asd");
         }
 
-        if (Input.GetKey(KeyCode.W) && currentSpeed < maxSpaceSpeed)
+        if (Input.GetKey(KeyCode.W) && currentSpeed < maxSpeed)
         {
             //currentSpeed += acceleration * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.S) && currentSpeed > minSpaceSpeed)
+        if (Input.GetKey(KeyCode.S) && currentSpeed > minSpeed)
         {
             //currentSpeed -= deceleration * Time.deltaTime;
         }
@@ -110,7 +111,7 @@ public class MovementForward : MonoBehaviour
 
     void DecelerateToSpaceSpeed()
     {
-        if (currentSpeed > maxSpaceSpeed)
+        if (currentSpeed > spaceSpeed)
         {
             currentSpeed -= deceleration * Time.deltaTime;
         }
