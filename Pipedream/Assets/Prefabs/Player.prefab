@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &100000
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -60,12 +60,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: -.0157072041, y: 8.55865281e-08, z: 7.84256144e-08, w: -.999876678}
-  m_LocalPosition: {x: 0, y: -.998956203, z: .0873966217}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: .707019508, y: .707019627, z: -.0111065088, w: -.011106832}
+  m_LocalPosition: {x: 7.92765665, y: -.215496704, z: -.159269586}
+  m_LocalScale: {x: 1.82237458, y: 1.82237482, z: 1.82237422}
   m_Children: []
-  m_Father: {fileID: 400004}
-  m_RootOrder: 1
+  m_Father: {fileID: 400002}
+  m_RootOrder: 0
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -75,7 +75,8 @@ Transform:
   m_LocalRotation: {x: .707106829, y: .707106829, z: 2.21972471e-07, w: 2.21972471e-07}
   m_LocalPosition: {x: .118249997, y: -5.34913445, z: 0}
   m_LocalScale: {x: .548734486, y: .548734486, z: .548734486}
-  m_Children: []
+  m_Children:
+  - {fileID: 400000}
   m_Father: {fileID: 400004}
   m_RootOrder: 0
 --- !u!4 &400004
@@ -89,7 +90,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
-  - {fileID: 400000}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2300000
@@ -132,7 +132,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!64 &6400000
 MeshCollider:
@@ -219,14 +219,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRotationSpeed: 0
-  maxRotationSpeed: 150
-  hyperspaceAcceleration: 250
-  hyperspaceDeceleration: 300
-  currentHorizontalSpeed: 0
-  maxHorizontalSpeed: 10
-  spaceAcceleration: 5
-  spaceDeceleration: 10
-  spaceBoundaries: 5
+  maxRotationSpeed: 10
+  hyperspaceAccelerationMultiplier: 2
+  hyperspaceDecelerationMultiplier: 3
+  currentSpaceSpeedHorizontal: 0
+  currentSpaceSpeedVertical: 0
+  maxSpaceSpeed: 10
+  spaceAccelerationMultiplier: 2
+  spaceDecelerationMultiplier: 3
+  spaceBoundaries: 1111
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,16 +239,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dbd75e5e6bba94699e72a9b078f957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpeed: 1
-  hyperspaceSpeed: 50
+  currentSpeed: 10
+  hyperspaceSpeed: 75
   spaceSpeed: 10
   maxSpeed: 0
   minSpeed: 0
-  acceleration: 15
-  deceleration: 200
+  acceleration: 20
+  deceleration: 25
   inHyperSpace: 0
   direction: {x: 0, y: 0, z: 2}
-  stopInitialAcceleration: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

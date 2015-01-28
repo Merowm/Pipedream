@@ -58,7 +58,7 @@ public class CameraFollow : MonoBehaviour
             
             transform.Rotate(Vector3.forward *
                              Time.deltaTime * 
-                             target.GetComponent<MovementHorizontal>().currentRotationSpeed);
+                             target.GetComponent<MovementHorizontal>().currentRotationSpeed * 10);
 		}
 	}
 }

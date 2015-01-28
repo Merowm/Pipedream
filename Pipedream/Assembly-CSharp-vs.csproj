@@ -50,14 +50,16 @@
      <Compile Include="Assets\Scripts\CollectPoints.cs" />
      <Compile Include="Assets\Scripts\CountScore.cs" />
      <Compile Include="Assets\Scripts\Death.cs" />
-     <Compile Include="Assets\Scripts\GoToScene.cs" />
      <Compile Include="Assets\Scripts\Gravity.cs" />
      <Compile Include="Assets\Scripts\HyperSpace.cs" />
      <Compile Include="Assets\Scripts\MoveAround.cs" />
-     <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\MovementForward.cs" />
      <Compile Include="Assets\Scripts\MovementHorizontal.cs" />
      <Compile Include="Assets\Scripts\Start.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\FloatingPoints.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\GoToScene.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\MusicVolumeReset.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\OptionsPopUp.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
