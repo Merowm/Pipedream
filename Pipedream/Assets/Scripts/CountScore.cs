@@ -3,11 +3,11 @@ using System.Collections;
 
 public class CountScore : MonoBehaviour {
 
-	int points;
+	//int points;
 	// Use this for initialization
 	void Start () {
-		guiText.text = points.ToString ();
-		guiText.pixelOffset = new Vector2 (30 - Screen.width / 2, Screen.height / 2 - 30);
+		//guiText.text = points.ToString ();
+		//guiText.pixelOffset = new Vector2 (30 - Screen.width / 2, Screen.height / 2 - 30);
 	}
 	
 	// Update is called once per frame
@@ -16,7 +16,8 @@ public class CountScore : MonoBehaviour {
 	}
 	public void AddScore(int newPoints)
 	{
-		points += newPoints;
-		guiText.text = points.ToString ();
+        StatsMemory.AddToTotalPoints(newPoints);
+		guiText.text = StatsMemory.GetCurrentScore().ToString ();
+        Debug.Log(guiText.text);
 	}
 }

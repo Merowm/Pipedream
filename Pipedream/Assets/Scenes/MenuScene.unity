@@ -157,10 +157,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1273533653}
-  - 114: {fileID: 1273533652}
   - 132: {fileID: 1273533654}
+  - 114: {fileID: 1273533652}
   m_Layer: 0
-  m_Name: statistics
+  m_Name: points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,10 +174,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1273533651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d224320dd947c4fad2907cc5f3d4f2, type: 3}
+  m_Script: {fileID: 11500000, guid: fa295e805da9a8b42b01c956cb3b7a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetScore: 0
 --- !u!4 &1273533653
 Transform:
   m_ObjectHideFlags: 0
@@ -185,10 +184,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1273533651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .100000001, y: .800000012, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2129906646}
   m_RootOrder: 1
 --- !u!132 &1273533654
 GUIText:
@@ -202,11 +201,11 @@ GUIText:
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
-  m_LineSpacing: 1
+  m_LineSpacing: 0
   m_TabSize: 4
   m_Font: {fileID: 0}
   m_Material: {fileID: 0}
-  m_FontSize: 0
+  m_FontSize: 40
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -298,6 +297,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 443093717}
+  - {fileID: 1273533653}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &2129906647

@@ -12,17 +12,20 @@ public class GoToScene : MonoBehaviour {
     public Transform textObject;
     public Texture2D buttontex;
 
-    GameObject stats;
+    CountScore scoreText;
+    //GameObject stats;
 	void Awake ()
     {
-        stats = FindObjectOfType<StatsMemory>().gameObject;
+        scoreText = FindObjectOfType<CountScore>();
+        //stats = FindObjectOfType<StatsMemory>().gameObject;
 	}
 	
     void OnGUI()
     {
         if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 - 100, 100, 100), buttontex))
         {
-            stats.GetComponent<StatsMemory>().AddToTotalPoints(100);
+            scoreText.AddScore(100);
+            //StatsMemory.AddToTotalPoints(100);
             //Application.LoadLevel(nextScene);
             Vector3 pos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 10);
             Instantiate(textObject, pos, Quaternion.identity);

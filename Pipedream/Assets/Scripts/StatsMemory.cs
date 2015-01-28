@@ -1,67 +1,67 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StatsMemory : MonoBehaviour
+public static class StatsMemory //: MonoBehaviour
 {
     // resetScore value should always be defined when menu scene is (re)loaded!
-    public bool resetScore;
+    private static bool resetScore;
     
-    private int totalPoints;
+    private static int totalPoints;
     // reset this when starting a new level!
-    private float timeSpentInHyperSpace;
-    private float timeToDestination;
+    private static float timeSpentInHyperSpace;
+    private static float timeToDestination;
 
     // instance reference for duplicate checking.
-    // 
-    private static StatsMemory statistics;
+     
+    //private static StatsMemory statistics;
 
-	void Awake ()
-    {
-        CheckInstance();
-        if (resetScore)
-        {
-            statistics.totalPoints = 0;
-            statistics.timeSpentInHyperSpace = 0;
-            statistics.timeToDestination = 0;
+    //void Awake ()
+    //{
+    //    CheckInstance();
+    //    if (resetScore)
+    //    {
+    //        statistics.totalPoints = 0;
+    //        statistics.timeSpentInHyperSpace = 0;
+    //        statistics.timeToDestination = 0;
             
-        }
-    }
+    //    }
+    //}
 
-    void CheckInstance()
+    //void CheckInstance()
+    //{
+    //    if (statistics == null)
+    //    {
+    //        DontDestroyOnLoad(this.gameObject);
+    //        statistics = this;
+    //        Debug.Log(this.totalPoints);
+    //    }
+    //    else if(statistics != null && statistics != this)
+
+    //        Destroy(gameObject);
+    //}
+
+	public static void AddToTotalPoints(int pointsToAdd)
     {
-        if (statistics == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            statistics = this;
-            Debug.Log(this.totalPoints);
-        }
-        else if(statistics != null && statistics != this)
-
-            Destroy(gameObject);
-    }
-
-	public void AddToTotalPoints(int pointsToAdd)
-    {
-        statistics.totalPoints += pointsToAdd;
+        totalPoints += pointsToAdd;
 
         // for debugging. Visible elements should be created in each scene and player data retrieved from statistics.
-        guiText.text = totalPoints.ToString();
+        // guiText.text = totalPoints.ToString();
     }
 
-    public int GetCurrentScore()
+    public static int GetCurrentScore()
     {
-        return statistics.totalPoints;
+        return totalPoints;
     }
 
-    public void SetHyperSpaceTime(float timeNeeded)
+    public static void SetHyperSpaceTime(float timeNeeded)
     {
-        statistics.timeToDestination = timeNeeded;
+        timeToDestination = timeNeeded;
     }
 
-    public float GetRemainingHyperSpaceTime(float timeToAdd)
+    public static float GetRemainingHyperSpaceTime(float timeToAdd)
     {
-        statistics.timeSpentInHyperSpace += timeToAdd;
-        return statistics.timeToDestination - statistics.timeSpentInHyperSpace;
+        timeSpentInHyperSpace += timeToAdd;
+        return timeToDestination - timeSpentInHyperSpace;
     }
     // For testing!
 
