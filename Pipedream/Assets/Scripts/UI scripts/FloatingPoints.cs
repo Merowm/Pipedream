@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FloatingPoints : MonoBehaviour {
+public class FloatingPoints : MonoBehaviour
+{
 
     public Vector3 offset;
     public float lifeTime;
@@ -10,15 +11,13 @@ public class FloatingPoints : MonoBehaviour {
     private TextMesh textMesh;
     private float lifeTimer;
 
-	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         textMesh = this.GetComponent<TextMesh>();
         lifeTimer = lifeTime;
         //offset = new Vector3(0, 1, 0);
 	}
 	
-	// Update is called once per frame
 	void Update () 
     {
         dt = Time.deltaTime;
@@ -30,6 +29,7 @@ public class FloatingPoints : MonoBehaviour {
             Destroy(this.gameObject);
         }
 	}
+
     Color DeltaFade(Color color, float _dt)
     {
         Color temp = color;

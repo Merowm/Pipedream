@@ -1,20 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CollectPoints : MonoBehaviour {
-	GameObject score;
-	// Use this for initialization
-	void Start () {
+// Handles everything that should happen when player hits the bonus item.
+
+public class CollectPoints : MonoBehaviour 
+{
+    public int itemScorePoints;
+    public Transform textObject;
+
+	private GameObject score;
+    private GameObject pointText;
+	void Awake ()
+    {
 		score = GameObject.FindGameObjectWithTag ("Scoretext");
 	}
 	
-	// Update is called once per frame
-	void Update () {
 	
-	}
 	void OnTriggerEnter(Collider other)
 	{
-		score.GetComponent<CountScore>().AddScore(10);
+        // if wrong text flashes, set active after setting text!
+        pointText = Instantiate(textObject, this.transform.position, Quaternion.identity) as GameObject;
+        pointText.GetComponent<TextMesh>().text = itemScorePoints.ToString();
+		score.GetComponent<CountScore>().AddScore(itemScorePoints);
+        Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
 		Destroy (this.gameObject);
 	}
 }
