@@ -12,8 +12,6 @@ public class CameraFollow : MonoBehaviour
     private MovementForward targetMovement;
     private float currentSpeed;
     private float currentSpeedLastFrame;
-    
-    public float asd;
 
 	void Awake ()
 	{
@@ -58,7 +56,7 @@ public class CameraFollow : MonoBehaviour
             
             transform.Rotate(Vector3.forward *
                              Time.deltaTime * 
-                             target.GetComponent<MovementHorizontal>().currentRotationSpeed * 10);
+                             target.GetComponent<Movement2D>().currentRotationSpeed * 10);
 		}
 	}
 }

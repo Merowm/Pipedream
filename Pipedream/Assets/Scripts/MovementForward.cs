@@ -15,7 +15,7 @@ public class MovementForward : MonoBehaviour
 
     private bool accelerateToHyperspace = false;
     private bool decelerateToSpaceSpeed = false;
-    private MovementHorizontal movementHorizontal;
+    private Movement2D movement2D;
     private Transform mainCamera;
     private Transform shipTransform;
     private Vector3 originalSpacePosition;
@@ -23,7 +23,7 @@ public class MovementForward : MonoBehaviour
 
 	void Awake ()
     {
-        movementHorizontal = transform.GetComponent<MovementHorizontal>();
+        movement2D = transform.GetComponent<Movement2D>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         shipTransform = transform.GetChild(0).transform;
         originalSpacePosition = shipTransform.position;
@@ -75,7 +75,7 @@ public class MovementForward : MonoBehaviour
                                                     mainCamera.transform.position.y,
                                                     mainCamera.transform.position.z);
         mainCamera.rotation = new Quaternion(0,0,0,0);
-        movementHorizontal.ResetVariables();
+        movement2D.ResetVariables();
     }
     
     void DisengagingHyperSpace()
@@ -88,7 +88,7 @@ public class MovementForward : MonoBehaviour
                                                     mainCamera.transform.position.y,
                                                     mainCamera.transform.position.z);
         mainCamera.rotation = new Quaternion(0,0,0,0);
-        movementHorizontal.ResetVariables();
+        movement2D.ResetVariables();
     }
 
     void AccelerateToHyperspace()
