@@ -3,14 +3,16 @@ using System.Collections;
 
 public class CountScore : MonoBehaviour {
 
-	//int points;
-	// Use this for initialization
-	void Start () {
-		//guiText.text = points.ToString ();
-		//guiText.pixelOffset = new Vector2 (30 - Screen.width / 2, Screen.height / 2 - 30);
-	}
-	
-	// Update is called once per frame
+	// Scorekeeping script for GUIText that shows current score in level and updates statistics memory
+    public int goldLimit;
+    public int silverLimit;
+    public int bronzeLimit;
+    public int levelId;
+
+    void Awake()
+    {
+        StatsMemory.AddLevelTrophyLimits(goldLimit, silverLimit, bronzeLimit, levelId);
+    }
 	void Update () {
 	
 	}
@@ -20,4 +22,10 @@ public class CountScore : MonoBehaviour {
 		guiText.text = StatsMemory.GetCurrentScore().ToString ();
         Debug.Log(guiText.text);
 	}
+    public void FinalLevelScore()
+    {
+        StatsMemory.CountlevelScore(levelId);
+        StatsMemory.ResetScore();
+    }
+       
 }
