@@ -8,7 +8,7 @@ public class GoToSceneSprite : MonoBehaviour
 
     void OnMouseUpAsButton()
     {
-        Debug.Log("Click detected");
+        
         Application.LoadLevel(IdOfSceneToGo);
     }
 }
