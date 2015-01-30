@@ -4,28 +4,48 @@ using System.Collections;
 public class CountScore : MonoBehaviour {
 
 	// Scorekeeping script for GUIText that shows current score in level and updates statistics memory
-    public int goldLimit;
-    public int silverLimit;
-    public int bronzeLimit;
+
+    //public StatsMemory.Scenes scene;
+    GameObject statObj;
+    Statistics stats;
     public int levelId;
 
-    void Awake()
+    void Start()
     {
-        StatsMemory.AddLevelTrophyLimits(goldLimit, silverLimit, bronzeLimit, levelId);
+        statObj = GameObject.FindGameObjectWithTag("statistics");
+        if (statObj != null)
+            stats = statObj.GetComponent<Statistics>();
     }
 	void Update () {
 	
 	}
 	public void AddScore(int newPoints)
 	{
-        StatsMemory.AddToTotalPoints(newPoints);
-		guiText.text = StatsMemory.GetCurrentScore().ToString ();
+        stats.AddToCurrentPoints(newPoints);
+        guiText.text = stats.GetCurrentScore().ToString ();
         Debug.Log(guiText.text);
 	}
     public void FinalLevelScore()
     {
-        StatsMemory.CountlevelScore(levelId);
-        StatsMemory.ResetScore();
+        guiText.text = stats.CountFinalLevelScore(levelId).ToString();
+        Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
+        int medal = stats.CompareToTrophyRequirements(levelId);
+        switch (medal)
+        {
+            case 1:
+                Debug.Log("You got gold!");
+                break;
+            case 2:
+                Debug.Log("You got silver!");
+                break;
+            case 3:
+                Debug.Log("You got bronze!");
+                break;
+            default:
+                Debug.Log("No medal!");
+                break;
+        }
+        stats.ResetScore();        
     }
        
 }
