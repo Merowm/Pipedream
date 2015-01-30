@@ -46,21 +46,23 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CollectPoints.cs" />
      <Compile Include="Assets\Scripts\CountScore.cs" />
-     <Compile Include="Assets\Scripts\Death.cs" />
-     <Compile Include="Assets\Scripts\Gravity.cs" />
-     <Compile Include="Assets\Scripts\HyperSpace.cs" />
-     <Compile Include="Assets\Scripts\Joksikin.cs" />
      <Compile Include="Assets\Scripts\MoveAround.cs" />
-     <Compile Include="Assets\Scripts\Movement2D.cs" />
-     <Compile Include="Assets\Scripts\MovementForward.cs" />
+     <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Player\Controls.cs" />
+     <Compile Include="Assets\Scripts\Player\Death.cs" />
+     <Compile Include="Assets\Scripts\Player\Gravity.cs" />
+     <Compile Include="Assets\Scripts\Player\LaserGuider.cs" />
+     <Compile Include="Assets\Scripts\Player\Movement2D.cs" />
+     <Compile Include="Assets\Scripts\Player\MovementForward.cs" />
      <Compile Include="Assets\Scripts\Start.cs" />
      <Compile Include="Assets\Scripts\StatsMemory.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\CurrentScore.cs" />
      <Compile Include="Assets\Scripts\UI scripts\FloatingPoints.cs" />
      <Compile Include="Assets\Scripts\UI scripts\GoToScene.cs" />
      <Compile Include="Assets\Scripts\UI scripts\GoToSceneSprite.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\Joksikin.cs" />
      <Compile Include="Assets\Scripts\UI scripts\MusicVolumeReset.cs" />
      <Compile Include="Assets\Scripts\UI scripts\OptionsPopUp.cs" />
   </ItemGroup>
