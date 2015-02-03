@@ -40,35 +40,40 @@ public class Controls : MonoBehaviour
             }
         }
 
+        //Right
         if (Input.GetAxis("Horizontal") == 1)
         {
             controls["Right"] = true;
-            controls["Left"] = false;
-        }
-        else if (Input.GetAxis("Horizontal") == -1)
-        {
-            controls["Left"] = true;
-            controls["Right"] = false;
         }
         else
         {
             controls["Right"] = false;
+        }
+        //Left
+        if (Input.GetAxis("Horizontal") == -1)
+        {
+            controls["Left"] = true;
+        }
+        else
+        {
             controls["Left"] = false;
         }
-
+        //Up
         if (Input.GetAxis("Vertical") == 1)
         {
             controls["Up"] = true;
-            controls["Down"] = false;
-        }
-        else if (Input.GetAxis("Vertical") == -1)
-        {
-            controls["Down"] = true;
-            controls["Up"] = false;
         }
         else
         {
             controls["Up"] = false;
+        }
+        //Down
+        if (Input.GetAxis("Vertical") == -1)
+        {
+            controls["Down"] = true;
+        }
+        else
+        {
             controls["Down"] = false;
         }
 

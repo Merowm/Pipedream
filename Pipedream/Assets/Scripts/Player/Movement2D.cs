@@ -206,7 +206,7 @@ public class Movement2D : MonoBehaviour
         else
         {
             //Deceleration after releasing the button
-            if(d > 0 && !controls.controls[button2]/*Remove !input to change the movement*/)
+            if(d > 0 /*&& !controls.controls[button2]Remove !input to change the movement*/)
             {
                 d -= deceleration * Time.deltaTime;
                 return d;
