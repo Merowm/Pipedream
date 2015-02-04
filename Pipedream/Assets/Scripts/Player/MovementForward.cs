@@ -13,8 +13,8 @@ public class MovementForward : MonoBehaviour
     public bool inHyperSpace = false;
     public Vector3 direction;
 
-    private bool accelerateToHyperspace = false;
-    private bool decelerateToSpaceSpeed = false;
+    public bool accelerateToHyperspace = false;
+    public bool decelerateToSpaceSpeed = false;
     private Movement2D movement2D;
     private Transform mainCamera;
     private Transform shipTransform;
@@ -65,25 +65,25 @@ public class MovementForward : MonoBehaviour
         transform.position += direction * currentSpeed * Time.deltaTime;
 	}
 
-    void EngagingHyperSpace()
+    public void DisengagingHyperSpace()
     {
-        inHyperSpace = true;
+        inHyperSpace = false;
         transform.rotation = new Quaternion(0,0,0,0);
-        transform.position = new Vector3(0,0,0);
-        shipTransform.position = originalHyperspacePosition;
+        transform.position = new Vector3(50,0,0);
+        shipTransform.position = originalSpacePosition;
         mainCamera.transform.position = new Vector3(transform.position.x,
                                                     mainCamera.transform.position.y,
                                                     mainCamera.transform.position.z);
         mainCamera.rotation = new Quaternion(0,0,0,0);
         movement2D.ResetVariables();
     }
-    
-    void DisengagingHyperSpace()
+
+    void EngagingHyperSpace()
     {
-        inHyperSpace = false;
+        inHyperSpace = true;
         transform.rotation = new Quaternion(0,0,0,0);
-        transform.position = new Vector3(50,0,0);
-        shipTransform.position = originalSpacePosition;
+        transform.position = new Vector3(0,0,0);
+        shipTransform.position = originalHyperspacePosition;
         mainCamera.transform.position = new Vector3(transform.position.x,
                                                     mainCamera.transform.position.y,
                                                     mainCamera.transform.position.z);
@@ -99,11 +99,12 @@ public class MovementForward : MonoBehaviour
         }
         else
         {
+            currentSpeed = hyperspaceSpeed;
             EngagingHyperSpace();
             accelerateToHyperspace = false;
         }
     }
-
+    
     void DecelerateToSpaceSpeed()
     {
         if (currentSpeed > spaceSpeed)
@@ -112,6 +113,7 @@ public class MovementForward : MonoBehaviour
         }
         else
         {
+            currentSpeed = spaceSpeed;
             decelerateToSpaceSpeed = false;
         }
     }

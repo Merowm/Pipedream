@@ -14,17 +14,20 @@ public class Movement2D : MonoBehaviour
     public float maxSpaceSpeed = 10;
     public float spaceAccelerationMultiplier = 2;
     public float spaceDecelerationMultiplier = 3;
-    public float spaceBoundaries = 10;
+    public Vector2 baseSpaceBoundariesMax = new Vector2(10,10);
+    public Vector2 baseSpaceBoundariesMin = new Vector2(-10,-10);
 
     public float currentSpaceSpeedMouse = 0;
-    public float angle = 0;
+    //public float angle = 0;
 
     //Components
     private GameObject mainCamera;
     private Controls controls;
     private MovementForward movementForward;
     private Transform shipTransform;
-    private Transform mouseAnglePoint;
+    private Transform mouseAnglePointParent;
+    private Transform mouseAnglePointHorizontal;
+    private Transform mouseAnglePointVertical;
     //In hyperspace variables
     private float hyperspaceAcceleration;
     private float hyperspaceDeceleration;
@@ -38,6 +41,8 @@ public class Movement2D : MonoBehaviour
     private float directionForceUp;
     private float directionForceDown;
     private float distanceFromShipToParent;
+    private Vector2 spaceBoundariesMax;
+    private Vector2 spaceBoundariesMin;
 
 	void Awake ()
     {
@@ -45,13 +50,19 @@ public class Movement2D : MonoBehaviour
         controls = transform.GetComponent<Controls>();
         movementForward = transform.GetComponent<MovementForward>();
         shipTransform = transform.FindChild("Ship").transform;
-        mouseAnglePoint = transform.FindChild("MouseAnglePoint").transform;
+        mouseAnglePointParent = transform.FindChild("MouseAnglePoint").transform;
+        mouseAnglePointHorizontal = shipTransform.FindChild("MouseAnglePointHorizontal").transform;
+        mouseAnglePointVertical = shipTransform.FindChild("MouseAnglePointVertical").transform;
+        //baseSpaceBoundariesMax = spaceBoundariesMax;
+        //baseSpaceBoundariesMin = spaceBoundariesMin;
         //Hides the mouse cursor
         //Screen.showCursor = false;
 	}
 
     void Update ()
     {
+        spaceBoundariesMax = new Vector2(baseSpaceBoundariesMax.x + transform.position.x,baseSpaceBoundariesMax.y);
+        spaceBoundariesMin = new Vector2(baseSpaceBoundariesMin.x + transform.position.x,baseSpaceBoundariesMin.y);
         hyperspaceAcceleration = maxRotationSpeed * hyperspaceAccelerationMultiplier;
         hyperspaceDeceleration = maxRotationSpeed * hyperspaceDecelerationMultiplier;
         spaceAcceleration = maxSpaceSpeed * spaceAccelerationMultiplier;
@@ -176,11 +187,26 @@ public class Movement2D : MonoBehaviour
         
                 float x = shipTransform.position.x + currentSpaceSpeedHorizontal * Time.deltaTime;
                 float y = shipTransform.position.y + currentSpaceSpeedVertical * Time.deltaTime;
+
+                x = Mathf.Clamp(x,spaceBoundariesMin.x,spaceBoundariesMax.x);
+                y = Mathf.Clamp(y,spaceBoundariesMin.y,spaceBoundariesMax.y);
+
                 shipTransform.position = new Vector3(x, y, shipTransform.position.z);
                 break;
 
             case "Mouse":
                 MovementWithMouseSpace();
+                /*
+                currentSpaceSpeedHorizontal = directionForceRight - directionForceLeft;
+                currentSpaceSpeedVertical = directionForceUp - directionForceDown;
+                
+                float xa = shipTransform.position.x + currentSpaceSpeedHorizontal * Time.deltaTime;
+                float ya = shipTransform.position.y + currentSpaceSpeedVertical * Time.deltaTime;
+                
+                xa = Mathf.Clamp(xa,spaceBoundariesMin.x,spaceBoundariesMax.x);
+                ya = Mathf.Clamp(ya,spaceBoundariesMin.y,spaceBoundariesMax.y);
+                
+                shipTransform.position = new Vector3(xa, ya, shipTransform.position.z);*/
                 break;
         }
     }
@@ -226,10 +252,9 @@ public class Movement2D : MonoBehaviour
         Vector3 mousePos = mainCamera.camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
                                                                             Input.mousePosition.y,
                                                                             mainCamera.GetComponent<CameraFollow>().distanceFromTarget));
-
         float distance = Vector3.Distance(shipTransform.position, mousePos);
 
-        if (distance > 2)
+        if (distance > 0.5f)
         {
             if (currentSpaceSpeedMouse < maxSpaceSpeed)
             {
@@ -239,76 +264,181 @@ public class Movement2D : MonoBehaviour
         }
         else
         {
-            if(currentSpaceSpeedMouse > 0)
+            if (distance > 0.1f)
             {
-                currentSpaceSpeedMouse -= spaceDeceleration * Time.deltaTime;
+                if(currentSpaceSpeedMouse > 0)
+                {
+                    currentSpaceSpeedMouse -= spaceDeceleration * Time.deltaTime;
+                }
             }
+            else currentSpaceSpeedMouse = 0;
         }
 
         direction = (mousePos - position).normalized;
         position += direction * currentSpaceSpeedMouse * Time.deltaTime;
+
+        position.x = Mathf.Clamp(position.x,spaceBoundariesMin.x,spaceBoundariesMax.x);
+        position.y = Mathf.Clamp(position.y,spaceBoundariesMin.y,spaceBoundariesMax.y);
+
         shipTransform.position = Vector3.Lerp(shipTransform.position, position, currentSpaceSpeedMouse);
+
+        //WORK IN PROGRESS:
+        /*
+        Vector3 mousePos = mainCamera.camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+                                                                            Input.mousePosition.y,
+                                                                            mainCamera.GetComponent<CameraFollow>().distanceFromTarget));
+        float distance = Vector3.Distance(shipTransform.position, mousePos);
+
+        if (distance > 0.1f)
+        {
+            directionForceRight = MouseAngler(shipTransform,
+                                          mouseAnglePointHorizontal,
+                                          112.5f,
+                                          67.5f,
+                                          directionForceRight,
+                                          directionForceLeft,
+                                          maxSpaceSpeed,
+                                          spaceAcceleration,
+                                          spaceDeceleration,
+                                          1);
+            directionForceLeft = MouseAngler(shipTransform,
+                                         mouseAnglePointHorizontal,
+                                         112.5f,
+                                         67.5f,
+                                         directionForceRight,
+                                         directionForceLeft,
+                                         maxSpaceSpeed,
+                                         spaceAcceleration,
+                                         spaceDeceleration,
+                                         2);
+            directionForceUp = MouseAngler(shipTransform,
+                                       mouseAnglePointVertical,
+                                       112.5f,
+                                       67.5f,
+                                       directionForceUp,
+                                       directionForceDown,
+                                       maxSpaceSpeed,
+                                       spaceAcceleration,
+                                       spaceDeceleration,
+                                       1);
+            directionForceDown = MouseAngler(shipTransform,
+                                         mouseAnglePointVertical,
+                                         112.5f,
+                                         67.5f,
+                                         directionForceUp,
+                                         directionForceDown,
+                                         maxSpaceSpeed,
+                                         spaceAcceleration,
+                                         spaceDeceleration,
+                                         2);
+        }
+        else
+        {
+            if (distance > 0.1f)
+            {
+                if(currentSpaceSpeedMouse > 0)
+                {
+                    currentSpaceSpeedMouse -= spaceDeceleration * Time.deltaTime;
+                }
+            }
+            else directionForceRight = directionForceLeft = directionForceLeft = directionForceDown = 0;
+        }
+        */
     }
 
     void MovementWithMouseHyperspace()
     {
+        directionForceRightRotation = MouseAngler(transform,
+                                                  mouseAnglePointParent,
+                                                  95,
+                                                  85,
+                                                  directionForceRightRotation,
+                                                  directionForceLeftRotation,
+                                                  maxRotationSpeed,
+                                                  hyperspaceAcceleration,
+                                                  hyperspaceDeceleration,
+                                                  1);
+        directionForceLeftRotation = MouseAngler(transform,mouseAnglePointParent,
+                                                 95,
+                                                 85,
+                                                 directionForceRightRotation,
+                                                 directionForceLeftRotation,
+                                                 maxRotationSpeed,
+                                                 hyperspaceAcceleration,
+                                                 hyperspaceDeceleration,
+                                                 2);
+    }
+
+    float MouseAngler(Transform centerPoint, Transform anglePoint, float angleUpperValue, float angleLowerValue,
+                      float directionForce1, float directionForce2, float maxSpeed, float acceleration,
+                      float deceleration, uint directionForceToBeReturned)
+    {
         Vector3 mousePos = mainCamera.camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
                                                                             Input.mousePosition.y,
                                                                             mainCamera.GetComponent<CameraFollow>().distanceFromTarget));
-        Vector3 directionMouseToParent = (mousePos - transform.position).normalized;
-        Vector3 directionShipToParent = (mouseAnglePoint.position - transform.position).normalized;
-
-        angle = Vector3.Angle(directionMouseToParent, directionShipToParent);
-
-        if (angle >= 100 || angle <= 80)
+        Vector3 directionMouseToParent = (mousePos - centerPoint.position).normalized;
+        Vector3 directionAnglePointToParent = (anglePoint.position - centerPoint.position).normalized;
+        
+        float angle = Vector3.Angle(directionMouseToParent, directionAnglePointToParent);
+        
+        if (angle >= angleUpperValue || angle <= angleLowerValue)
         {
-            if (angle < 80)
+            if (angle < angleLowerValue)
             {
-                if (directionForceRightRotation < maxRotationSpeed)
+                if (directionForce1 < maxSpeed)
                 {
-                    directionForceRightRotation += hyperspaceAcceleration * Time.deltaTime;
+                    directionForce1 += acceleration * Time.deltaTime;
                 }
-                else directionForceRightRotation = maxRotationSpeed;
+                else directionForce1 = maxSpeed;
             }
             else
             {
-                if(directionForceRightRotation > 0)
+                if(directionForce1 > 0)
                 {
-                    directionForceRightRotation -= hyperspaceDeceleration * Time.deltaTime;
+                    directionForce1 -= deceleration * Time.deltaTime;
                 }
-                else directionForceRightRotation = 0;
+                else directionForce1 = 0;
             }
-
-            if (angle > 100)
+            
+            if (angle > angleUpperValue)
             {
-                if (directionForceLeftRotation < maxRotationSpeed)
+                if (directionForce2 < maxSpeed)
                 {
-                    directionForceLeftRotation += hyperspaceAcceleration * Time.deltaTime;
+                    directionForce2 += acceleration * Time.deltaTime;
                 }
-                else directionForceLeftRotation = maxRotationSpeed;
+                else directionForce2 = maxSpeed;
             }
             else
             {
-                if(directionForceLeftRotation > 0)
+                if(directionForce2 > 0)
                 {
-                    directionForceLeftRotation -= hyperspaceDeceleration * Time.deltaTime;
+                    directionForce2 -= deceleration * Time.deltaTime;
                 }
-                else directionForceLeftRotation = 0;
+                else directionForce2 = 0;
             }
         }
         else
         {
-            if(directionForceRightRotation > 0)
+            if(directionForce1 > 0)
             {
-                directionForceRightRotation -= hyperspaceDeceleration * Time.deltaTime;
+                directionForce1 -= deceleration * Time.deltaTime;
             }
-            else directionForceRightRotation = 0;
+            else directionForce1 = 0;
+            
+            if(directionForce2 > 0)
+            {
+                directionForce2 -= deceleration * Time.deltaTime;
+            }
+            else directionForce2 = 0;
+        }
 
-            if(directionForceLeftRotation > 0)
-            {
-                directionForceLeftRotation -= hyperspaceDeceleration * Time.deltaTime;
-            }
-            else directionForceLeftRotation = 0;
+        if (directionForceToBeReturned == 1)
+        {
+            return directionForce1;
+        }
+        else
+        {
+            return directionForce2;
         }
     }
 }
