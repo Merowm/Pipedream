@@ -18,6 +18,7 @@ public class Statistics : MonoBehaviour
             return instance;
         }
     }
+
     private int currentLevelPoints;
     private int currentTimeBonus;
 
@@ -59,6 +60,7 @@ public class Statistics : MonoBehaviour
             }
         }
 	}
+
     // Add basic level info here. When making new level, call AddLevelData() to add it to the game.
     void Start()
     {
@@ -122,6 +124,7 @@ public class Statistics : MonoBehaviour
     // silver = 2nd place = 2,
     // bronze = 3rd place = 3,
     // no trophy = 0.
+    // also saves best trophy.
     public int CompareToTrophyRequirements(int levelId)
     {
         int trophy = 0;

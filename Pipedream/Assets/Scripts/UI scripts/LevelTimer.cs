@@ -18,6 +18,7 @@ public class LevelTimer : MonoBehaviour {
 
     public void FinalTimeBonus()
     {
-        //StatsMemory.CountTimeBonus(timeTimer);
+        // Send final time to CountScore / Statistics?
+        
     }
 }

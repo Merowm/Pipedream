@@ -19,17 +19,23 @@ public class CountScore : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    // Called from bonus object when triggered
 	public void AddScore(int newPoints)
 	{
         stats.AddToCurrentPoints(newPoints);
         guiText.text = stats.GetCurrentScore().ToString ();
         Debug.Log(guiText.text);
 	}
+
+    // Called when level ends
     public void FinalLevelScore()
     {
         guiText.text = stats.CountFinalLevelScore(levelId).ToString();
         Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
+        // also saves best trophy
         int medal = stats.CompareToTrophyRequirements(levelId);
+        // for testing purposes
         switch (medal)
         {
             case 1:
