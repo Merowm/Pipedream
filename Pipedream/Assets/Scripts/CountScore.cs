@@ -15,6 +15,7 @@ public class CountScore : MonoBehaviour {
         statObj = GameObject.FindGameObjectWithTag("statistics");
         if (statObj != null)
             stats = statObj.GetComponent<Statistics>();
+        guiText.text = "0";
     }
 	void Update () {
 	
@@ -35,7 +36,8 @@ public class CountScore : MonoBehaviour {
         Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
         // also saves best trophy
         int medal = stats.CompareToTrophyRequirements(levelId);
-        // for testing purposes
+
+        /////////////////////////////////////////////////// for testing purposes
         switch (medal)
         {
             case 1:
@@ -51,6 +53,7 @@ public class CountScore : MonoBehaviour {
                 Debug.Log("No medal!");
                 break;
         }
+        //////////////////////////////////////////////////// end testing
         stats.ResetScore();        
     }
        
