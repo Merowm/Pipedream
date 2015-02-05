@@ -22,7 +22,7 @@ public class GoToScene : MonoBehaviour {
 	
     void OnGUI()
     {
-        if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 - 100, 100, 100), buttontex))
+        if (GUI.Button(new Rect(Screen.width/2- 500, Screen.height/2 - 280, 100, 100), buttontex))
         {
             scoreText.AddScore(100);
             //StatsMemory.AddToTotalPoints(100);

@@ -21,6 +21,7 @@ public class Statistics : MonoBehaviour
 
     private int currentLevelPoints;
     private int currentTimeBonus;
+    private int currentBonusAmount;
 
     public class levelData
     {
@@ -31,12 +32,14 @@ public class Statistics : MonoBehaviour
         public int silverLimit;
         public int bronzeLimit;
         public bool isUnlocked;
+        public int bonusCount;
 
-        public levelData(int goldLim, int silverLim, int bronzeLim, int levelId)
+        public levelData(int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelId)
         {
             goldLimit = goldLim;
             silverLimit = silverLim;
             bronzeLimit = bronzeLim;
+            bonusCount = bonusAmount;
             levelID = levelId;
             highScore = 0;
             currentTrophy = 0;
@@ -59,13 +62,17 @@ public class Statistics : MonoBehaviour
                 DestroyImmediate(this.gameObject);
             }
         }
+        levels = new List<levelData>();
+        AddLevelData(1000, 800, 600, 4, 1); // testing data.
 	}
+
+    // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
+    // Moved to Awake() for testing reasons.
 
     // Add basic level info here. When making new level, call AddLevelData() to add it to the game.
     void Start()
     {
-        levels = new List<levelData>();
-        AddLevelData(1000, 800, 600, 1); // testing data.
+
 
     }
 
@@ -75,11 +82,23 @@ public class Statistics : MonoBehaviour
         currentLevelPoints += pointsToAdd;
     }
 
+    public void AddToBonusCount()
+    {
+        ++currentBonusAmount;
+    }
     public int GetCurrentScore()
     {
         return currentLevelPoints;
     }
 
+    public int GetCurrentBonus()
+    {
+        return currentBonusAmount;
+    }
+    public int GetMaxBonusAmount(int levelId)
+    {
+        return FindLevel(levelId).bonusCount;
+    }
     public int CountFinalLevelScore(int levelId)
     {
         currentLevelPoints += currentTimeBonus;
@@ -173,9 +192,9 @@ public class Statistics : MonoBehaviour
     }
 
     // levelId should be scene number in project, so it can be used to call Application.LoadLevel().
-    private void AddLevelData(int goldLimit, int silverLimit, int bronzeLimit, int levelId)
+    private void AddLevelData(int goldLimit, int silverLimit, int bronzeLimit, int bonusAmount, int levelId)
     {
-        levels.Add(new levelData(goldLimit, silverLimit, bronzeLimit, levelId));
+        levels.Add(new levelData(goldLimit, silverLimit, bronzeLimit, bonusAmount, levelId));
     }
 
     // returns true if new trophy is  better than old one and saves it in the level data. 

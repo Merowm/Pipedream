@@ -6,23 +6,25 @@ using System.Collections;
 public class CollectPoints : MonoBehaviour 
 {
     public int itemScorePoints;
-    public Transform textObject;
+    public Transform floatingPoints;
 
-	private GameObject score;
-    private GameObject pointText;
+	private CountScore score;
+    private BonusCounter bonus;
+    
 	void Awake ()
     {
-		score = GameObject.FindGameObjectWithTag ("Scoretext");
+        score = FindObjectOfType<CountScore>();
+        bonus = FindObjectOfType<BonusCounter>();
 	}
 	
 	
 	void OnTriggerEnter(Collider other)
 	{
-        // if wrong text flashes, set active after setting text!
-        pointText = Instantiate(textObject, this.transform.position, Quaternion.identity) as GameObject;
-        pointText.GetComponent<TextMesh>().text = itemScorePoints.ToString();
-		score.GetComponent<CountScore>().AddScore(itemScorePoints);
-        Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
+        Debug.Log("Hit trigger");
+        Instantiate(floatingPoints, this.transform.position, Quaternion.identity);
+        bonus.UpdateBonusCount();
+		score.AddScore(itemScorePoints);
+        //Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
 		Destroy (this.gameObject);
 	}
 }
