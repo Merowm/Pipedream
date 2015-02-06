@@ -14,8 +14,7 @@ public class Movement2D : MonoBehaviour
     public float maxSpaceSpeed = 10;
     public float spaceAccelerationMultiplier = 2;
     public float spaceDecelerationMultiplier = 3;
-    public Vector2 baseSpaceBoundariesMax = new Vector2(10,10);
-    public Vector2 baseSpaceBoundariesMin = new Vector2(-10,-10);
+    public float boundaryRadius = 10;
 
     public float currentSpaceSpeedMouse = 0;
     //public float angle = 0;
@@ -41,11 +40,10 @@ public class Movement2D : MonoBehaviour
     private float directionForceUp;
     private float directionForceDown;
     private float distanceFromShipToParent;
-    private Vector2 spaceBoundariesMax;
-    private Vector2 spaceBoundariesMin;
 
 	void Awake ()
     {
+        //shipTransform.position = new Vector3(50,0,0);
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         controls = transform.GetComponent<Controls>();
         movementForward = transform.GetComponent<MovementForward>();
@@ -59,10 +57,13 @@ public class Movement2D : MonoBehaviour
         //Screen.showCursor = false;
 	}
 
+    void Start()
+    {
+
+    }
+
     void Update ()
     {
-        spaceBoundariesMax = new Vector2(baseSpaceBoundariesMax.x + transform.position.x,baseSpaceBoundariesMax.y);
-        spaceBoundariesMin = new Vector2(baseSpaceBoundariesMin.x + transform.position.x,baseSpaceBoundariesMin.y);
         hyperspaceAcceleration = maxRotationSpeed * hyperspaceAccelerationMultiplier;
         hyperspaceDeceleration = maxRotationSpeed * hyperspaceDecelerationMultiplier;
         spaceAcceleration = maxSpaceSpeed * spaceAccelerationMultiplier;
@@ -184,14 +185,13 @@ public class Movement2D : MonoBehaviour
 
                 currentSpaceSpeedHorizontal = directionForceRight - directionForceLeft;
                 currentSpaceSpeedVertical = directionForceUp - directionForceDown;
-        
+
                 float x = shipTransform.position.x + currentSpaceSpeedHorizontal * Time.deltaTime;
                 float y = shipTransform.position.y + currentSpaceSpeedVertical * Time.deltaTime;
+                Vector3 xy = new Vector3(x,y,0);
+                Vector3 offset = xy - transform.position;
 
-                x = Mathf.Clamp(x,spaceBoundariesMin.x,spaceBoundariesMax.x);
-                y = Mathf.Clamp(y,spaceBoundariesMin.y,spaceBoundariesMax.y);
-
-                shipTransform.position = new Vector3(x, y, shipTransform.position.z);
+                shipTransform.position = transform.position + Vector3.ClampMagnitude(new Vector3(offset.x,offset.y,0),boundaryRadius);
                 break;
 
             case "Mouse":
@@ -221,6 +221,7 @@ public class Movement2D : MonoBehaviour
             if (d < maxSpeed)
             {
                 d += acceleration * Time.deltaTime;
+                //d = maxSpeed;
                 return d;
             }
             else
@@ -235,6 +236,7 @@ public class Movement2D : MonoBehaviour
             if(d > 0 /*&& !controls.controls[button2]Remove !input to change the movement*/)
             {
                 d -= deceleration * Time.deltaTime;
+                //d = 0;
                 return d;
             }
             else
@@ -251,7 +253,7 @@ public class Movement2D : MonoBehaviour
         Vector3 position = shipTransform.position;
         Vector3 mousePos = mainCamera.camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
                                                                             Input.mousePosition.y,
-                                                                            mainCamera.GetComponent<CameraFollow>().distanceFromTarget));
+                                                                            mainCamera.transform.parent.GetComponent<CameraFollow>().distanceFromTarget));
         float distance = Vector3.Distance(shipTransform.position, mousePos);
 
         if (distance > 0.5f)
@@ -276,10 +278,9 @@ public class Movement2D : MonoBehaviour
 
         direction = (mousePos - position).normalized;
         position += direction * currentSpaceSpeedMouse * Time.deltaTime;
+        Vector3 offset = position - transform.position;
 
-        position.x = Mathf.Clamp(position.x,spaceBoundariesMin.x,spaceBoundariesMax.x);
-        position.y = Mathf.Clamp(position.y,spaceBoundariesMin.y,spaceBoundariesMax.y);
-
+        position = transform.position + Vector3.ClampMagnitude(new Vector3(offset.x,offset.y,0),boundaryRadius);
         shipTransform.position = Vector3.Lerp(shipTransform.position, position, currentSpaceSpeedMouse);
 
         //WORK IN PROGRESS:
@@ -375,7 +376,7 @@ public class Movement2D : MonoBehaviour
     {
         Vector3 mousePos = mainCamera.camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
                                                                             Input.mousePosition.y,
-                                                                            mainCamera.GetComponent<CameraFollow>().distanceFromTarget));
+                                                                            mainCamera.transform.parent.GetComponent<CameraFollow>().distanceFromTarget));
         Vector3 directionMouseToParent = (mousePos - centerPoint.position).normalized;
         Vector3 directionAnglePointToParent = (anglePoint.position - centerPoint.position).normalized;
         

@@ -16,16 +16,18 @@ public class MovementForward : MonoBehaviour
     public bool accelerateToHyperspace = false;
     public bool decelerateToSpaceSpeed = false;
     private Movement2D movement2D;
-    private Transform mainCamera;
+    //private Transform mainCamera;
     private Transform shipTransform;
+    private GameObject boundaryCircle;
     private Vector3 originalSpacePosition;
     private Vector3 originalHyperspacePosition;
 
 	void Awake ()
     {
         movement2D = transform.GetComponent<Movement2D>();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        shipTransform = transform.GetChild(0).transform;
+        //mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        shipTransform = transform.FindChild("Ship").transform;
+        boundaryCircle = transform.FindChild("BoundaryCircle").gameObject;
         originalSpacePosition = shipTransform.position;
         originalHyperspacePosition = shipTransform.position - transform.position;
 	}
@@ -71,10 +73,10 @@ public class MovementForward : MonoBehaviour
         transform.rotation = new Quaternion(0,0,0,0);
         transform.position = new Vector3(50,0,0);
         shipTransform.position = originalSpacePosition;
-        mainCamera.transform.position = new Vector3(transform.position.x,
-                                                    mainCamera.transform.position.y,
-                                                    mainCamera.transform.position.z);
-        mainCamera.rotation = new Quaternion(0,0,0,0);
+        //mainCamera.transform.position = new Vector3(transform.position.x,
+        //                                            mainCamera.transform.position.y,
+        //                                            mainCamera.transform.position.z);
+        //mainCamera.rotation = new Quaternion(0,0,0,0);
         movement2D.ResetVariables();
     }
 
@@ -84,15 +86,17 @@ public class MovementForward : MonoBehaviour
         transform.rotation = new Quaternion(0,0,0,0);
         transform.position = new Vector3(0,0,0);
         shipTransform.position = originalHyperspacePosition;
-        mainCamera.transform.position = new Vector3(transform.position.x,
-                                                    mainCamera.transform.position.y,
-                                                    mainCamera.transform.position.z);
-        mainCamera.rotation = new Quaternion(0,0,0,0);
+        //mainCamera.transform.position = new Vector3(transform.position.x,
+        //                                            mainCamera.transform.position.y,
+        //                                            mainCamera.transform.position.z);
+        //mainCamera.rotation = new Quaternion(0,0,0,0);
         movement2D.ResetVariables();
     }
 
     void AccelerateToHyperspace()
     {
+        boundaryCircle.SetActive(false);
+
         if (currentSpeed < hyperspaceSpeed)
         {
             currentSpeed += acceleration * Time.deltaTime;
@@ -107,6 +111,8 @@ public class MovementForward : MonoBehaviour
     
     void DecelerateToSpaceSpeed()
     {
+        boundaryCircle.SetActive(true);
+
         if (currentSpeed > spaceSpeed)
         {
             currentSpeed -= deceleration * Time.deltaTime;
