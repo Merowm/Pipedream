@@ -433,6 +433,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 681455120f8b7294ab0eca1bff84aabb, type: 2}
+      propertyPath: fullDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 681455120f8b7294ab0eca1bff84aabb, type: 2}
+      propertyPath: levelId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 681455120f8b7294ab0eca1bff84aabb, type: 2}
   m_RootGameObject: {fileID: 1866093933}
@@ -447,7 +455,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1866093936}
   - 114: {fileID: 1866093935}
-  - 132: {fileID: 1866093934}
+  - 114: {fileID: 1866093934}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -455,30 +463,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!132 &1866093934
-GUIText:
+--- !u!114 &1866093934
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13200000, guid: 681455120f8b7294ab0eca1bff84aabb,
+  m_PrefabParentObject: {fileID: 11400002, guid: 681455120f8b7294ab0eca1bff84aabb,
     type: 2}
   m_PrefabInternal: {fileID: 1443883009}
   m_GameObject: {fileID: 1866093933}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Text: HERE
-  m_Anchor: 0
-  m_Alignment: 0
-  m_PixelOffset: {x: 0, y: 0}
-  m_LineSpacing: 1
-  m_TabSize: 4
-  m_Font: {fileID: 0}
-  m_Material: {fileID: 0}
-  m_FontSize: 30
-  m_FontStyle: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_PixelCorrect: 1
-  m_RichText: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bc2cf543fc6594085aac8a5394346d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1866093935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +487,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcde3901ab898d4fa526676b3f00d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTimer: 0
+  levelId: 1
+  distanceMeter: 0
+  updateInterval: .25
+  playerShip: {fileID: 0}
+  distanceToGo: {fileID: 2800000, guid: b90c95ef6059144498f5279e23888881, type: 3}
+  distanceGone: {fileID: 2800000, guid: ceab7f8a6d9179e41a3534d54b1e0e38, type: 3}
+  fullDistance: 0
 --- !u!4 &1866093936
 Transform:
   m_ObjectHideFlags: 0

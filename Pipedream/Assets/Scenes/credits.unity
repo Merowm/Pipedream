@@ -86,7 +86,7 @@ GameObject:
   - 61: {fileID: 1021569862}
   - 114: {fileID: 1021569861}
   m_Layer: 0
-  m_Name: GoAway
+  m_Name: GoAwayFromCredits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b7b73418ffdb842a97d5f7100f6f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneInBuild: 0
+  SceneToGo: StartMenu
 --- !u!61 &1021569862
 BoxCollider2D:
   m_ObjectHideFlags: 0

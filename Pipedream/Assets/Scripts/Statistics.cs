@@ -20,8 +20,9 @@ public class Statistics : MonoBehaviour
     }
 
     private int currentLevelPoints;
-    private int currentTimeBonus;
     private int currentBonusAmount;
+
+    private int lastPlayedLevel;
 
     public class levelData
     {
@@ -33,14 +34,16 @@ public class Statistics : MonoBehaviour
         public int bronzeLimit;
         public bool isUnlocked;
         public int bonusCount;
+        public int distanceToRace;
 
-        public levelData(int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelId)
+        public levelData(int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelLength, int levelId)
         {
             goldLimit = goldLim;
             silverLimit = silverLim;
             bronzeLimit = bronzeLim;
             bonusCount = bonusAmount;
             levelID = levelId;
+            distanceToRace = levelLength;
             highScore = 0;
             currentTrophy = 0;
             isUnlocked = false;
@@ -62,12 +65,14 @@ public class Statistics : MonoBehaviour
                 DestroyImmediate(this.gameObject);
             }
         }
+
+
+        // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
+        // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
-        AddLevelData(1000, 800, 600, 4, 1); // testing data.
+        AddLevelData(40, 4, 50, 1); // testing data.
 	}
 
-    // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
-    // Moved to Awake() for testing reasons.
 
     // Add basic level info here. When making new level, call AddLevelData() to add it to the game.
     void Start()
@@ -86,22 +91,14 @@ public class Statistics : MonoBehaviour
     {
         ++currentBonusAmount;
     }
-    public int GetCurrentScore()
+
+    public void SetLevelPlayed(int levelId)
     {
-        return currentLevelPoints;
+        lastPlayedLevel = levelId;
     }
 
-    public int GetCurrentBonus()
+    public int SetFinalLevelScore(int levelId)
     {
-        return currentBonusAmount;
-    }
-    public int GetMaxBonusAmount(int levelId)
-    {
-        return FindLevel(levelId).bonusCount;
-    }
-    public int CountFinalLevelScore(int levelId)
-    {
-        currentLevelPoints += currentTimeBonus;
         levelData level = FindLevel(levelId);
         if (level != null)
         {
@@ -110,18 +107,15 @@ public class Statistics : MonoBehaviour
         return currentLevelPoints;
     }
 
-    public int GetlevelHighScore(int levelId)
-    {
-        return FindLevel(levelId).highScore;
-    }
+    
     // Reset temp level score when level is finished.
     public void ResetScore()
     {
         currentLevelPoints = 0;
-        currentTimeBonus = 0;
+        currentBonusAmount = 0;
     }
 
-    // Resets player data but not basic level info
+    // Resets player data but not basic level info. For starting new game without exiting.
     public void ResetGame()
     {
         foreach (levelData ld in levels)
@@ -164,15 +158,39 @@ public class Statistics : MonoBehaviour
         return trophy;
     }
 
-    // Counts time bonus points and adds them to current level score
-    // returns time bonus
-    // TODO: Figure out a decent algorithm!
-    public int CountTimeBonus(float timeInSeconds)
+    //////////////////////////////////////
+    // Get methods
+    //////////////////////////////////////
+    
+    public string GetLastLevelNameAsString()
+    {        
+        return ("level" + lastPlayedLevel).ToString();
+    }
+    public int GetCurrentScore()
     {
-        currentTimeBonus = (int)(10000 / timeInSeconds);
-        return currentTimeBonus;
+        return currentLevelPoints;
     }
 
+    public int GetCurrentBonus()
+    {
+        return currentBonusAmount;
+    }
+    public int GetMaxBonusAmount(int levelId)
+    {
+        return FindLevel(levelId).bonusCount;
+    }
+
+    public int GetlevelHighScore(int levelId)
+    {
+        return FindLevel(levelId).highScore;
+    }
+
+    public int GetLevelDistance(int levelId)
+    {
+        return FindLevel(levelId).distanceToRace;
+    }
+
+ 
     //////////////////////////////////////
     // Helper methods
     //////////////////////////////////////
@@ -191,10 +209,13 @@ public class Statistics : MonoBehaviour
         return null;
     }
 
-    // levelId should be scene number in project, so it can be used to call Application.LoadLevel().
-    private void AddLevelData(int goldLimit, int silverLimit, int bronzeLimit, int bonusAmount, int levelId)
+    // For adding a level to game.
+    private void AddLevelData(int bonusAmount, int bonusItemCount, int levelLength, int levelId)
     {
-        levels.Add(new levelData(goldLimit, silverLimit, bronzeLimit, bonusAmount, levelId));
+        int goldLimit = (int)(bonusAmount * 0.85f);
+        int silverLimit = (int)(bonusAmount * 0.5f);
+        int bronzeLimit = (int)(bonusAmount * 0.2f);
+        levels.Add(new levelData(goldLimit, silverLimit, bronzeLimit, bonusItemCount, levelLength, levelId));
     }
 
     // returns true if new trophy is  better than old one and saves it in the level data. 

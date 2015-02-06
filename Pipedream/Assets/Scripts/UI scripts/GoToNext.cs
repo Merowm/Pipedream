@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GoToNext : MonoBehaviour {
 
-    public int nextSceneInBuild;
+    public string SceneToGo;
 	
     void OnMouseUpAsButton()
     {
-        Application.LoadLevel(nextSceneInBuild);
+        Application.LoadLevel(SceneToGo);
     }
 }

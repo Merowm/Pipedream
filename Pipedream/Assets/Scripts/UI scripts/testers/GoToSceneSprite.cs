@@ -14,7 +14,7 @@ public class GoToSceneSprite : MonoBehaviour
     }
     void OnMouseUpAsButton()
     {
-        lt.FinalTimeBonus();
+        
         sc.FinalLevelScore();
         Application.LoadLevel("MenuScene");
     }
