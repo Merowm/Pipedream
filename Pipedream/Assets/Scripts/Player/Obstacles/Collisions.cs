@@ -3,11 +3,9 @@ using System.Collections;
 
 public class Collisions : MonoBehaviour
 {
-    public MovementForward movement;
-
     void Awake()
     {
-        movement = transform.parent.GetComponent<MovementForward>();
+
     }
 
 	void OnTriggerEnter(Collider other)
@@ -15,10 +13,11 @@ public class Collisions : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             //Collision in hyperspace
-            if (movement.inHyperSpace)
+            if (MovementForward.inHyperSpace)
             {
                 Debug.Log("Hyperspace collison");
                 //TODO:Make player "avoid" collision just before hitting the obstacle
+                Debug.Break();
             }
             //Collision out of hyperspace
             else
@@ -26,6 +25,7 @@ public class Collisions : MonoBehaviour
                 Debug.Log("Space collision");
                 Destroy(other.gameObject);
                 //TODO:Add explosion
+                Debug.Break();
             }
         }
 	}

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MovementForward : MonoBehaviour
 {
+    public static bool inHyperSpace = false;
     public float currentSpeed;
     public float hyperspaceSpeed;
     public float spaceSpeed;
@@ -10,7 +11,6 @@ public class MovementForward : MonoBehaviour
     public float minSpeed;
     public float acceleration;
     public float deceleration;
-    public bool inHyperSpace = false;
     public Vector3 direction;
 
     public bool accelerateToHyperspace = false;

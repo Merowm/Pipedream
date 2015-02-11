@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
 	public Transform target;
 
     private Transform mainCamera;
-    private MovementForward targetMovement;
+    //private MovementForward targetMovement;
 	private Vector3 velocity = Vector3.zero;
 
 	void Awake ()
@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
         if (target)
         {
             mainCamera = transform.GetChild(0).transform;
-            targetMovement = GameObject.Find("Player").GetComponent<MovementForward>();
+            //targetMovement = GameObject.Find("Player").GetComponent<MovementForward>();
         }
 	}
 
@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
 		{
             transform.position = target.parent.position;
 
-            if (targetMovement.inHyperSpace)
+            if (MovementForward.inHyperSpace)
             {
                 mainCamera.position = new Vector3(target.parent.position.x,
                                                   target.parent.position.y,

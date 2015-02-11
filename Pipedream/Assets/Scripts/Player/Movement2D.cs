@@ -22,7 +22,7 @@ public class Movement2D : MonoBehaviour
     //Components
     private GameObject mainCamera;
     private Controls controls;
-    private MovementForward movementForward;
+    //private MovementForward movementForward;
     private Transform shipTransform;
     private Transform mouseAnglePointParent;
     private Transform mouseAnglePointHorizontal;
@@ -46,7 +46,7 @@ public class Movement2D : MonoBehaviour
         //shipTransform.position = new Vector3(50,0,0);
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         controls = transform.GetComponent<Controls>();
-        movementForward = transform.GetComponent<MovementForward>();
+        //movementForward = transform.GetComponent<MovementForward>();
         shipTransform = transform.FindChild("Ship").transform;
         mouseAnglePointParent = transform.FindChild("MouseAnglePoint").transform;
         mouseAnglePointHorizontal = shipTransform.FindChild("MouseAnglePointHorizontal").transform;
@@ -73,7 +73,7 @@ public class Movement2D : MonoBehaviour
 	public void KeyboardControls ()
     {
         //Movement while in hypespace
-        if (movementForward.inHyperSpace)
+        if (MovementForward.inHyperSpace)
         {
             HyperspaceMovement("Keyboard");
         }
@@ -87,7 +87,7 @@ public class Movement2D : MonoBehaviour
     public void MouseControls ()
     {
         //Movement while in hypespace
-        if (movementForward.inHyperSpace)
+        if (MovementForward.inHyperSpace)
         {
             HyperspaceMovement("Mouse");
         }

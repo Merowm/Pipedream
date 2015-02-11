@@ -13,7 +13,7 @@ GameObject:
   - 95: {fileID: 9500000}
   m_Layer: 0
   m_Name: HyperspaceGateExit
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,8 +42,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1200}
-  m_LocalScale: {x: .25, y: .25, z: .100000001}
+  m_LocalPosition: {x: 0, y: 0, z: 6660}
+  m_LocalScale: {x: 10, y: 10, z: 15}
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
@@ -55,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 200, y: 200, z: 200}
+  m_LocalPosition: {x: 0, y: 0, z: .222222224}
+  m_LocalScale: {x: 1.66666675, y: 1.66666675, z: .444444448}
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 3cbf7269808215a4297476f2c147e4c6, type: 2}
+  - {fileID: 2100000, guid: f7108506fbc7524429ea112fb3e275cc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 861c6b35c6a956343a7327c52e6167da, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 4c440c9d2da36b148a88711cbeff8139, type: 3}
 --- !u!33 &3300002
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -114,7 +114,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9d11400c2f81c1d4cafb638a7c51466b, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 4c440c9d2da36b148a88711cbeff8139, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
