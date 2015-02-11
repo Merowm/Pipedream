@@ -7,7 +7,8 @@ public class EndLevelScore : MonoBehaviour {
     LevelTimer lt;
     Statistics st;
 	
-	void Start () {
+	void Start () 
+    {
         cs = FindObjectOfType<CountScore>();
         lt = FindObjectOfType<LevelTimer>();
         st = FindObjectOfType<Statistics>();	

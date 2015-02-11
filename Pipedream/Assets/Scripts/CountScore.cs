@@ -5,10 +5,11 @@ public class CountScore : MonoBehaviour {
 
 	// Scorekeeping script for GUIText that shows current score in level and updates statistics memory
 
-    //public StatsMemory.Scenes scene;
+    int levelId;
+    int bonusWithoutHit;
+
     GameObject statObj;
     Statistics stats;
-    int levelId;
     LevelTimer levelControl;
 
     void Start()
@@ -20,18 +21,31 @@ public class CountScore : MonoBehaviour {
         if (statObj != null)
             stats = statObj.GetComponent<Statistics>();
         guiText.text = "0";
+        bonusWithoutHit = 0;
     }
 	void Update () {
 	
 	}
 
-    // Called from bonus object when triggered
+    // Called from bonus object when triggered. Changes GUI text.
 	public void AddScore(int newPoints)
 	{
         stats.AddToCurrentPoints(newPoints);
         guiText.text = stats.GetCurrentScore().ToString ();
         Debug.Log(guiText.text);
 	}
+
+    public void ContinueBonusStreak(bool gotMoreBonus)
+    {
+        if (gotMoreBonus)
+        {
+            ++bonusWithoutHit;
+        }
+        else
+        {
+            bonusWithoutHit = 0;
+        }
+    }
 
     // Called when level ends
     public void FinalLevelScore()

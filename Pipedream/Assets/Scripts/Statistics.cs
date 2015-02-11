@@ -21,8 +21,10 @@ public class Statistics : MonoBehaviour
 
     private int currentLevelPoints;
     private int currentBonusAmount;
+    private int currentObstaclesHit;
 
     private int lastPlayedLevel;
+    private int lastLevelTrophy;
 
     public class levelData
     {
@@ -85,11 +87,20 @@ public class Statistics : MonoBehaviour
     public void AddToCurrentPoints(int pointsToAdd)
     {
         currentLevelPoints += pointsToAdd;
+        if (currentLevelPoints < 0)
+        {
+            currentLevelPoints = 0;
+        }
     }
 
     public void AddToBonusCount()
     {
         ++currentBonusAmount;
+    }
+
+    public void AddToHitCount()
+    {
+        ++currentObstaclesHit;
     }
 
     public void SetLevelPlayed(int levelId)
@@ -113,6 +124,7 @@ public class Statistics : MonoBehaviour
     {
         currentLevelPoints = 0;
         currentBonusAmount = 0;
+        currentObstaclesHit = 0;
     }
 
     // Resets player data but not basic level info. For starting new game without exiting.
@@ -140,22 +152,22 @@ public class Statistics : MonoBehaviour
     // also saves best trophy.
     public int CompareToTrophyRequirements(int levelId)
     {
-        int trophy = 0;
+        lastLevelTrophy = 0;
         levelData current = FindLevel(levelId);
         if (current != null)
         {
             int score = currentLevelPoints;
 
             if (score > current.goldLimit)
-                trophy = 1;
+                lastLevelTrophy = 1;
             else if (score > current.silverLimit)
-                trophy = 2;
+                lastLevelTrophy = 2;
             else if (score > current.bronzeLimit)
-                trophy = 3;
+                lastLevelTrophy = 3;
 
-            SetNewTrophy(trophy, current);
+            SetNewTrophy(lastLevelTrophy, current);
         }
-        return trophy;
+        return lastLevelTrophy;
     }
 
     //////////////////////////////////////
@@ -178,6 +190,17 @@ public class Statistics : MonoBehaviour
     {
         return currentBonusAmount;
     }
+
+    public int GetCurrentHitCount()
+    {
+        return currentObstaclesHit;
+    }
+
+    public int GetCurrentTrophy()
+    {
+        return lastLevelTrophy;
+    }
+
     public int GetMaxBonusAmount(int levelId)
     {
         return FindLevel(levelId).bonusCount;

@@ -8,6 +8,7 @@ public class CollectPoints : MonoBehaviour
     public int itemScorePoints;
     public Transform floatingPoints;
 
+
 	private CountScore score;
     private BonusCounter bonus;
     
@@ -24,7 +25,8 @@ public class CollectPoints : MonoBehaviour
         Instantiate(floatingPoints, this.transform.position, Quaternion.identity);
         bonus.UpdateBonusCount();
 		score.AddScore(itemScorePoints);
+        score.ContinueBonusStreak(true);
         //Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
-		Destroy (this.gameObject);
-	}
+        Destroy(this.gameObject);
+    }
 }
