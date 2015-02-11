@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LevelTimer : MonoBehaviour {
@@ -7,30 +8,29 @@ public class LevelTimer : MonoBehaviour {
     public float distanceMeter;
     public float updateInterval;
     public Transform playerShip;
-    public Texture2D distanceToGo;
-    public Texture2D distanceGone;
 
     Statistics stats;
     EndLevelScore end;
+    Slider distanceBar;
     public int fullDistance;
      
     float deltaDistance;
     float updateDelay;
     Vector3 lastPlayerPosition;
     Vector3 currentPlayerPosition;
-    Rect distanceIndicator;
-    float gonePoint;
+
 
 	
 	void Awake ()
     {
         distanceMeter = 0;
         updateDelay = 0;
-        distanceIndicator = new Rect(Screen.width / 2 - 200, 10, 400, 32);
+
         
 	}
 	void Start()
     {
+        distanceBar = GameObject.FindWithTag("travelIndicator").GetComponent<Slider>();
         end = GetComponent<EndLevelScore>();
         stats = FindObjectOfType<Statistics>();
         fullDistance = stats.GetLevelDistance(levelId);
@@ -53,7 +53,9 @@ public class LevelTimer : MonoBehaviour {
                 distanceMeter += lastPlayerPosition.z;
             }
             distanceMeter += deltaDistance;
-            gonePoint = (distanceMeter/fullDistance) * 400;
+
+            distanceBar.value = (distanceMeter/fullDistance);
+
             lastPlayerPosition = currentPlayerPosition;
             updateDelay = 0;
         }
@@ -63,21 +65,6 @@ public class LevelTimer : MonoBehaviour {
         }
 	}
 
-    void OnGUI()
-    {
-
-        GUI.BeginGroup(distanceIndicator);
-        {
-            GUI.DrawTexture(new Rect(0, 0, 400, 32), distanceGone, ScaleMode.ScaleAndCrop);
-
-            GUI.BeginGroup(new Rect(gonePoint, 0, 400, 32));
-            {
-                GUI.DrawTexture(new Rect(0, 0, 400 - gonePoint, 32), distanceToGo, ScaleMode.ScaleAndCrop);
-            }
-            GUI.EndGroup();
-        }
-        GUI.EndGroup();
-    }
 
     // if needed to call from elsewhere.
     public void SaveDistanceAtJump(float distanceTravelledAtCurrentMode)
@@ -85,6 +72,7 @@ public class LevelTimer : MonoBehaviour {
         distanceMeter += distanceTravelledAtCurrentMode;
     }
 
+    // Called from other scorekeeping objects.
     public int GetCurrentLevel()
     {
         return levelId;

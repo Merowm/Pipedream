@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CountScore : MonoBehaviour {
@@ -12,6 +13,8 @@ public class CountScore : MonoBehaviour {
     Statistics stats;
     LevelTimer levelControl;
 
+    Text textfield;
+
     void Start()
     {
         levelControl = FindObjectOfType<LevelTimer>();
@@ -20,7 +23,9 @@ public class CountScore : MonoBehaviour {
         statObj = GameObject.FindGameObjectWithTag("statistics");
         if (statObj != null)
             stats = statObj.GetComponent<Statistics>();
-        guiText.text = "0";
+
+        textfield = GameObject.FindWithTag("Scoretext").GetComponent<Text>();
+        WriteToGui(0);
         bonusWithoutHit = 0;
     }
 	void Update () {
@@ -31,8 +36,7 @@ public class CountScore : MonoBehaviour {
 	public void AddScore(int newPoints)
 	{
         stats.AddToCurrentPoints(newPoints);
-        guiText.text = stats.GetCurrentScore().ToString ();
-        Debug.Log(guiText.text);
+        WriteToGui(stats.GetCurrentScore());
 	}
 
     public void ContinueBonusStreak(bool gotMoreBonus)
@@ -50,7 +54,7 @@ public class CountScore : MonoBehaviour {
     // Called when level ends
     public void FinalLevelScore()
     {
-        guiText.text = stats.SetFinalLevelScore(levelId).ToString();
+        //guiText.text = stats.SetFinalLevelScore(levelId).ToString();
         Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
         // also saves best trophy
         int medal = stats.CompareToTrophyRequirements(levelId);
@@ -74,5 +78,9 @@ public class CountScore : MonoBehaviour {
         //////////////////////////////////////////////////// end testing
         stats.ResetScore();        
     }
-       
+    
+    void WriteToGui(int score)
+    {
+        textfield.text = score.ToString();
+    }
 }

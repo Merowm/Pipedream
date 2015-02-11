@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BonusCounter : MonoBehaviour {
 
@@ -9,6 +11,7 @@ public class BonusCounter : MonoBehaviour {
     GameObject statObj;
     Statistics stats;
     LevelTimer levelControl;
+    Text text;    
 
 	// Use this for initialization
 	void Start ()
@@ -19,6 +22,7 @@ public class BonusCounter : MonoBehaviour {
             stats = statObj.GetComponent<Statistics>();
         levelId = levelControl.GetCurrentLevel();
         maxBonusCount = stats.GetMaxBonusAmount(levelId);
+        text = GameObject.FindWithTag("Bonustext").GetComponent<Text>();
         WriteToGui(0);
 	}
 	
@@ -37,6 +41,6 @@ public class BonusCounter : MonoBehaviour {
 
     private void WriteToGui(int collected)
     {
-        guiText.text = collected.ToString() + " / " + maxBonusCount;
+        text.text = collected.ToString() + " / " + maxBonusCount;
     }
 }
