@@ -8,10 +8,14 @@ public class CountScore : MonoBehaviour {
     //public StatsMemory.Scenes scene;
     GameObject statObj;
     Statistics stats;
-    public int levelId;
+    int levelId;
+    LevelTimer levelControl;
 
     void Start()
     {
+        levelControl = FindObjectOfType<LevelTimer>();
+        levelId = levelControl.GetCurrentLevel();
+
         statObj = GameObject.FindGameObjectWithTag("statistics");
         if (statObj != null)
             stats = statObj.GetComponent<Statistics>();

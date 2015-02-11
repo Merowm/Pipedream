@@ -13,6 +13,7 @@ public class Restart : MonoBehaviour
     void OnMouseUpAsButton()
     {
         st.ResetScore();
-        Application.LoadLevel(st.GetLastLevelNameAsString());
+        int level = st.GetCurrentLevel();
+        Application.LoadLevel(st.GetLevelNameAsString(level));
     }
 }

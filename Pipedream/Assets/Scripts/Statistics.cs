@@ -161,10 +161,13 @@ public class Statistics : MonoBehaviour
     //////////////////////////////////////
     // Get methods
     //////////////////////////////////////
-    
-    public string GetLastLevelNameAsString()
+    public int GetCurrentLevel()
+    {
+        return lastPlayedLevel;
+    }
+    public string GetLevelNameAsString(int levelId)
     {        
-        return ("level" + lastPlayedLevel).ToString();
+        return ("level" + levelId).ToString();
     }
     public int GetCurrentScore()
     {

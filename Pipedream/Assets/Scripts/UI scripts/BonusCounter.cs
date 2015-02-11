@@ -3,18 +3,21 @@ using System.Collections;
 
 public class BonusCounter : MonoBehaviour {
 
-    public int levelId;
+    int levelId;
 
     int maxBonusCount;
     GameObject statObj;
     Statistics stats;
+    LevelTimer levelControl;
 
 	// Use this for initialization
 	void Start ()
     {
+        levelControl = FindObjectOfType<LevelTimer>();
         statObj = GameObject.FindGameObjectWithTag("statistics");
         if (statObj != null)
             stats = statObj.GetComponent<Statistics>();
+        levelId = levelControl.GetCurrentLevel();
         maxBonusCount = stats.GetMaxBonusAmount(levelId);
         WriteToGui(0);
 	}

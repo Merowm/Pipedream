@@ -234,8 +234,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 171187346}
+  - 132: {fileID: 171187344}
   - 114: {fileID: 171187345}
-  - 114: {fileID: 171187344}
+  - 114: {fileID: 171187348}
+  - 114: {fileID: 171187347}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -243,18 +245,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &171187344
-MonoBehaviour:
+--- !u!132 &171187344
+GUIText:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 681455120f8b7294ab0eca1bff84aabb,
+  m_PrefabParentObject: {fileID: 13200000, guid: 681455120f8b7294ab0eca1bff84aabb,
     type: 2}
   m_PrefabInternal: {fileID: 2082724878}
   m_GameObject: {fileID: 171187343}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4bc2cf543fc6594085aac8a5394346d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 3
+  m_Text: Timer
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 30
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!114 &171187345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +300,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &171187347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 171187343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bc2cf543fc6594085aac8a5394346d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &171187348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 681455120f8b7294ab0eca1bff84aabb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082724878}
+  m_GameObject: {fileID: 171187343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bc2cf543fc6594085aac8a5394346d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &210108670
 Prefab:
   m_ObjectHideFlags: 0
@@ -1982,7 +2019,7 @@ GUIText:
   m_GameObject: {fileID: 1072502771}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: Gui Text
+  m_Text: Bonus
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
@@ -2009,7 +2046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909db97223d49cd408434b388f1ecead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelId: 1
 --- !u!1 &1246544910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3123,7 +3159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa295e805da9a8b42b01c956cb3b7a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelId: 1
 --- !u!4 &1273533653
 Transform:
   m_ObjectHideFlags: 0

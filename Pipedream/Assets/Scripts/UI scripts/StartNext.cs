@@ -3,13 +3,19 @@ using System.Collections;
 
 public class StartNext : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    // Start game level that comes after last played level
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    Statistics st;
+   
+    void Start()
+    {
+        st = FindObjectOfType<Statistics>();
+    }
+
+    void OnMouseUpAsButton()
+    {
+        st.ResetScore();
+        int level = st.GetCurrentLevel() + 1;
+        Application.LoadLevel(st.GetLevelNameAsString(level));
+    }
 }

@@ -84,4 +84,9 @@ public class LevelTimer : MonoBehaviour {
     {
         distanceMeter += distanceTravelledAtCurrentMode;
     }
+
+    public int GetCurrentLevel()
+    {
+        return levelId;
+    }
 }

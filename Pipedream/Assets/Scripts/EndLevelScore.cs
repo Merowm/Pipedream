@@ -6,19 +6,16 @@ public class EndLevelScore : MonoBehaviour {
     CountScore cs;
     LevelTimer lt;
     Statistics st;
-	// Use this for initialization
+	
 	void Start () {
         cs = FindObjectOfType<CountScore>();
         lt = FindObjectOfType<LevelTimer>();
         st = FindObjectOfType<Statistics>();	
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
-    // Called from LevelTimer
+
+    // Called from LevelTimer at the end of a game level
     // TODO: Smooth transition!
     public void LevelFinished()
     {        

@@ -284,6 +284,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1143816809}
   - 212: {fileID: 1143816808}
+  - 61: {fileID: 1143816811}
+  - 114: {fileID: 1143816810}
   m_Layer: 0
   m_Name: nextbt
   m_TagString: Untagged
@@ -325,6 +327,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1143816810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1143816807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40452625740e7f42bfb4e84d2b0fd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1143816811
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1143816807}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 2.55999994, y: 1.27999997}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1256516430
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 132: {fileID: 13200000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -40,7 +41,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcde3901ab898d4fa526676b3f00d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTimer: 0
+  levelId: 0
+  distanceMeter: 0
+  updateInterval: 0
+  playerShip: {fileID: 0}
+  distanceToGo: {fileID: 0}
+  distanceGone: {fileID: 0}
+  fullDistance: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bc2cf543fc6594085aac8a5394346d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!132 &13200000
 GUIText:
   m_ObjectHideFlags: 1
