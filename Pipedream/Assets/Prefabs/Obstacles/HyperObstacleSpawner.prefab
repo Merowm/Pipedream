@@ -1,48 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &100000
+--- !u!1 &124432
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 400000}
-  - 114: {fileID: 11400000}
+  - 4: {fileID: 424432}
+  - 114: {fileID: 11462352}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: HyperObstacleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &400000
+--- !u!4 &424432
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 124432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .078096956, y: -.0953416675, z: 499.470184}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11400000
+--- !u!114 &11462352
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 124432}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bb5c939fa992164f84f662ff71a9683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theObject: {fileID: 0}
-  amount: 0
-  positionStart: {x: 0, y: 0, z: 0}
-  positionGap: {x: 0, y: 0, z: 0}
+  theObject: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
+  amount: 100
+  positionStart: {x: 0, y: 0, z: 300}
+  positionGap: {x: 0, y: 0, z: 50}
+  distanceFromParent: {x: 0, y: -5, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  randomizeDistanceFromParent: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -52,6 +55,6 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 100000}
+  m_RootGameObject: {fileID: 124432}
   m_IsPrefabParent: 1
   m_IsExploded: 1

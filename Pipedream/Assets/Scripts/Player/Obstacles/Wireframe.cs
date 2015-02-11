@@ -20,10 +20,11 @@ public class Wireframe : MonoBehaviour
         {
             distance = Vector3.Distance(player.transform.position, transform.parent.parent.position);
 
-            if (distance <= 300.0f)
+            if (distance <= 150.0f)
             {
-                Debug.Log("Wireframe activated!");
-
+                //Debug.Log("Wireframe activated!");
+                transform.GetComponent<MeshRenderer>().enabled = true;
+                transform.GetComponent<Animator>().enabled = true;
                 transform.position = new Vector3(transform.position.x,
                                                  transform.position.y,
                                                  player.transform.position.z + displayDistance);
