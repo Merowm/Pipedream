@@ -54,7 +54,7 @@ public class CountScore : MonoBehaviour {
     // Called when level ends
     public void FinalLevelScore()
     {
-        //guiText.text = stats.SetFinalLevelScore(levelId).ToString();
+        stats.SetFinalLevelScore(levelId);
         Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
         // also saves best trophy
         int medal = stats.CompareToTrophyRequirements(levelId);

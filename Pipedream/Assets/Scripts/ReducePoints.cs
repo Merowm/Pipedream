@@ -5,23 +5,27 @@ public class ReducePoints : MonoBehaviour {
 
     // Set negative if points should be reduced
     public int itemScorePoints;
-    public Transform floatingPoints;
-    
 
+    private Canvas levelUI;
     private CountScore score;
     private Statistics stats;
+
 
     void Awake()
     {
         score = FindObjectOfType<CountScore>();
         stats = FindObjectOfType<Statistics>();
+        levelUI = FindObjectOfType<Canvas>();
+        if (levelUI.tag != "gameLevelUI")
+        {
+            Debug.Log("Item found wrong UI!");
+        }
     }
 
 
     public void HitObstacle(bool destroyWhenHit)
     {
-        Debug.Log("Hit trigger");
-        Instantiate(floatingPoints, this.transform.position, Quaternion.identity);
+        levelUI.GetComponent<FloatPointUI>().GeneratePoints(-itemScorePoints);
         stats.AddToHitCount();
         score.AddScore( -1 * itemScorePoints);
         score.ContinueBonusStreak(false);

@@ -7,24 +7,26 @@ using System.Collections;
 public class CollectPoints : MonoBehaviour 
 {
     public int itemScorePoints;
-    public Canvas floatingPoints;
 
-
+    private Canvas levelUI;
 	private CountScore score;
-    private BonusCounter bonus;
-    private Canvas points;
+    private BonusCounter bonus;    
     
 	void Awake ()
     {
         score = FindObjectOfType<CountScore>();
         bonus = FindObjectOfType<BonusCounter>();
+        levelUI = FindObjectOfType<Canvas>();
+        if (levelUI.tag != "gameLevelUI")
+        {
+            Debug.Log("Item found wrong UI!");
+        }
 	}
 	
 	
 	public void HitCollectable()
 	{
-        points = Instantiate(floatingPoints, this.transform.position, Quaternion.identity) as Canvas;
-        points.GetComponent<Text>().text = itemScorePoints.ToString();
+        levelUI.GetComponent<FloatPointUI>().GeneratePoints(itemScorePoints);
         bonus.UpdateBonusCount();
 		score.AddScore(itemScorePoints);
         score.ContinueBonusStreak(true);
