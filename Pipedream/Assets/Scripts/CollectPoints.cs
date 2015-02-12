@@ -8,28 +8,26 @@ public class CollectPoints : MonoBehaviour
 {
     public int itemScorePoints;
 
-    private Canvas levelUI;
-	private CountScore score;
-    private BonusCounter bonus;    
+    public Canvas levelUI;
+    public LevelTimer timer;
+    
     
 	void Awake ()
     {
-        score = FindObjectOfType<CountScore>();
-        bonus = FindObjectOfType<BonusCounter>();
         levelUI = FindObjectOfType<Canvas>();
         if (levelUI.tag != "gameLevelUI")
         {
             Debug.Log("Item found wrong UI!");
         }
+        timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
 	}
 	
 	
 	public void HitCollectable()
 	{
         levelUI.GetComponent<FloatPointUI>().GeneratePoints(itemScorePoints);
-        bonus.UpdateBonusCount();
-		score.AddScore(itemScorePoints);
-        score.ContinueBonusStreak(true);
+		timer.AddScore(itemScorePoints);
+        timer.ContinueBonusStreak(true);
         //Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
         Destroy(this.gameObject);
     }

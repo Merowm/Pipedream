@@ -20,7 +20,7 @@ public class EndLevelScore : MonoBehaviour {
     // TODO: Smooth transition!
     public void LevelFinished()
     {        
-        cs.FinalLevelScore();
+        lt.FinalLevelScore();
         
         Application.LoadLevel("EndLevel");
     }

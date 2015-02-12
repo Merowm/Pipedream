@@ -7,14 +7,16 @@ public class ReducePoints : MonoBehaviour {
     public int itemScorePoints;
 
     private Canvas levelUI;
-    private CountScore score;
-    private Statistics stats;
+    private LevelTimer timer;
 
 
     void Awake()
     {
-        score = FindObjectOfType<CountScore>();
-        stats = FindObjectOfType<Statistics>();
+        timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
+        if (timer == null)
+        {
+            Debug.Log("Item found no timer!");
+        }
         levelUI = FindObjectOfType<Canvas>();
         if (levelUI.tag != "gameLevelUI")
         {
@@ -26,9 +28,8 @@ public class ReducePoints : MonoBehaviour {
     public void HitObstacle(bool destroyWhenHit)
     {
         levelUI.GetComponent<FloatPointUI>().GeneratePoints(-itemScorePoints);
-        stats.AddToHitCount();
-        score.AddScore( -1 * itemScorePoints);
-        score.ContinueBonusStreak(false);
+        timer.AddScore( -1 * itemScorePoints);
+        timer.ContinueBonusStreak(false);
         if (destroyWhenHit)
         {
             Destroy(this.gameObject);
