@@ -6,9 +6,9 @@ public class Spawner : MonoBehaviour
     public GameObject theObject;
     public int amount;
     public Vector3 positionStart;
-    public Vector3 positionGap;
-    public Vector3 rotation;
-    public Vector3 distanceFromParent;
+    public float positionGap;
+    public float rotation;
+    public float distanceFromParent;
     public bool randomizeDistanceFromParent = false;
 
     private Vector3 nextPosition;
@@ -24,12 +24,16 @@ public class Spawner : MonoBehaviour
             obj = (GameObject)Instantiate(theObject);
             //Set positions
             obj.transform.position = nextPosition;
-            obj.transform.GetChild(0).transform.position += distanceFromParent;
+            if (randomizeDistanceFromParent)
+            {
+                distanceFromParent = Random.Range(0.0f,10.0f);
+            }
+            obj.transform.GetChild(0).transform.position += new Vector3(0,distanceFromParent,0);
             //Set rotation
-            rotation = new Vector3(0,0,Random.Range(0,360));
-            obj.transform.Rotate(rotation);
+            rotation = Random.Range(0,360);
+            obj.transform.Rotate(0,0,rotation);
             //Set nextPosition
-            nextPosition += positionGap;
+            nextPosition += new Vector3(0,0,positionGap);
             Debug.Log(rotation);
         }
 	}

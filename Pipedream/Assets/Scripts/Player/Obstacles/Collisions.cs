@@ -3,9 +3,15 @@ using System.Collections;
 
 public class Collisions : MonoBehaviour
 {
+    public float maxDodgeSpeed;
+    public float dodgeAcceleration;
+    public float dodgeDeceleration;
+
+    private Movement2D movement;
+
     void Awake()
     {
-
+        movement = transform.parent.GetComponent<Movement2D>();
     }
 
 	void OnTriggerEnter(Collider other)
@@ -17,7 +23,7 @@ public class Collisions : MonoBehaviour
             {
                 Debug.Log("Hyperspace collison");
                 //TODO:Make player "avoid" collision just before hitting the obstacle
-                Debug.Break();
+                movement.ForcedDodge();
             }
             //Collision out of hyperspace
             else
@@ -25,7 +31,6 @@ public class Collisions : MonoBehaviour
                 Debug.Log("Space collision");
                 Destroy(other.gameObject);
                 //TODO:Add explosion
-                Debug.Break();
             }
         }
 	}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Controls : MonoBehaviour
 {
+    public static bool controlsActivated = true;
     public enum CONTROL_SCHEME {Keyboard, Mouse}
     public int index = 0;
     public Dictionary<string, bool> controls;
@@ -77,10 +78,20 @@ public class Controls : MonoBehaviour
             controls["Down"] = false;
         }
 
-        right = controls["Right"];
-        left = controls["Left"];
-        up = controls["Up"];
-        down = controls["Down"];
+        if (controlsActivated)
+        {
+            right = controls ["Right"];
+            left = controls ["Left"];
+            up = controls ["Up"];
+            down = controls ["Down"];
+        }
+        else
+        {
+            right = controls ["Right"] = false;
+            left = controls ["Left"] = false;
+            up = controls ["Up"] = false;
+            down = controls ["Down"] = false;
+        }
     }
 	
 	void FixedUpdate ()

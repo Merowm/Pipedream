@@ -15,15 +15,13 @@ public class Movement2D : MonoBehaviour
     public float spaceAccelerationMultiplier = 2;
     public float spaceDecelerationMultiplier = 3;
     public float boundaryRadius = 10;
-
     public float currentSpaceSpeedMouse = 0;
-    //public float angle = 0;
 
     //Components
     private GameObject mainCamera;
     private Controls controls;
-    //private MovementForward movementForward;
     private Transform shipTransform;
+    private Collisions collisions;
     private Transform mouseAnglePointParent;
     private Transform mouseAnglePointHorizontal;
     private Transform mouseAnglePointVertical;
@@ -43,24 +41,15 @@ public class Movement2D : MonoBehaviour
 
 	void Awake ()
     {
-        //shipTransform.position = new Vector3(50,0,0);
+        //Components
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         controls = transform.GetComponent<Controls>();
-        //movementForward = transform.GetComponent<MovementForward>();
         shipTransform = transform.FindChild("Ship").transform;
+        collisions = shipTransform.GetComponent<Collisions>();
         mouseAnglePointParent = transform.FindChild("MouseAnglePoint").transform;
         mouseAnglePointHorizontal = shipTransform.FindChild("MouseAnglePointHorizontal").transform;
         mouseAnglePointVertical = shipTransform.FindChild("MouseAnglePointVertical").transform;
-        //baseSpaceBoundariesMax = spaceBoundariesMax;
-        //baseSpaceBoundariesMin = spaceBoundariesMin;
-        //Hides the mouse cursor
-        //Screen.showCursor = false;
 	}
-
-    void Start()
-    {
-
-    }
 
     void Update ()
     {
@@ -95,6 +84,37 @@ public class Movement2D : MonoBehaviour
         else
         {
             SpaceMovement("Mouse");
+        }
+    }
+
+    //UNDER CONSTRUCTION
+    public void ForcedDodge()
+    {
+        Controls.controlsActivated = false;
+        
+        int i = Random.Range(0, 2);
+        
+        if (i == 0)
+        {
+            //Dodges right, slowly accelerating, then decelerating when button is released
+            directionForceRightRotation = Movement("Right",
+                                                   "Left",
+                                                   directionForceRight,
+                                                   collisions.maxDodgeSpeed,
+                                                   collisions.dodgeAcceleration,
+                                                   collisions.dodgeDeceleration);
+            
+
+        }
+        else
+        {
+            //Dodges left, slowly accelerating, then decelerating when button is released
+            directionForceLeftRotation = Movement("Left",
+                                                  "Right",
+                                                  directionForceLeftRotation,
+                                                  collisions.maxDodgeSpeed,
+                                                  collisions.dodgeAcceleration,
+                                                  collisions.dodgeDeceleration);
         }
     }
 

@@ -73,7 +73,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100008
 GameObject:
   m_ObjectHideFlags: 1
@@ -470,6 +470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2fdb0bf0df2dc44bfbf2ab62431b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDodgeSpeed: 30
+  dodgeAcceleration: 50
+  dodgeDeceleration: 20
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
