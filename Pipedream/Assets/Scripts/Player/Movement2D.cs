@@ -87,7 +87,7 @@ public class Movement2D : MonoBehaviour
         }
     }
 
-    //UNDER CONSTRUCTION
+    //UNDER CONSTRUCTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void ForcedDodge()
     {
         Controls.controlsActivated = false;
@@ -97,17 +97,17 @@ public class Movement2D : MonoBehaviour
         if (i == 0)
         {
             //Dodges right, slowly accelerating, then decelerating when button is released
+            Debug.Log(i + " Right");
             directionForceRightRotation = Movement("Right",
                                                    "Left",
                                                    directionForceRight,
                                                    collisions.maxDodgeSpeed,
                                                    collisions.dodgeAcceleration,
                                                    collisions.dodgeDeceleration);
-            
-
         }
         else
         {
+            Debug.Log(i + " Left");
             //Dodges left, slowly accelerating, then decelerating when button is released
             directionForceLeftRotation = Movement("Left",
                                                   "Right",
@@ -116,7 +116,39 @@ public class Movement2D : MonoBehaviour
                                                   collisions.dodgeAcceleration,
                                                   collisions.dodgeDeceleration);
         }
+        /*
+        float d = direction;
+        
+        //Moves left, slowly accelerating
+        if (controls.controls[button1])
+        {
+            if (d < maxSpeed)
+            {
+                d += acceleration * Time.deltaTime;
+                return d;
+            }
+            else
+            {
+                d = maxSpeed;
+                return maxSpeed;
+            }
+        }
+        else
+        {
+            //Deceleration after releasing the button
+            if(d > 0 /*&& !controls.controls[button2]Remove !input to change the movement*//*)
+            {
+                d -= deceleration * Time.deltaTime;
+                return d;
+            }
+            else
+            {
+                d = 0;
+                return d;
+            }
+        }*/
     }
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     public void ResetVariables()
     {
@@ -241,7 +273,6 @@ public class Movement2D : MonoBehaviour
             if (d < maxSpeed)
             {
                 d += acceleration * Time.deltaTime;
-                //d = maxSpeed;
                 return d;
             }
             else
@@ -256,7 +287,6 @@ public class Movement2D : MonoBehaviour
             if(d > 0 /*&& !controls.controls[button2]Remove !input to change the movement*/)
             {
                 d -= deceleration * Time.deltaTime;
-                //d = 0;
                 return d;
             }
             else

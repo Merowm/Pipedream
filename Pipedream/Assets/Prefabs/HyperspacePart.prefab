@@ -174,15 +174,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &154810
+--- !u!1 &194548
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 454810}
-  - 108: {fileID: 10854810}
+  - 4: {fileID: 494548}
+  - 108: {fileID: 10894548}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -226,7 +226,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 15}
   m_Children:
-  - {fileID: 454810}
+  - {fileID: 494548}
   m_Father: {fileID: 400000}
   m_RootOrder: 0
 --- !u!4 &400006
@@ -320,15 +320,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400006}
   m_RootOrder: 0
---- !u!4 &454810
+--- !u!4 &494548
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154810}
+  m_GameObject: {fileID: 194548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .100000001, y: .100000001, z: .0666666701}
   m_Children: []
   m_Father: {fileID: 400004}
   m_RootOrder: 0
@@ -668,17 +668,17 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!108 &10854810
+--- !u!108 &10894548
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154810}
+  m_GameObject: {fileID: 194548}
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: .254901975, g: .776470602, b: .996078432, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 50
   m_SpotAngle: 30
   m_CookieSize: 10

@@ -27,6 +27,7 @@ GameObject:
   - 23: {fileID: 2371412}
   - 95: {fileID: 9571412}
   - 64: {fileID: 6471412}
+  - 114: {fileID: 11491342}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Obstacle
@@ -114,6 +115,19 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11491342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b6b654f9b446440852f2459b2bc540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemScorePoints: 100
+  floatingPoints: {fileID: 22416384, guid: 1a6199da1d76ed74abcba359c59d1d86, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
