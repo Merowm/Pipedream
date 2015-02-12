@@ -10,7 +10,7 @@ public class Restart : MonoBehaviour
     {
         st = FindObjectOfType<Statistics>();
     }
-    void OnMouseUpAsButton()
+    public void GoToLast()
     {
         st.ResetScore();
         int level = st.GetCurrentLevel();

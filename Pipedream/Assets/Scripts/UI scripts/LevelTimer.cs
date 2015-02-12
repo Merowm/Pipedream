@@ -8,6 +8,7 @@ public class LevelTimer : MonoBehaviour {
     public float distanceMeter;
     public float updateInterval;
     public Transform playerShip;
+    public float timeInSecs;
 
     Statistics stats;
     EndLevelScore end;
@@ -25,7 +26,7 @@ public class LevelTimer : MonoBehaviour {
     {
         distanceMeter = 0;
         updateDelay = 0;
-
+        timeInSecs = 0;
         
 	}
 	void Start()
@@ -42,12 +43,14 @@ public class LevelTimer : MonoBehaviour {
 	void Update ()
     {
         updateDelay += Time.deltaTime;
+        timeInSecs += Time.deltaTime;
         // TODO: Change to use percentage of full distance? (why?)
         if (updateDelay >= updateInterval)
         {
             currentPlayerPosition = playerShip.position;
             deltaDistance = currentPlayerPosition.z - lastPlayerPosition.z;
             // save travelled distance at jump
+            // NB! only works if player position jumps to (*,*,0)!
             if (deltaDistance < 0)
             {
                 distanceMeter += lastPlayerPosition.z;
@@ -61,6 +64,7 @@ public class LevelTimer : MonoBehaviour {
         }
         if (distanceMeter >= fullDistance)
         {
+            Debug.Log(timeInSecs);
             end.LevelFinished();
         }
 	}

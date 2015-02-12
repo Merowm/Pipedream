@@ -12,7 +12,7 @@ public class StartNext : MonoBehaviour {
         st = FindObjectOfType<Statistics>();
     }
 
-    void OnMouseUpAsButton()
+    public void ChangeToNextScene()
     {
         st.ResetScore();
         int level = st.GetCurrentLevel() + 1;

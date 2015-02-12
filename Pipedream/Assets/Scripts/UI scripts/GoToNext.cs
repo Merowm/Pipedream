@@ -5,7 +5,7 @@ public class GoToNext : MonoBehaviour {
 
     public string SceneToGo;
 	
-    void OnMouseUpAsButton()
+    public void GoToScene()
     {
         Application.LoadLevel(SceneToGo);
     }
