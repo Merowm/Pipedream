@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 // Handles everything that should happen when player hits the bonus item.
@@ -6,11 +7,12 @@ using System.Collections;
 public class CollectPoints : MonoBehaviour 
 {
     public int itemScorePoints;
-    public Transform floatingPoints;
+    public Canvas floatingPoints;
 
 
 	private CountScore score;
     private BonusCounter bonus;
+    private Canvas points;
     
 	void Awake ()
     {
@@ -21,8 +23,8 @@ public class CollectPoints : MonoBehaviour
 	
 	void OnTriggerEnter(Collider other)
 	{
-        Debug.Log("Hit trigger");
-        Instantiate(floatingPoints, this.transform.position, Quaternion.identity);
+        points = Instantiate(floatingPoints, this.transform.position, Quaternion.identity) as Canvas;
+        points.GetComponent<Text>().text = itemScorePoints.ToString();
         bonus.UpdateBonusCount();
 		score.AddScore(itemScorePoints);
         score.ContinueBonusStreak(true);

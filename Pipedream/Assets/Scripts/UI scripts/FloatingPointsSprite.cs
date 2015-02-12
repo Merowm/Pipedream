@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class FloatingPointsSprite : MonoBehaviour {
@@ -8,17 +9,25 @@ public class FloatingPointsSprite : MonoBehaviour {
 
     private float dt;
     private float lifeTimer;
-	
-	void Awake ()
+    private float currentAlpha;
+
+    CanvasRenderer canvas;
+
+    void Awake()
     {
         lifeTimer = lifeTime;
-	}
+        currentAlpha = 1;
+        canvas = this.GetComponent<CanvasRenderer>();
+    }
 	
 	void Update () 
     {
         dt = Time.deltaTime;
         transform.position += offset * dt;
-        renderer.material.color = DeltaFade(renderer.material.color, dt);
+        //renderer.material.color = DeltaFade(renderer.material.color, dt);
+        currentAlpha -= 1 / lifeTime * dt;
+        canvas.SetAlpha(currentAlpha);
+
         lifeTimer -= dt;
         if (lifeTimer <= 0)
         {
