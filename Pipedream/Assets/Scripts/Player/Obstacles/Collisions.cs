@@ -25,20 +25,20 @@ public class Collisions : MonoBehaviour
                 Debug.Log("Hyperspace collison");
                 //TODO:Make player "avoid" collision just before hitting the obstacle
                 movement.ForcedDodge();
+                other.GetComponent<ReducePoints>().HitObstacle(false);
             }
             //Collision out of hyperspace
             else
             {
                 Debug.Log("Space collision");
-                Destroy(other.gameObject);
+                other.GetComponent<ReducePoints>().HitObstacle(true);
                 //TODO:Add explosion
             }
         }
         //Collectible collisions
         if (other.gameObject.tag == "Collectible")
         {
-            other.GetComponent<CollectPoints>().Collect();
-            Destroy(other.gameObject);
+            other.GetComponent<CollectPoints>().HitCollectable();            
         }
 	}
 }
