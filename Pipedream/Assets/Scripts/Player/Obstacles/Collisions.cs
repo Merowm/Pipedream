@@ -16,6 +16,7 @@ public class Collisions : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
+        //Obstacle collisions
         if (other.gameObject.tag == "Obstacle")
         {
             //Collision in hyperspace
@@ -32,6 +33,12 @@ public class Collisions : MonoBehaviour
                 Destroy(other.gameObject);
                 //TODO:Add explosion
             }
+        }
+        //Collectible collisions
+        if (other.gameObject.tag == "Collectible")
+        {
+            other.GetComponent<CollectPoints>().Collect();
+            Destroy(other.gameObject);
         }
 	}
 }

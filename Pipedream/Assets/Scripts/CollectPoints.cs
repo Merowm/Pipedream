@@ -21,7 +21,7 @@ public class CollectPoints : MonoBehaviour
 	}
 	
 	
-	void OnTriggerEnter(Collider other)
+	public void Collect()
 	{
         points = Instantiate(floatingPoints, this.transform.position, Quaternion.identity) as Canvas;
         points.GetComponent<Text>().text = itemScorePoints.ToString();
@@ -29,6 +29,5 @@ public class CollectPoints : MonoBehaviour
 		score.AddScore(itemScorePoints);
         score.ContinueBonusStreak(true);
         //Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
-        Destroy(this.gameObject);
     }
 }
