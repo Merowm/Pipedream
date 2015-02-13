@@ -4,15 +4,17 @@ using System.Collections;
 
 public class FloatPointUI : MonoBehaviour 
 {
-    public Text floatingPoints;
-    private Text points;
+    public Canvas floatingPoints;
+    private Canvas points;
+    Vector3 pointPosition;
+    public Vector3 offset;
 
     public void GeneratePoints(int scoreAmount)
     {
-        points = Instantiate(floatingPoints, this.transform.position, Quaternion.identity) as Text;
-        points.rectTransform.SetParent(this.gameObject.transform, false); 
-        
-        points.rectTransform.localPosition.Set(0, -80, 0);
+        pointPosition = Camera.main.transform.position;
+        points = Instantiate(floatingPoints, pointPosition, Quaternion.identity) as Canvas;
+        points.transform.SetParent(Camera.main.transform, false);
+        points.transform.localPosition = offset;
         points.GetComponent<Text>().text = scoreAmount.ToString();
     }
 }
