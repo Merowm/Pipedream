@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &103126
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 403126}
+  - 65: {fileID: 6503126}
+  - 114: {fileID: 11413208}
+  m_Layer: 0
+  m_Name: HyperspaceCollider
+  m_TagString: Collectible
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &111866
 GameObject:
   m_ObjectHideFlags: 0
@@ -52,6 +69,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &403126
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103126}
+  m_LocalRotation: {x: -.179259196, y: -.793621004, z: -.40129739, w: -.420704514}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 411868}
+  m_RootOrder: 0
 --- !u!4 &411866
 Transform:
   m_ObjectHideFlags: 1
@@ -59,8 +88,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.3189201, y: 1.24876022, z: 15.830617}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -30}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 411868}
   m_Father: {fileID: 0}
@@ -75,6 +104,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 403126}
   - {fileID: 411870}
   m_Father: {fileID: 411866}
   m_RootOrder: 0
@@ -89,7 +119,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 411868}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!23 &2311866
 Renderer:
   m_ObjectHideFlags: 1
@@ -117,6 +147,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111870}
   m_Mesh: {fileID: 4300000, guid: 8296ea7925b588043a67d3ee02c40af9, type: 3}
+--- !u!65 &6503126
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.5, z: 5}
+  m_Center: {x: 0, y: .300000012, z: 2}
 --- !u!95 &9511866
 Animator:
   serializedVersion: 3
@@ -144,7 +186,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemScorePoints: 100
-  floatingPoints: {fileID: 22316384, guid: 1a6199da1d76ed74abcba359c59d1d86, type: 2}
+  levelUI: {fileID: 0}
+  timer: {fileID: 0}
+--- !u!114 &11413208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a445015550eb8479bae2ecee4545ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13511866
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -155,7 +209,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: .699999988
+  m_Radius: 1
   m_Center: {x: 0, y: .200000003, z: .300000012}
 --- !u!198 &19811866
 ParticleSystem:

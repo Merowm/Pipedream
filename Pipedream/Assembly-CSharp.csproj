@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CollectibleColliderContol.cs" />
      <Compile Include="Assets\Scripts\CollectPoints.cs" />
      <Compile Include="Assets\Scripts\CountScore.cs" />
      <Compile Include="Assets\Scripts\EndLevelScore.cs" />
@@ -58,9 +59,9 @@
      <Compile Include="Assets\Scripts\Player\Movement2D.cs" />
      <Compile Include="Assets\Scripts\Player\MovementForward.cs" />
      <Compile Include="Assets\Scripts\Player\Obstacles\Collisions.cs" />
-     <Compile Include="Assets\Scripts\Player\Obstacles\Spawner.cs" />
      <Compile Include="Assets\Scripts\Player\Obstacles\Wireframe.cs" />
      <Compile Include="Assets\Scripts\ReducePoints.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Start.cs" />
      <Compile Include="Assets\Scripts\Statistics.cs" />
      <Compile Include="Assets\Scripts\UI scripts\BonusCounter.cs" />

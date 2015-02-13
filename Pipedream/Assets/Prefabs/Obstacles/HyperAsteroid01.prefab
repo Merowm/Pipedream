@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 402504}
   - 65: {fileID: 6599048}
+  - 114: {fileID: 11415474}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Obstacle
@@ -113,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.2151775, y: 1.38616848, z: -16.0329762}
+  m_LocalPosition: {x: 29.0990486, y: 14.3967972, z: -134.233032}
   m_LocalScale: {x: 2.5, y: 2.5, z: 3}
   m_Children:
   - {fileID: 402504}
@@ -184,7 +185,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .687625825, y: 2.69572949, z: .764064193}
-  m_Center: {x: -.008538628, y: -1.00426292, z: .408320069}
+  m_Center: {x: -.008538628, y: 1, z: .408320069}
 --- !u!95 &9552182
 Animator:
   serializedVersion: 3
@@ -215,6 +216,18 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11415474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b6b654f9b446440852f2459b2bc540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemScorePoints: 100
 --- !u!114 &11484920
 MonoBehaviour:
   m_ObjectHideFlags: 1

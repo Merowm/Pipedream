@@ -26,11 +26,11 @@ public class Spawner : MonoBehaviour
             obj.transform.position = nextPosition;
             if (randomizeDistanceFromParent)
             {
-                distanceFromParent = Random.Range(0.0f,10.0f);
+                distanceFromParent = Random.Range(0.0f,10.1f);
             }
             obj.transform.GetChild(0).transform.position += new Vector3(0,distanceFromParent,0);
             //Set rotation
-            rotation = Random.Range(0,360);
+            rotation = Random.Range(0,361);
             obj.transform.Rotate(0,0,rotation);
             //Set nextPosition
             nextPosition += new Vector3(0,0,positionGap);

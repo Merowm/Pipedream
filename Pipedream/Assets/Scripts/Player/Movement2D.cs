@@ -23,8 +23,6 @@ public class Movement2D : MonoBehaviour
     private Transform shipTransform;
     private Collisions collisions;
     private Transform mouseAnglePointParent;
-    private Transform mouseAnglePointHorizontal;
-    private Transform mouseAnglePointVertical;
     //In hyperspace variables
     private float hyperspaceAcceleration;
     private float hyperspaceDeceleration;
@@ -47,8 +45,6 @@ public class Movement2D : MonoBehaviour
         shipTransform = transform.FindChild("Ship").transform;
         collisions = shipTransform.GetComponent<Collisions>();
         mouseAnglePointParent = transform.FindChild("MouseAnglePoint").transform;
-        mouseAnglePointHorizontal = shipTransform.FindChild("MouseAnglePointHorizontal").transform;
-        mouseAnglePointVertical = shipTransform.FindChild("MouseAnglePointVertical").transform;
 	}
 
     void Update ()
@@ -91,62 +87,62 @@ public class Movement2D : MonoBehaviour
     public void ForcedDodge()
     {
         Controls.controlsActivated = false;
-        
-        int i = Random.Range(0, 2);
-        
-        if (i == 0)
+
+        if (collisions.rightDistance < collisions.leftDistance)
         {
-            //Dodges right, slowly accelerating, then decelerating when button is released
-            Debug.Log(i + " Right");
-            directionForceRightRotation = Movement("Right",
-                                                   "Left",
-                                                   directionForceRight,
-                                                   collisions.maxDodgeSpeed,
-                                                   collisions.dodgeAcceleration,
-                                                   collisions.dodgeDeceleration);
+            DodgeLeft();
+        }
+        else if (collisions.rightDistance > collisions.leftDistance)
+        {
+            DodgeRight();
         }
         else
         {
-            Debug.Log(i + " Left");
-            //Dodges left, slowly accelerating, then decelerating when button is released
-            directionForceLeftRotation = Movement("Left",
-                                                  "Right",
-                                                  directionForceLeftRotation,
-                                                  collisions.maxDodgeSpeed,
-                                                  collisions.dodgeAcceleration,
-                                                  collisions.dodgeDeceleration);
+            int rand = Random.Range(0, 2);
+
+            if (rand == 0)
+            {
+                DodgeRight();
+            }
+            else
+            {
+                DodgeLeft();
+            }
         }
-        /*
-        float d = direction;
+
+        Controls.controlsActivated = true;
+    }
+
+    public void DodgeRight()
+    {
+        Controls.controlsActivated = false;
         
-        //Moves left, slowly accelerating
-        if (controls.controls[button1])
+        //Dodges right, slowly accelerating, then decelerating when button is released
+        directionForceRightRotation = collisions.maxDodgeSpeed;
+        
+        for (float i = directionForceRightRotation; i > 0; i -= collisions.dodgeDeceleration)
         {
-            if (d < maxSpeed)
-            {
-                d += acceleration * Time.deltaTime;
-                return d;
-            }
-            else
-            {
-                d = maxSpeed;
-                return maxSpeed;
-            }
+            directionForceRightRotation = i;
+            //Adds forces from right to those from left and then rotates the player parent accordingly
+            currentRotationSpeed = directionForceRightRotation - directionForceLeftRotation;
+            transform.Rotate(Vector3.forward * Time.deltaTime * (currentRotationSpeed * 10));
         }
-        else
+    }
+
+    public void DodgeLeft()
+    {
+        Controls.controlsActivated = false;
+        
+        //Dodges left, slowly accelerating, then decelerating when button is released
+        directionForceLeftRotation = collisions.maxDodgeSpeed;
+        
+        for (float i = directionForceLeftRotation; i > 0; i -= collisions.dodgeDeceleration)
         {
-            //Deceleration after releasing the button
-            if(d > 0 /*&& !controls.controls[button2]Remove !input to change the movement*//*)
-            {
-                d -= deceleration * Time.deltaTime;
-                return d;
-            }
-            else
-            {
-                d = 0;
-                return d;
-            }
-        }*/
+            directionForceLeftRotation = i;
+            //Adds forces from right to those from left and then rotates the player parent accordingly
+            currentRotationSpeed = directionForceRightRotation - directionForceLeftRotation;
+            transform.Rotate(Vector3.forward * Time.deltaTime * (currentRotationSpeed * 10));
+        }
     }
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -195,7 +191,7 @@ public class Movement2D : MonoBehaviour
 
         //Adds forces from right to those from left and then rotates the player parent accordingly
         currentRotationSpeed = directionForceRightRotation - directionForceLeftRotation;
-        transform.Rotate(Vector3.forward * Time.deltaTime * (currentRotationSpeed * 10));
+        transform.Rotate(Vector3.forward * (currentRotationSpeed * 10) * Time.deltaTime);
     }
 
     void SpaceMovement(string controls)
@@ -263,9 +259,9 @@ public class Movement2D : MonoBehaviour
         }
     }
 
-    float Movement(string button1, string button2, float direction, float maxSpeed, float acceleration, float deceleration)
+    float Movement(string button1, string button2, float directionForce, float maxSpeed, float acceleration, float deceleration)
     {
-        float d = direction;
+        float d = directionForce;
 
         //Moves left, slowly accelerating
         if (controls.controls[button1])

@@ -32,6 +32,12 @@ public class Wireframe : MonoBehaviour
             {
                 transform.position = transform.parent.position;
             }
+            if (transform.parent.transform.position.z <= player.transform.position.z)
+            {
+                //transform.GetComponent<MeshRenderer>().enabled = false;
+                //transform.GetComponent<Animator>().enabled = false;
+                //Destroy(this.transform.parent.gameObject);
+            }
         }
     }
 }
