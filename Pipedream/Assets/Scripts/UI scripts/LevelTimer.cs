@@ -14,6 +14,7 @@ public class LevelTimer : MonoBehaviour {
     Statistics stats;
     EndLevelScore end;
     Slider distanceBar;
+    scrollbartest testbar;
     public int fullDistance;
      
     float deltaDistance;
@@ -51,7 +52,7 @@ public class LevelTimer : MonoBehaviour {
         }
         else
         {
-            fullDistance = 10000000;
+            fullDistance = 1000;
             maxBonusCount = 100;
             Debug.Log("Timer in testing mode");
         }
@@ -63,11 +64,13 @@ public class LevelTimer : MonoBehaviour {
             Debug.Log("Timer found player by tag");
         }
 
-        distanceBar = GameObject.FindWithTag("travelIndicator").GetComponent<Slider>();
-        if (distanceBar != null)
-        {
-            Debug.Log("Timer found distanceBar by tag");
-        }
+        //distanceBar = GameObject.FindWithTag("travelIndicator").GetComponent<Slider>();
+        //if (distanceBar != null)
+        //{
+        //    Debug.Log("Timer found distanceBar by tag");
+        //}
+
+        testbar = GameObject.FindWithTag("travelIndicator").GetComponent<scrollbartest>();
 
         pointsTextfield = GameObject.FindWithTag("Scoretext").GetComponent<Text>();
         if (pointsTextfield != null)
@@ -105,7 +108,8 @@ public class LevelTimer : MonoBehaviour {
             }
             distanceMeter += deltaDistance;
 
-            distanceBar.value = (distanceMeter/fullDistance);
+            //distanceBar.value = (distanceMeter/fullDistance);
+            testbar.MoveSlider(distanceMeter / fullDistance);
 
             lastPlayerPosition = currentPlayerPosition;
             updateDelay = 0;
