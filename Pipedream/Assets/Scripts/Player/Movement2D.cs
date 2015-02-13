@@ -88,13 +88,13 @@ public class Movement2D : MonoBehaviour
     {
         Controls.controlsActivated = false;
 
-        if (collisions.rightDistance < collisions.leftDistance)
-        {
-            DodgeLeft();
-        }
-        else if (collisions.rightDistance > collisions.leftDistance)
+        if (collisions.rightDistance > collisions.leftDistance)
         {
             DodgeRight();
+        }
+        else if (collisions.rightDistance < collisions.leftDistance)
+        {
+            DodgeLeft();
         }
         else
         {
@@ -116,10 +116,10 @@ public class Movement2D : MonoBehaviour
     public void DodgeRight()
     {
         Controls.controlsActivated = false;
-        
+
         //Dodges right, slowly accelerating, then decelerating when button is released
         directionForceRightRotation = collisions.maxDodgeSpeed;
-        
+
         for (float i = directionForceRightRotation; i > 0; i -= collisions.dodgeDeceleration)
         {
             directionForceRightRotation = i;

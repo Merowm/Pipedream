@@ -8,7 +8,6 @@ public class CameraFollow : MonoBehaviour
 	public Transform target;
 
     private Transform mainCamera;
-    //private MovementForward targetMovement;
 	private Vector3 velocity = Vector3.zero;
 
 	void Awake ()
@@ -16,7 +15,6 @@ public class CameraFollow : MonoBehaviour
         if (target)
         {
             mainCamera = transform.GetChild(0).transform;
-            //targetMovement = GameObject.Find("Player").GetComponent<MovementForward>();
         }
 	}
 
