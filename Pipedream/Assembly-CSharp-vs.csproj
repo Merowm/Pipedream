@@ -48,8 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\CollectibleColliderContol.cs" />
      <Compile Include="Assets\Scripts\CollectPoints.cs" />
-     <Compile Include="Assets\Scripts\CountScore.cs" />
-     <Compile Include="Assets\Scripts\EndLevelScore.cs" />
      <Compile Include="Assets\Scripts\MoveAround.cs" />
      <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Player\Controls.cs" />
@@ -64,8 +62,6 @@
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Start.cs" />
      <Compile Include="Assets\Scripts\Statistics.cs" />
-     <Compile Include="Assets\Scripts\UI scripts\BonusCounter.cs" />
-     <Compile Include="Assets\Scripts\UI scripts\CurrentScore.cs" />
      <Compile Include="Assets\Scripts\UI scripts\FloatPointUI.cs" />
      <Compile Include="Assets\Scripts\UI scripts\FloatingPointsSprite.cs" />
      <Compile Include="Assets\Scripts\UI scripts\GoToNext.cs" />
@@ -73,13 +69,19 @@
      <Compile Include="Assets\Scripts\UI scripts\MusicVolumeReset.cs" />
      <Compile Include="Assets\Scripts\UI scripts\Restart.cs" />
      <Compile Include="Assets\Scripts\UI scripts\StartNext.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\BonusCounter.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\CheckButtonColour.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\CountScore.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\CurrentScore.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\EndLevelScore.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\FloatingPoints.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\GoToScene.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\GoToSceneSprite.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\Joksikin.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\OptionsPopUp.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\TestTriggerer.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\movetest.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\scrollbartest.cs" />
      <None Include="Assets\shaders\omashader.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\shaders\erialfatesti.shader" />
