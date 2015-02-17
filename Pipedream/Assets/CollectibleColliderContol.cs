@@ -23,13 +23,6 @@ public class CollectibleColliderContol : MonoBehaviour
         {
             sphere.enabled = true;
             box.enabled = false;
-            /*
-            float x = transform.parent.rotation.x;// - transform.parent.parent.rotation.x;
-            float y = transform.parent.rotation.y;// - transform.parent.parent.rotation.y;
-            float z = - transform.parent.parent.rotation.z;
-            float w = transform.parent.rotation.w;// - transform.parent.parent.rotation.w;
-
-            transform.parent.rotation = new Quaternion(x,y,z,w);*/
         }
 	}
 }

@@ -57,14 +57,44 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411868}
-  - 33: {fileID: 3311866}
-  - 23: {fileID: 2311866}
-  - 95: {fileID: 9511866}
   - 114: {fileID: 11411866}
   - 135: {fileID: 13511866}
   m_Layer: 0
   m_Name: Point
   m_TagString: Collectible
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &151094
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 451094}
+  - 33: {fileID: 3351094}
+  - 23: {fileID: 2351094}
+  - 95: {fileID: 9551094}
+  m_Layer: 0
+  m_Name: Lotus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &151096
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 451096}
+  m_Layer: 0
+  m_Name: Graphics
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -30}
+  m_LocalPosition: {x: -19.4252682, y: 6.17198563, z: 5746.84229}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 411868}
@@ -105,7 +135,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 403126}
-  - {fileID: 411870}
+  - {fileID: 451096}
   m_Father: {fileID: 411866}
   m_RootOrder: 0
 --- !u!4 &411870
@@ -114,18 +144,44 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111868}
-  m_LocalRotation: {x: .17072764, y: -.277414709, z: -.84493494, w: -.424238443}
-  m_LocalPosition: {x: .0713658705, y: .397001266, z: .474446058}
+  m_LocalRotation: {x: -.707106829, y: -4.22108304e-09, z: -1.60473164e-08, w: .707106829}
+  m_LocalPosition: {x: 0, y: .5, z: .0700000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 451096}
+  m_RootOrder: 1
+--- !u!4 &451094
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151094}
+  m_LocalRotation: {x: .179259196, y: .793621004, z: .40129739, w: -.420704514}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .800000012, y: .800000012, z: .800000012}
+  m_Children: []
+  m_Father: {fileID: 451096}
+  m_RootOrder: 0
+--- !u!4 &451096
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151096}
+  m_LocalRotation: {x: -.179259196, y: -.793621004, z: -.40129739, w: -.420704514}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 451094}
+  - {fileID: 411870}
   m_Father: {fileID: 411868}
   m_RootOrder: 1
---- !u!23 &2311866
+--- !u!23 &2351094
 Renderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111870}
+  m_GameObject: {fileID: 151094}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -140,12 +196,12 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3311866
+--- !u!33 &3351094
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111870}
+  m_GameObject: {fileID: 151094}
   m_Mesh: {fileID: 4300000, guid: 8296ea7925b588043a67d3ee02c40af9, type: 3}
 --- !u!65 &6503126
 BoxCollider:
@@ -159,13 +215,13 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1.5, z: 5}
   m_Center: {x: 0, y: .300000012, z: 2}
---- !u!95 &9511866
+--- !u!95 &9551094
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111870}
+  m_GameObject: {fileID: 151094}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8296ea7925b588043a67d3ee02c40af9, type: 3}
   m_Controller: {fileID: 0}
@@ -209,8 +265,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: .200000003, z: .300000012}
+  m_Radius: .800000012
+  m_Center: {x: 0, y: .349999994, z: .449999988}
 --- !u!198 &19811866
 ParticleSystem:
   m_ObjectHideFlags: 1

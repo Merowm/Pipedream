@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//TODO:Rotation messed up, distancefromParent
+
 public class Spawner : MonoBehaviour
 {
     public GameObject theObject;
@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     public float rotation;
     public float distanceFromParent;
     public bool randomizeDistanceFromParent = false;
+    public bool levelOutModel = false;
 
     private Vector3 nextPosition;
 
@@ -32,6 +33,10 @@ public class Spawner : MonoBehaviour
             //Set rotation
             rotation = Random.Range(0,361);
             obj.transform.Rotate(0,0,rotation);
+            if (levelOutModel)
+            {
+                obj.transform.GetChild(0).transform.FindChild("Graphics").transform.Rotate(0,0,-rotation);
+            }
             //Set nextPosition
             nextPosition += new Vector3(0,0,positionGap);
             Debug.Log(rotation);

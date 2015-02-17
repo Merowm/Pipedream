@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+//TODO:Remove bug creating unwanted acceleration
 public class CameraFollow : MonoBehaviour
 {
     public float distanceFromTarget = 10f;
@@ -30,17 +30,17 @@ public class CameraFollow : MonoBehaviour
                                                   target.parent.position.y,
                                                   target.position.z - distanceFromTarget);
                 transform.Rotate(Vector3.forward *
-                                  Time.deltaTime * 
-                                  (target.parent.GetComponent<Movement2D>().currentRotationSpeed * 10));
+                                 Time.deltaTime *
+                                 (target.parent.GetComponent<Movement2D>().currentRotationSpeed * 10));
             }
             else
             {
                 transform.rotation = new Quaternion(0,0,0,0);
-                Vector3 delta = target.position - mainCamera.camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
-                Vector3 destination = mainCamera.position + delta;
+                //Vector3 delta = target.position - mainCamera.camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
+                //Vector3 destination = mainCamera.position + delta;
                 mainCamera.position = Vector3.SmoothDamp(mainCamera.position,
-                                                         new Vector3(target.position.x,target.position.y + 2,destination.z - distanceFromTarget),
-                                                         ref velocity,
+                                                         new Vector3(target.position.x,target.position.y + 2,target.position.z - distanceFromTarget),
+                                                         ref velocity,//<--?
                                                          dampTime);
                     
                 //mainCamera.position = new Vector3(target.position.x,
