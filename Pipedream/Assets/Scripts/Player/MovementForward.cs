@@ -5,6 +5,7 @@ public class MovementForward : MonoBehaviour
 {
     public static bool inHyperSpace = false;
     public float currentSpeed;
+    public float currentSpeedPerSecond;
     public float hyperspaceSpeed;
     public float spaceSpeed;
     public float maxSpeed;
@@ -12,11 +13,12 @@ public class MovementForward : MonoBehaviour
     public float acceleration;
     public float deceleration;
     public Vector3 direction;
-
     public bool accelerateToHyperspace = false;
     public bool decelerateToSpaceSpeed = false;
+    public Vector3 currentPosition;
+    public Vector3 lastPosition;
+
     private Movement2D movement2D;
-    //private Transform mainCamera;
     private Transform shipTransform;
     private GameObject hyperspaceHorizont;
     private GameObject boundaryCircle;
@@ -26,7 +28,6 @@ public class MovementForward : MonoBehaviour
 	void Awake ()
     {
         movement2D = transform.GetComponent<Movement2D>();
-        //mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         shipTransform = transform.FindChild("Ship").transform;
         hyperspaceHorizont = transform.FindChild("HyperspaceHorizont").gameObject;
         boundaryCircle = transform.FindChild("BoundaryCircle").gameObject;
@@ -66,7 +67,11 @@ public class MovementForward : MonoBehaviour
         }
         */
 
+        lastPosition = transform.position;
         transform.position += direction * currentSpeed * Time.deltaTime;
+        currentPosition = transform.position;
+
+        currentSpeedPerSecond = (currentPosition.z - lastPosition.z) / Time.deltaTime;
 	}
 
     public void DisengagingHyperSpace()

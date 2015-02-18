@@ -3,26 +3,26 @@ using System.Collections;
 
 public class CollectibleColliderContol : MonoBehaviour
 {
-    private SphereCollider sphere;
-    private BoxCollider box;
+    private BoxCollider hyperspaceBox;
+    private BoxCollider spaceBox;
 
 	void Awake ()
     {
-        sphere = transform.parent.GetComponent<SphereCollider>();
-        box = transform.GetComponent<BoxCollider>();
+        hyperspaceBox = transform.FindChild("HyperspaceCollider").GetComponent<BoxCollider>();
+        spaceBox = transform.FindChild("SpaceCollider").GetComponent<BoxCollider>();
 	}
 
 	void Update ()
     {
 	    if (MovementForward.inHyperSpace)
         {
-            sphere.enabled = false;
-            box.enabled = true;
+            hyperspaceBox.enabled = true;
+            spaceBox.enabled = false;
         }
         else
         {
-            sphere.enabled = true;
-            box.enabled = false;
+            hyperspaceBox.enabled = false;
+            spaceBox.enabled = true;
         }
 	}
 }

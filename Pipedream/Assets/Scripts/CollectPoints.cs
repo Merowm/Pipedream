@@ -25,7 +25,6 @@ public class CollectPoints : MonoBehaviour
 	
 	public void HitCollectable()
 	{
-        Debug.Log("Cool 2");
         levelUI.GetComponent<FloatPointUI>().GeneratePoints(itemScorePoints);
 		timer.AddScore(itemScorePoints);
         timer.ContinueBonusStreak(true);

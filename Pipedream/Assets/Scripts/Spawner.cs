@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     public float rotation;
     public float distanceFromParent;
     public bool randomizeDistanceFromParent = false;
-    public bool levelOutModel = false;
+    public bool noGraphicsRotation = false;
 
     private Vector3 nextPosition;
 
@@ -23,6 +23,7 @@ public class Spawner : MonoBehaviour
             //Spawn theObject
             GameObject obj;
             obj = (GameObject)Instantiate(theObject);
+
             //Set positions
             obj.transform.position = nextPosition;
             if (randomizeDistanceFromParent)
@@ -30,16 +31,18 @@ public class Spawner : MonoBehaviour
                 distanceFromParent = Random.Range(0.0f,10.1f);
             }
             obj.transform.GetChild(0).transform.position += new Vector3(0,distanceFromParent,0);
+
             //Set rotation
             rotation = Random.Range(0,361);
             obj.transform.Rotate(0,0,rotation);
-            if (levelOutModel)
+            if (noGraphicsRotation)
             {
                 obj.transform.GetChild(0).transform.FindChild("Graphics").transform.Rotate(0,0,-rotation);
+                obj.transform.GetChild(0).transform.FindChild("SpaceCollider").transform.Rotate(0,0,-rotation);
             }
+
             //Set nextPosition
             nextPosition += new Vector3(0,0,positionGap);
-            Debug.Log(rotation);
         }
 	}
 }

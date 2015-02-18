@@ -37,7 +37,7 @@ public class Collisions : MonoBehaviour
                 rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
                 leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
                 movement.ForcedDodge();
-                other.GetComponent<ReducePoints>().HitObstacle(false);
+                other.transform.parent.GetComponent<ReducePoints>().HitObstacle(false);
             }
             //Collision out of hyperspace
             else
@@ -50,12 +50,11 @@ public class Collisions : MonoBehaviour
         //Collectible collisions
         if (other.gameObject.tag == "Collectible")
         {
-            Debug.Log("Cool 1");
             if (other.gameObject.name == "HyperspaceCollider")
             {
                other.GetComponentInParent<CollectPoints>().HitCollectable();
             }
-            else other.GetComponent<CollectPoints>().HitCollectable();
+            else other.GetComponentInParent<CollectPoints>().HitCollectable();
         }
 	}
 }
