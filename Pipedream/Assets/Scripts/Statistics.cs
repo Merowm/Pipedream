@@ -22,9 +22,11 @@ public class Statistics : MonoBehaviour
     private int currentLevelPoints;
     private int currentBonusAmount;
     private int currentObstaclesHit;
+    private int currentLongestBonusStreak;
 
     private int lastPlayedLevel;
     private int lastLevelTrophy;
+    private bool special;
 
     public class levelData
     {
@@ -72,7 +74,7 @@ public class Statistics : MonoBehaviour
         // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
-        AddLevelData(40, 4, 500, 1); // testing data.
+        AddLevelData(40, 4, 30, 1); // testing data.
 	}
 
 
@@ -118,6 +120,16 @@ public class Statistics : MonoBehaviour
         return currentLevelPoints;
     }
 
+    public void SetCurrentStreak(int streakLength)
+    {
+        currentLongestBonusStreak = streakLength;
+    }
+
+    public void SpecialAcquired()
+    {
+        special = true;
+    }
+
     
     // Reset temp level score when level is finished.
     public void ResetScore()
@@ -125,6 +137,7 @@ public class Statistics : MonoBehaviour
         currentLevelPoints = 0;
         currentBonusAmount = 0;
         currentObstaclesHit = 0;
+        currentLongestBonusStreak = 0;
     }
 
     // Resets player data but not basic level info. For starting new game without exiting.
@@ -214,6 +227,16 @@ public class Statistics : MonoBehaviour
     public int GetLevelDistance(int levelId)
     {
         return FindLevel(levelId).distanceToRace;
+    }
+
+    public int GetLongestStreak()
+    {
+        return currentLongestBonusStreak;
+    }
+
+    public bool GetSpecialAcquired()
+    {
+        return special;
     }
 
  

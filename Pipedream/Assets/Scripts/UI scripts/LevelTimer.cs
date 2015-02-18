@@ -23,6 +23,7 @@ public class LevelTimer : MonoBehaviour {
     Vector3 currentPlayerPosition;
 
     int bonusWithoutHit;
+    int longestStreak;
     int maxBonusCount;
     Text pointsTextfield;
     Text bonusTextField;
@@ -149,6 +150,8 @@ public class LevelTimer : MonoBehaviour {
         else
         {
             stats.AddToHitCount();
+            if (longestStreak < bonusWithoutHit)
+                longestStreak = bonusWithoutHit;
             bonusWithoutHit = 0;
         }
     }
@@ -156,7 +159,9 @@ public class LevelTimer : MonoBehaviour {
     // Called when level ends
     public void FinalLevelScore()
     {
+        stats.SetCurrentStreak(longestStreak);
         stats.SetFinalLevelScore(levelId);
+        Debug.Log("new: " + stats.GetCurrentScore());
         Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
         // also saves best trophy
         int medal = stats.CompareToTrophyRequirements(levelId);
@@ -178,7 +183,7 @@ public class LevelTimer : MonoBehaviour {
                 break;
         }
         //////////////////////////////////////////////////// end testing
-        stats.ResetScore();
+        
     }
 
     // if needed to call from elsewhere.
