@@ -25,6 +25,7 @@ public class Statistics : MonoBehaviour
     private int currentLongestBonusStreak;
 
     private int lastPlayedLevel;
+    private int lastVisitedPlanet;
     private int lastLevelTrophy;
     private bool special;
 
@@ -128,6 +129,11 @@ public class Statistics : MonoBehaviour
     public void SpecialAcquired()
     {
         special = true;
+    }
+
+    public void SetVisitedPlanet(int planet)
+    {
+        lastVisitedPlanet = planet;
     }
 
     
@@ -237,6 +243,11 @@ public class Statistics : MonoBehaviour
     public bool GetSpecialAcquired()
     {
         return special;
+    }
+
+    public int GetLastPlanet()
+    {
+        return lastVisitedPlanet;
     }
 
  
