@@ -46,9 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CollectibleColliderContol.cs" />
      <Compile Include="Assets\Scripts\CollectPoints.cs" />
+     <Compile Include="Assets\Scripts\CollectibleColliderContol.cs" />
      <Compile Include="Assets\Scripts\MoveAround.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\MovingObstacleCollisions.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\ObstacleMovement.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\PlayerCollisions.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\Wireframe.cs" />
      <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Player\Controls.cs" />
      <Compile Include="Assets\Scripts\Player\Gravity.cs" />
@@ -56,12 +60,11 @@
      <Compile Include="Assets\Scripts\Player\LaserGuider.cs" />
      <Compile Include="Assets\Scripts\Player\Movement2D.cs" />
      <Compile Include="Assets\Scripts\Player\MovementForward.cs" />
-     <Compile Include="Assets\Scripts\Player\Obstacles\Collisions.cs" />
-     <Compile Include="Assets\Scripts\Player\Obstacles\Wireframe.cs" />
      <Compile Include="Assets\Scripts\ReducePoints.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Start.cs" />
      <Compile Include="Assets\Scripts\Statistics.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\CurrentScore.cs" />
      <Compile Include="Assets\Scripts\UI scripts\FloatPointUI.cs" />
      <Compile Include="Assets\Scripts\UI scripts\FloatingPointsSprite.cs" />
      <Compile Include="Assets\Scripts\UI scripts\GoToNext.cs" />
@@ -69,15 +72,16 @@
      <Compile Include="Assets\Scripts\UI scripts\MusicVolumeReset.cs" />
      <Compile Include="Assets\Scripts\UI scripts\Restart.cs" />
      <Compile Include="Assets\Scripts\UI scripts\StartNext.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\ActivePlanet.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\BonusCounter.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\CheckButtonColour.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\CountScore.cs" />
-     <Compile Include="Assets\Scripts\UI scripts\testers\CurrentScore.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\EndLevelScore.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\FloatingPoints.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\GoToScene.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\GoToSceneSprite.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\Joksikin.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\OptionsPopUp.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\TestTriggerer.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\movetest.cs" />

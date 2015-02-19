@@ -39,7 +39,6 @@ public class Wireframe : MonoBehaviour
 
                 setPosition();
 
-                float distanceToTravel = asteroidSpeedPerSecond;
                 float z = asteroid.position.z;
                 z -= asteroidSpeedPerSecond * Time.deltaTime;
 
@@ -47,8 +46,8 @@ public class Wireframe : MonoBehaviour
 
                 if (transform.position.z <= player.transform.position.z)
                 {
-                    //asteroid.GetComponent<MeshRenderer>().enabled = false;
-                    //asteroid.GetComponent<Animator>().enabled = false;
+                    asteroid.GetComponent<MeshRenderer>().enabled = false;
+                    asteroid.GetComponent<Animator>().enabled = false;
                     asteroid.position = wireframe.position;
                     //Destroy(transform.gameObject);
                 }

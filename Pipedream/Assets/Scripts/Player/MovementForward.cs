@@ -15,8 +15,6 @@ public class MovementForward : MonoBehaviour
     public Vector3 direction;
     public bool accelerateToHyperspace = false;
     public bool decelerateToSpaceSpeed = false;
-    public Vector3 currentPosition;
-    public Vector3 lastPosition;
 
     private Movement2D movement2D;
     private Transform shipTransform;
@@ -67,9 +65,9 @@ public class MovementForward : MonoBehaviour
         }
         */
 
-        lastPosition = transform.position;
+        Vector3 lastPosition = transform.position;
         transform.position += direction * currentSpeed * Time.deltaTime;
-        currentPosition = transform.position;
+        Vector3 currentPosition = transform.position;
 
         currentSpeedPerSecond = (currentPosition.z - lastPosition.z) / Time.deltaTime;
 	}

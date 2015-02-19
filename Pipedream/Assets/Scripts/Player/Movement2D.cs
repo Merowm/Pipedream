@@ -21,7 +21,7 @@ public class Movement2D : MonoBehaviour
     private GameObject mainCamera;
     private Controls controls;
     private Transform shipTransform;
-    private Collisions collisions;
+    private PlayerCollisions collisions;
     private Transform mouseAnglePointParent;
     //In hyperspace variables
     private float hyperspaceAcceleration;
@@ -43,7 +43,7 @@ public class Movement2D : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         controls = transform.GetComponent<Controls>();
         shipTransform = transform.FindChild("Ship").transform;
-        collisions = shipTransform.GetComponent<Collisions>();
+        collisions = shipTransform.GetComponent<PlayerCollisions>();
         mouseAnglePointParent = transform.FindChild("MouseAnglePoint").transform;
 	}
 
@@ -83,7 +83,6 @@ public class Movement2D : MonoBehaviour
         }
     }
 
-    //UNDER CONSTRUCTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void ForcedDodge()
     {
         Controls.controlsActivated = false;
@@ -119,6 +118,7 @@ public class Movement2D : MonoBehaviour
 
         //Dodges right, slowly accelerating, then decelerating when button is released
         directionForceRightRotation = collisions.maxDodgeSpeed;
+        directionForceLeftRotation = 0.0f;
 
         for (float i = directionForceRightRotation; i > 0; i -= collisions.dodgeDeceleration)
         {
@@ -135,6 +135,7 @@ public class Movement2D : MonoBehaviour
         
         //Dodges left, slowly accelerating, then decelerating when button is released
         directionForceLeftRotation = collisions.maxDodgeSpeed;
+        directionForceRightRotation = 0.0f;
         
         for (float i = directionForceLeftRotation; i > 0; i -= collisions.dodgeDeceleration)
         {
@@ -144,7 +145,6 @@ public class Movement2D : MonoBehaviour
             transform.Rotate(Vector3.forward * Time.deltaTime * (currentRotationSpeed * 10));
         }
     }
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     public void ResetVariables()
     {

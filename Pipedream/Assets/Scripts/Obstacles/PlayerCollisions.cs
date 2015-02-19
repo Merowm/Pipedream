@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Collisions : MonoBehaviour
+public class PlayerCollisions : MonoBehaviour
 {
     public float maxDodgeSpeed;
-    //public float dodgeAcceleration;
     public float dodgeDeceleration;
     public float rightDistance = 0;
     public float leftDistance = 0;
@@ -20,11 +19,6 @@ public class Collisions : MonoBehaviour
         leftWingtip = transform.parent.FindChild("LeftWingtip").transform;
     }
 
-    void FixedUpdate()
-    {
-
-    }
-
 	void OnTriggerEnter(Collider other)
 	{
         //Obstacle collisions
@@ -37,24 +31,20 @@ public class Collisions : MonoBehaviour
                 rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
                 leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
                 movement.ForcedDodge();
-                other.transform.parent.GetComponent<ReducePoints>().HitObstacle(false);
+                other.transform.parent.parent.GetComponent<ReducePoints>().HitObstacle(false);
             }
             //Collision out of hyperspace
             else
             {
                 Debug.Log("Space collision");
-                other.GetComponent<ReducePoints>().HitObstacle(true);
+                other.transform.parent.parent.GetComponent<ReducePoints>().HitObstacle(true);
                 //TODO:Add explosion
             }
         }
         //Collectible collisions
         if (other.gameObject.tag == "Collectible")
         {
-            if (other.gameObject.name == "HyperspaceCollider")
-            {
-               other.GetComponentInParent<CollectPoints>().HitCollectable();
-            }
-            else other.GetComponentInParent<CollectPoints>().HitCollectable();
+            other.GetComponentInParent<CollectPoints>().HitCollectable();
         }
 	}
 }
