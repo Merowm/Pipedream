@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class ActivePlanet : MonoBehaviour {
@@ -8,18 +10,18 @@ public class ActivePlanet : MonoBehaviour {
     public bool isCurrentPlanet;
 
     public GameObject[] availableRuns;
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start()
     {
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
-        select = Object.FindObjectOfType<LevelSelect>();
-	}
-	
-	// Update is called once per frame
-	void Update () 
+        select = Object.FindObjectOfType<LevelSelect>();        
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-        	
-	}
+
+    }
     public GameObject[] GetAvailable()
     {
         return availableRuns;

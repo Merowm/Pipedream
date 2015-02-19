@@ -119,6 +119,7 @@ public class LevelTimer : MonoBehaviour {
         {
             Debug.Log(timeInSecs);
             FinalLevelScore();
+            stats.UnlockLevel(levelId + 1);
             Application.LoadLevel("EndLevel");
         }
 	}
@@ -145,6 +146,8 @@ public class LevelTimer : MonoBehaviour {
         {
             stats.AddToBonusCount();
             WriteToGuiBonus(stats.GetCurrentBonus());
+            if (longestStreak < bonusWithoutHit)
+                longestStreak = bonusWithoutHit;
             ++bonusWithoutHit;
         }
         else
@@ -186,7 +189,7 @@ public class LevelTimer : MonoBehaviour {
         
     }
 
-    // if needed to call from elsewhere.
+    // if needed to call from elsewhere / next mode NOT starting from same z point as last!
     public void SaveDistanceAtJump(float distanceTravelledAtCurrentMode)
     {
         distanceMeter += distanceTravelledAtCurrentMode;

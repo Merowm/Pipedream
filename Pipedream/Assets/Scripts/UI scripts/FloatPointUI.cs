@@ -16,5 +16,6 @@ public class FloatPointUI : MonoBehaviour
         points.transform.SetParent(Camera.main.transform, false);
         points.transform.localPosition = offset;
         points.GetComponent<Text>().text = scoreAmount.ToString();
+
     }
 }

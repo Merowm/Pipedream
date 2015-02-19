@@ -40,8 +40,9 @@ public class Statistics : MonoBehaviour
         public bool isUnlocked;
         public int bonusCount;
         public int distanceToRace;
+        public float timeToRace;
 
-        public levelData(int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelLength, int levelId)
+        public levelData(int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelLength, float levelTime, int levelId)
         {
             goldLimit = goldLim;
             silverLimit = silverLim;
@@ -49,6 +50,7 @@ public class Statistics : MonoBehaviour
             bonusCount = bonusAmount;
             levelID = levelId;
             distanceToRace = levelLength;
+            timeToRace = levelTime;
             highScore = 0;
             currentTrophy = 0;
             isUnlocked = false;
@@ -75,7 +77,10 @@ public class Statistics : MonoBehaviour
         // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
-        AddLevelData(40, 4, 30, 1); // testing data.
+        AddLevelData(405, 4, 30, 16, 1); // testing data.
+        AddLevelData(5, 5, 5, 5, 2); // testing unlocking.
+        AddLevelData(5, 5, 5, 5, 3);
+        AddLevelData(5, 5, 5, 5, 4);
 	}
 
 
@@ -215,9 +220,9 @@ public class Statistics : MonoBehaviour
         return currentObstaclesHit;
     }
 
-    public int GetCurrentTrophy()
+    public int GetLevelTrophy(int levelId)
     {
-        return lastLevelTrophy;
+        return FindLevel(levelId).currentTrophy;
     }
 
     public int GetMaxBonusAmount(int levelId)
@@ -250,6 +255,22 @@ public class Statistics : MonoBehaviour
         return lastVisitedPlanet;
     }
 
+    public bool GetAvailability(int levelId)
+    {
+        levelData lv = FindLevel(levelId);
+
+        if (lv != null)
+        {
+            return lv.isUnlocked;
+        }
+        return false;
+    }
+
+    public float GetLevelTime(int levelId)
+    {
+        return FindLevel(levelId).timeToRace;
+    }
+
  
     //////////////////////////////////////
     // Helper methods
@@ -270,12 +291,12 @@ public class Statistics : MonoBehaviour
     }
 
     // For adding a level to game.
-    private void AddLevelData(int bonusAmount, int bonusItemCount, int levelLength, int levelId)
+    private void AddLevelData(int bonusAmount, int bonusItemCount, int levelLength, float levelTime, int levelId)
     {
         int goldLimit = (int)(bonusAmount * 0.85f);
         int silverLimit = (int)(bonusAmount * 0.5f);
         int bronzeLimit = (int)(bonusAmount * 0.2f);
-        levels.Add(new levelData(goldLimit, silverLimit, bronzeLimit, bonusItemCount, levelLength, levelId));
+        levels.Add(new levelData(goldLimit, silverLimit, bronzeLimit, bonusItemCount, levelLength, levelTime, levelId));
     }
 
     // returns true if new trophy is  better than old one and saves it in the level data. 
@@ -283,9 +304,15 @@ public class Statistics : MonoBehaviour
     {
         if (trophy != 0)
         {
-            if (trophy < level.currentTrophy)
+            if (level.currentTrophy == 0)
             {
                 level.currentTrophy = trophy;
+                return true;
+            }
+            else if (trophy < level.currentTrophy)
+            {
+                level.currentTrophy = trophy;
+                Debug.Log("Set highest trophy to " + trophy);
                 return true;
             }
         }
