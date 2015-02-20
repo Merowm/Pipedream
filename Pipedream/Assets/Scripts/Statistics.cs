@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -326,5 +327,20 @@ public class Statistics : MonoBehaviour
         {
             level.highScore = score;
         }
+    }
+
+    // coordinates conversion (because nothing else seems to work right...
+    public Vector3 ScreenToCanvasPoint(Canvas canvas, Vector3 point)
+    {
+        Vector3 temp = new Vector3(0, 0, 0);
+        float uiWidth;
+        float uiHeight;
+        CanvasScaler sc = canvas.GetComponent<CanvasScaler>();
+        uiWidth = sc.referenceResolution.x;
+        uiHeight = sc.referenceResolution.y;
+        temp.x = (point.x / Screen.width * uiWidth) - (uiWidth / 2);
+        temp.y = (point.y / Screen.height * uiHeight) - (uiHeight / 2);
+        
+        return temp;
     }
 }

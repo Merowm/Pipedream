@@ -34,6 +34,8 @@ public class LinearPlanet : MonoBehaviour {
         secs = stats.GetLevelTime(levelId).ToString();
         points = stats.GetlevelHighScore(levelId).ToString();
         trophy = stats.GetLevelTrophy(levelId);
+        Debug.Log(1080 *9 / 16);
+        
 	}
 	
 	
@@ -42,11 +44,16 @@ public class LinearPlanet : MonoBehaviour {
         if (instantInfo != null)
         {
             offset = new Vector3(Screen.width * 0.1f, Screen.height * 0.1f, 0);
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition - offset);    
+            Vector3 pos = /*Camera.main.ScreenToWorldPoint*/(Input.mousePosition);
+            
             pos.z = 0;
             instantInfo.transform.position = pos;
         }
-   
+               CanvasScaler sc = FindObjectOfType<CanvasScaler>(); 
+        Debug.Log("input: " + Input.mousePosition);
+        Debug.Log(stats.ScreenToCanvasPoint(c, Input.mousePosition));
+
+        
     }
 
     public void ShowInfo()
@@ -86,7 +93,7 @@ public class LinearPlanet : MonoBehaviour {
             t.SetActive(false);
         }
 
-        lvnumber.text = "race # " + level;
+        lvnumber.text = "run # " + level;
         lengthInSeconds.text = "racing time " + secs + " seconds";
         score.text = "highest score: " + points + " points";
         if (trophy > 0)
