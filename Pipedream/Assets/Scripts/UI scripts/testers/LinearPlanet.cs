@@ -36,34 +36,22 @@ public class LinearPlanet : MonoBehaviour {
         trophy = stats.GetLevelTrophy(levelId);
 	}
 	
-	// Update is called once per frame
-    //void Update () 
-    //{
-    //    if (e.IsPointerOverGameObject())
-    //    {
-    //        if (instantInfo == null)
-    //        {
-    //            Debug.Log("Here");
-    //            instantInfo = Instantiate(info, Input.mousePosition, Quaternion.identity) as GameObject;
-    //            instantInfo.transform.SetParent(c.transform, false);
-    //            instantInfo.transform.localPosition = Input.mousePosition;
-    //            SetLevelInfo(instantInfo);
-                
-    //        }
-    //        else
-    //        {
-    //            instantInfo.transform.localPosition = Input.mousePosition - offset;                
-    //        }
-    //    }
-    //    else
-    //    {
-    //        if (instantInfo != null)
-    //            Destroy(instantInfo);
-    //    }
-    //}
+	
+    void Update () 
+    {
+        if (instantInfo != null)
+        {
+            offset = new Vector3(Screen.width * 0.1f, Screen.height * 0.1f, 0);
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition - offset);    
+            pos.z = 0;
+            instantInfo.transform.position = pos;
+        }
+   
+    }
 
     public void ShowInfo()
     {
+        Debug.Log("show info");
         if (instantInfo == null)
         {
             Debug.Log("Here");
@@ -81,6 +69,7 @@ public class LinearPlanet : MonoBehaviour {
 
     public void DestroyInfo()
     {
+        Debug.Log("destroy");
         if (instantInfo != null)
             Destroy(instantInfo);
     }

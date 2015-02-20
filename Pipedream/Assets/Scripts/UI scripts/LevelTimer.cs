@@ -9,12 +9,15 @@ public class LevelTimer : MonoBehaviour {
     public float distanceMeter;
     public float updateInterval;
     public Transform playerShip;
+    public GameObject distance;
     public float timeInSecs;
 
     Statistics stats;
     EndLevelScore end;
+    GameObject instantBar;
     Slider distanceBar;
     scrollbartest testbar;
+    Canvas UI_c;
     public int fullDistance;
      
     float deltaDistance;
@@ -64,14 +67,15 @@ public class LevelTimer : MonoBehaviour {
         {
             Debug.Log("Timer found player by tag");
         }
+        Vector3 pos = new Vector3(0, -328, 0);
+        UI_c = FindObjectOfType<Canvas>();
+        instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;
+        instantBar.transform.SetParent(UI_c.transform, false);
+        instantBar.transform.localPosition = pos;
 
-        //distanceBar = GameObject.FindWithTag("travelIndicator").GetComponent<Slider>();
-        //if (distanceBar != null)
-        //{
-        //    Debug.Log("Timer found distanceBar by tag");
-        //}
+        distanceBar = instantBar.GetComponent<Slider>();
 
-        testbar = GameObject.FindWithTag("travelIndicator").GetComponent<scrollbartest>();
+        //testbar = GameObject.FindWithTag("travelIndicator").GetComponent<scrollbartest>();
 
         pointsTextfield = GameObject.FindWithTag("Scoretext").GetComponent<Text>();
         if (pointsTextfield != null)
@@ -109,8 +113,8 @@ public class LevelTimer : MonoBehaviour {
             }
             distanceMeter += deltaDistance;
 
-            //distanceBar.value = (distanceMeter/fullDistance);
-            testbar.MoveSlider(distanceMeter / fullDistance);
+            distanceBar.value = (distanceMeter/fullDistance);
+            //testbar.MoveSlider(distanceMeter / fullDistance);
 
             lastPlayerPosition = currentPlayerPosition;
             updateDelay = 0;
