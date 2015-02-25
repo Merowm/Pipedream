@@ -67,6 +67,7 @@ public class LevelTimer : MonoBehaviour {
         {
             Debug.Log("Timer found player by tag");
         }
+
         Vector3 pos = new Vector3(0, -328, 0);
         UI_c = FindObjectOfType<Canvas>();
         instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;

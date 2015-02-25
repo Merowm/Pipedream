@@ -329,7 +329,7 @@ public class Statistics : MonoBehaviour
         }
     }
 
-    // coordinates conversion (because nothing else seems to work right...
+    // coordinates conversion (because nothing else seems to work right...)
     public Vector3 ScreenToCanvasPoint(Canvas canvas, Vector3 point)
     {
         Vector3 temp = new Vector3(0, 0, 0);
