@@ -7,6 +7,11 @@ public class GoToNext : MonoBehaviour {
 	
     public void GoToScene()
     {
+        Invoke("Go", 0.16f);
+
+    }
+    void Go()
+    {
         Application.LoadLevel(SceneToGo);
     }
 }

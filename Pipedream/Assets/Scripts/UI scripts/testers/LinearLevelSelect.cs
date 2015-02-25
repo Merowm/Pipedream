@@ -15,6 +15,7 @@ public class LinearLevelSelect : MonoBehaviour {
     }
 
     planet[] planets;
+    string levelname;
 	// Use this for initialization
 	void Start () 
     {
@@ -46,10 +47,15 @@ public class LinearLevelSelect : MonoBehaviour {
     // TODO: Set by script if time allows (and if REALLY necessary...for maintaining reasons)
 	public void GoToPlanetRun(int planetId)
     {
+
         if (planets[planetId - 1].isAvailable)
         {
-            Application.LoadLevel(stats.GetLevelNameAsString(planetId));
+            levelname = stats.GetLevelNameAsString(planetId);
+            Invoke("Go", 0.16f);
         }
     }
-
+    void Go()
+    {
+            Application.LoadLevel(levelname);
+    }
 }

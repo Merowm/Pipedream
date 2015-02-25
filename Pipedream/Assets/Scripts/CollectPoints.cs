@@ -10,7 +10,7 @@ public class CollectPoints : MonoBehaviour
 
     public Canvas levelUI;
     public LevelTimer timer;
-    
+    public AudioClip sound;
     
 	void Awake ()
     {
@@ -28,6 +28,9 @@ public class CollectPoints : MonoBehaviour
         levelUI.GetComponent<FloatPointUI>().GeneratePoints(itemScorePoints);
 		timer.AddScore(itemScorePoints);
         timer.ContinueBonusStreak(true);
+
+        AudioSource.PlayClipAtPoint(sound, this.transform.position);
+        
         //Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
         Destroy(this.gameObject);
     }
