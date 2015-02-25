@@ -1,18 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//[ExecuteInEditMode]
 public class Spawner : MonoBehaviour
 {
     public GameObject theObject;
     public int amount;
     public Vector3 positionStart;
     public float positionGap;
-    public float rotation;
+    public float nextObjectAngleRange;
     public float distanceFromParent;
     public bool randomizeDistanceFromParent = false;
+    public float distanceFromParentMax = 10.0f;
     public bool noGraphicsRotation = false;
 
     private Vector3 nextPosition;
+    private float rotation;
+    private float lastObjectRotation;
 
 	void Start ()
     {
@@ -24,25 +28,41 @@ public class Spawner : MonoBehaviour
             GameObject obj;
             obj = (GameObject)Instantiate(theObject);
 
+            //Get object's child's transform
+            Transform childObjectTransform = obj.transform.GetChild(0).transform;
+
             //Set positions
             obj.transform.position = nextPosition;
             if (randomizeDistanceFromParent)
             {
-                distanceFromParent = Random.Range(0.0f,10.1f);
+                distanceFromParent = Random.Range(0.0f,distanceFromParentMax + 0.1f);
             }
-            obj.transform.GetChild(0).transform.position += new Vector3(0,distanceFromParent,0);
+            childObjectTransform.position += new Vector3(0,distanceFromParent,0);
 
             //Set rotation
-            rotation = Random.Range(0,361);
+            if (nextObjectAngleRange > 0)
+            {
+                float angleMax = lastObjectRotation + nextObjectAngleRange;
+                float angleMin = lastObjectRotation - nextObjectAngleRange;
+                rotation = Random.Range(angleMin,angleMax + 0.1f);
+            }
+            else rotation = Random.Range(0.0f,360.1f);
+
             obj.transform.Rotate(0,0,rotation);
             if (noGraphicsRotation)
             {
-                obj.transform.GetChild(0).transform.FindChild("Graphics").transform.Rotate(0,0,-rotation);
-                obj.transform.GetChild(0).transform.FindChild("SpaceCollider").transform.Rotate(0,0,-rotation);
+                childObjectTransform.FindChild("Graphics").transform.Rotate(0,0,-rotation);
+                childObjectTransform.FindChild("SpaceCollider").transform.Rotate(0,0,-rotation);
             }
+
+            lastObjectRotation = rotation;
 
             //Set nextPosition
             nextPosition += new Vector3(0,0,positionGap);
+
+            //Set child's position as parent's position
+            obj.transform.position = childObjectTransform.position;
+            childObjectTransform.position = obj.transform.position;
         }
 	}
 }

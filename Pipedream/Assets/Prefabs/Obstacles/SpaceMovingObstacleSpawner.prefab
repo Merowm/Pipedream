@@ -1,51 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &145270
+--- !u!1 &113680
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 445270}
-  - 114: {fileID: 11445270}
+  - 4: {fileID: 413680}
+  - 114: {fileID: 11413680}
   m_Layer: 0
-  m_Name: HyperCollectibleSpawner
+  m_Name: SpaceMovingObstacleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &445270
+--- !u!4 &413680
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145270}
+  m_GameObject: {fileID: 113680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11445270
+--- !u!114 &11413680
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145270}
+  m_GameObject: {fileID: 113680}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bb5c939fa992164f84f662ff71a9683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theObject: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
-  amount: 27
-  positionStart: {x: 0, y: 0, z: 250}
-  positionGap: 250
-  nextObjectAngleRange: 90
-  distanceFromParent: -5
-  randomizeDistanceFromParent: 0
+  theObject: {fileID: 140350, guid: 1759504530159f64c9133d3ac4e6a66e, type: 2}
+  amount: 500
+  positionStart: {x: 50, y: 0, z: 0}
+  positionGap: 5
+  nextObjectAngleRange: 0
+  distanceFromParent: 0
+  randomizeDistanceFromParent: 1
   noGraphicsRotation: 0
 --- !u!1001 &100100000
 Prefab:
@@ -56,6 +56,6 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 145270}
+  m_RootGameObject: {fileID: 113680}
   m_IsPrefabParent: 1
   m_IsExploded: 1

@@ -40,12 +40,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theObject: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
-  amount: 50
-  positionStart: {x: 50, y: 0, z: 30}
-  positionGap: 20
-  rotation: 0
+  amount: 10
+  positionStart: {x: 50, y: 0, z: 100}
+  positionGap: 75
+  nextObjectAngleRange: 0
   distanceFromParent: 0
   randomizeDistanceFromParent: 1
+  distanceFromParentMax: 7
   noGraphicsRotation: 1
 --- !u!1001 &100100000
 Prefab:

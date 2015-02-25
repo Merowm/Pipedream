@@ -1,37 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class ObstacleMovementNEW : MonoBehaviour
 {
     public Vector3 direction = new Vector3(1.0f,1.0f,1.0f);
-    //public float XAxisSpeedMax = 5.0f;
-    //public float YAxisSpeedMax = 5.0f;
-    //public float ZAxisSpeedMax = 5.0f;
+    public bool usingDirectionBased = false;
     public bool randomizeSpeed = false;
     public float speed = 5.0f;
-    //public float XAxisSpeedMin = -5.0f;
-    //public float YAxisSpeedMin = -5.0f;
-    //public float ZAxisSpeedMin = -5.0f;
     public float displayDistance = 400.0f;
-    public float backAtOriginDistance = 100.0f;
+    public float backAtOriginDistance = 0.0f;
 
-    private Transform origin;
+    private Transform startingPositionObjectTransform;
     private Transform player;
     private MovementForward playerMovement;
-    //private Vector3 xyzVector;
-    private Vector3 originalPosition;
+    private Vector3 startingPosition;
     private float speedPerSecond;
+    private float timeItTakes;
     private bool positionSet = false;
-    private float requiredDistance;
     private Vector3 requiredPosition;
-    
+    private float obstacleTravelingDistance;
+
     void Start ()
     {
-        origin = transform.parent.FindChild("Origin").transform;
+        startingPositionObjectTransform = transform.parent.FindChild("StartingPosition").transform;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerMovement = player.GetComponent<MovementForward>();
 
-        origin.position = transform.position;
+        startingPosition = startingPositionObjectTransform.position;
 
         if (randomizeSpeed)
         {
@@ -41,24 +37,50 @@ public class ObstacleMovementNEW : MonoBehaviour
         }
         //xyzVector = new Vector3(XAxisSpeedMax, YAxisSpeedMax, ZAxisSpeedMax);
         direction = direction.normalized;
-        
-        originalPosition = transform.position;
-        Vector3 nextPosition = originalPosition + direction * speed * Time.deltaTime;
-        
-        speedPerSecond = Vector3.Distance(nextPosition,originalPosition) / Time.deltaTime;
-        direction = (originalPosition - nextPosition).normalized;
 
-        //JATKA TÄSTÄ, PLAYER SPEED PER SECOND
+        //UNFINISHED
         float distanceToTravelPlayer = displayDistance - backAtOriginDistance;
-        float timeItTakes = distanceToTravelPlayer / playerMovement.currentSpeedPerSecond;
-        requiredDistance = speedPerSecond * timeItTakes;
+        timeItTakes = distanceToTravelPlayer / playerMovement.currentSpeedPerSecond;
 
-        if (!positionSet)
+        if (usingDirectionBased)
         {
-            requiredPosition = GetRequiredPosition(requiredDistance);
-            transform.position = requiredPosition;
-            positionSet = true;
+            Vector3 nextPosition = startingPosition + direction * speed * Time.deltaTime;
+        
+            speedPerSecond = Vector3.Distance(nextPosition, startingPosition) / Time.deltaTime;
+            direction = (startingPosition - nextPosition).normalized;
+
+            obstacleTravelingDistance = speedPerSecond * timeItTakes;
         }
+        else
+        {
+            obstacleTravelingDistance = Vector3.Distance(startingPosition,transform.parent.position);
+            speedPerSecond = obstacleTravelingDistance / timeItTakes;
+            speed = speedPerSecond / 2;
+            direction = (transform.parent.position - startingPosition).normalized;
+        }
+    }
+
+    void Update ()
+    {
+        /*
+        #if UNITY_EDITOR
+        if(!Application.isPlaying)
+        {
+            direction = direction.normalized;
+            
+            startingPosition = transform.position;
+            Vector3 nextPosition = startingPosition + direction * speed * Time.deltaTime;
+            
+            speedPerSecond = Vector3.Distance(nextPosition,startingPosition) / Time.deltaTime;
+            direction = (startingPosition - nextPosition).normalized;
+            
+            //UNFINISHED
+            float distanceToTravelPlayer = displayDistance - backAtOriginDistance;
+            timeItTakes = distanceToTravelPlayer / playerMovement.currentSpeedPerSecond;
+            obstacleTravelingDistance = speedPerSecond * timeItTakes;
+        }
+        #endif
+        */
     }
     
     void FixedUpdate ()
@@ -68,47 +90,46 @@ public class ObstacleMovementNEW : MonoBehaviour
         
         if (!MovementForward.inHyperSpace)
         {
-            if (!positionSet)
+            if (displayDistance >= Vector3.Distance(new Vector3(0,0,transform.parent.position.z),
+                                                    new Vector3(0,0,player.position.z)))
             {
-                requiredPosition = GetRequiredPosition(requiredDistance);
-                transform.position = requiredPosition;
-                positionSet = true;
-            }
-            
-            if (displayDistance >= Vector3.Distance(transform.parent.position, player.position))
-            {
-                //float direction = (originalPosition - transform.position).normalized;
-                
-                if (backAtOriginDistance >= Vector3.Distance(transform.parent.position, player.position))
+                SetPosition();
+
+                if (transform.parent.position.z >= player.position.z - 50.0f)
                 {
-                    //Debug.Break();
+                    transform.position += direction * speedPerSecond * Time.deltaTime;
                 }
-                
-                transform.position += direction * speed * Time.deltaTime;
             }
         }
         else
         {
-            transform.position = originalPosition;
+            transform.position = transform.parent.position;
             positionSet = false;
         }
     }
     
-    Vector3 GetRequiredPosition (float distance)
+    void SetPosition ()
     {
-        return transform.position - direction * distance;
+        if (!positionSet)
+        {
+            if (usingDirectionBased)
+            {
+                requiredPosition = transform.position - direction * obstacleTravelingDistance;
+            }
+            else requiredPosition = startingPosition;
+
+            transform.position = requiredPosition;
+            startingPosition = transform.position;
+            positionSet = true;
+        }
     }
     
     void OnDrawGizmos ()
     {
-        //Gizmos.DrawLine(transform.position, transform.position + xyzVector * 10.0f);
-        if (origin != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, origin.position);
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, requiredPosition);
-            Gizmos.color = Color.white;
-        }
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.parent.position);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, startingPosition);
+        Gizmos.color = Color.white;
     }
 }

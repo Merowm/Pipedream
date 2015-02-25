@@ -26,7 +26,8 @@ public class Wireframe : MonoBehaviour
     {
         if (MovementForward.inHyperSpace)
         {
-            distance = Vector3.Distance(player.transform.position, transform.position);
+            distance = Vector3.Distance(new Vector3(0,0,player.transform.position.z),
+                                        new Vector3(0,0,transform.position.z));
             asteroidSpeedPerSecond = playerMovement.currentSpeedPerSecond * asteroidSpeedMultiplier;
 
             if (transform.position.z <= player.transform.position.z + playerMovement.currentSpeedPerSecond)
