@@ -43,7 +43,7 @@ public class Movement2D : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         controls = transform.GetComponent<Controls>();
         shipTransform = transform.FindChild("Ship").transform;
-        collisions = shipTransform.GetComponent<PlayerCollisions>();
+        collisions = shipTransform.FindChild("Collider").GetComponent<PlayerCollisions>();
         mouseAnglePointParent = transform.FindChild("MouseAnglePoint").transform;
 	}
 

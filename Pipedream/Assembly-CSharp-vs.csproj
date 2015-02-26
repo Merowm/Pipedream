@@ -46,8 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BoundaryCircle.cs" />
-     <Compile Include="Assets\ObstacleMovementNEW.cs" />
      <Compile Include="Assets\Scripts\CollectPoints.cs" />
      <Compile Include="Assets\Scripts\CollectibleColliderContol.cs" />
      <Compile Include="Assets\Scripts\MoveAround.cs" />
@@ -55,6 +53,7 @@
      <Compile Include="Assets\Scripts\Obstacles\ObstacleMovement.cs" />
      <Compile Include="Assets\Scripts\Obstacles\PlayerCollisions.cs" />
      <Compile Include="Assets\Scripts\Obstacles\Wireframe.cs" />
+     <Compile Include="Assets\Scripts\Player\BoundaryCircle.cs" />
      <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Player\Controls.cs" />
      <Compile Include="Assets\Scripts\Player\Gravity.cs" />
@@ -88,6 +87,7 @@
      <Compile Include="Assets\Scripts\UI scripts\testers\LinearPlanet.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\OptionsPopUp.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\TestTriggerer.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\audioTest.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\movetest.cs" />
      <None Include="Assets\shaders\omashader.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />

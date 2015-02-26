@@ -8,7 +8,6 @@ public class MovingObstacleCollisions : MonoBehaviour
         //Obstacle collides with another obstacle -> both explode
         if (other.gameObject.tag == "Obstacle")
         {
-            Debug.Log("COLLSIISON");
             Destroy(other.transform.parent.parent.gameObject);
             Destroy(this.gameObject);
         }

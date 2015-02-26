@@ -7,7 +7,7 @@ public class HyperspaceEnterAndExit : MonoBehaviour
 
     void Awake()
     {
-        movement = transform.parent.GetComponent<MovementForward>();
+        movement = transform.parent.parent.GetComponent<MovementForward>();
     }
 
     void OnTriggerEnter (Collider other)

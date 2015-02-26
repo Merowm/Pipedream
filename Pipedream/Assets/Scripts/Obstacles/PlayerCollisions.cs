@@ -14,9 +14,9 @@ public class PlayerCollisions : MonoBehaviour
 
     void Awake()
     {
-        movement = transform.parent.GetComponent<Movement2D>();
-        rightWingtip = transform.parent.FindChild("RightWingtip").transform;
-        leftWingtip = transform.parent.FindChild("LeftWingtip").transform;
+        movement = transform.parent.parent.GetComponent<Movement2D>();
+        rightWingtip = transform.parent.parent.FindChild("RightWingtip").transform;
+        leftWingtip = transform.parent.parent.FindChild("LeftWingtip").transform;
     }
 
 	void OnTriggerEnter(Collider other)

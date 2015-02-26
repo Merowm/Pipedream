@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour
 {
     public float distanceFromTarget = 10f;
+    public float hyperCameraPositionDivider = 2.0f;
 	public float dampTime = 0.15f;
 	public Transform target;
 
@@ -22,16 +23,17 @@ public class CameraFollow : MonoBehaviour
 	{
 		if (target)
 		{
-            transform.position = target.parent.position;
+            transform.position = target.position;
 
             if (MovementForward.inHyperSpace)
             {
-                mainCamera.position = new Vector3(target.parent.position.x,
-                                                  target.parent.position.y,
+                mainCamera.position = new Vector3((target.parent.position.x + target.position.x) / hyperCameraPositionDivider,
+                                                  (target.parent.position.y + target.position.y) / hyperCameraPositionDivider,
                                                   target.position.z - distanceFromTarget);
-                transform.Rotate(Vector3.forward *
-                                 Time.deltaTime *
-                                 (target.parent.GetComponent<Movement2D>().currentRotationSpeed * 10));
+                //transform.Rotate(Vector3.forward *
+                 //                Time.deltaTime *
+                  //              (target.parent.GetComponent<Movement2D>().currentRotationSpeed * 10));
+                transform.rotation = target.parent.rotation;
             }
             else
             {

@@ -6,7 +6,6 @@ public class Spawner : MonoBehaviour
 {
     public GameObject theObject;
     public int amount;
-    public Vector3 positionStart;
     public float positionGap;
     public float nextObjectAngleRange;
     public float distanceFromParent;
@@ -20,13 +19,16 @@ public class Spawner : MonoBehaviour
 
 	void Start ()
     {
-        nextPosition = positionStart;
+        nextPosition = transform.position;
 
         for (int i = 0; i < amount; i++)
         {
             //Spawn theObject
             GameObject obj;
             obj = (GameObject)Instantiate(theObject);
+
+            //Tag object as SpawnedObject
+            obj.tag = "SpawnedObject";
 
             //Get object's child's transform
             Transform childObjectTransform = obj.transform.GetChild(0).transform;

@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 433144}
   - 114: {fileID: 11413196}
-  - 114: {fileID: 11495038}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -117,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: 0, z: 750}
+  m_LocalPosition: {x: 50, y: 0, z: 67.8000031}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 433144}
@@ -143,7 +142,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -5, z: 0}
+  m_LocalPosition: {x: 3.72000003, y: 2.27999997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 440352}
@@ -229,12 +228,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd31624aa92238f43b0899c55737d4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 1, y: 1, z: 1}
-  usingDirectionBased: 1
+  direction: {x: -.85260123, y: -.522562087, z: 0}
   randomizeSpeed: 0
-  speed: 5
+  speed: .654467702
   displayDistance: 400
   backAtOriginDistance: 0
+  startingPosition: {fileID: 498292}
+  speedPerSecond: 1.3089354
+  timeItTakes: Infinity
+  obstacleTravelingDistance: 13.0893545
 --- !u!114 &11444408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,24 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b6b654f9b446440852f2459b2bc540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScorePoints: 100
---- !u!114 &11495038
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133144}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423f18cac68bbdf4181fca1de3a10a23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
-  speedMax: 5
-  randomizeSpeed: 1
-  speedMin: .100000001
-  displayDistance: 400
-  backAtOriginDistance: 0
+  itemScorePoints: 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
