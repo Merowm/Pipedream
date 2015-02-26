@@ -12,32 +12,37 @@ public class MusicVolumeReset : MonoBehaviour
     public bool hasCollectedItem;
 
     private float minVolumeLevel;
-
+    private float timeFromCollect;
+    private float dt;
     void Awake ()
     {
         startVolumeLevel = music.volume;
         minVolumeLevel = startVolumeLevel * 0.3f;
         hasCollectedItem = false;
+        timeFromCollect = 0;
 	}
 	
     void FixedUpdate ()
     {
+        dt = Time.deltaTime;
+        timeFromCollect += dt;
 	    if (hasCollectedItem == true && music.isPlaying)
         {
             if (music.volume < startVolumeLevel)
             {
-                music.volume += 0.7f * Time.deltaTime;
+                music.volume += 0.5f * dt;
             }
             else
             {
                 music.volume = startVolumeLevel;
                 hasCollectedItem = false;
+                timeFromCollect = 0;
             }
         }
         // If no items are collected, music fades out slowly
-        else if (music.volume > minVolumeLevel)
+        else if (music.volume > minVolumeLevel && timeFromCollect > 5)
         {
-            music.volume -= 0.05f * Time.deltaTime;
+            music.volume -= 0.05f * dt;
         }
 	}
 }

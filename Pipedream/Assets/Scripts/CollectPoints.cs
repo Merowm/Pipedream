@@ -28,10 +28,11 @@ public class CollectPoints : MonoBehaviour
         levelUI.GetComponent<FloatPointUI>().GeneratePoints(itemScorePoints);
 		timer.AddScore(itemScorePoints);
         timer.ContinueBonusStreak(true);
-
-        AudioSource.PlayClipAtPoint(sound, this.transform.position);
-        
-        //Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
-        Destroy(this.gameObject);
+        if (sound != null)
+        {
+            AudioSource.PlayClipAtPoint(sound, this.transform.position);
+        }        
+        Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
+        Destroy(this.transform.parent.gameObject);
     }
 }
