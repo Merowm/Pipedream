@@ -57,7 +57,7 @@ public class Statistics : MonoBehaviour
             isUnlocked = false;
         }
     }
-    private List<levelData> levels;
+    public List<levelData> levels;
 
 	void Awake ()
     {
@@ -278,7 +278,7 @@ public class Statistics : MonoBehaviour
     //////////////////////////////////////
 
     // Finds level data with Id. Returns null if not found, which usually throws error.
-    private levelData FindLevel(int levelId)
+    public levelData FindLevel(int levelId)
     {
         foreach (levelData ld in levels)
         {
