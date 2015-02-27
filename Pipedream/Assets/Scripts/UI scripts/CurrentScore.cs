@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CurrentScore : MonoBehaviour {
-
+ 
     Statistics stats;
     Text pointScore;
     Text bonusScore;
@@ -16,6 +16,7 @@ public class CurrentScore : MonoBehaviour {
 	// Use this for initialization
 	void Awake () 
     {
+
         GameObject s = GameObject.FindWithTag("statistics");
         stats = s.GetComponent<Statistics>();
         saver = s.GetComponent<DataSave>();
@@ -47,12 +48,10 @@ public class CurrentScore : MonoBehaviour {
         SetMedal(stats.CompareToTrophyRequirements(level));
         CheckGoal(bonusObjectives[0], stats.GetCurrentHitCount() == 0);
         CheckGoal(bonusObjectives[1], stats.GetCurrentBonus() == maxBonus);
-        // bool values set for checking only!
-        // TODO: replace with valid data!
         CheckGoal(bonusObjectives[2], stats.GetLongestStreak() >= maxBonus * 0.5f); ////////////// Placeholder value!
         CheckGoal(bonusObjectives[3], stats.GetSpecialAcquired());
-
     }
+
 	
     void SetMedal(int trophy)
     {
@@ -61,10 +60,9 @@ public class CurrentScore : MonoBehaviour {
     }
     void CheckGoal(GameObject yesno, bool gotIt)
     {
-        if (gotIt)
-            yesno.GetComponent<CanvasRenderer>().SetColor(Color.green);
-        else
-            yesno.GetComponent<CanvasRenderer>().SetColor(Color.red);
+        Transform yes = yesno.transform.Find("yes");
+        if (!gotIt)
+            yes.gameObject.SetActive(false);
     }
 
     public void Reset()

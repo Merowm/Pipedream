@@ -24,7 +24,7 @@ public class movetest : MonoBehaviour {
             {
                 Debug.Log("one more");
                 passed = true;
-                //Destroy(this.gameObject);
+                Destroy(this.gameObject);
             }
         }
         

@@ -12,11 +12,14 @@ public class LinearPlanet : MonoBehaviour {
     EventSystem e;
     Canvas c;
     GameObject instantInfo;
+    RectTransform infoRect;
     Vector3 offset;
     Text lvnumber;
     Text lengthInSeconds;
     Text score;
     GameObject[] trophies;
+
+    Vector2 anchor;
 
     string level;
     string secs;
@@ -29,12 +32,11 @@ public class LinearPlanet : MonoBehaviour {
         e = FindObjectOfType<EventSystem>();
         c = FindObjectOfType<Canvas>();
         offset = new Vector3(Screen.width/2, Screen.height/2, 0);
+        anchor = new Vector2(0, 0);
         trophies = new GameObject[3];
         level = levelId.ToString();
-        secs = stats.GetLevelTime(levelId).ToString();
-        points = stats.GetlevelHighScore(levelId).ToString();
-        trophy = stats.GetLevelTrophy(levelId);
-        Debug.Log(1080 *9 / 16);
+
+        
         
 	}
 	
@@ -43,15 +45,30 @@ public class LinearPlanet : MonoBehaviour {
     {
         if (instantInfo != null)
         {
-            offset = new Vector3(Screen.width * 0.1f, Screen.height * 0.1f, 0);
-            Vector3 pos = /*Camera.main.ScreenToWorldPoint*/(Input.mousePosition);
+
+            Vector3 pos = (Input.mousePosition);
             
             pos.z = 0;
+            if (Input.mousePosition.x > Screen.width * 3 / 4)
+            {
+                anchor.x = 1.1f;
+            }
+            else
+            {
+                anchor.x = -0.1f;
+            }
+            if (Input.mousePosition.y > Screen.height / 2)
+            {
+                anchor.y = 1.1f;
+            }
+            else
+            {
+                anchor.y = -0.1f;
+            }
+            infoRect.pivot = anchor;
+
             instantInfo.transform.position = pos;
         }
-               CanvasScaler sc = FindObjectOfType<CanvasScaler>(); 
-        Debug.Log("input: " + Input.mousePosition);
-        Debug.Log(stats.ScreenToCanvasPoint(c, Input.mousePosition));
 
         
     }
@@ -66,6 +83,7 @@ public class LinearPlanet : MonoBehaviour {
             instantInfo.transform.SetParent(c.transform, false);
             instantInfo.transform.localPosition = Input.mousePosition - offset;
             SetLevelInfo(instantInfo);
+            infoRect = instantInfo.GetComponent<RectTransform>();
 
         }
         else
@@ -76,12 +94,14 @@ public class LinearPlanet : MonoBehaviour {
 
     public void DestroyInfo()
     {
-        Debug.Log("destroy");
         if (instantInfo != null)
             Destroy(instantInfo);
     }
     void SetLevelInfo(GameObject panel)
     {
+        secs = stats.GetLevelTime(levelId).ToString();
+        points = stats.GetlevelHighScore(levelId).ToString();
+        trophy = stats.GetLevelTrophy(levelId);
         lvnumber = panel.transform.Find("levelnum").GetComponent<Text>();
         lengthInSeconds = panel.transform.Find("seconds").GetComponent<Text>();
         score = panel.transform.Find("score").GetComponent<Text>();
@@ -94,8 +114,8 @@ public class LinearPlanet : MonoBehaviour {
         }
 
         lvnumber.text = "run # " + level;
-        lengthInSeconds.text = "racing time " + secs + " seconds";
-        score.text = "highest score: " + points + " points";
+        lengthInSeconds.text =  secs + " seconds";
+        score.text =  points;
         if (trophy > 0)
         {
             trophies[trophy - 1].SetActive(true);

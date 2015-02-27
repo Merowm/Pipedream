@@ -40,6 +40,7 @@ public class DataSave : MonoBehaviour
             file.Close();
             // send loaded data to statistics
             SetupStats();
+            Debug.Log("data setup complete");
         }
         else
         {
@@ -48,6 +49,7 @@ public class DataSave : MonoBehaviour
             {
                 scoreData.Add(new PlayerScores(l.levelID));
             }
+            Debug.Log("new data setup");
         }
     }
     // clear slot (call from menu) Used only if slots are used.
