@@ -4,7 +4,8 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour
 {
     public float distanceFromTarget = 10f;
-    public float hyperCameraPositionDivider = 2.0f;
+    public float hyperPosition = 2.0f;
+    public float spacePosition = 2.0f;
 	public float dampTime = 0.15f;
 	public Transform target;
 
@@ -27,8 +28,8 @@ public class CameraFollow : MonoBehaviour
 
             if (MovementForward.inHyperSpace)
             {
-                mainCamera.position = new Vector3((target.parent.position.x + target.position.x) / hyperCameraPositionDivider,
-                                                  (target.parent.position.y + target.position.y) / hyperCameraPositionDivider,
+                mainCamera.position = new Vector3((target.parent.position.x + target.position.x) / hyperPosition,
+                                                  (target.parent.position.y + target.position.y) / hyperPosition,
                                                   target.position.z - distanceFromTarget);
                 //transform.Rotate(Vector3.forward *
                  //                Time.deltaTime *
@@ -41,7 +42,7 @@ public class CameraFollow : MonoBehaviour
                 //Vector3 delta = target.position - mainCamera.camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
                 //Vector3 destination = mainCamera.position + delta;
                 mainCamera.position = Vector3.SmoothDamp(mainCamera.position,
-                                                         new Vector3(target.position.x,target.position.y + 2,target.position.z - distanceFromTarget),
+                                                         new Vector3(target.position.x,target.position.y + spacePosition,target.position.z - distanceFromTarget),
                                                          ref velocity,//<--?
                                                          dampTime);
                     

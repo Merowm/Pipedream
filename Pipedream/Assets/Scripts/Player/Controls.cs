@@ -4,8 +4,6 @@ using System.Collections.Generic;
 public class Controls : MonoBehaviour
 {
     public static bool controlsActivated = true;
-    public enum CONTROL_SCHEME {Keyboard, Mouse}
-    public int index = 0;
     public Dictionary<string, bool> controls;
 
     public bool right;
@@ -28,19 +26,6 @@ public class Controls : MonoBehaviour
 
     void Update ()
     {
-        //Switches between control schemes, default scheme is keyboard
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (index == 0)
-            {
-                index++;
-            }
-            else if (index == 1)
-            {
-                index--;
-            }
-        }
-
         //Right
         if (Input.GetAxis("Horizontal") == 1)
         {
@@ -96,28 +81,6 @@ public class Controls : MonoBehaviour
 	
 	void FixedUpdate ()
     {
-        //Switches between control schemes, default scheme is keyboard
-        if (index == 0)
-        {
-            ChooseContolsScheme(CONTROL_SCHEME.Keyboard);
-        }
-        else if (index == 1)
-        {
-            ChooseContolsScheme(CONTROL_SCHEME.Mouse);
-        }
-    }
-
-    void ChooseContolsScheme(CONTROL_SCHEME scheme)
-    {
-        switch(scheme)
-        {
-            case CONTROL_SCHEME.Keyboard:
-                movement.KeyboardControls();
-                break;
-                
-            case CONTROL_SCHEME.Mouse:
-                movement.MouseControls();
-                break;
-        }
+        movement.MovementUpdate();
     }
 }

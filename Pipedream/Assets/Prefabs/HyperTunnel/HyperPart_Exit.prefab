@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
   m_Layer: 0
-  m_Name: HyperspaceGateEntrance
+  m_Name: HyperPart_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,20 +30,20 @@ GameObject:
   - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: Gate
-  m_TagString: HyperspaceGateEntrance
+  m_TagString: HyperspaceGateExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &150798
+--- !u!1 &190708
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 450798}
-  - 108: {fileID: 10850798}
+  - 4: {fileID: 490708}
+  - 108: {fileID: 10890708}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -58,11 +58,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: 0, z: 800}
-  m_LocalScale: {x: 30, y: 30, z: 45}
+  m_LocalPosition: {x: 0, y: 0, z: 6800.04004}
+  m_LocalScale: {x: 8, y: 8, z: 12}
   m_Children:
   - {fileID: 400002}
-  - {fileID: 450798}
+  - {fileID: 490708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400002
@@ -72,20 +72,20 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.300000012}
-  m_LocalScale: {x: 1.5, y: 1.5, z: .5}
+  m_LocalPosition: {x: 0, y: 0, z: .222222224}
+  m_LocalScale: {x: 1.66666675, y: 1.66666675, z: .444444448}
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 0
---- !u!4 &450798
+--- !u!4 &490708
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150798}
+  m_GameObject: {fileID: 190708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .0333333351, y: .0333333351, z: .0222222228}
+  m_LocalScale: {x: .100000001, y: .100000001, z: .0666666701}
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 1
@@ -150,17 +150,17 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!108 &10850798
+--- !u!108 &10890708
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150798}
+  m_GameObject: {fileID: 190708}
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: .39240092, g: 1, b: .375, a: 1}
-  m_Intensity: 3
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Intensity: 8
   m_Range: 50
   m_SpotAngle: 30
   m_CookieSize: 10

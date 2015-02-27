@@ -76,7 +76,7 @@ public class MovementForward : MonoBehaviour
     {
         inHyperSpace = false;
         transform.rotation = new Quaternion(0,0,0,0);
-        transform.position = new Vector3(50,0,0);
+        transform.position = new Vector3(0,0,0);
         shipTransform.position = originalSpacePosition;
         //mainCamera.transform.position = new Vector3(transform.position.x,
         //                                            mainCamera.transform.position.y,
@@ -89,7 +89,7 @@ public class MovementForward : MonoBehaviour
     {
         inHyperSpace = true;
         transform.rotation = new Quaternion(0,0,0,0);
-        transform.position = new Vector3(0,0,0);
+        transform.position = new Vector3(0,-250,0);
         shipTransform.position = originalHyperspacePosition;
         //mainCamera.transform.position = new Vector3(transform.position.x,
         //                                            mainCamera.transform.position.y,
