@@ -4985,6 +4985,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1202100674}
   - 114: {fileID: 1202100673}
+  - 114: {fileID: 1202100675}
   m_Layer: 0
   m_Name: Statistics
   m_TagString: statistics
@@ -5016,6 +5017,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1202100675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11472202, guid: 6f5d92a8cb694294da53654f321d91ad,
+    type: 2}
+  m_PrefabInternal: {fileID: 1812032990}
+  m_GameObject: {fileID: 1202100672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd72c73c90f29a4c84d66f303e7d488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1312444102
 GameObject:
   m_ObjectHideFlags: 0
@@ -5606,7 +5619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b6b654f9b446440852f2459b2bc540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScorePoints: 100
+  itemScorePoints: 50
 --- !u!82 &1803765774
 AudioSource:
   m_ObjectHideFlags: 0

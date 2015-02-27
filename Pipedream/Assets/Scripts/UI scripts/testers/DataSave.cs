@@ -27,7 +27,8 @@ public class DataSave : MonoBehaviour
         }
     }
 
-     // call from save slot button if said button exists. Loads save file by name.
+    // call from save slot button if said button exists. Loads save file by name.
+    // Otherwise called at start with default file name.
     public void UseSlot(string slotname)
     {
         _name = slotname;
@@ -108,9 +109,15 @@ public class DataSave : MonoBehaviour
         BinaryFormatter bin = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/" + _name + ".dat");
         bin.Serialize(file, scoreData);
+        if (File.Exists(Application.persistentDataPath + "/" + _name + ".dat"))
+        {
+            Debug.Log("Data file made");
+            Debug.Log(Application.persistentDataPath);
+        }
         file.Close();
     }
     // in case new levels are added and old save files are old
+    // creates new list entry with corresponding level ID
     private void LevelListUpdate()
     {        
         foreach (Statistics.levelData l in stats.levels)

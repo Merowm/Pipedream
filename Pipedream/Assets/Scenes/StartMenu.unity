@@ -1053,6 +1053,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1831897599}
   - 114: {fileID: 1831897598}
+  - 114: {fileID: 1831897597}
   m_Layer: 0
   m_Name: GameStatistics
   m_TagString: statistics
@@ -1060,6 +1061,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1831897597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11472202, guid: 6f5d92a8cb694294da53654f321d91ad,
+    type: 2}
+  m_PrefabInternal: {fileID: 845710298}
+  m_GameObject: {fileID: 1831897596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd72c73c90f29a4c84d66f303e7d488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1831897598
 MonoBehaviour:
   m_ObjectHideFlags: 0

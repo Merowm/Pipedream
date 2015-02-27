@@ -8,6 +8,7 @@ public class CurrentScore : MonoBehaviour {
     Text pointScore;
     Text bonusScore;
     int level;
+    DataSave saver;
 
     GameObject[] medals;
     GameObject[] bonusObjectives;
@@ -15,7 +16,9 @@ public class CurrentScore : MonoBehaviour {
 	// Use this for initialization
 	void Awake () 
     {
-        stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
+        GameObject s = GameObject.FindWithTag("statistics");
+        stats = s.GetComponent<Statistics>();
+        saver = s.GetComponent<DataSave>();
         medals = new GameObject[3];
         medals[0] = GameObject.Find("gold");
         medals[1] = GameObject.Find("silver");
@@ -66,6 +69,7 @@ public class CurrentScore : MonoBehaviour {
 
     public void Reset()
     {
+        saver.SendScore();
         stats.ResetScore();
     }
 
