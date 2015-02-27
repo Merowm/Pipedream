@@ -78,7 +78,7 @@ public class Statistics : MonoBehaviour
         // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
-        AddLevelData(405, 4, 30, 16, 1); // testing data.
+        AddLevelData(3700, 37, 8000, 61, 1); // testing data.
         AddLevelData(5, 5, 5, 5, 2); // testing unlocking.
         AddLevelData(5, 5, 5, 5, 3);
         AddLevelData(5, 5, 5, 5, 4);
