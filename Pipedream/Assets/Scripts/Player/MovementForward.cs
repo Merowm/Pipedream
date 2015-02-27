@@ -30,7 +30,7 @@ public class MovementForward : MonoBehaviour
         hyperspaceHorizont = transform.FindChild("HyperspaceHorizont").gameObject;
         boundaryCircle = transform.FindChild("BoundaryCircle").gameObject;
         originalSpacePosition = shipTransform.position;
-        originalHyperspacePosition = shipTransform.position - transform.position;
+        originalHyperspacePosition =shipTransform.position + new Vector3(0,-250,0);//shipTransform.position - transform.position;
 	}
 
 	void FixedUpdate ()

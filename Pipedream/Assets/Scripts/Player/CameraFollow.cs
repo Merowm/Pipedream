@@ -24,12 +24,15 @@ public class CameraFollow : MonoBehaviour
 	{
 		if (target)
 		{
-            transform.position = target.position;
+            transform.position = target.parent.position;
 
             if (MovementForward.inHyperSpace)
             {
-                mainCamera.position = new Vector3((target.parent.position.x + target.position.x) / hyperPosition,
-                                                  (target.parent.position.y + target.position.y) / hyperPosition,
+                //mainCamera.position = new Vector3((target.parent.position.x + target.position.x) / hyperPosition,
+                  //                                (target.parent.position.y + target.position.y) / hyperPosition,
+                    //                              target.position.z - distanceFromTarget);
+                mainCamera.position = new Vector3(transform.position.x - ((transform.position.x - target.position.x) / hyperPosition),
+                                                  transform.position.y - ((transform.position.y - target.position.y) / hyperPosition),
                                                   target.position.z - distanceFromTarget);
                 //transform.Rotate(Vector3.forward *
                  //                Time.deltaTime *
