@@ -49,7 +49,7 @@ public class LinearPlanet : MonoBehaviour {
             Vector3 pos = (Input.mousePosition);
             
             pos.z = 0;
-            if (Input.mousePosition.x > Screen.width * 3 / 4)
+            if (Input.mousePosition.x > Screen.width * 2 / 3)
             {
                 anchor.x = 1.1f;
             }
@@ -114,7 +114,7 @@ public class LinearPlanet : MonoBehaviour {
         }
 
         lvnumber.text = "run # " + level;
-        lengthInSeconds.text =  secs + " seconds";
+        lengthInSeconds.text =  secs + " secs";
         score.text =  points;
         if (trophy > 0)
         {

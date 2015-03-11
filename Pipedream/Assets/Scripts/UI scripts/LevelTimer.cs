@@ -68,13 +68,7 @@ public class LevelTimer : MonoBehaviour {
             Debug.Log("Timer found player by tag");
         }
 
-        Vector3 pos = new Vector3(0, -328, 0);
-        UI_c = FindObjectOfType<Canvas>();
-        instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;
-        instantBar.transform.SetParent(UI_c.transform, false);
-        instantBar.transform.localPosition = pos;
-
-        distanceBar = instantBar.GetComponent<Slider>();
+        CreateDistanceBar();
 
         //testbar = GameObject.FindWithTag("travelIndicator").GetComponent<scrollbartest>();
 
@@ -206,5 +200,14 @@ public class LevelTimer : MonoBehaviour {
         return levelId;
     }
 
+    void CreateDistanceBar()
+    {
+        Vector3 pos = new Vector3(50, -328, 0);
+        UI_c = FindObjectOfType<Canvas>();
+        instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;
+        instantBar.transform.SetParent(UI_c.transform, false);
+        instantBar.transform.localPosition = pos;
 
+        distanceBar = instantBar.GetComponent<Slider>();
+    }
 }
