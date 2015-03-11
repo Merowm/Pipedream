@@ -18,7 +18,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &184920
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -27,8 +27,9 @@ GameObject:
   - 33: {fileID: 3384920}
   - 23: {fileID: 2384920}
   - 95: {fileID: 9584920}
+  - 114: {fileID: 11459870}
   m_Layer: 0
-  m_Name: Wireframe
+  m_Name: WireframeGraphics
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,6 +52,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &189148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 489148}
+  m_Layer: 0
+  m_Name: Wireframe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &192610
 GameObject:
   m_ObjectHideFlags: 1
@@ -63,7 +79,7 @@ GameObject:
   - 23: {fileID: 2392610}
   - 95: {fileID: 9592610}
   m_Layer: 0
-  m_Name: Asteroid
+  m_Name: AsteroidGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,11 +91,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: -1.4963423, y: .381192684, z: -2.17818451}
+  m_LocalScale: {x: 2.5, y: 3, z: 2.5}
   m_Children: []
-  m_Father: {fileID: 484920}
+  m_Father: {fileID: 489148}
   m_RootOrder: 0
 --- !u!4 &484920
 Transform:
@@ -88,13 +104,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184920}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 466316}
-  - {fileID: 492610}
-  m_Father: {fileID: 484924}
-  m_RootOrder: 0
+  m_LocalPosition: {x: -1.4963423, y: .381192684, z: -2.17818451}
+  m_LocalScale: {x: 2.5, y: 3, z: 2.5}
+  m_Children: []
+  m_Father: {fileID: 489148}
+  m_RootOrder: 1
 --- !u!4 &484924
 Transform:
   m_ObjectHideFlags: 1
@@ -102,11 +116,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.3372955, y: -2.19819903, z: 753.724915}
+  m_LocalPosition: {x: 1.4419837, y: -2.77945948, z: 54.5245514}
   m_LocalScale: {x: 2.5, y: 2.5, z: 3}
   m_Children:
-  - {fileID: 484920}
+  - {fileID: 489148}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &489148
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .598536909, y: -.152477071, z: .726061523}
+  m_LocalScale: {x: .400000006, y: .400000006, z: .333333343}
+  m_Children:
+  - {fileID: 466316}
+  - {fileID: 484920}
+  - {fileID: 492610}
+  m_Father: {fileID: 484924}
   m_RootOrder: 0
 --- !u!4 &492610
 Transform:
@@ -114,12 +143,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192610}
-  m_LocalRotation: {x: 0, y: 1.04581801e-08, z: 0, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: .707106829, y: 7.39505035e-09, z: -7.39505035e-09, w: -.707106829}
+  m_LocalPosition: {x: -1.4963423, y: .381192684, z: -2.17818451}
+  m_LocalScale: {x: 2.5, y: 3, z: 2.5}
   m_Children: []
-  m_Father: {fileID: 484920}
-  m_RootOrder: 1
+  m_Father: {fileID: 489148}
+  m_RootOrder: 2
 --- !u!23 &2384920
 Renderer:
   m_ObjectHideFlags: 1
@@ -229,6 +258,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayDistance: 25
   asteroidSpeedMultiplier: 10
+--- !u!114 &11459870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acb12046c21f274b9ae47f1b644a38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationRangeMax: .0500000007
+  rotationRangeMin: -.0500000007
 --- !u!114 &11472018
 MonoBehaviour:
   m_ObjectHideFlags: 1

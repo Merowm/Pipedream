@@ -4,6 +4,8 @@ using System.Collections;
 public class MovementForward : MonoBehaviour
 {
     public static bool inHyperSpace = false;
+    public static bool accelerateToHyperspace = false;
+    public static bool decelerateToSpaceSpeed = false;
     public float currentSpeed;
     public float currentSpeedPerSecond;
     public float hyperspaceSpeed;
@@ -13,10 +15,9 @@ public class MovementForward : MonoBehaviour
     public float acceleration;
     public float deceleration;
     public Vector3 direction;
-    public bool accelerateToHyperspace = false;
-    public bool decelerateToSpaceSpeed = false;
 
     private Movement2D movement2D;
+    private SpaceDriveState spaceDriveState;
     private Transform shipTransform;
     private GameObject hyperspaceHorizont;
     private GameObject boundaryCircle;
@@ -26,11 +27,12 @@ public class MovementForward : MonoBehaviour
 	void Awake ()
     {
         movement2D = transform.GetComponent<Movement2D>();
+        spaceDriveState = transform.GetComponent<SpaceDriveState>();
         shipTransform = transform.FindChild("Ship").transform;
         hyperspaceHorizont = transform.FindChild("HyperspaceHorizont").gameObject;
         boundaryCircle = transform.FindChild("BoundaryCircle").gameObject;
         originalSpacePosition = shipTransform.position;
-        originalHyperspacePosition =shipTransform.position + new Vector3(0,-250,0);//shipTransform.position - transform.position;
+        originalHyperspacePosition = shipTransform.position + new Vector3(0,-250,0);//shipTransform.position - transform.position;
 	}
 
 	void FixedUpdate ()
@@ -46,12 +48,12 @@ public class MovementForward : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            accelerateToHyperspace = true;
+            //accelerateToHyperspace = true;
         }
         if (Input.GetKey(KeyCode.F))
         {
-            DisengagingHyperSpace();
-            decelerateToSpaceSpeed = true;
+            //spaceDriveState.DisengagingHyperSpace();
+           // decelerateToSpaceSpeed = true;
         }
 
         /*
@@ -72,33 +74,6 @@ public class MovementForward : MonoBehaviour
         currentSpeedPerSecond = (currentPosition.z - lastPosition.z) / Time.deltaTime;
 	}
 
-    public void DisengagingHyperSpace()
-    {
-        inHyperSpace = false;
-        transform.rotation = new Quaternion(0,0,0,0);
-        transform.position = new Vector3(0,0,0);
-        shipTransform.position = originalSpacePosition;
-        //mainCamera.transform.position = new Vector3(transform.position.x,
-        //                                            mainCamera.transform.position.y,
-        //                                            mainCamera.transform.position.z);
-        //mainCamera.rotation = new Quaternion(0,0,0,0);
-        movement2D.ResetVariables();
-    }
-
-    void EngagingHyperSpace()
-    {
-        inHyperSpace = true;
-        transform.rotation = new Quaternion(0,0,0,0);
-        transform.position = new Vector3(0,-250,0);
-        shipTransform.position = originalHyperspacePosition;
-        //mainCamera.transform.position = new Vector3(transform.position.x,
-        //                                            mainCamera.transform.position.y,
-        //                                            mainCamera.transform.position.z);
-        //mainCamera.rotation = new Quaternion(0,0,0,0);
-        movement2D.ResetVariables();
-        hyperspaceHorizont.SetActive(true);
-    }
-
     void AccelerateToHyperspace()
     {
         boundaryCircle.SetActive(false);
@@ -110,7 +85,7 @@ public class MovementForward : MonoBehaviour
         else
         {
             currentSpeed = hyperspaceSpeed;
-            EngagingHyperSpace();
+            spaceDriveState.EngagingHyperSpace();
             accelerateToHyperspace = false;
         }
     }

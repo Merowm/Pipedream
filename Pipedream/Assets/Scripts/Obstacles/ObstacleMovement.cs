@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class ObstacleMovement : MonoBehaviour
 {
     public Vector3 direction = new Vector3(1.0f,1.0f,1.0f);

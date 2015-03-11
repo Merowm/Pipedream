@@ -19,7 +19,7 @@ public class Wireframe : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerMovement = player.GetComponent<MovementForward>();
         wireframe = transform.GetChild(0).transform;
-        asteroid = wireframe.FindChild("Asteroid").transform;
+        asteroid = wireframe.FindChild("AsteroidGraphics").transform;
     }
     
     void FixedUpdate ()

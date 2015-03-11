@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Movement2D : MonoBehaviour
@@ -22,7 +22,6 @@ public class Movement2D : MonoBehaviour
     private Controls controls;
     private Transform shipTransform;
     private PlayerCollisions collisions;
-    private Transform mouseAnglePointParent;
     //In hyperspace variables
     private float hyperspaceAcceleration;
     private float hyperspaceDeceleration;
@@ -44,7 +43,6 @@ public class Movement2D : MonoBehaviour
         controls = transform.GetComponent<Controls>();
         shipTransform = transform.FindChild("Ship").transform;
         collisions = shipTransform.FindChild("Collider").GetComponent<PlayerCollisions>();
-        mouseAnglePointParent = transform.FindChild("MouseAnglePoint").transform;
 	}
 
     void Update ()
