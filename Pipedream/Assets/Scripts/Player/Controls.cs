@@ -96,14 +96,23 @@ public class Controls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && (movementForward.currentSpeed == movementForward.spaceSpeed ||
                                             movementForward.currentSpeed == movementForward.hyperspaceSpeed))
         {
-            spaceDriveState.SetDriveStateForward();
-
             if (!MovementForward.inHyperSpace)
             {
-                movementForward.accelerateToHyperspace = true;
+                if (spaceDriveState.currentDriveIndex < spaceDriveState.driveStatePositions.Count - 1)
+                {
+                    spaceDriveState.SetDriveStateForward();
+                    movementForward.accelerateToHyperspace = true;
+                }
+                else
+                {
+                    spaceDriveState.SetDriveStateForward();
+                    spaceDriveState.DisengagingHyperSpace();
+                    movementForward.decelerateToSpaceSpeed = true;
+                }
             }
             else
             {
+                spaceDriveState.SetDriveStateForward();
                 spaceDriveState.DisengagingHyperSpace();
                 movementForward.decelerateToSpaceSpeed = true;
             }
@@ -112,14 +121,23 @@ public class Controls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && (movementForward.currentSpeed == movementForward.spaceSpeed ||
                                             movementForward.currentSpeed == movementForward.hyperspaceSpeed))
         {
-            spaceDriveState.SetDriveStateBackward();
-
             if (!MovementForward.inHyperSpace)
             {
-                movementForward.accelerateToHyperspace = true;
+                if (spaceDriveState.currentDriveIndex > 0)
+                {
+                    spaceDriveState.SetDriveStateBackward();
+                    movementForward.accelerateToHyperspace = true;
+                }
+                else
+                {
+                    spaceDriveState.SetDriveStateBackward();
+                    spaceDriveState.DisengagingHyperSpace();
+                    movementForward.decelerateToSpaceSpeed = true;
+                }
             }
             else
             {
+                spaceDriveState.SetDriveStateBackward();
                 spaceDriveState.DisengagingHyperSpace();
                 movementForward.decelerateToSpaceSpeed = true;
             }

@@ -16,23 +16,15 @@ public class MovementForward : MonoBehaviour
     public float deceleration;
     public Vector3 direction;
 
-    private Movement2D movement2D;
     private SpaceDriveState spaceDriveState;
-    private Transform shipTransform;
     private GameObject hyperspaceHorizont;
     private GameObject boundaryCircle;
-    private Vector3 originalSpacePosition;
-    private Vector3 originalHyperspacePosition;
 
 	void Awake ()
     {
-        movement2D = transform.GetComponent<Movement2D>();
         spaceDriveState = transform.GetComponent<SpaceDriveState>();
-        shipTransform = transform.FindChild("Ship").transform;
         hyperspaceHorizont = transform.FindChild("HyperspaceHorizont").gameObject;
         boundaryCircle = transform.FindChild("BoundaryCircle").gameObject;
-        originalSpacePosition = shipTransform.position;
-        originalHyperspacePosition = shipTransform.position + new Vector3(0,-250,0);//shipTransform.position - transform.position;
 	}
 
 	void FixedUpdate ()
@@ -45,27 +37,6 @@ public class MovementForward : MonoBehaviour
         {
             DecelerateToSpaceSpeed();
         }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            //accelerateToHyperspace = true;
-        }
-        if (Input.GetKey(KeyCode.F))
-        {
-            //spaceDriveState.DisengagingHyperSpace();
-           // decelerateToSpaceSpeed = true;
-        }
-
-        /*
-        if (currentSpeed >= hyperspaceSpeed && inHyperSpace == false)
-        {
-            EngagingHyperSpace();
-        }
-        if (currentSpeed <= hyperspaceSpeed && inHyperSpace == true)
-        {
-            DisengagingHyperSpace();
-        }
-        */
 
         Vector3 lastPosition = transform.position;
         transform.position += direction * currentSpeed * Time.deltaTime;

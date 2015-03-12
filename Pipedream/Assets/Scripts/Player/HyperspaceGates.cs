@@ -17,8 +17,20 @@ public class HyperspaceGates : MonoBehaviour
         if (other.gameObject.tag == "HyperspaceGateEntrance")
         {
             Debug.Log("Engaging Hyperspace!");
-            spaceDriveState.SetDriveStateForward();
-            movement.accelerateToHyperspace = true;
+            //spaceDriveState.SetDriveStateForward();
+            //movement.accelerateToHyperspace = true;
+
+            if (spaceDriveState.currentDriveIndex < spaceDriveState.driveStatePositions.Count - 1)
+            {
+                spaceDriveState.SetDriveStateForward();
+                movement.accelerateToHyperspace = true;
+            }
+            else
+            {
+                spaceDriveState.SetDriveStateForward();
+                spaceDriveState.DisengagingHyperSpace();
+                movement.decelerateToSpaceSpeed = true;
+            }
         }
         if (other.gameObject.tag == "HyperspaceGateExit")
         {

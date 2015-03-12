@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+//TODO: Fix timeItTakes = infinity
 //[ExecuteInEditMode]
 public class ObstacleMovement : MonoBehaviour
 {
@@ -37,7 +37,7 @@ public class ObstacleMovement : MonoBehaviour
         //UNFINISHED
         float distanceToTravelPlayer = displayDistance - backAtOriginDistance;
         timeItTakes = distanceToTravelPlayer / playerMovement.currentSpeedPerSecond;
-        Debug.Log(timeItTakes, this.gameObject);
+        //Debug.Log(timeItTakes, this.gameObject);
 
         if (transform.parent.tag == "SpawnedObject")
         {

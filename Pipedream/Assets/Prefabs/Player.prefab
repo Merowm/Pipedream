@@ -81,6 +81,7 @@ GameObject:
   - 114: {fileID: 11438536}
   - 114: {fileID: 11438534}
   - 114: {fileID: 11438248}
+  - 114: {fileID: 11422514}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -407,6 +408,18 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11422514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72dc4e8285e7eb4b953752f806c6add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleObjectList: []
 --- !u!114 &11424668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,8 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b38818ad06715848acc976dd8284a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hyperspaceStartingPositions: []
-  spaceStartingPositions: []
+  driveStatePositionObjects: []
+  driveStatePositions: []
+  currentDriveIndex: 0
 --- !u!114 &11438524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -522,6 +536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dbd75e5e6bba94699e72a9b078f957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accelerateToHyperspace: 0
+  decelerateToSpaceSpeed: 0
   currentSpeed: 20
   currentSpeedPerSecond: 0
   hyperspaceSpeed: 100
@@ -531,8 +547,6 @@ MonoBehaviour:
   acceleration: 100
   deceleration: 100
   direction: {x: 0, y: 0, z: 2}
-  accelerateToHyperspace: 0
-  decelerateToSpaceSpeed: 0
 --- !u!120 &12017590
 LineRenderer:
   m_ObjectHideFlags: 1

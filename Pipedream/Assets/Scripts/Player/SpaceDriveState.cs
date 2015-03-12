@@ -15,13 +15,14 @@ public class SpaceDriveState : MonoBehaviour
 
 	void Awake ()
     {
-        GameObject driveStates = GameObject.FindGameObjectWithTag("DriveStates");
-        int drivesStateChildrenCount = driveStates.transform.childCount;
+        GameObject[] driveStates = GameObject.FindGameObjectsWithTag("DriveState");
 
-        for (int i = 0; i < drivesStateChildrenCount; i++)
+        for (int i = driveStates.Length; i > 0; i--)
         {
-            driveStatePositionObjects.Add(driveStates.transform.GetChild(i).gameObject);
+            driveStatePositionObjects.Add(driveStates[i - 1]);
         }
+
+        driveStatePositionObjects.Sort(SortByName);
 
         for (int i = 0; i < driveStatePositionObjects.Count; i++)
         {
@@ -33,13 +34,6 @@ public class SpaceDriveState : MonoBehaviour
         hyperspaceHorizont = transform.FindChild("HyperspaceHorizont").gameObject;
         boundaryCircle = transform.FindChild("BoundaryCircle").gameObject;
         distanceToParentAtStart = new Vector3(0, Vector3.Distance(shipTransform.position, transform.position), 0);
-	}
-
-	void Update ()
-    {
-        //nextDrivePosition = driveStatePositions[nextDriveIndex];
-
-        //SetDriveVariables();
 	}
 
     public void SetDriveStateForward()
@@ -79,6 +73,11 @@ public class SpaceDriveState : MonoBehaviour
         transform.position = driveStatePositions[currentDriveIndex];
         shipTransform.position = transform.position - distanceToParentAtStart;
         movement2D.ResetVariables();
+    }
+
+    int SortByName(GameObject object1, GameObject object2)
+    {
+        return object1.name.CompareTo(object2.name);
     }
 }
 
