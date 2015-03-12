@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class SpaceDriveState : MonoBehaviour
 {
+    public int currentDriveIndex = 0;
     public List<GameObject> driveStatePositionObjects;
     public List<Vector3> driveStatePositions;
-    public int currentDriveIndex = 0;
 
     private Movement2D movement2D;
     private Transform shipTransform;

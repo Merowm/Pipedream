@@ -207,7 +207,7 @@ public class LevelTimer : MonoBehaviour {
         instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;
         instantBar.transform.SetParent(UI_c.transform, false);
         instantBar.transform.localPosition = pos;
-        instantBar.GetComponent<DistanceMeter>().SendLength(fullDistance);
+        //instantBar.GetComponent<DistanceMeter>().SendLength(fullDistance);
         distanceBar = instantBar.GetComponent<Slider>();
     }
 }
