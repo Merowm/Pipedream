@@ -4,8 +4,8 @@ using System.Collections;
 public class MovementForward : MonoBehaviour
 {
     public static bool inHyperSpace = false;
-    public static bool accelerateToHyperspace = false;
-    public static bool decelerateToSpaceSpeed = false;
+    public bool accelerateToHyperspace = false;
+    public bool decelerateToSpaceSpeed = false;
     public float currentSpeed;
     public float currentSpeedPerSecond;
     public float hyperspaceSpeed;

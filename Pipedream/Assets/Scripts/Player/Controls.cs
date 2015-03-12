@@ -100,12 +100,12 @@ public class Controls : MonoBehaviour
 
             if (!MovementForward.inHyperSpace)
             {
-                MovementForward.accelerateToHyperspace = true;
+                movementForward.accelerateToHyperspace = true;
             }
             else
             {
                 spaceDriveState.DisengagingHyperSpace();
-                MovementForward.decelerateToSpaceSpeed = true;
+                movementForward.decelerateToSpaceSpeed = true;
             }
         }
         //Previous drive state
@@ -116,12 +116,12 @@ public class Controls : MonoBehaviour
 
             if (!MovementForward.inHyperSpace)
             {
-                MovementForward.accelerateToHyperspace = true;
+                movementForward.accelerateToHyperspace = true;
             }
             else
             {
                 spaceDriveState.DisengagingHyperSpace();
-                MovementForward.decelerateToSpaceSpeed = true;
+                movementForward.decelerateToSpaceSpeed = true;
             }
         }
     }

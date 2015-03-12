@@ -4,10 +4,12 @@ using System.Collections;
 public class HyperspaceGates : MonoBehaviour
 {
     private SpaceDriveState spaceDriveState;
+    private MovementForward movement;
 
     void Awake()
     {
         spaceDriveState = transform.parent.parent.GetComponent<SpaceDriveState>();
+        movement = transform.parent.parent.GetComponent<MovementForward>();
     }
 
     void OnTriggerEnter (Collider other)
@@ -16,14 +18,14 @@ public class HyperspaceGates : MonoBehaviour
         {
             Debug.Log("Engaging Hyperspace!");
             spaceDriveState.SetDriveStateForward();
-            MovementForward.accelerateToHyperspace = true;
+            movement.accelerateToHyperspace = true;
         }
         if (other.gameObject.tag == "HyperspaceGateExit")
         {
             Debug.Log("Diengaging Hyperspace!");
             spaceDriveState.SetDriveStateForward();
             spaceDriveState.DisengagingHyperSpace();
-            MovementForward.decelerateToSpaceSpeed = true;
+            movement.decelerateToSpaceSpeed = true;
         }
     }
 }
