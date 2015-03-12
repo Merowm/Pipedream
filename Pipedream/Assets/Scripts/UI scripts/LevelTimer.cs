@@ -16,7 +16,6 @@ public class LevelTimer : MonoBehaviour {
     EndLevelScore end;
     GameObject instantBar;
     Slider distanceBar;
-    scrollbartest testbar;
     Canvas UI_c;
     public int fullDistance;
      
@@ -42,10 +41,6 @@ public class LevelTimer : MonoBehaviour {
     {   
         // Components set to variables, now with debug checks!
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
-        if (stats != null)
-        {
-            Debug.Log("Timer found stats by tag");
-        }
 
         // For debugging and testing, no level data defined, no ending
         if (levelId > 0)
@@ -63,29 +58,15 @@ public class LevelTimer : MonoBehaviour {
 
         
         playerShip = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        if (playerShip != null)
-        {
-            Debug.Log("Timer found player by tag");
-        }
 
         CreateDistanceBar();
 
-        //testbar = GameObject.FindWithTag("travelIndicator").GetComponent<scrollbartest>();
-
         pointsTextfield = GameObject.FindWithTag("Scoretext").GetComponent<Text>();
-        if (pointsTextfield != null)
-        {
-            Debug.Log("Timer found pointsTextfield by tag");
-            WriteToGuiPoints(0);
-        }
+        WriteToGuiPoints(0);
 
         bonusTextField = GameObject.FindWithTag("Bonustext").GetComponent<Text>();
-        if (bonusTextField != null)
-        {
-            Debug.Log("Timer found bonusTextField by tag");
-            WriteToGuiBonus(0);
-        }
-
+        WriteToGuiBonus(0);
+        
         lastPlayerPosition = playerShip.position;
 
     }
@@ -105,18 +86,18 @@ public class LevelTimer : MonoBehaviour {
             if (deltaDistance < 0)
             {
                 distanceMeter += lastPlayerPosition.z;
+                Debug.Log("jumped at point " + lastPlayerPosition.z);
             }
             distanceMeter += deltaDistance;
 
             distanceBar.value = (distanceMeter/fullDistance);
-            //testbar.MoveSlider(distanceMeter / fullDistance);
 
             lastPlayerPosition = currentPlayerPosition;
             updateDelay = 0;
         }
         if (distanceMeter >= fullDistance && levelId > 0)
         {
-            Debug.Log(timeInSecs);
+            Debug.Log("level length: " + timeInSecs + "seconds");
             FinalLevelScore();
             stats.UnlockLevel(levelId + 1);
             Application.LoadLevel("EndLevel");
@@ -200,6 +181,10 @@ public class LevelTimer : MonoBehaviour {
         return levelId;
     }
 
+    public float GetCurrentDistance()
+    {
+        return distanceMeter;
+    }
     void CreateDistanceBar()
     {
         Vector3 pos = new Vector3(50, -328, 0);
