@@ -4,26 +4,30 @@ using System.Collections.Generic;
 public class SpaceDriveState : MonoBehaviour
 {
     public int currentDriveIndex = 0;
-    public List<GameObject> driveStatePositionObjects;
-    public List<Vector3> driveStatePositions;
+    public List<GameObject> driveStatePositionObjects; //List of level portion objects
+    public List<Vector3> driveStatePositions; //List of where the level portions start at
 
     private Movement2D movement2D;
     private Transform shipTransform;
     private GameObject hyperspaceHorizont;
     private GameObject boundaryCircle;
-    private Vector3 distanceToParentAtStart;
+    private Vector3 distanceToParentAtStart; //The position the player should be at when a level portion starts
 
 	void Awake ()
     {
+        //Finds all the portions of the level
         GameObject[] driveStates = GameObject.FindGameObjectsWithTag("DriveState");
 
+        //Converts the level portion array to a list
         for (int i = driveStates.Length; i > 0; i--)
         {
             driveStatePositionObjects.Add(driveStates[i - 1]);
         }
 
+        //Sorts the level portions into numerical order from 0 onwards
         driveStatePositionObjects.Sort(SortByName);
 
+        //Lists the starting positions for each portion of the level
         for (int i = 0; i < driveStatePositionObjects.Count; i++)
         {
             driveStatePositions.Add(driveStatePositionObjects[i].transform.position);
@@ -36,6 +40,8 @@ public class SpaceDriveState : MonoBehaviour
         distanceToParentAtStart = new Vector3(0, Vector3.Distance(shipTransform.position, transform.position), 0);
 	}
 
+    //Cycles forward on the level portions list,
+    //if at end reverts to beginning of the list
     public void SetDriveStateForward()
     {
         if (currentDriveIndex < driveStatePositions.Count - 1)
@@ -44,7 +50,9 @@ public class SpaceDriveState : MonoBehaviour
         }
         else currentDriveIndex = 0;
     }
-    
+
+    //Cycles backward on the level portions list,
+    //if at beginning reverts to the end of the list
     public void SetDriveStateBackward()
     {
         if (currentDriveIndex > 0)
@@ -67,6 +75,7 @@ public class SpaceDriveState : MonoBehaviour
         SetDriveVariables();
     }
 
+    //Sets player's position, rotation, and resets speeds
     void SetDriveVariables()
     {
         transform.rotation = new Quaternion(0,0,0,0);

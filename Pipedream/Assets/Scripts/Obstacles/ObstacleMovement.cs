@@ -25,38 +25,7 @@ public class ObstacleMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerMovement = player.GetComponent<MovementForward>();
 
-        if (randomizeSpeed)
-        {
-            //XAxisSpeedMax = Random.Range(XAxisSpeedMin, XAxisSpeedMax + 0.1f);
-            //YAxisSpeedMax = Random.Range(XAxisSpeedMin, YAxisSpeedMax + 0.1f);
-            //ZAxisSpeedMax = Random.Range(XAxisSpeedMin, ZAxisSpeedMax + 0.1f);
-        }
-        //xyzVector = new Vector3(XAxisSpeedMax, YAxisSpeedMax, ZAxisSpeedMax);
-        direction = direction.normalized;
-
-        //UNFINISHED
-        float distanceToTravelPlayer = displayDistance - backAtOriginDistance;
-        timeItTakes = distanceToTravelPlayer / playerMovement.currentSpeedPerSecond;
-        //Debug.Log(timeItTakes, this.gameObject);
-
-        if (transform.parent.tag == "SpawnedObject")
-        {
-            Vector3 nextPosition = startingPosition.position + direction * speed * Time.deltaTime;
-        
-            speedPerSecond = Vector3.Distance(nextPosition, startingPosition.position) / Time.deltaTime;
-            direction = (startingPosition.position - nextPosition).normalized;
-
-            obstacleTravelingDistance = speedPerSecond * timeItTakes;
-
-            startingPosition.position = transform.position - direction * obstacleTravelingDistance;
-        }
-        else
-        {
-            obstacleTravelingDistance = Vector3.Distance(startingPosition.position,transform.parent.position);
-            speedPerSecond = obstacleTravelingDistance / 10;//timeItTakes;
-            speed = speedPerSecond / 2;
-            direction = (transform.parent.position - startingPosition.position).normalized;
-        }
+        Initialize();
     }
 
     void Update ()
@@ -104,6 +73,42 @@ public class ObstacleMovement : MonoBehaviour
         {
             transform.position = transform.parent.position;
             positionSet = false;
+        }
+    }
+
+    public void Initialize()
+    {
+        if (randomizeSpeed)
+        {
+            //XAxisSpeedMax = Random.Range(XAxisSpeedMin, XAxisSpeedMax + 0.1f);
+            //YAxisSpeedMax = Random.Range(XAxisSpeedMin, YAxisSpeedMax + 0.1f);
+            //ZAxisSpeedMax = Random.Range(XAxisSpeedMin, ZAxisSpeedMax + 0.1f);
+        }
+        //xyzVector = new Vector3(XAxisSpeedMax, YAxisSpeedMax, ZAxisSpeedMax);
+        direction = direction.normalized;
+
+        float distanceToTravelPlayer = displayDistance - backAtOriginDistance;
+        timeItTakes = distanceToTravelPlayer / playerMovement.currentSpeedPerSecond;
+        //Debug.Log(timeItTakes + " ASDASDASD   1 ", this.gameObject);
+        
+        if (transform.parent.tag == "SpawnedObject")
+        {
+            Vector3 nextPosition = startingPosition.position + direction * speed * Time.deltaTime;
+            
+            speedPerSecond = Vector3.Distance(nextPosition, startingPosition.position) / Time.deltaTime;
+            direction = (startingPosition.position - nextPosition).normalized;
+            //Debug.Log(timeItTakes + " ASDASDASD   2 ", this.gameObject);
+            obstacleTravelingDistance = speedPerSecond * timeItTakes;
+            
+            startingPosition.position = transform.position - direction * obstacleTravelingDistance;
+        }
+        else
+        {
+            obstacleTravelingDistance = Vector3.Distance(startingPosition.position,transform.parent.position);
+            //Debug.Log(timeItTakes + " ASDASDASD_____ADSAD   2 ", this.gameObject);
+            speedPerSecond = obstacleTravelingDistance / 10;//timeItTakes;
+            //speed = speedPerSecond / 2;
+            direction = (transform.parent.position - startingPosition.position).normalized;
         }
     }
     

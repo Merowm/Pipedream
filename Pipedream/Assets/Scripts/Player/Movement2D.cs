@@ -15,7 +15,6 @@ public class Movement2D : MonoBehaviour
     public float spaceAccelerationMultiplier = 2;
     public float spaceDecelerationMultiplier = 3;
     public float boundaryRadius = 10;
-    public float currentSpaceSpeedMouse = 0;
 
     //Components
     private GameObject mainCamera;
@@ -143,7 +142,6 @@ public class Movement2D : MonoBehaviour
         directionForceLeft = 0;
         directionForceUp = 0;
         directionForceDown = 0;
-        currentSpaceSpeedMouse = 0;
     }
 
     void HyperspaceMovement()

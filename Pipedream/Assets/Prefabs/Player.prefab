@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.57000005, y: -5.15999985, z: -.170000002}
+  m_LocalPosition: {x: -.649999976, y: -5.15999985, z: -.150000006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 438532}
@@ -255,7 +255,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.57000005, y: -5.15999985, z: -.170000002}
+  m_LocalPosition: {x: .649999976, y: -5.15999985, z: -.150000006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 438532}
@@ -344,7 +344,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138528}
-  m_Mesh: {fileID: 4300000, guid: 46b32a67f658aeb40a5322d349347690, type: 3}
+  m_Mesh: {fileID: 4300000, guid: bf8cd72739c9b884c8f9900d217320a0, type: 3}
 --- !u!33 &3338526
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -392,7 +392,7 @@ MeshCollider:
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 46b32a67f658aeb40a5322d349347690, type: 3}
+  m_Mesh: {fileID: 4300000, guid: bf8cd72739c9b884c8f9900d217320a0, type: 3}
 --- !u!95 &9538522
 Animator:
   serializedVersion: 3
@@ -459,9 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b38818ad06715848acc976dd8284a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDriveIndex: 0
   driveStatePositionObjects: []
   driveStatePositions: []
-  currentDriveIndex: 0
 --- !u!114 &11438524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -524,7 +524,6 @@ MonoBehaviour:
   spaceAccelerationMultiplier: 3
   spaceDecelerationMultiplier: 3
   boundaryRadius: 10
-  currentSpaceSpeedMouse: 0
 --- !u!114 &11438536
 MonoBehaviour:
   m_ObjectHideFlags: 1
