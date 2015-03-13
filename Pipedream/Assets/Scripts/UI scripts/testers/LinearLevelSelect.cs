@@ -7,6 +7,7 @@ public class LinearLevelSelect : MonoBehaviour {
     public GameObject[] planetButtons;
 
     Statistics stats;
+    LoadScreen loader;
     struct planet
     {
         public int planetnumber;
@@ -20,6 +21,7 @@ public class LinearLevelSelect : MonoBehaviour {
 	void Start () 
     {
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
+        loader = GameObject.FindWithTag("statistics").GetComponent<LoadScreen>();
         // TODO: sync array length with amount of existing levels in Statistics!
         // NB! First planet is zero? (starting point - no level data, always available?)
         planets = new planet[planetButtons.Length];
@@ -51,6 +53,8 @@ public class LinearLevelSelect : MonoBehaviour {
         if (planets[planetId - 1].isAvailable)
         {
             levelname = stats.GetLevelNameAsString(planetId);
+            
+            loader.showLoader(levelname);
             Invoke("Go", 0.16f);
         }
     }

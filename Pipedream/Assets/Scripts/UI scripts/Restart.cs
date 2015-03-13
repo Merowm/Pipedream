@@ -14,6 +14,8 @@ public class Restart : MonoBehaviour
     {
         st.ResetScore();
         int level = st.GetCurrentLevel();
-        Application.LoadLevel(st.GetLevelNameAsString(level));
+        string levelname = st.GetLevelNameAsString(level);
+        GameObject.FindWithTag("statistics").GetComponent<LoadScreen>().showLoader(levelname);
+        Application.LoadLevel(levelname);
     }
 }

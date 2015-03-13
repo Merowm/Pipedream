@@ -4,13 +4,22 @@ using System.Collections;
 public class GoToNext : MonoBehaviour {
 
     public string SceneToGo;
-	
+    LoadScreen loader;
+    void Awake()
+    {
+        loader = GameObject.FindWithTag("statistics").GetComponent<LoadScreen>();
+
+    }
     public void GoToScene()
     {
-        Invoke("Go", 0.16f);
+        Debug.Log("loader invoked!");
+        loader.showLoader(SceneToGo);
+        Go();
+        //Invoke("Go", 0.01f);
     }
     void Go()
     {
+        
         Application.LoadLevel(SceneToGo);
     }
 }
