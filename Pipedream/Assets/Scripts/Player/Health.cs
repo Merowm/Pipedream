@@ -9,7 +9,7 @@ public class Health : MonoBehaviour {
     public int currentShield = 1;
 
     //for shield regen
-    public float shieldRegenTimer = 5;
+    public float shieldRegenTimer = 0;
     public float shieldRegenTime = 5;
 
     //maximum number of hull the player starts out with
