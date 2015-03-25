@@ -28,6 +28,7 @@ public class PlayerCollisions : MonoBehaviour
             if (MovementForward.inHyperSpace)
             {
                 Debug.Log("Hyperspace collison");
+                transform.parent.GetComponent<Health>().Damage();
                 rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
                 leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
                 movement.ForcedDodge();
@@ -37,6 +38,7 @@ public class PlayerCollisions : MonoBehaviour
             else
             {
                 Debug.Log("Space collision");
+                transform.parent.GetComponent<Health>().Damage();
                 other.transform.parent.parent.GetComponent<ReducePoints>().HitObstacle(true);
                 //TODO:Add explosion
             }
