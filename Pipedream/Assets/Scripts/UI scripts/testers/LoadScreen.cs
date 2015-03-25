@@ -17,8 +17,8 @@ public class LoadScreen : MonoBehaviour {
         if (Application.loadedLevelName == nextlevel && !Application.isLoadingLevel)
             hideLoader();
             
-        else
-            Debug.Log("loading is happening");
+        //else
+            //Debug.Log("loading is happening");
 	}
 
     public void showLoader(string leveltoload)

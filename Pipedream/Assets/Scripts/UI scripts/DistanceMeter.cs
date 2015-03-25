@@ -44,7 +44,7 @@ public class DistanceMeter : MonoBehaviour {
         {
             gateX[i] = donerun + gates[i].transform.position.z + 70;
             donerun = gateX[i];
-            markerX[i] = gateX[i];
+            markerX[i] = gateX[i];            
         }
 
         ConvertToPanelSize();
