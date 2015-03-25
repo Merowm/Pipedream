@@ -165,6 +165,31 @@ public class Movement2D : MonoBehaviour
         //Adds forces from right to those from left and then rotates the player parent accordingly
         currentRotationSpeed = directionForceRightRotation - directionForceLeftRotation;
         transform.Rotate(Vector3.forward * (currentRotationSpeed * 10) * Time.deltaTime);
+
+
+        if (controls.controls["Up"])
+        {
+            if (shipTransform.localPosition.y < -0.5f)
+            {
+                shipTransform.localPosition = new Vector3(0, shipTransform.localPosition.y + 0.05f, 0);
+            }
+            else
+            {
+                shipTransform.localPosition = new Vector3(0, -0.5f, 0);
+            }
+        }
+
+        if (controls.controls["Down"])
+        {
+            if (shipTransform.localPosition.y > -5.0f)
+            {
+                shipTransform.localPosition = new Vector3(0, shipTransform.localPosition.y - 0.05f, 0);
+            }
+            else
+            {
+                shipTransform.localPosition = new Vector3(0, -5.0f, 0);
+            }
+        }
     }
 
     void SpaceMovement()

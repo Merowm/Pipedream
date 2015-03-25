@@ -28,6 +28,19 @@ public class CameraFollow : MonoBehaviour
 
             if (MovementForward.inHyperSpace)
             {
+                /*mainCamera.position = Vector3.SmoothDamp(mainCamera.position,
+                                                         //new Vector3(target.position.x,target.position.y + spacePosition,target.position.z - distanceFromTarget),
+                                                         new Vector3(transform.position.x - ((transform.position.x - target.position.x) / hyperPosition),
+                            transform.position.y - ((transform.position.y - target.position.y) / hyperPosition),
+                            target.position.z - distanceFromTarget),
+                                                         ref velocity,//<--?
+                                                         dampTime);*/
+
+
+
+
+
+
                 //mainCamera.position = new Vector3((target.parent.position.x + target.position.x) / hyperPosition,
                   //                                (target.parent.position.y + target.position.y) / hyperPosition,
                     //                              target.position.z - distanceFromTarget);
@@ -38,6 +51,7 @@ public class CameraFollow : MonoBehaviour
                  //                Time.deltaTime *
                   //              (target.parent.GetComponent<Movement2D>().currentRotationSpeed * 10));
                 transform.rotation = target.parent.rotation;
+
             }
             else
             {
