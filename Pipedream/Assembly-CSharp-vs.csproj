@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_6_2;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +72,8 @@
      <Compile Include="Assets\Scripts\Start.cs" />
      <Compile Include="Assets\Scripts\Statistics.cs" />
      <Compile Include="Assets\Scripts\UI scripts\CurrentScore.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\DataSave.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\DistanceMeter.cs" />
      <Compile Include="Assets\Scripts\UI scripts\FloatPointUI.cs" />
      <Compile Include="Assets\Scripts\UI scripts\GoToNext.cs" />
      <Compile Include="Assets\Scripts\UI scripts\LevelTimer.cs" />
@@ -82,8 +84,6 @@
      <Compile Include="Assets\Scripts\UI scripts\testers\ActivePlanet.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\BonusCounter.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\CountScore.cs" />
-     <Compile Include="Assets\Scripts\UI scripts\testers\DataSave.cs" />
-     <Compile Include="Assets\Scripts\UI scripts\testers\DistanceMeter.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\EndLevelScore.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\FloatingPoints.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\FloatingPointsSprite.cs" />
@@ -93,6 +93,7 @@
      <Compile Include="Assets\Scripts\UI scripts\testers\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\LinearLevelSelect.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\LinearPlanet.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\LoadScreen.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\OptionsPopUp.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\TestTriggerer.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\audioTest.cs" />
@@ -103,7 +104,7 @@
      <None Include="Assets\Graphics\Reality Hyper SIL OFL Font License.txt" />
      <None Include="Assets\shaders\erialfatesti.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

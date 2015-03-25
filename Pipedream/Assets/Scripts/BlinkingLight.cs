@@ -18,10 +18,10 @@ public class BlinkingLight : MonoBehaviour
 
     void Blink()
     {
-        if (light.range == lightRangeMax)
+        if (GetComponent<Light>().range == lightRangeMax)
         {
-            light.range = lightRangeMin;
+            GetComponent<Light>().range = lightRangeMin;
         }
-        else light.range = lightRangeMax;
+        else GetComponent<Light>().range = lightRangeMax;
     }
 }

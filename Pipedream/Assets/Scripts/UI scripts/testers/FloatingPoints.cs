@@ -22,7 +22,7 @@ public class FloatingPoints : MonoBehaviour
     {
         dt = Time.deltaTime;
         transform.position += offset * dt;
-        textMesh.renderer.material.color = DeltaFade(textMesh.renderer.material.color, dt);
+        textMesh.GetComponent<Renderer>().material.color = DeltaFade(textMesh.GetComponent<Renderer>().material.color, dt);
         lifeTimer -= dt;
         if (lifeTimer <= 0)
         {

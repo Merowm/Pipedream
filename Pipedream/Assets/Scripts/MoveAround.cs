@@ -21,7 +21,7 @@ public class MoveAround : MonoBehaviour {
 	void FixedUpdate()
 	{
 		GetDirectionFromInput ();
-		rigidbody.AddForce (gravityDirection);
+		GetComponent<Rigidbody>().AddForce (gravityDirection);
 
 		}
 	void GetDirectionFromInput()
