@@ -67,7 +67,10 @@ public class LinearPlanet : MonoBehaviour {
             }
             infoRect.pivot = anchor;
 
-            instantInfo.transform.position = pos;
+            //instantInfo.transform.localPosition = pos;
+            infoRect.anchoredPosition = pos;
+            Debug.Log(infoRect.anchoredPosition);
+            Debug.Log(pos);
         }
 
         
