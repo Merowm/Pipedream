@@ -36,10 +36,24 @@ public class KongregateAPI : MonoBehaviour {
         }
     }
 
-    //function to set user values when connected to Kongregate API
+    //Called when connected to Kongregate API
     private void OnKongregateAPILoaded(string userInfoString){
         Debug.Log("Connected to Kongregate API");
         Connected = true;
+        string[] parameters = userInfoString.Split('|');
+        UserID = System.Convert.ToInt32(parameters [0]);
+        Username = parameters [1];
+        GameAuthToken = parameters [2];
+
+        //set listener to listen for user signing in to Kongregate. Calls OnKongregateUserSignedIn
+        Application.ExternalEval("kongregate.services.addEventListener('login', function(){" +
+            "var services = kongregate.services;" +
+            "var params=[services.getUserId(), services.getUsername(), services.getGameAuthToken()].join('|');" +
+            "kongregateUnitySupport.getUnityObject().SendMessage('KongregateObject', 'OnKongregateUserSignedIn', params);");
+    }
+
+    //Called when user signs in to Kongregate
+    void OnKongregateUserSignedIn(string userInfoString){
         string[] parameters = userInfoString.Split('|');
         UserID = System.Convert.ToInt32(parameters [0]);
         Username = parameters [1];
@@ -49,7 +63,7 @@ public class KongregateAPI : MonoBehaviour {
     //function to submit data into Kongregate statistics (data can only be non-negative integers)
     public static void SubmitData(string dataName, int dataValue){
         Debug.Log("Trying to submit data to Kongregate");
-        if (Connected)
+        if (Connected && Username != "Guest")
         {
             Application.ExternalCall("kongregate.stats.submit", dataName, dataValue);
             Debug.Log(dataName + ": " + dataValue + " has been submitted");
