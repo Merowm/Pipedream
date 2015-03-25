@@ -5,6 +5,7 @@ using System.Collections;
 public class SpawnerInGame : MonoBehaviour
 {
     public GameObject theObject;
+    public Transform transfrom;
     public int amount;
     public float positionGap;
     public float nextObjectAngleRange;
