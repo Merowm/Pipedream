@@ -15,6 +15,7 @@ public class MineAI : MonoBehaviour
 
 	void Awake ()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
         bodyTransform = transform.GetChild(0).transform;
         targetPosition = targetPositionObject.transform.position;
 	}
