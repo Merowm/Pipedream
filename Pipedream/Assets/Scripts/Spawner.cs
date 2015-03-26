@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[ExecuteInEditMode]
-public class SpawnerEditor : MonoBehaviour
+//[ExecuteInEditMode]
+public class Spawner : MonoBehaviour
 {
     public GameObject theObject;
+    public Transform transfrom;
     public int amount;
     public float positionGap;
     public float nextObjectAngleRange;
