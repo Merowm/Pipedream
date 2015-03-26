@@ -2,7 +2,7 @@
 using System.Collections;
 
 //[ExecuteInEditMode]
-public class SpawnerInGame : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     public GameObject theObject;
     public Transform transfrom;
