@@ -45,6 +45,8 @@ GameObject:
   - 4: {fileID: 484924}
   - 114: {fileID: 11425330}
   - 114: {fileID: 11472018}
+  - 114: {fileID: 11492684}
+  - 135: {fileID: 13552096}
   m_Layer: 0
   m_Name: HyperAsteroid01
   m_TagString: Untagged
@@ -298,6 +300,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemScorePoints: 50
+--- !u!114 &11492684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0e4f9272bcb154da2bba103a66731a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: d15dd51889aa04549b18799f89d51fec, type: 3}
+--- !u!135 &13552096
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
