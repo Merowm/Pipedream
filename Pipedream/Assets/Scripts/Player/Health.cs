@@ -17,9 +17,14 @@ public class Health : MonoBehaviour {
     //current number of hull left that the player has
     public int currentHull = 3;
 
+    //parent containing all the heath GUI
+    public GameObject healthGUI;
+
     void Awake(){
         currentShield = maxShield;
         currentHull = maxHull;
+
+        UpdateHealthGUI();
     }
 
     void Update(){
@@ -44,6 +49,8 @@ public class Health : MonoBehaviour {
         }
         //reset shield regen timer
         shieldRegenTimer = 0;
+
+        UpdateHealthGUI();
     }
 
     //to repair hull
@@ -55,6 +62,8 @@ public class Health : MonoBehaviour {
             ++currentHull;
             Debug.Log("Hull repaired");
         }
+
+        UpdateHealthGUI();
     }
 
     //updats shield regen
@@ -76,9 +85,29 @@ public class Health : MonoBehaviour {
                     shieldRegenTimer = 0;
                 }
                 Debug.Log("Shield regenerated");
+                UpdateHealthGUI();
             }
         }
     }
+
+    private void UpdateHealthGUI(){
+        if (currentHull < 0)
+        {
+            return;
+        }
+        //disable all health GUI
+        for (int i = 0; i < healthGUI.transform.childCount; ++i)
+        {
+            healthGUI.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        //set correct GUI according to hull left and shields
+        healthGUI.transform.FindChild("health_" + currentHull).gameObject.SetActive(true);
+        if (currentShield > 0)
+        {
+            healthGUI.transform.FindChild("shield").gameObject.SetActive(true);
+        }
+    }
+
 }
 
 
