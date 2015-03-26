@@ -5,27 +5,27 @@ public class ChangeLighting : MonoBehaviour
 {
     public Color color;
 
+    private Transform tunnelPart1;
+    private Transform tunnelPart2;
     private Light[] lights;
-    private Color lastColor; //Color last frame
     
     void Awake ()
     {
+        tunnelPart1 = transform.GetChild(0);
+        tunnelPart2 = transform.GetChild(1);
         lights = transform.GetComponentsInChildren<Light>();
-        lastColor = color;
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            //lights[i].color = color;
+        }
     }
     
     void Update ()
     {
-        //Check if color needs to be updated
-        if (color != lastColor)
+        for (int i = 0; i < lights.Length; i++)
         {
-            //Update lastColor
-            lastColor = color;
-            //Change color for each light in lights
-            for (int i = 0; i < lights.Length; i++)
-            {
-                lights [i].color = lastColor;
-            }
+            lights[i].color = color;
         }
     }
 }
