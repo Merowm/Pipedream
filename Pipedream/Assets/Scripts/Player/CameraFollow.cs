@@ -9,6 +9,7 @@ public class CameraFollow : MonoBehaviour
 	public float dampTime = 0.15f;
 	public Transform target;
 
+    private Transform rotator;
     private Transform mainCamera;
 	private Vector3 velocity = Vector3.zero;
 
@@ -16,7 +17,8 @@ public class CameraFollow : MonoBehaviour
 	{
         if (target)
         {
-            mainCamera = transform.GetChild(0).transform;
+            rotator = transform.GetChild(0).transform;
+            mainCamera = rotator.GetChild(0).transform;
         }
 	}
 
@@ -50,12 +52,12 @@ public class CameraFollow : MonoBehaviour
                 //transform.Rotate(Vector3.forward *
                  //                Time.deltaTime *
                   //              (target.parent.GetComponent<Movement2D>().currentRotationSpeed * 10));
-                transform.rotation = target.parent.rotation;
+                rotator.rotation = target.parent.rotation;
 
             }
             else
             {
-                transform.rotation = new Quaternion(0,0,0,0);
+                rotator.rotation = new Quaternion(0,0,0,0);
                 //Vector3 delta = target.position - mainCamera.camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
                 //Vector3 destination = mainCamera.position + delta;
                 mainCamera.position = Vector3.SmoothDamp(mainCamera.position,

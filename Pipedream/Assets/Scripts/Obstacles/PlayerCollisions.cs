@@ -9,12 +9,14 @@ public class PlayerCollisions : MonoBehaviour
     public float leftDistance = 0;
 
     private Movement2D movement;
+    private Health health;
     private Transform rightWingtip;
     private Transform leftWingtip;
 
     void Awake()
     {
         movement = transform.parent.parent.GetComponent<Movement2D>();
+        health = transform.parent.GetComponent<Health>();
         rightWingtip = transform.parent.parent.FindChild("RightWingtip").transform;
         leftWingtip = transform.parent.parent.FindChild("LeftWingtip").transform;
     }
@@ -28,7 +30,7 @@ public class PlayerCollisions : MonoBehaviour
             if (MovementForward.inHyperSpace)
             {
                 Debug.Log("Hyperspace collison");
-                //transform.parent.GetComponent<Health>().Damage();
+                health.Damage();
                 rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
                 leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
                 movement.ForcedDodge();
@@ -38,9 +40,17 @@ public class PlayerCollisions : MonoBehaviour
             else
             {
                 Debug.Log("Space collision");
-                //transform.parent.GetComponent<Health>().Damage();
+                health.Damage();
                 other.transform.parent.parent.GetComponent<ReducePoints>().HitObstacle(true);
                 //TODO:Add explosion
+            }
+        }
+        //Mine collisions
+        if (other.gameObject.tag == "Mine")
+        {
+            if (!other.transform.parent.parent.GetComponent<MineSticking>().stickToTarget)
+            {
+                other.transform.parent.parent.GetComponent<MineSticking>().stickToTarget = true;
             }
         }
         //Collectible collisions

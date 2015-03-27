@@ -52,7 +52,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &149788
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -70,6 +70,21 @@ GameObject:
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &157030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 441178}
+  m_Layer: 0
+  m_Name: Rotator
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +149,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 449788}
+  - {fileID: 441178}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400860
@@ -185,6 +200,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 497688}
   m_RootOrder: 0
+--- !u!4 &441178
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .199334949, y: -1.12179565, z: 742.97052}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 449788}
+  - {fileID: 497688}
+  m_Father: {fileID: 400000}
+  m_RootOrder: 0
 --- !u!4 &449788
 Transform:
   m_ObjectHideFlags: 1
@@ -192,11 +221,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0085105896, y: -4.32848835, z: -10.9746923}
+  m_LocalPosition: {x: -.19082436, y: -3.20669556, z: -753.94519}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 497688}
-  m_Father: {fileID: 400000}
+  m_Children: []
+  m_Father: {fileID: 441178}
   m_RootOrder: 0
 --- !u!4 &497688
 Transform:
@@ -205,15 +233,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -.19082436, y: -3.20669556, z: -753.94519}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419140}
   - {fileID: 400860}
   - {fileID: 408632}
   - {fileID: 401350}
-  m_Father: {fileID: 449788}
-  m_RootOrder: 0
+  m_Father: {fileID: 441178}
+  m_RootOrder: 1
 --- !u!20 &2049788
 Camera:
   m_ObjectHideFlags: 1
