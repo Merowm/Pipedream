@@ -79,20 +79,24 @@ public class Statistics : MonoBehaviour
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
         AddLevelData(3700, 37, 8000, 61, 1); // testing data.
-        AddLevelData(5, 5, 5, 5, 2); // testing unlocking.
+        AddLevelData(5, 5, 2000, 5, 2); // testing unlocking.
         AddLevelData(5, 5, 5, 5, 3);
         AddLevelData(5, 5, 5, 5, 4);
+        
 	}
 
 
     // Add basic level info here. When making new level, call AddLevelData() to add it to the game.
+    // BonusAmount is the max score for the level; 
+    // levelLength is the total distance player has to move along z axis;
+    // levelTime is the playing time of level in seconds.
     void Start()
     {
 
 
     }
 
-    // Update statistics temp data (if needed)
+    // Update statistics temp data 
     public void AddToCurrentPoints(int pointsToAdd)
     {
         currentLevelPoints += pointsToAdd;
@@ -291,7 +295,7 @@ public class Statistics : MonoBehaviour
         return null;
     }
 
-    // For adding a level to game.
+    // For adding a level to game. 
     private void AddLevelData(int bonusAmount, int bonusItemCount, int levelLength, float levelTime, int levelId)
     {
         int goldLimit = (int)(bonusAmount * 0.85f);

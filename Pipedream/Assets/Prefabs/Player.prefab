@@ -524,9 +524,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRotationSpeed: 0
-  maxRotationSpeed: 20
-  hyperspaceAccelerationMultiplier: 3
-  hyperspaceDecelerationMultiplier: 3
+  maxRotationSpeed: 15
+  hyperspaceAccelerationMultiplier: 5
+  hyperspaceDecelerationMultiplier: 5
   currentSpaceSpeedHorizontal: 0
   currentSpaceSpeedVertical: 0
   maxSpaceSpeed: 10
@@ -548,12 +548,13 @@ MonoBehaviour:
   decelerateToSpaceSpeed: 0
   currentSpeed: 20
   currentSpeedPerSecond: 0
-  hyperspaceSpeed: 50
+  hyperspaceSpeed: 60
   spaceSpeed: 20
   maxSpeed: 0
   minSpeed: 0
-  acceleration: 100
-  deceleration: 100
+  countdownToHyperspace: 5
+  accelerationTime: 1.20000005
+  decelerationTime: 1.20000005
   direction: {x: 0, y: 0, z: 2}
 --- !u!114 &11458908
 MonoBehaviour:
@@ -572,6 +573,7 @@ MonoBehaviour:
   shieldRegenTime: 5
   maxHull: 3
   currentHull: 3
+  healthGUI: {fileID: 0}
 --- !u!120 &12017590
 LineRenderer:
   m_ObjectHideFlags: 1
