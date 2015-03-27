@@ -5,6 +5,6 @@ public class DisableRenderer : MonoBehaviour
 {
 	void Awake ()
     {
-        transform.FindChild("HyperPart_x10").gameObject.SetActive(false);
+        transform.FindChild("HyperParts").gameObject.SetActive(false);
 	}
 }
