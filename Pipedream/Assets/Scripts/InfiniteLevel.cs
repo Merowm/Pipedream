@@ -49,6 +49,8 @@ public class InfiniteLevel : MonoBehaviour {
         GameObject newPart = Instantiate(availablePartsList [indexToSpawn], position, Quaternion.identity) as GameObject;
         //add new part to list for easy management
         activePartsList.Add(newPart);
+
+        newPart.transform.FindChild("HyperPart_x10").gameObject.SetActive(true);
     }
 
     //when the player reaches the end of the first tube
