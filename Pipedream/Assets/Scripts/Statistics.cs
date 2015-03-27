@@ -79,7 +79,7 @@ public class Statistics : MonoBehaviour
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
         AddLevelData(3700, 37, 8000, 61, 1); // testing data.
-        AddLevelData(5, 5, 5, 5, 2); // testing unlocking.
+        AddLevelData(5, 5, 2000, 5, 2); // testing unlocking.
         AddLevelData(5, 5, 5, 5, 3);
         AddLevelData(5, 5, 5, 5, 4);
         

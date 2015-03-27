@@ -76,6 +76,7 @@ public class LevelTimer : MonoBehaviour {
     {
         updateDelay += Time.deltaTime;
         timeInSecs += Time.deltaTime;
+        
         // TODO: Change to use percentage of full distance? (why?)
         if (updateDelay >= updateInterval)
         {
@@ -192,7 +193,7 @@ public class LevelTimer : MonoBehaviour {
         instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;
         instantBar.transform.SetParent(UI_c.transform, false);
         instantBar.transform.localPosition = pos;
-        instantBar.GetComponent<DistanceMeter>().SendLength(fullDistance);
+        //instantBar.GetComponent<DistanceMeter>().SendLength(fullDistance);
         distanceBar = instantBar.GetComponent<Slider>();
     }
 }
