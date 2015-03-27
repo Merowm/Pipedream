@@ -8,6 +8,7 @@ public class ReducePoints : MonoBehaviour {
 
     private Canvas levelUI;
     private LevelTimer timer;
+    private Health hpCounter;
 
 
     void Awake()
@@ -22,6 +23,7 @@ public class ReducePoints : MonoBehaviour {
         {
             Debug.Log("Item found wrong UI!");
         }
+        hpCounter = GameObject.FindObjectOfType<Health>();
     }
 
 
@@ -30,6 +32,7 @@ public class ReducePoints : MonoBehaviour {
         levelUI.GetComponent<FloatPointUI>().GeneratePoints(-itemScorePoints);
         timer.AddScore( -1 * itemScorePoints);
         timer.ContinueBonusStreak(false);
+        hpCounter.Damage();
         if (destroyWhenHit)
         {
             Destroy(this.gameObject);
