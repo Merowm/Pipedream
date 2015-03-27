@@ -41,7 +41,7 @@ public class InfiniteLevel : MonoBehaviour {
         foreach (GameObject go in availablePartsList)
         {
             GameObject go1 = Instantiate(go);
-            go1.transform.FindChild("HyperPart_x10").gameObject.SetActive(true);
+            go1.transform.FindChild("HyperParts").gameObject.SetActive(true);
             go1.SetActive(false);
             poolList.Add(go1);
         }
@@ -64,7 +64,7 @@ public class InfiniteLevel : MonoBehaviour {
     private void SpawnPart(int indexToSpawn, Vector3 position){
         //activate specified part at specified position
         GameObject go = poolList [indexToSpawn];
-        go.SetActive(true);
+        SetActiveRecursively(go, true);
         go.transform.position = position;
         //remove part from pool
         poolList.Remove(go);
@@ -90,5 +90,15 @@ public class InfiniteLevel : MonoBehaviour {
         //spawn new tube
         SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, LengthOfPart));
     }
+
+    public static void SetActiveRecursively(GameObject root, bool active){ 
+        root.SetActive(active);
+        foreach (Transform childTransform in root.transform)
+        {
+            SetActiveRecursively(childTransform.gameObject, active);
+        }
+    }
+
+
 
 }

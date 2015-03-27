@@ -33,6 +33,7 @@ public class CollectPoints : MonoBehaviour
             AudioSource.PlayClipAtPoint(sound, this.transform.position);
         }        
         Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
-        Destroy(this.transform.parent.gameObject);
+        //Destroy(this.transform.parent.gameObject);
+        gameObject.SetActive(false);
     }
 }
