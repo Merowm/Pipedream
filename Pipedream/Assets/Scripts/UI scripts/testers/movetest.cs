@@ -16,8 +16,8 @@ public class movetest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position += offset * Time.deltaTime;
-        //transform.Rotate(0, 0, 3 * Time.deltaTime);
+        //transform.position += offset * Time.deltaTime;
+        transform.Rotate(0, 0, 3 * Time.deltaTime);
         //if (!passed)
         //{
         //    if (transform.position.z > 50)

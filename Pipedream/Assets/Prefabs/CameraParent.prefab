@@ -67,6 +67,7 @@ GameObject:
   - 114: {fileID: 11449792}
   - 82: {fileID: 8249788}
   - 114: {fileID: 11449794}
+  - 45: {fileID: 4581736}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -117,7 +118,7 @@ GameObject:
   - 114: {fileID: 11454720}
   m_Layer: 0
   m_Name: EffectSystem
-  m_TagString: Untagged
+  m_TagString: effects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +171,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191410}
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: -4.37113883e-08}
+  m_LocalRotation: {x: -.916362762, y: .400348961, z: 1.49294451e-07, w: -6.52251302e-08}
   m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 45, y: 45, z: 22.5}
   m_Children: []
@@ -232,7 +233,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182938}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .0220766235, w: .999756277}
   m_LocalPosition: {x: -.19082436, y: -3.20669556, z: -753.94519}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -274,6 +275,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!45 &4581736
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149788}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: a716c5232771f6841a3c9c2a0bcc166e, type: 2}
 --- !u!81 &8149788
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1479,7 +1488,7 @@ ParticleSystem:
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 1
+  moveWithTransform: 0
   InitialModule:
     enabled: 1
     startLifetime:
@@ -1666,7 +1675,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     startRotation:
-      scalar: .261799395
+      scalar: .785398126
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4610,7 +4619,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 4
   m_MaxParticleSize: 5
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
@@ -4618,7 +4627,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_SortMode: 0
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}

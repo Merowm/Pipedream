@@ -7,6 +7,8 @@ using System.Collections;
 public class CollectPoints : MonoBehaviour 
 {
     public int itemScorePoints;
+    // For debugging:
+    public int bonusItemNumber;
 
     public Canvas levelUI;
     public LevelTimer timer;
@@ -34,6 +36,7 @@ public class CollectPoints : MonoBehaviour
         }        
         Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
         //Destroy(this.transform.parent.gameObject);
+        Debug.Log("collected bonus # " + bonusItemNumber);
         gameObject.SetActive(false);
     }
 }

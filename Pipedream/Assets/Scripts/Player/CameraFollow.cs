@@ -12,6 +12,7 @@ public class CameraFollow : MonoBehaviour
     private Transform rotator;
     private Transform mainCamera;
 	private Vector3 velocity = Vector3.zero;
+    private Transform effectSys;
 
 	void Awake ()
 	{
@@ -19,6 +20,7 @@ public class CameraFollow : MonoBehaviour
         {
             rotator = transform.GetChild(0).transform;
             mainCamera = rotator.GetChild(0).transform;
+            effectSys = GameObject.FindGameObjectWithTag("effects").transform;
         }
 	}
 
@@ -53,6 +55,7 @@ public class CameraFollow : MonoBehaviour
                  //                Time.deltaTime *
                   //              (target.parent.GetComponent<Movement2D>().currentRotationSpeed * 10));
                 rotator.rotation = target.parent.rotation;
+                effectSys.rotation = new Quaternion(0, 0, -rotator.rotation.z, 0);
 
             }
             else
