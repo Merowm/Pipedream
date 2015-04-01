@@ -33,13 +33,14 @@ public class EffectControl : MonoBehaviour {
         // Back to normal space criteria here. NB! slowing effect has to be called earlier.
 
 	}
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "HyperspaceGateExit")
-        {
-            SlowDown();
-        }
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "HyperspaceGateExit")
+    //    {
+    //        SlowDown();
+    //        Debug.Log("Slow effect triggered");
+    //    }
+    //}
     void Warp()
     {
         warpForm.Play();
@@ -48,7 +49,7 @@ public class EffectControl : MonoBehaviour {
         inHyper = true;
         Invoke("SetHyperEffect", 1.2f);
     }
-    void SlowDown()
+    public void SlowDown()
     {        
         slowDown.Play();
         inHyper = false;
