@@ -32,7 +32,7 @@ public class ObstacleRotation : MonoBehaviour
         if (displayDistance > Vector3.Distance(new Vector3(0.0f, 0.0f, transform.position.z),
                                                new Vector3(0.0f, 0.0f, player.position.z)))
         {
-            transform.Rotate(rotation);
+            transform.Rotate(rotation * Time.timeScale);
         }
 	}
 }

@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-    
+    //if the player is still alive
+    public bool alive = true;
     //maximum number of shield the player starts out with
     public int maxShield = 1;
     //current number of shield left that the player has
@@ -20,12 +21,13 @@ public class Health : MonoBehaviour {
     //parent containing all the heath GUI
     public GameObject healthGUI;
 
-    void Awake(){
-        currentShield = maxShield;
-        currentHull = maxHull;
+    //gameover screen
+    public GameObject gameOverGUI;
 
-        UpdateHealthGUI();
+    void Awake(){
+        Reset();
     }
+
 
     void Update(){
         UpdateShieldRegen();
@@ -33,12 +35,22 @@ public class Health : MonoBehaviour {
 
     //to damage ship
     public void Damage(){
+        if (!alive)
+        {
+            return;
+        }
         //if no shield left
         if (currentShield <= 0)
         {
             //damage hull
             --currentHull;
             Debug.Log("Received damage to hull");
+            if (currentHull <= 0){
+                Debug.Log("Game Over");
+                gameOverGUI.SetActive(true);
+                alive = false;
+                Time.timeScale = 0.0f;
+            }
         }
         //else
         else
@@ -55,6 +67,10 @@ public class Health : MonoBehaviour {
 
     //to repair hull
     public void Repair(){
+        if (!alive)
+        {
+            return;
+        }
         //if hull not full
         if (currentHull < maxHull)
         {
@@ -68,6 +84,10 @@ public class Health : MonoBehaviour {
 
     //updats shield regen
     private void UpdateShieldRegen(){
+        if (!alive)
+        {
+            return;
+        }
         //if shields not full
         if (currentShield < maxShield)
         {
@@ -106,6 +126,16 @@ public class Health : MonoBehaviour {
         {
             healthGUI.transform.FindChild("shield").gameObject.SetActive(true);
         }
+    }
+
+    public void Reset(){
+        gameOverGUI.SetActive(false);
+        alive = true;
+        currentShield = maxShield;
+        currentHull = maxHull;
+        shieldRegenTimer = 0;
+        UpdateHealthGUI();
+        Time.timeScale = 1;
     }
 
 }
