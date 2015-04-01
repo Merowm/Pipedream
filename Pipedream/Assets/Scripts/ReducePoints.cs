@@ -13,25 +13,40 @@ public class ReducePoints : MonoBehaviour {
 
     void Awake()
     {
-        timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
-        if (timer == null)
+        if (GameObject.FindWithTag("levelTimer") != null)
+        {
+            timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
+        }
+        else
         {
             Debug.Log("Item found no timer!");
         }
-        levelUI = FindObjectOfType<Canvas>();
-        if (levelUI.tag != "gameLevelUI")
+
+        if (FindObjectOfType<Canvas>() != null)
         {
-            Debug.Log("Item found wrong UI!");
+            levelUI = FindObjectOfType<Canvas>();
+
+            if (levelUI.tag != "gameLevelUI")
+            {
+                Debug.Log("Item found wrong UI!");
+            }
         }
+
         //hpCounter = GameObject.FindObjectOfType<Health>();
     }
 
 
     public void HitObstacle(bool destroyWhenHit)
     {
-        levelUI.GetComponent<FloatPointUI>().GeneratePoints(-itemScorePoints);
-        timer.AddScore( -1 * itemScorePoints);
-        timer.ContinueBonusStreak(false);
+        if (levelUI != null)
+        {
+            levelUI.GetComponent<FloatPointUI>().GeneratePoints(-itemScorePoints);
+        }
+        if (timer != null)
+        {
+            timer.AddScore(-1 * itemScorePoints);
+            timer.ContinueBonusStreak(false);
+        }
         //hpCounter.Damage();
         if (destroyWhenHit)
         {

@@ -16,12 +16,20 @@ public class CollectPoints : MonoBehaviour
     
 	void Awake ()
     {
-        levelUI = FindObjectOfType<Canvas>();
-        if (levelUI.tag != "gameLevelUI")
+        if (FindObjectOfType<Canvas>() != null)
         {
-            Debug.Log("Item found wrong UI!");
+            levelUI = FindObjectOfType<Canvas>();
+
+            if (levelUI.tag != "gameLevelUI")
+            {
+                Debug.Log("Item found wrong UI!");
+            }
         }
-        timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
+
+        if (GameObject.FindWithTag("levelTimer") != null)
+        {
+            timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
+        }
 	}
 	
 	

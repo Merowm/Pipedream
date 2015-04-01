@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class ChangeLighting : MonoBehaviour
 {
     public Color color;

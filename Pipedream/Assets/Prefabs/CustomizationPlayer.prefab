@@ -24,7 +24,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451220}
-  - 114: {fileID: 11471380}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -285,24 +284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9987b30199c029b4c921ea45204b93bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11471380
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc510f0f157ded64f87159ee2b591a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxShield: 1
-  currentShield: 1
-  shieldRegenTimer: 0
-  shieldRegenTime: 5
-  maxHull: 3
-  currentHull: 3
-  healthGUI: {fileID: 0}
 --- !u!114 &11487492
 MonoBehaviour:
   m_ObjectHideFlags: 1
