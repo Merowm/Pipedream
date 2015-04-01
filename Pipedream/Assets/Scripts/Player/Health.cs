@@ -24,13 +24,20 @@ public class Health : MonoBehaviour {
     //gameover screen
     public GameObject gameOverGUI;
 
+    //particles
+    //public GameObject partSysDead;
+
     void Awake(){
         Reset();
     }
 
-
     void Update(){
         UpdateShieldRegen();
+
+        if (!alive)
+        {
+           // Controls.controlsActivated = false;
+        }
     }
 
     //to damage ship
@@ -50,6 +57,7 @@ public class Health : MonoBehaviour {
                 gameOverGUI.SetActive(true);
                 alive = false;
                 Time.timeScale = 0.0f;
+                //partSysDead.SetActive(true);
             }
         }
         //else
@@ -136,6 +144,7 @@ public class Health : MonoBehaviour {
         shieldRegenTimer = 0;
         UpdateHealthGUI();
         Time.timeScale = 1;
+        //partSysDead.SetActive(false);
     }
 
 }

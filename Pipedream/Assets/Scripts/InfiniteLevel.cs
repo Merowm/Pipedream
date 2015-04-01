@@ -46,9 +46,11 @@ public class InfiniteLevel : MonoBehaviour {
             poolList.Add(go1);
         }
 
-        //spawn initial 2 tubes 
-        SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, 0));
-        SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, LengthOfPart));
+        //spawn initial half of available tubes
+        for (int i = 0; i < availablePartsList.Count * 0.5f; ++i)
+        {
+            SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, activePartsList.Count * LengthOfPart));
+        }
     }
 	
 	// Update is called once per frame
@@ -84,11 +86,13 @@ public class InfiniteLevel : MonoBehaviour {
         //add back to pool
         poolList.Add(go);
         //shift second tube and player back to origin
-        activePartsList [0].transform.position -= new Vector3(0, 0, LengthOfPart);
+        foreach(GameObject go1 in activePartsList){
+            go1.transform.position -= new Vector3(0, 0, LengthOfPart);
+        }
         player.transform.position -= new Vector3(0, 0, LengthOfPart);
 
         //spawn new tube
-        SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, LengthOfPart));
+        SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, activePartsList.Count * LengthOfPart));
     }
 
     public static void SetActiveRecursively(GameObject root, bool active){ 

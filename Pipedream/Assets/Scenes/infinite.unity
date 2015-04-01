@@ -1337,7 +1337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &619726645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2064,6 +2064,30 @@ Prefab:
       propertyPath: gameOverGUI
       value: 
       objectReference: {fileID: 619726644}
+    - target: {fileID: 472368, guid: c03e33bccc12da240abb4370f578c860, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 438540, guid: c03e33bccc12da240abb4370f578c860, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 438534, guid: c03e33bccc12da240abb4370f578c860, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 438536, guid: c03e33bccc12da240abb4370f578c860, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11458908, guid: c03e33bccc12da240abb4370f578c860, type: 2}
+      propertyPath: partSysDamage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11458908, guid: c03e33bccc12da240abb4370f578c860, type: 2}
+      propertyPath: partSysDead
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c03e33bccc12da240abb4370f578c860, type: 2}
   m_IsPrefabParent: 0
@@ -2993,13 +3017,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availablePartsList:
-  - {fileID: 105252, guid: 45d8d33ec6963ed4fa21cb48ba27618c, type: 2}
-  - {fileID: 180360, guid: 77d9145f63d11534783fa42514847e9b, type: 2}
-  - {fileID: 192528, guid: 64f9881cd30fb0640a8e11e27a0e251a, type: 2}
-  - {fileID: 145518, guid: 41dcf4868c4ab444ba980ecdbec3483f, type: 2}
-  LengthOfPart: 1000
+  - {fileID: 193602, guid: 43455c8b72430c04ba27a36ed25d46da, type: 2}
+  - {fileID: 189248, guid: 3e7fdb5678fcc3143964aee2a7851f45, type: 2}
+  - {fileID: 170558, guid: 5cd11f3d0cec6c54caf7cacab666d06f, type: 2}
+  - {fileID: 144498, guid: c2b6fd3045e87ee4193a5fa58d5113b9, type: 2}
+  - {fileID: 176624, guid: feb9183ace1f21042952576d7d6ad932, type: 2}
+  - {fileID: 136924, guid: c80e3af1017af3c4b94dcee4df5d4283, type: 2}
+  - {fileID: 116372, guid: 35b98decc0a14c54f82c750ca87ed048, type: 2}
+  - {fileID: 157110, guid: 8a6b272610b7af446af228580391f4ec, type: 2}
+  - {fileID: 127620, guid: 5c99a93afc0376e4a9db927a4d69449f, type: 2}
+  - {fileID: 109728, guid: 44df248df04fb454f87eec4d71186667, type: 2}
+  - {fileID: 121464, guid: 15b15f4128c32e04f9e97f68f3cdfdc9, type: 2}
+  - {fileID: 146594, guid: 9dfa35db4a445e040914567f669fa123, type: 2}
+  - {fileID: 137772, guid: 33fde3f9c570be34db40360bddb6bf79, type: 2}
+  - {fileID: 152318, guid: f96e679b4f5b9474f88cdf15658e8fa2, type: 2}
+  - {fileID: 102682, guid: 24e479a9cef4f4b40bfa7124315cf3e8, type: 2}
+  - {fileID: 137256, guid: b086742fafac1fc45a95d04aaad2e5a5, type: 2}
+  - {fileID: 104856, guid: 91b2d4abda3ca784e9d8817708dec244, type: 2}
+  - {fileID: 124892, guid: 27db60baf33894742ac06596407dbdcc, type: 2}
+  - {fileID: 186920, guid: 1c73e0246951cf34689a9a1311788f19, type: 2}
+  LengthOfPart: 200
   player: {fileID: 1348301723}
-  startingOffset: {x: 0, y: 0, z: 0}
+  startingOffset: {x: 0, y: -500, z: 0}
 --- !u!4 &1763979331
 Transform:
   m_ObjectHideFlags: 0
