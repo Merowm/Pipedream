@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MovementForward : MonoBehaviour
 {
-    public static bool inHyperSpace = false;
+    public static bool inHyperspace = true;
     public bool accelerateToHyperspace = false;
     public bool decelerateToSpaceSpeed = false;
     public float currentSpeed;
@@ -18,8 +18,6 @@ public class MovementForward : MonoBehaviour
     public Vector3 direction;
 
     private SpaceDriveState spaceDriveState;
-    private GameObject hyperspaceHorizont;
-    private GameObject boundaryCircle;
     private float acceleration; //How many floats need to be added to currentSpeed
                                 //every second to achieve hyperspaceSpeed in accelerationTime (seconds)
     private float deceleration; //How many floats need to be detracted from currentSpeed
@@ -28,8 +26,6 @@ public class MovementForward : MonoBehaviour
 	void Awake ()
     {
         spaceDriveState = transform.GetComponent<SpaceDriveState>();
-        hyperspaceHorizont = transform.FindChild("HyperspaceHorizont").gameObject;
-        boundaryCircle = transform.FindChild("BoundaryCircle").gameObject;
 
         acceleration = (hyperspaceSpeed - spaceSpeed) / accelerationTime;
         deceleration = (hyperspaceSpeed - spaceSpeed) / decelerationTime;
@@ -60,8 +56,6 @@ public class MovementForward : MonoBehaviour
 
     void AccelerateToHyperspace()
     {
-        boundaryCircle.SetActive(false);
-
         if (currentSpeed < hyperspaceSpeed)
         {
             currentSpeed += acceleration * Time.deltaTime;
@@ -75,9 +69,6 @@ public class MovementForward : MonoBehaviour
     
     void DecelerateToSpaceSpeed()
     {
-        boundaryCircle.SetActive(true);
-        hyperspaceHorizont.SetActive(false);
-
         if (currentSpeed > spaceSpeed)
         {
             currentSpeed -= deceleration * Time.deltaTime;

@@ -42,6 +42,9 @@ public class Movement2D : MonoBehaviour
         controls = transform.GetComponent<Controls>();
         shipTransform = transform.FindChild("Ship").transform;
         collisions = shipTransform.FindChild("Collider").GetComponent<PlayerCollisions>();
+
+        //Set inHyperspace to false
+        MovementForward.inHyperspace = false;
 	}
 
     void Update ()
@@ -55,14 +58,14 @@ public class Movement2D : MonoBehaviour
 	public void MovementUpdate ()
     {
         //Movement while in hypespace
-        if (MovementForward.inHyperSpace)
+        if (MovementForward.inHyperspace)
         {
             HyperspaceMovement();
         }
         //Movement while out of hyperspace
         else
         {
-            SpaceMovement();
+            //SpaceMovement();
         }
 	}
 
