@@ -53,7 +53,7 @@ public class DistanceMeter : MonoBehaviour {
 
     void Update()
     {
-        if (!MovementForward.inHyperSpace)
+        if (!MovementForward.inHyperspace)
         {
             Warp(speedup, 105);
         }
@@ -69,7 +69,7 @@ public class DistanceMeter : MonoBehaviour {
             {
                 Debug.Log("launch particles!");
                 effect.Play();
-                hyper.enableEmission = !MovementForward.inHyperSpace;
+                hyper.enableEmission = !MovementForward.inHyperspace;
                 if (gateInd < gateX.Length - 1)
                     gateInd++;
                 else allEffectsDone = true;                

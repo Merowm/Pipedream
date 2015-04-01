@@ -56,7 +56,7 @@ public class ObstacleMovement : MonoBehaviour
         //xyzVector = new Vector3(XAxisSpeedMax, YAxisSpeedMax, ZAxisSpeedMax);
         direction = direction.normalized;
         
-        if (!MovementForward.inHyperSpace)
+        if (!MovementForward.inHyperspace)
         {
             if (displayDistance >= Vector3.Distance(new Vector3(0,0,transform.parent.position.z),
                                                     new Vector3(0,0,player.position.z)))

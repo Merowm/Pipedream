@@ -96,7 +96,7 @@ public class Controls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && (movementForward.currentSpeed == movementForward.spaceSpeed ||
                                             movementForward.currentSpeed == movementForward.hyperspaceSpeed))
         {
-            if (!MovementForward.inHyperSpace)
+            if (!MovementForward.inHyperspace)
             {
                 if (spaceDriveState.currentDriveIndex < spaceDriveState.driveStatePositions.Count - 1)
                 {
@@ -121,7 +121,7 @@ public class Controls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && (movementForward.currentSpeed == movementForward.spaceSpeed ||
                                             movementForward.currentSpeed == movementForward.hyperspaceSpeed))
         {
-            if (!MovementForward.inHyperSpace)
+            if (!MovementForward.inHyperspace)
             {
                 if (spaceDriveState.currentDriveIndex > 0)
                 {

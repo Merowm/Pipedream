@@ -14,7 +14,7 @@ public class CollectibleColliderContol : MonoBehaviour
 
 	void Update ()
     {
-	    if (MovementForward.inHyperSpace)
+	    if (MovementForward.inHyperspace)
         {
             hyperspaceBox.enabled = true;
             spaceBox.enabled = false;

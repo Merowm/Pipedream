@@ -27,7 +27,7 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             //Collision in hyperspace
-            if (MovementForward.inHyperSpace)
+            if (MovementForward.inHyperspace)
             {
                 Debug.Log("Hyperspace collison");
                 health.Damage();

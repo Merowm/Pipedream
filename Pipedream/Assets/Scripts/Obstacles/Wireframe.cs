@@ -24,7 +24,7 @@ public class Wireframe : MonoBehaviour
     
     void FixedUpdate ()
     {
-        if (MovementForward.inHyperSpace)
+        if (MovementForward.inHyperspace)
         {
             distance = Vector3.Distance(new Vector3(0,0,player.transform.position.z),
                                         new Vector3(0,0,transform.position.z));

@@ -30,7 +30,7 @@ public class CameraFollow : MonoBehaviour
 		{
             transform.position = target.parent.position;
 
-            if (MovementForward.inHyperSpace)
+            if (MovementForward.inHyperspace)
             {
                 /*mainCamera.position = Vector3.SmoothDamp(mainCamera.position,
                                                          //new Vector3(target.position.x,target.position.y + spacePosition,target.position.z - distanceFromTarget),

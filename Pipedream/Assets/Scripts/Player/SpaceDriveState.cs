@@ -64,13 +64,13 @@ public class SpaceDriveState : MonoBehaviour
 
     public void DisengagingHyperSpace()
     {
-        MovementForward.inHyperSpace = false;
+        MovementForward.inHyperspace = false;
         SetDriveVariables();
     }
     
     public void EngagingHyperSpace()
     {
-        MovementForward.inHyperSpace = true;
+        MovementForward.inHyperspace = true;
         hyperspaceHorizont.SetActive(true);
         SetDriveVariables();
     }
