@@ -51,6 +51,12 @@ public class InfiniteLevel : MonoBehaviour {
         {
             SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, activePartsList.Count * LengthOfPart));
         }
+        //empty out first tube so player doesn't collide when just spawning in
+        activePartsList [0].transform.FindChild("Obstacles").gameObject.SetActive(false);
+        activePartsList [1].transform.FindChild("Obstacles").gameObject.SetActive(false);
+        activePartsList [0].transform.FindChild("Collectables").gameObject.SetActive(false);
+        activePartsList [1].transform.FindChild("Collectables").gameObject.SetActive(false);
+        //activePartsList [2].transform.FindChild("Obstacles").gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame
