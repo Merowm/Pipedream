@@ -272,7 +272,6 @@ GameObject:
   - 4: {fileID: 416184}
   - 33: {fileID: 3357910}
   - 23: {fileID: 2366720}
-  - 95: {fileID: 9505610}
   m_Layer: 0
   m_Name: HyperspaceGatePart
   m_TagString: Untagged
@@ -413,7 +412,6 @@ GameObject:
   - 4: {fileID: 498894}
   - 33: {fileID: 3374782}
   - 23: {fileID: 2398010}
-  - 95: {fileID: 9591962}
   m_Layer: 0
   m_Name: HyperspaceGatePart
   m_TagString: Untagged
@@ -502,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 165110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 15}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 426298}
   m_Father: {fileID: 414502}
@@ -826,7 +824,7 @@ Transform:
   m_GameObject: {fileID: 193084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 15}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 473470}
   m_Father: {fileID: 416896}
@@ -1246,7 +1244,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165110}
-  m_Mesh: {fileID: 4300000, guid: 4c440c9d2da36b148a88711cbeff8139, type: 3}
+  m_Mesh: {fileID: 4300000, guid: fdd4868dfb0605842a5b714ad94c3524, type: 3}
 --- !u!33 &3368412
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1281,7 +1279,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193084}
-  m_Mesh: {fileID: 4300000, guid: 4c440c9d2da36b148a88711cbeff8139, type: 3}
+  m_Mesh: {fileID: 4300000, guid: fdd4868dfb0605842a5b714ad94c3524, type: 3}
 --- !u!33 &3374812
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1322,23 +1320,6 @@ Animator:
   m_GameObject: {fileID: 184282}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a63c11dc1656d5741a375bee7e68fd43, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9505610
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165110}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4c440c9d2da36b148a88711cbeff8139, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -1509,23 +1490,6 @@ Animator:
   m_GameObject: {fileID: 171000}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a63c11dc1656d5741a375bee7e68fd43, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9591962
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193084}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4c440c9d2da36b148a88711cbeff8139, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
