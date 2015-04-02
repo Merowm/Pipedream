@@ -28,6 +28,8 @@ public class Health : MonoBehaviour {
     //public GameObject partSysDead;
 
     void Awake(){
+        healthGUI = GameObject.Find("healthGUI");
+        gameOverGUI = GameObject.Find("gameOverGUI");
         Reset();
     }
 
