@@ -24,12 +24,16 @@ public class Health : MonoBehaviour {
     //gameover screen
     private GameObject gameOverGUI;
 
+    //shield particle system
+    private GameObject partSysShield;
+
     //particles
     //public GameObject partSysDead;
 
     void Awake(){
         healthGUI = GameObject.Find("healthGUI");
         gameOverGUI = GameObject.Find("gameOverGUI");
+        partSysShield = GameObject.Find("Shield Particle System");
         Reset();
     }
 
@@ -67,6 +71,7 @@ public class Health : MonoBehaviour {
         {
             //damage shield
             --currentShield;
+            partSysShield.GetComponent<ParticleSystem>().emissionRate = 0;
             Debug.Log("Received damage to shields");
         }
         //reset shield regen timer
@@ -115,6 +120,7 @@ public class Health : MonoBehaviour {
                     shieldRegenTimer = 0;
                 }
                 Debug.Log("Shield regenerated");
+                partSysShield.GetComponent<ParticleSystem>().emissionRate = 15;
                 UpdateHealthGUI();
             }
         }
