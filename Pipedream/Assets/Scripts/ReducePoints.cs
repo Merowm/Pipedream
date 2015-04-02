@@ -19,7 +19,7 @@ public class ReducePoints : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Item found no timer!");
+            //Debug.Log("Item found no timer!");
         }
 
         if (FindObjectOfType<Canvas>() != null)
@@ -28,7 +28,7 @@ public class ReducePoints : MonoBehaviour {
 
             if (levelUI.tag != "gameLevelUI")
             {
-                Debug.Log("Item found wrong UI!");
+                //Debug.Log("Item found wrong UI!");
             }
         }
 

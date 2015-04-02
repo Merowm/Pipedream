@@ -64,7 +64,7 @@ public class Wireframe : MonoBehaviour
                                             asteroid.position.y,
                                             wireframe.position.z + asteroidSpeedPerSecond);
             positionSet = true;
-            Debug.Log(wireframe.position.z + asteroidSpeedPerSecond);
+            //Debug.Log(wireframe.position.z + asteroidSpeedPerSecond);
         }
     }
 }

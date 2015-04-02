@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 406538}
   - 114: {fileID: 11447528}
+  - 114: {fileID: 11415042}
   m_Layer: 0
   m_Name: CustomizationPlayer
   m_TagString: Player
@@ -250,6 +251,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11415042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597a2515258171d43ad8db80bcb3c01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resettingPosition: 1000
 --- !u!114 &11447528
 MonoBehaviour:
   m_ObjectHideFlags: 1
