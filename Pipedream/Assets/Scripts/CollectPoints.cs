@@ -13,23 +13,18 @@ public class CollectPoints : MonoBehaviour
     public Canvas levelUI;
     public LevelTimer timer;
     public AudioClip sound;
+
+    VolControl volCtrl;
     
 	void Awake ()
     {
-        if (FindObjectOfType<Canvas>() != null)
-        {
-            levelUI = FindObjectOfType<Canvas>();
+        levelUI = FindObjectOfType<Canvas>();
 
-            if (levelUI.tag != "gameLevelUI")
-            {
-                Debug.Log("Item found wrong UI!");
-            }
-        }
+        if (levelUI.tag != "gameLevelUI")
+            Debug.Log("Item found wrong UI!");
 
-        if (GameObject.FindWithTag("levelTimer") != null)
-        {
-            timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
-        }
+        timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
+        volCtrl = FindObjectOfType<VolControl>();
 	}
 	
 	
@@ -40,8 +35,8 @@ public class CollectPoints : MonoBehaviour
         timer.ContinueBonusStreak(true);
         if (sound != null)
         {
-            AudioSource.PlayClipAtPoint(sound, this.transform.position);
-        }        
+            AudioSource.PlayClipAtPoint(sound, this.transform.position, volCtrl.effectVol);
+        }
         Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
         //Destroy(this.transform.parent.gameObject);
         Debug.Log("collected bonus # " + bonusItemNumber);
