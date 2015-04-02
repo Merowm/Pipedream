@@ -19,10 +19,10 @@ public class Health : MonoBehaviour {
     public int currentHull = 3;
 
     //parent containing all the heath GUI
-    public GameObject healthGUI;
+    private GameObject healthGUI;
 
     //gameover screen
-    public GameObject gameOverGUI;
+    private GameObject gameOverGUI;
 
     //particles
     //public GameObject partSysDead;
