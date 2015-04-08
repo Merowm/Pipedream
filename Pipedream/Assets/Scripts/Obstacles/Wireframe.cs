@@ -35,7 +35,6 @@ public class Wireframe : MonoBehaviour
                 if (distance <= displayDistance)
                 {
                     asteroid.GetComponent<MeshRenderer>().enabled = true;
-                    asteroid.GetComponent<Animator>().enabled = true;
                 }
 
                 setPosition();
@@ -48,7 +47,6 @@ public class Wireframe : MonoBehaviour
                 if (transform.position.z <= player.transform.position.z)
                 {
                     asteroid.GetComponent<MeshRenderer>().enabled = false;
-                    asteroid.GetComponent<Animator>().enabled = false;
                     asteroid.position = wireframe.position;
                     //Destroy(transform.gameObject);
                 }
@@ -64,7 +62,6 @@ public class Wireframe : MonoBehaviour
                                             asteroid.position.y,
                                             wireframe.position.z + asteroidSpeedPerSecond);
             positionSet = true;
-            //Debug.Log(wireframe.position.z + asteroidSpeedPerSecond);
         }
     }
 }

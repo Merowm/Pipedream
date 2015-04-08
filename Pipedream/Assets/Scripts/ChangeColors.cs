@@ -10,20 +10,20 @@ public class ChangeColors : MonoBehaviour
 
     private ChangeLighting lighting;
 
-	void Start ()
+	void Awake ()
     {
-        CanvasRenderer[] canvasesArray = transform.GetComponentsInChildren<CanvasRenderer>();
+        GameObject[] colorButtons = GameObject.FindGameObjectsWithTag("ColorButton");
 
-        if (canvases.Count < canvasesArray.Length || lastColors.Count < canvasesArray.Length)
+        if (canvases.Count != colorButtons.Length || lastColors.Count != colorButtons.Length)
         {
             canvases.Clear();
             colors.Clear();
             lastColors.Clear();
 
-            for (int i = 0; i < canvasesArray.Length; i++)
+            for (int i = 0; i < colorButtons.Length; i++)
             {
-                canvases.Add(canvasesArray[i]);
-                colors.Add(canvases[i].GetColor());
+                canvases.Add(colorButtons[i].GetComponent<CanvasRenderer>());
+                colors.Add(canvases[i].transform.GetComponent<UnityEngine.UI.Image>().color);
             }
 
             for (int i = 0; i < colors.Count; i++)

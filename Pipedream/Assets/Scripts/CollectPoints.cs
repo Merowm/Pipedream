@@ -21,10 +21,14 @@ public class CollectPoints : MonoBehaviour
         levelUI = FindObjectOfType<Canvas>();
 
         if (levelUI.tag != "gameLevelUI")
+        {
             Debug.Log("Item found wrong UI!");
-
-        timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
-        volCtrl = FindObjectOfType<VolControl>();
+        }
+        else
+        {
+            timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
+            volCtrl = FindObjectOfType<VolControl>();
+        }
 	}
 	
 	

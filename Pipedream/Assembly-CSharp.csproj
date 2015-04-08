@@ -46,7 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\OnClickColor.cs" />
+     <Compile Include="Assets\RGBColors.cs" />
+     <Compile Include="Assets\RGBText.cs" />
      <Compile Include="Assets\Scripts\BlinkingLight.cs" />
+     <Compile Include="Assets\Scripts\ChangeColors.cs" />
      <Compile Include="Assets\Scripts\ChangeLighting.cs" />
      <Compile Include="Assets\Scripts\CollectPoints.cs" />
      <Compile Include="Assets\Scripts\CollectibleColliderContol.cs" />
@@ -104,8 +108,11 @@
      <Compile Include="Assets\Scripts\UI scripts\testers\Joksikin.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\LinearLevelSelect.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\OptionsControl.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\OptionsPopUp.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\PauseGame.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\TestTriggerer.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\testers\VolControl.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\audioTest.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\heh.cs" />
      <Compile Include="Assets\Scripts\UI scripts\testers\movetest.cs" />

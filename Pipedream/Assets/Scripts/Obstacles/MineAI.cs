@@ -51,12 +51,12 @@ public class MineAI : MonoBehaviour
 
     void OnDrawGizmos ()
     {
-        if (followingDistance > Vector3.Distance(new Vector3(0, 0, transform.position.z),
+        /*if (followingDistance > Vector3.Distance(new Vector3(0, 0, transform.position.z),
                                                  new Vector3(0, 0, target.transform.position.z)))
         {
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, targetPosition);
             Gizmos.color = Color.white;
-        }
+        }*/
     }
 }
