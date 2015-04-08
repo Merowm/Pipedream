@@ -18,4 +18,8 @@ public class Restart : MonoBehaviour
         GameObject.FindWithTag("statistics").GetComponent<LoadScreen>().showLoader(levelname);
         Application.LoadLevel(levelname);
     }
+
+    public void RestartLevel(){
+        Application.LoadLevel(Application.loadedLevelName);
+    }
 }
