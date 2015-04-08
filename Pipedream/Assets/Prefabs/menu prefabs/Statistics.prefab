@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 11453564}
   - 114: {fileID: 11472202}
   - 114: {fileID: 11417326}
+  - 114: {fileID: 11417446}
   m_Layer: 0
   m_Name: Statistics
   m_TagString: statistics
@@ -99,6 +100,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb111574c4122d54b938ec05f94dd936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11417446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ccd6a184a7b384d80f1a33e518005c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMaxVol: .75
+  effectVol: .850000024
+  masterVol: 1
+  whooshSound: {fileID: 8300000, guid: d15dd51889aa04549b18799f89d51fec, type: 3}
+  buttonEffect: {fileID: 8300000, guid: 3aaf93b6e1a981143a2df80ba25782fc, type: 3}
+  bonusEffect: {fileID: 8300000, guid: 216d35f791ba19e4bb294f16b815f7c0, type: 3}
+  crashEffect: {fileID: 0}
+  music: {fileID: 0}
+  hasCollectedItem: 0
 --- !u!114 &11453564
 MonoBehaviour:
   m_ObjectHideFlags: 1

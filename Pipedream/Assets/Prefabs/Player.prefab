@@ -1125,7 +1125,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 0
-    radius: .100000001
+    radius: .00999999978
     angle: 25
     length: 5
     boxX: 1
@@ -1139,7 +1139,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 15
+      scalar: 25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1171,7 +1171,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
       minMaxState: 0
-    cnt0: 30
+    cnt0: 10
     cnt1: 30
     cnt2: 30
     cnt3: 30
@@ -1183,31 +1183,41 @@ ParticleSystem:
   SizeModule:
     enabled: 1
     curve:
-      scalar: 1
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - time: .0884773582
           value: 0
-          inSlope: 0
-          outSlope: 0
+          inSlope: 2.51680613
+          outSlope: 2.51680613
           tangentMode: 0
-        - time: .169703275
-          value: .471453637
-          inSlope: 2.35635781
-          outSlope: 2.35635781
+        - time: .0997444242
+          value: .0496501885
+          inSlope: .897615373
+          outSlope: .897615373
           tangentMode: 0
-        - time: .399440527
-          value: .972972989
-          inSlope: .193943277
-          outSlope: .193943277
+        - time: .378864378
+          value: .298989296
+          inSlope: .178670958
+          outSlope: .178670958
           tangentMode: 0
-        - time: .866780698
-          value: .986486495
-          inSlope: -2.57909298
-          outSlope: -2.57909298
+        - time: .496410251
+          value: .30243957
+          inSlope: .183256567
+          outSlope: .183256567
           tangentMode: 0
-        - time: 1
+        - time: .608348131
+          value: .449904829
+          inSlope: .222176313
+          outSlope: .222176313
+          tangentMode: 0
+        - time: .818562627
+          value: .297934711
+          inSlope: -.568657339
+          outSlope: -.568657339
+          tangentMode: 0
+        - time: .87242806
           value: 0
           inSlope: -5.0222559
           outSlope: -5.0222559

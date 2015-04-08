@@ -3,11 +3,12 @@ using System.Collections;
 
 public class PauseGame : MonoBehaviour {
 
-    public Canvas overlay;
+    public GameObject overlay;
 
 	// Use this for initialization
 	void Start () {
-
+        overlay.SetActive(false);
+        Time.timeScale = 1;
 	}
 	
 	// Update is called once per frame
@@ -18,12 +19,13 @@ public class PauseGame : MonoBehaviour {
     public void Pause() 
     {
         // animate?
-        overlay.enabled = true;
+        
+        overlay.SetActive(true);
         Time.timeScale = 0;
     }
     public void ResumeGame()
     {
-        overlay.enabled = false;
+        //overlay.enabled = false;
         Time.timeScale = 1;
     }
     
