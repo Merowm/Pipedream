@@ -62,11 +62,8 @@ GameObject:
   - 92: {fileID: 9249788}
   - 124: {fileID: 12449788}
   - 81: {fileID: 8149788}
-  - 114: {fileID: 11449788}
-  - 114: {fileID: 11449790}
   - 114: {fileID: 11449792}
   - 82: {fileID: 8249788}
-  - 114: {fileID: 11449794}
   - 45: {fileID: 4581736}
   m_Layer: 0
   m_Name: MainCamera
@@ -301,7 +298,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 43f16df5402d5ee43af12a0474d05921, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .0535035208
+  m_Volume: .781000018
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -382,42 +379,6 @@ MonoBehaviour:
   spacePosition: 1.25
   dampTime: .0199999996
   target: {fileID: 0}
---- !u!114 &11449788
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149788}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9aa6418e0a498e4a9e9aade978ff0e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextScene: 1
-  textObject: {fileID: 0}
-  buttontex: {fileID: 2800000, guid: 4f266d40b5e26a442a9c233e8b07b54b, type: 3}
---- !u!114 &11449790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149788}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82dc177e7fa9adc45860218e50a653ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuSceneNumber: 1
-  isActive: 0
-  isSoundOn: 1
-  isMusicOn: 1
-  optionsButton: {fileID: 0}
-  closeOptionsButton: {fileID: 0}
-  soundOn: {fileID: 0}
-  soundOff: {fileID: 2800000, guid: 1eb3f64accd4d0b408a3224c4bb69ced, type: 3}
-  musicOn: {fileID: 0}
-  musicOff: {fileID: 2800000, guid: 1eb3f64accd4d0b408a3224c4bb69ced, type: 3}
-  goToMenuButton: {fileID: 2800000, guid: 07596f69372941b488e7629be7301c53, type: 3}
 --- !u!114 &11449792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -430,20 +391,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zOffset: 0
---- !u!114 &11449794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 262f87b3d40ab7d409167f4f9bd65568, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music: {fileID: 8249788}
-  startVolumeLevel: -.5
-  hasCollectedItem: 0
 --- !u!114 &11454720
 MonoBehaviour:
   m_ObjectHideFlags: 1

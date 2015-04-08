@@ -21,16 +21,21 @@ public class ReducePoints : MonoBehaviour {
         {
             //Debug.Log("Item found no timer!");
         }
-
-        if (FindObjectOfType<Canvas>() != null)
+        Canvas[] all = FindObjectsOfType<Canvas>();
+        foreach (Canvas c in all)
         {
-            levelUI = FindObjectOfType<Canvas>();
-
-            if (levelUI.tag != "gameLevelUI")
-            {
-                //Debug.Log("Item found wrong UI!");
-            }
+            if (c.tag == "gameLevelUI")
+                levelUI = c;
         }
+        //if (FindObjectOfType<Canvas>() != null)
+        //{
+        //    levelUI = FindObjectOfType<Canvas>();
+
+        //    if (levelUI.tag != "gameLevelUI")
+        //    {
+        //        //Debug.Log("Item found wrong UI!");
+        //    }
+        //}
 
         //hpCounter = GameObject.FindObjectOfType<Health>();
     }

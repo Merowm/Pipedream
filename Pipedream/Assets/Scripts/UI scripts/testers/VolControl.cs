@@ -18,7 +18,7 @@ public class VolControl : MonoBehaviour {
     public bool hasCollectedItem;
     float timeFromCollect;
     float dt;
-    float fadeRate;
+    public float fadeRate;
     
 	// Use this for initialization
 	void Start ()

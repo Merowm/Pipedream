@@ -9,12 +9,12 @@ public class LevelTimer : MonoBehaviour {
     public float distanceMeter;
     public float updateInterval;
     public Transform playerShip;
-    public GameObject distance;
+    //public GameObject distance;
     public float timeInSecs;
 
     Statistics stats;
     EndLevelScore end;
-    GameObject instantBar;
+    //GameObject instantBar;
     Slider distanceBar;
     Canvas UI_c;
     public int fullDistance;
@@ -59,7 +59,8 @@ public class LevelTimer : MonoBehaviour {
         
         playerShip = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
-        CreateDistanceBar();
+        //CreateDistanceBar();
+        distanceBar = GameObject.FindWithTag("travelIndicator").GetComponent<Slider>();
 
         pointsTextfield = GameObject.FindWithTag("Scoretext").GetComponent<Text>();
         WriteToGuiPoints(0);
@@ -186,14 +187,14 @@ public class LevelTimer : MonoBehaviour {
     {
         return distanceMeter;
     }
-    void CreateDistanceBar()
-    {
-        Vector3 pos = new Vector3(50, -328, 0);
-        UI_c = FindObjectOfType<Canvas>();
-        instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;
-        instantBar.transform.SetParent(UI_c.transform, false);
-        instantBar.transform.localPosition = pos;
-        //instantBar.GetComponent<DistanceMeter>().SendLength(fullDistance);
-        distanceBar = instantBar.GetComponent<Slider>();
-    }
+    //void CreateDistanceBar()
+    //{
+    //    Vector3 pos = new Vector3(50, -328, 0);
+    //    UI_c = FindObjectOfType<Canvas>();
+    //    instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;
+    //    instantBar.transform.SetParent(UI_c.transform, false);
+    //    instantBar.transform.localPosition = pos;
+    //    //instantBar.GetComponent<DistanceMeter>().SendLength(fullDistance);
+    //    distanceBar = instantBar.GetComponent<Slider>();
+    //}
 }
