@@ -3,12 +3,13 @@ using System.Collections;
 
 public class Whoosh : MonoBehaviour {
 
-    public AudioClip sound;
+    AudioClip sound;
     VolControl volCtrl;
 
     void Start()
     {
         volCtrl = FindObjectOfType<VolControl>();
+        sound = volCtrl.whooshSound;
     }
     void OnTriggerEnter(Collider coll){
         AudioSource.PlayClipAtPoint(sound, transform.position, volCtrl.effectVol);

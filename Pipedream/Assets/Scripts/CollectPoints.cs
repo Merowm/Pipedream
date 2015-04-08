@@ -12,7 +12,7 @@ public class CollectPoints : MonoBehaviour
 
     public Canvas levelUI;
     public LevelTimer timer;
-    public AudioClip sound;
+    AudioClip sound;
 
     VolControl volCtrl;
     
@@ -25,6 +25,7 @@ public class CollectPoints : MonoBehaviour
 
         timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
         volCtrl = FindObjectOfType<VolControl>();
+        sound = volCtrl.bonusEffect;
 	}
 	
 	
@@ -37,7 +38,7 @@ public class CollectPoints : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(sound, this.transform.position, volCtrl.effectVol);
         }
-        Camera.main.GetComponent<MusicVolumeReset>().hasCollectedItem = true;
+        volCtrl.hasCollectedItem = true;
         //Destroy(this.transform.parent.gameObject);
         Debug.Log("collected bonus # " + bonusItemNumber);
         gameObject.SetActive(false);

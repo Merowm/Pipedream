@@ -4,31 +4,36 @@ using System.Collections;
 
 public class OptionsControl : MonoBehaviour {
 
-    MusicVolumeReset musicCtrl;
     public Slider mainSlider;
     public Slider musicSlider;
     public Slider sfxSlider;
     VolControl globalVol;
-    // Set button sound separately! (object exists!)
+
+    GameObject overlay;
     
 	void Start () 
     {
-        musicCtrl = Camera.main.GetComponent<MusicVolumeReset>();
-        globalVol = FindObjectOfType<VolControl>();    
+        overlay = GameObject.Find("pauseScreen");
+        globalVol = FindObjectOfType<VolControl>();
+        musicSlider.value = globalVol.musicMaxVol;
+        sfxSlider.value = globalVol.effectVol;
 	}
 
     public void SetMusicVolume()
     {
-        musicCtrl.startVolumeLevel = musicSlider.value;
-        globalVol.musicMaxVol = musicSlider.value;
+        globalVol.SetMusicVolume(musicSlider.value);
     }
     public void SetSFXVolume()
     {
-        globalVol.effectVol = sfxSlider.value;
-        // button sound
+        globalVol.SetSFXVolume(sfxSlider.value);
     }
     public void SetMasterVolume()
     {
         AudioListener.volume = mainSlider.value;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        overlay.SetActive(false);    
     }
 }
