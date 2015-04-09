@@ -1284,26 +1284,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22488092, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22488092, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22439252, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22439252, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22439252, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 22458706, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1321,6 +1301,26 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22453860, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488092, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488092, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22439252, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22439252, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22439252, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
@@ -2065,7 +2065,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 943917352}
-        m_MethodName: PlayButtonEffect
+        m_MethodName: TestButtonEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2249,7 +2249,6 @@ MonoBehaviour:
   distanceMeter: 0
   updateInterval: .100000001
   playerShip: {fileID: 0}
-  distance: {fileID: 0}
   timeInSecs: 0
   fullDistance: 0
 --- !u!1 &1857923659

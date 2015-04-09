@@ -4,6 +4,7 @@ using System.Collections;
 public class GoToNext : MonoBehaviour {
 
     public string SceneToGo;
+    public bool SceneIsMenu;
     LoadScreen loader;
     void Awake()
     {
@@ -13,7 +14,7 @@ public class GoToNext : MonoBehaviour {
     public void GoToScene()
     {
         Debug.Log("loader invoked!");
-        loader.showLoader(SceneToGo);
+        loader.showLoader(SceneToGo, SceneIsMenu);
         Go();
         //Invoke("Go", 0.01f);
     }
