@@ -40,7 +40,9 @@ public class HyperspaceGates : MonoBehaviour
             spaceDriveState.SetDriveStateForward();
             spaceDriveState.DisengagingHyperSpace();
             movement.decelerateToSpaceSpeed = true;
-            effects.SlowDown();
+
         }
+        if (other.gameObject.tag == "ExitGate")
+            effects.SlowDown();
     }
 }
