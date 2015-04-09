@@ -7,6 +7,7 @@ public class OptionsControl : MonoBehaviour {
     public Slider mainSlider;
     public Slider musicSlider;
     public Slider sfxSlider;
+    public Toggle muteBox;
     VolControl globalVol;
 
     GameObject overlay;
@@ -17,6 +18,8 @@ public class OptionsControl : MonoBehaviour {
         globalVol = FindObjectOfType<VolControl>();
         musicSlider.value = globalVol.musicMaxVol;
         sfxSlider.value = globalVol.effectVol;
+        mainSlider.value = globalVol.masterVol;
+        muteBox.isOn = globalVol.isMute;
 	}
 
     public void SetMusicVolume()
@@ -27,13 +30,22 @@ public class OptionsControl : MonoBehaviour {
     {
         globalVol.SetSFXVolume(sfxSlider.value);
     }
+    public void PlaySoundEffect()
+    {
+        globalVol.PlayButtonEffect();
+    }
     public void SetMasterVolume()
     {
-        AudioListener.volume = mainSlider.value;
+        globalVol.SetMasterVolume(mainSlider.value);
+        muteBox.isOn = false;
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
         overlay.SetActive(false);    
+    }
+    public void MuteAll()
+    {
+        globalVol.MuteAudio(muteBox.isOn);
     }
 }

@@ -54,7 +54,7 @@ public class LinearLevelSelect : MonoBehaviour {
         {
             levelname = stats.GetLevelNameAsString(planetId);
             
-            loader.showLoader(levelname);
+            loader.showLoader(levelname, false);
             Invoke("Go", 0.16f);
         }
     }
