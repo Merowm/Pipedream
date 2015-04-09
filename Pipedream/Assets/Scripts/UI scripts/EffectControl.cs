@@ -28,7 +28,7 @@ public class EffectControl : MonoBehaviour {
 	void Update () 
     {
         time += Time.deltaTime;
-        if (!hasJumped && time >= 3.8f)
+        if (!hasJumped && time >= 4.0f)
             Warp();
         // Back to normal space criteria here. NB! slowing effect has to be called earlier.
 
@@ -57,6 +57,7 @@ public class EffectControl : MonoBehaviour {
     }
     void SetHyperEffect()
     {
-        hyper.enableEmission = inHyper;        
+        hyper.enableEmission = inHyper;
+        Debug.Log("inHyper");
     }
 }
