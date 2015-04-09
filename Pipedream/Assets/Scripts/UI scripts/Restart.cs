@@ -20,6 +20,7 @@ public class Restart : MonoBehaviour
     }
 
     public void RestartLevel(){
-        Application.LoadLevel(Application.loadedLevelName);
+        Time.timeScale = 1.0f;
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
