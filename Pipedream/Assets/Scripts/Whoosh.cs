@@ -9,7 +9,10 @@ public class Whoosh : MonoBehaviour {
     void Start()
     {
         volCtrl = FindObjectOfType<VolControl>();
-        sound = volCtrl.whooshSound;
+        if (volCtrl != null)
+        {
+            sound = volCtrl.whooshSound;
+        }
     }
     void OnTriggerEnter(Collider coll){
         AudioSource.PlayClipAtPoint(sound, transform.position, volCtrl.effectVol);

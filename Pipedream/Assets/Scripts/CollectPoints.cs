@@ -26,9 +26,15 @@ public class CollectPoints : MonoBehaviour
             if (c.tag == "gameLevelUI")
                 levelUI = c;
         }
-        timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
+        if (GameObject.FindWithTag("levelTimer") != null)
+        {
+            timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
+        }
         volCtrl = FindObjectOfType<VolControl>();
-        sound = volCtrl.bonusEffect;
+        if (volCtrl != null)
+        {
+            sound = volCtrl.bonusEffect;
+        }
 	}
 	
 	
