@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443400}
+  - 114: {fileID: 11482882}
   m_Layer: 0
   m_Name: RGBSliders
   m_TagString: RGBSliders
@@ -465,7 +466,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -650, y: 0, z: 0}
+  m_LocalPosition: {x: -900, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22444314}
@@ -687,7 +688,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hyper Tunnel
+  m_Text: Ring Gates
 --- !u!114 &11456294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -943,6 +944,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11482882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9648fa071a6bf4e49ad0760e17b2db8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color:
+    serializedVersion: 2
+    rgba: 0
+  RGB: []
 --- !u!114 &11483154
 MonoBehaviour:
   m_ObjectHideFlags: 1
