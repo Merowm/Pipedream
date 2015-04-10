@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ResetPosition : MonoBehaviour
 {
-    public float resettingPosition = 1000.0f;
+    public float resettingPosition = -1000.0f;
 
     private GameObject tunnel;
 

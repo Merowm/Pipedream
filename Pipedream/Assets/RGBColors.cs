@@ -17,7 +17,7 @@ public class RGBColors : MonoBehaviour
 
 	void Awake ()
     {
-        image = transform.parent.GetChild(0).GetComponent<UnityEngine.UI.Image>();
+        image = transform.FindChild("Color").GetChild(0).GetComponent<UnityEngine.UI.Image>();
         sliderR = transform.FindChild("Sliders").FindChild("R").GetComponent<UnityEngine.UI.Slider>();
         sliderG = transform.FindChild("Sliders").FindChild("G").GetComponent<UnityEngine.UI.Slider>();
         sliderB = transform.FindChild("Sliders").FindChild("B").GetComponent<UnityEngine.UI.Slider>();

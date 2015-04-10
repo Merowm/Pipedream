@@ -4,6 +4,7 @@ using System.Collections;
 public class HyperTunnelMovement : MonoBehaviour
 {
     public float currentSpeed = 100.0f;
+    public float distanceReset = 500.0f;
     public Vector3 direction = new Vector3(0,0,-1);
 
     private Transform player;
@@ -17,9 +18,9 @@ public class HyperTunnelMovement : MonoBehaviour
     {
         transform.position += direction * currentSpeed * Time.deltaTime;
 
-        if (player.position.z >= transform.position.z + 1000.0f)
+        if (player.position.z >= transform.position.z + distanceReset)
         {
-            transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z + 1000.0f);
+            transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z + distanceReset);
         }
 	}
 }

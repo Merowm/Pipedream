@@ -9,8 +9,6 @@ public class SpaceDriveState : MonoBehaviour
 
     private Movement2D movement2D;
     private Transform shipTransform;
-    private GameObject hyperspaceHorizont;
-    private GameObject boundaryCircle;
     private Vector3 distanceToParentAtStart; //The position the player should be at when a level portion starts
 
 	void Awake ()
@@ -35,8 +33,6 @@ public class SpaceDriveState : MonoBehaviour
 
         movement2D = transform.GetComponent<Movement2D>();
         shipTransform = transform.FindChild("Ship").transform;
-        hyperspaceHorizont = transform.FindChild("HyperspaceHorizont").gameObject;
-        boundaryCircle = transform.FindChild("BoundaryCircle").gameObject;
         distanceToParentAtStart = new Vector3(0, Vector3.Distance(shipTransform.position, transform.position), 0);
 	}
 
@@ -71,7 +67,6 @@ public class SpaceDriveState : MonoBehaviour
     public void EngagingHyperSpace()
     {
         MovementForward.inHyperspace = true;
-        hyperspaceHorizont.SetActive(true);
         SetDriveVariables();
     }
 

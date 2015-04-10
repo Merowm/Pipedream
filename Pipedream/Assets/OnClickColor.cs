@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class OnClickColor : MonoBehaviour
 {
     public int buttonID;
-    public Vector3 subPosition = new Vector3(0.0f, 273.5f, 0.0f);
+    public Vector3 subPosition = new Vector3(-375.0f, 273.5f, 0.0f);
     public List<GameObject> buttons;
 
     private enum STATES { Main, Sub };
