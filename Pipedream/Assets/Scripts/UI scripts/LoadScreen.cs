@@ -42,6 +42,7 @@ public class LoadScreen : MonoBehaviour {
 
     public void showLoader(string leveltoload, bool isMenuScene)
     {
+        Debug.Log("loader heard");
         loadingDone = false;
         nextlevel = leveltoload;
         isMenu = isMenuScene;
