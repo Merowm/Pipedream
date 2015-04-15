@@ -3,37 +3,46 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
     //if the player is still alive
-    public bool alive = true;
+    private bool alive = true;
     //maximum number of shield the player starts out with
-    public int maxShield = 1;
+    private int maxShield = 1;
     //current number of shield left that the player has
-    public int currentShield = 1;
+    private int currentShield = 1;
 
     //for shield regen
-    public float shieldRegenTimer = 0;
-    public float shieldRegenTime = 5;
+    private float shieldRegenTimer = 0;
+    private float shieldRegenTime = 5;
 
     //maximum number of hull the player starts out with
-    public int maxHull = 3;
-    //current number of hull left that the player has
-    public int currentHull = 3;
+    private int maxHull = 3;
+    //current number of hull the player has left
+    private int currentHull = 3;
 
-    //parent containing all the heath GUI
-    private GameObject healthGUI;
+    //health GUIs
+    private GameObject healthGUI0;
+    private GameObject healthGUI1;
+    private GameObject healthGUI2;
+    private GameObject healthGUI3;
+    private GameObject healthGUIShield;
 
     //gameover screen
     private GameObject gameOverGUI;
 
     //shield particle system
-    private GameObject partSysShield;
+    private ParticleSystem partSysShield;
 
     //particles
     //public GameObject partSysDead;
 
     void Awake(){
-        healthGUI = GameObject.Find("healthGUI");
+        GameObject healthParent = GameObject.Find("healthGUI");
+        healthGUI0 = healthParent.transform.FindChild("health_0").gameObject;
+        healthGUI1 = healthParent.transform.FindChild("health_1").gameObject;
+        healthGUI2 = healthParent.transform.FindChild("health_2").gameObject;
+        healthGUI3 = healthParent.transform.FindChild("health_3").gameObject;
+        healthGUIShield = healthParent.transform.FindChild("shield").gameObject;
         gameOverGUI = GameObject.Find("gameOverGUI");
-        partSysShield = GameObject.Find("Shield Particle System");
+        partSysShield = GameObject.Find("Shield Particle System").GetComponent <ParticleSystem>();
         Reset();
     }
 
@@ -71,7 +80,7 @@ public class Health : MonoBehaviour {
         {
             //damage shield
             --currentShield;
-            partSysShield.GetComponent<ParticleSystem>().emissionRate = 0;
+            partSysShield.emissionRate = 0;
             Debug.Log("Received damage to shields");
         }
         //reset shield regen timer
@@ -120,7 +129,7 @@ public class Health : MonoBehaviour {
                     shieldRegenTimer = 0;
                 }
                 Debug.Log("Shield regenerated");
-                partSysShield.GetComponent<ParticleSystem>().emissionRate = 15;
+                partSysShield.emissionRate = 15;
                 UpdateHealthGUI();
             }
         }
@@ -132,15 +141,33 @@ public class Health : MonoBehaviour {
             return;
         }
         //disable all health GUI
-        for (int i = 0; i < healthGUI.transform.childCount; ++i)
-        {
-            healthGUI.transform.GetChild(i).gameObject.SetActive(false);
-        }
+        healthGUI0.SetActive(false);
+        healthGUI1.SetActive(false);
+        healthGUI2.SetActive(false);
+        healthGUI3.SetActive(false);
         //set correct GUI according to hull left and shields
-        healthGUI.transform.FindChild("health_" + currentHull).gameObject.SetActive(true);
+        switch (currentHull)
+        {
+            case 0:
+                healthGUI0.SetActive(true);
+                break;
+            case 1:
+                healthGUI1.SetActive(true);
+                break;
+            case 2:
+                healthGUI2.SetActive(true);
+                break;
+            case 3:
+                healthGUI3.SetActive(true);
+                break;
+        }
         if (currentShield > 0)
         {
-            healthGUI.transform.FindChild("shield").gameObject.SetActive(true);
+            healthGUIShield.SetActive(true);
+        }
+        else
+        {
+            healthGUIShield.SetActive(false);
         }
     }
 
