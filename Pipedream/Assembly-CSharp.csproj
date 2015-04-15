@@ -46,11 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\OnClickColor.cs" />
-     <Compile Include="Assets\RGBColors.cs" />
-     <Compile Include="Assets\RGBText.cs" />
      <Compile Include="Assets\Scripts\BlinkingLight.cs" />
-     <Compile Include="Assets\Scripts\ChangeColors.cs" />
      <Compile Include="Assets\Scripts\ChangeLighting.cs" />
      <Compile Include="Assets\Scripts\CollectPoints.cs" />
      <Compile Include="Assets\Scripts\CollectibleColliderContol.cs" />
@@ -79,12 +75,17 @@
      <Compile Include="Assets\Scripts\Player\Movement2D.cs" />
      <Compile Include="Assets\Scripts\Player\MovementForward.cs" />
      <Compile Include="Assets\Scripts\Player\SpaceDriveState.cs" />
+     <Compile Include="Assets\Scripts\RGBText.cs" />
      <Compile Include="Assets\Scripts\ReducePoints.cs" />
      <Compile Include="Assets\Scripts\ResetPosition.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Start.cs" />
      <Compile Include="Assets\Scripts\Statistics.cs" />
      <Compile Include="Assets\Scripts\UI scripts\CurrentScore.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\Customization\ChangeColors.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\Customization\CustomizationUI.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\Customization\OnClickColor.cs" />
+     <Compile Include="Assets\Scripts\UI scripts\Customization\RGBColors.cs" />
      <Compile Include="Assets\Scripts\UI scripts\DataSave.cs" />
      <Compile Include="Assets\Scripts\UI scripts\EffectControl.cs" />
      <Compile Include="Assets\Scripts\UI scripts\FloatPointUI.cs" />
