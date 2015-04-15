@@ -181,7 +181,11 @@ public class Health : MonoBehaviour {
         Time.timeScale = 1;
         //partSysDead.SetActive(false);
     }
-
+    // needed in pause/resume logic (OptionsControl)
+    public bool IsAlive()
+    {
+        return alive;
+    }
 }
 
 

@@ -44,7 +44,7 @@ public class OptionsControl : MonoBehaviour {
     }
     public void ResumeGame()
     {
-        if (hpGUI.alive)
+        if (hpGUI.IsAlive())
             Time.timeScale = 1;
         overlay.SetActive(false);    
     }
