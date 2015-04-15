@@ -102,7 +102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &185300
 GameObject:
   m_ObjectHideFlags: 1
@@ -119,7 +119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &198258
 GameObject:
   m_ObjectHideFlags: 1
@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -296,7 +296,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 022cf41d1621b8d47b88a72477ee6aa0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: faa8ce92b324efb40b9a4f2a391f41a7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .781000018
   m_Pitch: 1
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromTarget: 12.5
   hyperPosition: 3.75
-  spacePosition: 1.25
+  spacePosition: 3.67499995
   dampTime: .0199999996
   target: {fileID: 0}
 --- !u!114 &11427388
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148378}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c1d4e5968db124693ea6c7db0702b1, type: 3}
   m_Name: 
@@ -1677,7 +1677,7 @@ ParticleSystem:
     m_Mesh: {fileID: 0}
     randomDirection: 0
   EmissionModule:
-    enabled: 1
+    enabled: 0
     m_Type: 0
     rate:
       scalar: 10
