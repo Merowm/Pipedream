@@ -16863,7 +16863,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   images: []
   colors: []
+  namesInMemory:
+  - lighting
+  - hyperTunnelMaterial
+  - particles
+  - wireframeMaterial
+  - shipMaterial
+  - shield
+  colorsInMemory:
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4294934015
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 2868903935
   hyperTunnelMaterial: {fileID: 2100000, guid: fd02c8bfc57b10343b0cc52853b5a2af, type: 2}
+  shipMaterial: {fileID: 2100000, guid: 604d50cdb9bc213499017a8595b2d5fb, type: 2}
   wireframeMaterial: {fileID: 2100000, guid: 3ccbe74524a3453448c554d3f6c90edb, type: 2}
 --- !u!1001 &1209927232
 Prefab:
@@ -21074,6 +21095,10 @@ Prefab:
     - target: {fileID: 406538, guid: ae696fa20aa7ce442bb5ef97e62d3a2a, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19859584, guid: ae696fa20aa7ce442bb5ef97e62d3a2a, type: 2}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 2868903935
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae696fa20aa7ce442bb5ef97e62d3a2a, type: 2}
@@ -26678,46 +26703,6 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1449421849}
-    - target: {fileID: 19882012, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 19870582, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 19863684, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 19804812, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 198258, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 185300, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 178782, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19863684, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: EmissionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11427388, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8249788, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 022cf41d1621b8d47b88a72477ee6aa0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 010feb325a8c1dc48a6facb57c7c3f5f, type: 2}
   m_IsPrefabParent: 0
