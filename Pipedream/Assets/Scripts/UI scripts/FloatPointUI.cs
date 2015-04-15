@@ -11,6 +11,7 @@ public class FloatPointUI : MonoBehaviour
 
     public void GeneratePoints(int scoreAmount)
     {
+        // TODO: change position so it doesn't obstruct pipe view!
         pointPosition = Camera.main.transform.position;
         points = Instantiate(floatingPoints, pointPosition, Quaternion.identity) as Canvas;
         points.transform.SetParent(Camera.main.transform, false);

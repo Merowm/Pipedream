@@ -5,28 +5,22 @@ public class PauseGame : MonoBehaviour {
 
     public GameObject overlay;
 
-	// Use this for initialization
 	void Start () {
         overlay.SetActive(false);
         Time.timeScale = 1;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+       
 	}
 
     public void Pause() 
     {
-        // animate?
-        
+        // TODO: animate?
+
         overlay.SetActive(true);
         Time.timeScale = 0;
     }
-    public void ResumeGame()
-    {
-        //overlay.enabled = false;
-        Time.timeScale = 1;
-    }
+    //public void ResumeGame()
+    //{
+    //    Time.timeScale = 1;
+    //}
     
 }

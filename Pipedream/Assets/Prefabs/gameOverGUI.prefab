@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToGo: StartMenu
+  SceneIsMenu: 1
 --- !u!114 &11451706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -360,7 +361,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11470642}
-        m_MethodName: RestartLevel
+        m_MethodName: GoToLast
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

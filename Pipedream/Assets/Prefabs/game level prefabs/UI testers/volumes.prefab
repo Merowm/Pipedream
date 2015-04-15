@@ -75,8 +75,8 @@ GameObject:
   - 224: {fileID: 22460276}
   - 222: {fileID: 22218528}
   - 114: {fileID: 11495860}
-  - 114: {fileID: 11480000}
   - 114: {fileID: 11427792}
+  - 114: {fileID: 11452366}
   m_Layer: 5
   m_Name: volumes
   m_TagString: Untagged
@@ -535,9 +535,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 6b92de7a698aa634abced3714e4f5db2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 027ca92d8e9b40d40bde736e3c8d3558, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: d572118a482db0547b1f9aa7d471d091, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81ac596ca720f6841befc764c1b3098f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -679,7 +679,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11480000}
+      - m_Target: {fileID: 11452366}
         m_MethodName: MuteAll
         m_Mode: 1
         m_Arguments:
@@ -770,7 +770,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11480000}
+      - m_Target: {fileID: 11452366}
         m_MethodName: SetMusicVolume
         m_Mode: 1
         m_Arguments:
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: bb17a9412cfaf214aa2c320e1ac392d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7085985dde38e84ab4712567e83514c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -870,7 +870,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11480000}
+        - m_Target: {fileID: 11452366}
           m_MethodName: PlaySoundEffect
           m_Mode: 1
           m_Arguments:
@@ -884,6 +884,21 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &11452366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51c9d44dbb84bd4c99f5a0cdb7d701f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSlider: {fileID: 11480740}
+  musicSlider: {fileID: 11429250}
+  sfxSlider: {fileID: 11499140}
+  muteBox: {fileID: 11420038}
 --- !u!114 &11467688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -965,7 +980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 6b92de7a698aa634abced3714e4f5db2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44bcb8962bb0d8b4aa3e34c0146a4cd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -973,21 +988,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11480000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51c9d44dbb84bd4c99f5a0cdb7d701f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainSlider: {fileID: 11480740}
-  musicSlider: {fileID: 11429250}
-  sfxSlider: {fileID: 11499140}
-  muteBox: {fileID: 11420038}
 --- !u!114 &11480620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11480000}
+      - m_Target: {fileID: 11452366}
         m_MethodName: SetMasterVolume
         m_Mode: 1
         m_Arguments:
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .39199999}
-  m_Sprite: {fileID: 21300000, guid: 9183396cfd6049a47a9ff63a4aba9834, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f163b4417e6c7d41a12e96fa3f21684, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11480000}
+      - m_Target: {fileID: 11452366}
         m_MethodName: SetSFXVolume
         m_Mode: 1
         m_Arguments:
@@ -1643,8 +1643,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1.20000005, y: 0}
-  m_SizeDelta: {x: 22.5, y: 20}
+  m_AnchoredPosition: {x: -7.86781311e-06, y: 3.81469727e-06}
+  m_SizeDelta: {x: 53, y: 52.2000008}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22458856
 RectTransform:
@@ -1810,8 +1810,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 17.6749992, y: -16.7999992}
-  m_SizeDelta: {x: 35.3499985, y: 33.7000008}
+  m_AnchoredPosition: {x: 15.8999996, y: -17.2000008}
+  m_SizeDelta: {x: 53, y: 52.2000008}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22492472
 RectTransform:

@@ -11,11 +11,14 @@ public class OptionsControl : MonoBehaviour {
     VolControl globalVol;
 
     GameObject overlay;
+    Health hpGUI;
     
 	void Start () 
     {
         overlay = GameObject.Find("pauseScreen");
         globalVol = FindObjectOfType<VolControl>();
+        if (hpGUI = FindObjectOfType<Health>())
+            Debug.Log("pause control found health");
         musicSlider.value = globalVol.musicMaxVol;
         sfxSlider.value = globalVol.effectVol;
         mainSlider.value = globalVol.masterVol;
@@ -31,8 +34,8 @@ public class OptionsControl : MonoBehaviour {
         globalVol.SetSFXVolume(sfxSlider.value);
     }
     public void PlaySoundEffect()
-    {
-        globalVol.PlayButtonEffect();
+    {    
+        globalVol.PlayButtonEffect();        
     }
     public void SetMasterVolume()
     {
@@ -41,7 +44,8 @@ public class OptionsControl : MonoBehaviour {
     }
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        if (hpGUI.alive)
+            Time.timeScale = 1;
         overlay.SetActive(false);    
     }
     public void MuteAll()

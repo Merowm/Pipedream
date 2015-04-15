@@ -9,7 +9,7 @@ public class VolControl : MonoBehaviour {
     public bool isMute;
 
     public AudioClip whooshSound;
-    public AudioClip buttonEffect;
+    public AudioSource buttonEffect;
     public AudioClip bonusEffect;
     public AudioClip crashEffect;
     // set from each scene? NB smooth transitions!
@@ -26,9 +26,7 @@ public class VolControl : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        //music = Camera.main.GetComponent<AudioSource>();
-        //music.enabled = false;
-        AudioListener.volume = masterVol;      
+        AudioListener.volume = masterVol;
         fadeRate = 1;
         isInMenu = true;
 	}
@@ -42,8 +40,10 @@ public class VolControl : MonoBehaviour {
         musicMaxVol = vol;
         if (isInMenu)
             menuMusic.volume = musicMaxVol;
-        else
-        music.volume = musicMaxVol * fadeRate;
+        else if (music)
+        {
+            music.volume = musicMaxVol * fadeRate;
+        }
     }
     public void SetSFXVolume(float vol)
     {
@@ -63,16 +63,15 @@ public class VolControl : MonoBehaviour {
         }
         else AudioListener.volume = masterVol;
     }
+
     // updating collectible fade/reset
     void FixedUpdate()
     {
         if (!isInMenu)
         {
-            if (!music)
-
             dt = Time.deltaTime;
             timeFromCollect += dt;
-            //Debug.Log(hasCollectedItem);
+            
             if (hasCollectedItem == true && music.isPlaying)
             {
                 Debug.Log("music reset!");
@@ -93,15 +92,15 @@ public class VolControl : MonoBehaviour {
             {
                 fadeRate -= 0.05f * dt;
             }
+            if (music)
             music.volume = musicMaxVol * fadeRate;
         }
         
     }
     public void PlayButtonEffect()
     {
-        Time.timeScale = 1.0f;
-        AudioSource.PlayClipAtPoint(buttonEffect, Input.mousePosition, effectVol);
-        Time.timeScale = 0.0f;
+        buttonEffect.volume = effectVol;
+        buttonEffect.Play();
     }
     public void SetMusicType(bool isMenu)
     {
@@ -129,10 +128,6 @@ public class VolControl : MonoBehaviour {
     {
         AudioSource.PlayClipAtPoint(bonusEffect, Input.mousePosition, effectVol);
         hasCollectedItem = true;
-    }
-    public void TestButtonEffect()
-    {
-        AudioSource.PlayClipAtPoint(buttonEffect, Input.mousePosition, effectVol);
     }
     public void TestCrashEffect()
     {
