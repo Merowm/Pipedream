@@ -19,9 +19,9 @@ public class CustomizationUI : MonoBehaviour
         }
 	}
 
-	void Update ()
+    public void DeactivateUI ()
     {
-	    if (pauseScreen.activeSelf)
+        if (transform.FindChild("pauseScreen").gameObject.activeSelf)
         {
             for (int i = 0; i < objectsUI.Count; i++)
             {
@@ -35,5 +35,16 @@ public class CustomizationUI : MonoBehaviour
                 objectsUI[i].SetActive(true);
             }
         }
-	}
+    }
+
+    public void CollapseUI ()
+    {
+        if (transform.FindChild("CustomizationSheet").gameObject.activeSelf)
+        {
+            transform.FindChild("CustomizationSheet").gameObject.SetActive(false);
+        }
+        else transform.FindChild("CustomizationSheet").gameObject.SetActive(true);
+
+        transform.FindChild("CollapseUI").transform.Rotate(new Vector3(0,0,180));
+    }
 }

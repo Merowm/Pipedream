@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class ChangeColors : MonoBehaviour
 {
     public List<UnityEngine.UI.Image> images;
     public List<Color32> colors;
-    public List<string> namesInMemory;
+    //public List<string> namesInMemory;
     public List<Color32> colorsInMemory;
     public List<Color32> colorDefaults;
     public Material hyperTunnelMaterial;
@@ -20,13 +20,17 @@ public class ChangeColors : MonoBehaviour
 
 	void Awake ()
     {
-        UpdateLists();
+        LoadColorsInMemory();
+        for (int i = 0; i < images.Count; i++)
+        {
+            images[i].color = colorsInMemory[i];
+        }
+        //UpdateLists();
         //hyperTunnelMaterial.color = new Color32(100,100,100,255);
         lighting = (ChangeLighting)FindObjectOfType(typeof(ChangeLighting));
         particles = GameObject.FindGameObjectWithTag("effects").GetComponentsInChildren<ParticleSystem>().ToList();
         shield = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").
             FindChild("Shield Particle System").GetComponent<ParticleSystem>();
-        LoadColorsInMemory();
 	}
 
 	void Update ()
@@ -74,16 +78,16 @@ public class ChangeColors : MonoBehaviour
 
     public void UpdateLists ()
     {
-        GameObject[] colorPalettes = GameObject.FindGameObjectsWithTag("ColorPalette");
-        
-        if (images.Count != colorPalettes.Length)
+        if (colorDefaults.Count != images.Count)
         {
             images.Clear();
             colors.Clear();
-            
+
+            GameObject[] colorPalettes = GameObject.FindGameObjectsWithTag("ColorPalette");
+                
             for (int i = 0; i < colorPalettes.Length; i++)
             {
-                images.Add(colorPalettes[i].GetComponent<UnityEngine.UI.Image>());
+                //images.Add(colorPalettes[i].GetComponent<UnityEngine.UI.Image>());
             }
             for (int i = 0; i < images.Count; i++)
             {
@@ -94,25 +98,15 @@ public class ChangeColors : MonoBehaviour
 
     public void LoadColorsInMemory ()
     {
-        namesInMemory.Clear();
-        colorsInMemory.Clear();
+        //colorsInMemory.Clear();
 
-        namesInMemory.Add("RGBSliders_HyperTunnel");
-        namesInMemory.Add("RGBSliders_RingGates");
-        namesInMemory.Add("RGBSliders_Outside");
-        namesInMemory.Add("RGBSliders_Hull");
-        namesInMemory.Add("RGBSliders_Shields");
-        namesInMemory.Add("RGBSliders_Thruster");
-        namesInMemory.Add("RGBSliders_Wireframe");
-
-
-        colorsInMemory.Add(hyperTunnelMaterial.color);
+        /*colorsInMemory.Add(hyperTunnelMaterial.color);
         colorsInMemory.Add(lighting.color);
         colorsInMemory.Add(particles[0].startColor);
         colorsInMemory.Add(shipMaterial.color);
         colorsInMemory.Add(shield.startColor);
         colorsInMemory.Add(new Color32(255,255,255,255)); //TODO:colorsInMemory.Add(thruster.color);
-        colorsInMemory.Add(wireframeMaterial.color);
+        colorsInMemory.Add(wireframeMaterial.color);*/
     }
 
     public void SaveColorsToMemory ()
@@ -121,13 +115,7 @@ public class ChangeColors : MonoBehaviour
 
         for (int i = 0; i < images.Count; i++)
         {
-            for (int n = 0; n < namesInMemory.Count; n++)
-            {
-                if (images[i].name == namesInMemory[n])
-                {
-                    colorsInMemory[n] = colors[i];
-                }
-            }
+            colorsInMemory.Add(colors[i]);
         }
     }
 }

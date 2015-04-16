@@ -49,4 +49,11 @@ public class RGBColors : MonoBehaviour
         RGB.Add(G);
         RGB.Add(B);
 	}
+
+    void SetSliders (int r, int g, int b)
+    {
+        sliderR.value = r;
+        sliderG.value = g;
+        sliderB.value = b;
+    }
 }
