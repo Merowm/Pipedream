@@ -38,11 +38,15 @@ public class InfiniteLevel : MonoBehaviour {
 
     private const int InitialSpawnNumber = 5;
 
+    //parent containing parts
+    public Transform partsParent;
+
     void Awake(){
         //spawn objects for pooling
         foreach (GameObject go in availablePartsList)
         {
             GameObject go1 = Instantiate(go);
+            go1.transform.parent = partsParent;
             go1.transform.position = new Vector3(startingOffset.x, startingOffset.y, startingOffset.z + LengthOfPart * InitialSpawnNumber);
             //go1.transform.FindChild("HyperParts").gameObject.SetActive(true);
             go1.SetActive(false);

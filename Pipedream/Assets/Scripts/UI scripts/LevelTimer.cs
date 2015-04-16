@@ -42,6 +42,9 @@ public class LevelTimer : MonoBehaviour {
         // Components set to variables, now with debug checks!
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
 
+        // reset temp scores, just in case
+        stats.ResetScore();
+
         // For debugging and testing, no level data defined, no ending
         if (levelId > 0)
         {
@@ -120,6 +123,10 @@ public class LevelTimer : MonoBehaviour {
     {
         stats.AddToCurrentPoints(newPoints);
         WriteToGuiPoints(stats.GetCurrentScore());
+    }
+    public void GotSpecial()
+    {
+        stats.SpecialAcquired();
     }
 
     public void ContinueBonusStreak(bool gotMoreBonus)
