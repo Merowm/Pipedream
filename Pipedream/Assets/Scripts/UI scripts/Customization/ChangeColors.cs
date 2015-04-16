@@ -9,6 +9,7 @@ public class ChangeColors : MonoBehaviour
     public List<Color32> colors;
     public List<string> namesInMemory;
     public List<Color32> colorsInMemory;
+    public List<Color32> colorDefaults;
     public Material hyperTunnelMaterial;
     public Material shipMaterial;
     public Material wireframeMaterial;
@@ -25,7 +26,7 @@ public class ChangeColors : MonoBehaviour
         particles = GameObject.FindGameObjectWithTag("effects").GetComponentsInChildren<ParticleSystem>().ToList();
         shield = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").
             FindChild("Shield Particle System").GetComponent<ParticleSystem>();
-        GetColorsInMemory();
+        LoadColorsInMemory();
 	}
 
 	void Update ()
@@ -91,24 +92,27 @@ public class ChangeColors : MonoBehaviour
         }
     }
 
-    public void GetColorsInMemory ()
+    public void LoadColorsInMemory ()
     {
         namesInMemory.Clear();
         colorsInMemory.Clear();
 
-        namesInMemory.Add("lighting");
-        namesInMemory.Add("hyperTunnelMaterial");
-        namesInMemory.Add("particles");
-        namesInMemory.Add("wireframeMaterial");
-        namesInMemory.Add("shipMaterial");
-        namesInMemory.Add("shield");
+        namesInMemory.Add("RGBSliders_HyperTunnel");
+        namesInMemory.Add("RGBSliders_RingGates");
+        namesInMemory.Add("RGBSliders_Outside");
+        namesInMemory.Add("RGBSliders_Hull");
+        namesInMemory.Add("RGBSliders_Shields");
+        namesInMemory.Add("RGBSliders_Thruster");
+        namesInMemory.Add("RGBSliders_Wireframe");
 
-        colorsInMemory.Add(lighting.color);
+
         colorsInMemory.Add(hyperTunnelMaterial.color);
+        colorsInMemory.Add(lighting.color);
         colorsInMemory.Add(particles[0].startColor);
-        colorsInMemory.Add(wireframeMaterial.color);
         colorsInMemory.Add(shipMaterial.color);
         colorsInMemory.Add(shield.startColor);
+        colorsInMemory.Add(new Color32(255,255,255,255)); //TODO:colorsInMemory.Add(thruster.color);
+        colorsInMemory.Add(wireframeMaterial.color);
     }
 
     public void SaveColorsToMemory ()
