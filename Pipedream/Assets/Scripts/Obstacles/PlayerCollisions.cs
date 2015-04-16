@@ -33,7 +33,7 @@ public class PlayerCollisions : MonoBehaviour
                 health.Damage();
                 rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
                 leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
-                movement.ForcedDodge();
+                //movement.ForcedDodge();
                 other.transform.parent.parent.GetComponent<ReducePoints>().HitObstacle(false);
             }
             //Collision out of hyperspace
