@@ -514,7 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 5c8d9cb9767426a45856838339dd985e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 962547880ee942941926c5c50bae17b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -535,9 +535,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 027ca92d8e9b40d40bde736e3c8d3558, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e9484bd4d6c3d74596ca406657cf4ca, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 6b92de7a698aa634abced3714e4f5db2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e9484bd4d6c3d74596ca406657cf4ca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -959,7 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 5c8d9cb9767426a45856838339dd985e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 962547880ee942941926c5c50bae17b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 44bcb8962bb0d8b4aa3e34c0146a4cd5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e9484bd4d6c3d74596ca406657cf4ca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1398,8 +1398,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.19999981, y: -1.20000005}
-  m_SizeDelta: {x: 32.5, y: -15.6999998}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 32.5, y: -15.7000008}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22419436
 RectTransform:
@@ -1433,7 +1433,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.19999981, y: -1.20000005}
+  m_AnchoredPosition: {x: 0, y: 1.1921e-07}
   m_SizeDelta: {x: 32.5, y: -15.6999998}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22421630
@@ -1472,8 +1472,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 3.60000014, y: 2.98023224e-08}
+  m_SizeDelta: {x: 2.79999971, y: -3.20000005}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22426314
 RectTransform:
@@ -1540,8 +1540,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 3.60000014, y: 2.98023224e-08}
+  m_SizeDelta: {x: 2.79999971, y: -3.20000005}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22436230
 RectTransform:
@@ -1575,7 +1575,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.19999981, y: -1.19999981}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32.5, y: -15.7000008}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22443228
@@ -1756,8 +1756,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: .25}
   m_AnchorMax: {x: 1, y: .75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -5.30000019, y: 0}
+  m_SizeDelta: {x: -19.3999996, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22488046
 RectTransform:
@@ -1845,8 +1845,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: .25}
   m_AnchorMax: {x: 1, y: .75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -5.30000019, y: 0}
+  m_SizeDelta: {x: -19.3999996, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
