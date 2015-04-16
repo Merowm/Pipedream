@@ -99,11 +99,12 @@ public class InfiniteLevel : MonoBehaviour {
         //add back to pool
         poolList.Add(go);
         //shift second tube and player back to origin
-        player.transform.Translate(0, 0, -LengthOfPart);
-        foreach(GameObject go1 in activePartsList){
-            go1.transform.Translate(0, 0, -LengthOfPart);
+        player.transform.position -= new Vector3(0, 0, LengthOfPart);
+        Camera.main.transform.position -= new Vector3(0, 0, LengthOfPart);
+        for (int i = 0; i < activePartsList.Count; ++i)
+        {
+            activePartsList[i].transform.position -= new Vector3(0, 0, LengthOfPart);
         }
-
         //spawn new tube
         SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, startingOffset.z + activePartsList.Count * LengthOfPart));
     }

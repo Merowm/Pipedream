@@ -9,6 +9,9 @@ public class HyperTunnelMovement : MonoBehaviour
 
     private Transform player;
 
+    public bool infinite = false;
+    public Vector3 infiniteStart;
+
 	void Awake ()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -18,9 +21,19 @@ public class HyperTunnelMovement : MonoBehaviour
     {
         transform.position += direction * currentSpeed * Time.deltaTime;
 
-        if (player.position.z >= transform.position.z + distanceReset)
+        if (!infinite)
         {
-            transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z + distanceReset);
+            if (player.position.z >= transform.position.z + distanceReset)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + distanceReset);
+            }
+        }
+        else
+        {
+            if (infiniteStart.z >= transform.position.z + distanceReset)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + distanceReset);
+            }
         }
 	}
 }
