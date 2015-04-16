@@ -7,6 +7,7 @@ using System.Collections;
 public class CollectPoints : MonoBehaviour 
 {
     public int itemScorePoints;
+    public bool thisIsSpecial;
     // For debugging:
     public int bonusItemNumber;
 
@@ -30,8 +31,8 @@ public class CollectPoints : MonoBehaviour
         {
             timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
         }
-        volCtrl = FindObjectOfType<VolControl>();
-        if (volCtrl != null)
+        ;
+        if (volCtrl = FindObjectOfType<VolControl>())
         {
             sound = volCtrl.bonusEffect;
         }
@@ -43,6 +44,10 @@ public class CollectPoints : MonoBehaviour
         levelUI.GetComponent<FloatPointUI>().GeneratePoints(itemScorePoints);
 		timer.AddScore(itemScorePoints);
         timer.ContinueBonusStreak(true);
+        if (thisIsSpecial)
+        {
+            timer.GotSpecial();
+        }
         if (sound != null)
         {
             AudioSource.PlayClipAtPoint(sound, this.transform.position, volCtrl.effectVol);
