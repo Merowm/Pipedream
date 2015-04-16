@@ -1346,7 +1346,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 193926, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dfbc5e6e2533224f90262262bfa8d1a, type: 2}
@@ -1805,7 +1805,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: play button effect
+  m_Text: float some points
 --- !u!222 &1094930971
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1907,7 +1907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1411367639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1920,8 +1920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97e04ecc211ce042aaafef0c75548b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingPoints: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
+  pointsImage: {fileID: 196078, guid: 4605be6af424e054885fed75514885c0, type: 2}
 --- !u!114 &1411367640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2081,9 +2080,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 943917352}
-        m_MethodName: TestButtonEffect
-        m_Mode: 1
+      - m_Target: {fileID: 1411367639}
+        m_MethodName: GeneratePointImage
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -3475,6 +3474,10 @@ Prefab:
     - target: {fileID: 453564, guid: 6f5d92a8cb694294da53654f321d91ad, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 159524, guid: 6f5d92a8cb694294da53654f321d91ad, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f5d92a8cb694294da53654f321d91ad, type: 2}

@@ -1318,6 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToGo: StartMenu
+  SceneIsMenu: 0
 --- !u!114 &11447186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1966,6 +1967,7 @@ MonoBehaviour:
   mainSlider: {fileID: 11452390}
   musicSlider: {fileID: 11495758}
   sfxSlider: {fileID: 11467798}
+  muteBox: {fileID: 0}
 --- !u!114 &11482928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2056,8 +2058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97e04ecc211ce042aaafef0c75548b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingPoints: {fileID: 22328230, guid: 80fd79d173e0e5e40824a8d508a54eff, type: 2}
-  offset: {x: 0, y: 0, z: 10}
+  pointsImage: {fileID: 0}
 --- !u!114 &11482938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2073,7 +2074,6 @@ MonoBehaviour:
   distanceMeter: 0
   updateInterval: .00999999978
   playerShip: {fileID: 0}
-  distance: {fileID: 136648, guid: 441757ce7c0a74446a581f4bdc6a53ac, type: 2}
   timeInSecs: 0
   fullDistance: 0
 --- !u!114 &11482940
