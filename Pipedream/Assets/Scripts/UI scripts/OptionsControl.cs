@@ -44,9 +44,19 @@ public class OptionsControl : MonoBehaviour {
     }
     public void ResumeGame()
     {
-        if (hpGUI.IsAlive())
+        if (hpGUI != null)
+        {
+            if (hpGUI.IsAlive())
+            {
+                Time.timeScale = 1;
+                overlay.SetActive(false);
+            }
+        }
+        else
+        {
             Time.timeScale = 1;
-        overlay.SetActive(false);    
+            overlay.SetActive(false);
+        }
     }
     public void MuteAll()
     {
