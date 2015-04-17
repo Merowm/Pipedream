@@ -8,6 +8,7 @@ public class OptionsControl : MonoBehaviour {
     public Slider musicSlider;
     public Slider sfxSlider;
     public Toggle muteBox;
+    public Toggle tutorialBox;
     VolControl globalVol;
 
     GameObject overlay;
@@ -23,6 +24,8 @@ public class OptionsControl : MonoBehaviour {
         sfxSlider.value = globalVol.effectVol;
         mainSlider.value = globalVol.masterVol;
         muteBox.isOn = globalVol.isMute;
+        if (globalVol.isInMenu)
+            tutorialBox.isOn = globalVol.tutorialIsOn;
 	}
 
     public void SetMusicVolume()
@@ -61,5 +64,9 @@ public class OptionsControl : MonoBehaviour {
     public void MuteAll()
     {
         globalVol.MuteAudio(muteBox.isOn);
+    }
+    public void ToggleTutorial()
+    {
+        globalVol.TutorialYesNo(tutorialBox.isOn);
     }
 }

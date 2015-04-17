@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LoadScreen : MonoBehaviour {
 
-    public GameObject screenImage;
+    public Canvas screenImage;
     string nextlevel;
     VolControl sound;
     bool loadingDone;
@@ -47,10 +48,10 @@ public class LoadScreen : MonoBehaviour {
         nextlevel = leveltoload;
         isMenu = isMenuScene;
         
-        screenImage.SetActive(true);
+        screenImage.enabled = true;
     }
     public void hideLoader()
     {
-        screenImage.SetActive(false);
+        screenImage.enabled = false;
     }
 }

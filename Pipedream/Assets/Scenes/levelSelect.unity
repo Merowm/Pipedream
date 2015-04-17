@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
   levelId: 1
+  mainCanvas: {fileID: 1533950874}
 --- !u!114 &27428545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,18 +189,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -337,6 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
   levelId: 2
+  mainCanvas: {fileID: 1533950874}
 --- !u!114 &254827841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,18 +375,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -506,14 +484,14 @@ RectTransform:
   m_GameObject: {fileID: 598283126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .99999994, y: .99999994, z: .99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533950871}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1.62119995e-05, y: 0}
-  m_SizeDelta: {x: 1080, y: 1084}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &598283128
 MonoBehaviour:
@@ -528,7 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: d03190c7e6d1257459473ff6234dfbc2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 029e1302b1850484dba671628ac80a44, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -806,6 +784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
   levelId: 3
+  mainCanvas: {fileID: 1533950874}
 --- !u!114 &976644441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,18 +833,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1003,6 +970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
   levelId: 4
+  mainCanvas: {fileID: 1533950874}
 --- !u!114 &1087504829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,18 +1019,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1467,8 +1423,8 @@ GameObject:
   - 114: {fileID: 1533950872}
   - 114: {fileID: 1533950875}
   m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
+  m_Name: mainCanvas
+  m_TagString: gameLevelUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

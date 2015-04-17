@@ -7,6 +7,7 @@ public class VolControl : MonoBehaviour {
     public float effectVol;
     public float masterVol;
     public bool isMute;
+    public bool tutorialIsOn;
 
     public AudioClip whooshSound;
     public AudioSource buttonEffect;
@@ -29,6 +30,7 @@ public class VolControl : MonoBehaviour {
         AudioListener.volume = masterVol;
         fadeRate = 1;
         isInMenu = true;
+        tutorialIsOn = true;
 	}
 	
 	// Update is called once per frame
@@ -63,7 +65,10 @@ public class VolControl : MonoBehaviour {
         }
         else AudioListener.volume = masterVol;
     }
-
+    public void TutorialYesNo(bool yesno)
+    {
+        tutorialIsOn = yesno;
+    }
     // updating collectible fade/reset
     void FixedUpdate()
     {

@@ -10,7 +10,7 @@ public class LinearPlanet : MonoBehaviour {
 
     Statistics stats;
     EventSystem e;
-    Canvas c;
+    Canvas mainCanvas;
     GameObject instantInfo;
     RectTransform infoRect;
     Vector3 offset;
@@ -30,14 +30,16 @@ public class LinearPlanet : MonoBehaviour {
 	void Start () {
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
         e = FindObjectOfType<EventSystem>();
-        c = FindObjectOfType<Canvas>();
+        Canvas[] all = FindObjectsOfType<Canvas>();
+        foreach (Canvas c in all)
+        {
+            if (c.tag == "gameLevelUI")
+                mainCanvas = c;
+        }
         offset = new Vector3(Screen.width/2, Screen.height/2, 0);
         anchor = new Vector2(0, 0);
         trophies = new GameObject[3];
-        level = levelId.ToString();
-
-        
-        
+        level = levelId.ToString();        
 	}
 	
 	
@@ -69,8 +71,7 @@ public class LinearPlanet : MonoBehaviour {
 
             //instantInfo.transform.localPosition = pos;
             infoRect.anchoredPosition = pos;
-            Debug.Log(infoRect.anchoredPosition);
-            Debug.Log(pos);
+
         }
 
         
@@ -78,12 +79,11 @@ public class LinearPlanet : MonoBehaviour {
 
     public void ShowInfo()
     {
-        Debug.Log("show info");
+        Debug.Log("show info on " + mainCanvas.tag);
         if (instantInfo == null)
-        {
-            Debug.Log("Here");
+        {            
             instantInfo = Instantiate(info, Input.mousePosition, Quaternion.identity) as GameObject;
-            instantInfo.transform.SetParent(c.transform, false);
+            instantInfo.transform.SetParent(mainCanvas.transform, false);
             instantInfo.transform.localPosition = Input.mousePosition - offset;
             SetLevelInfo(instantInfo);
             infoRect = instantInfo.GetComponent<RectTransform>();

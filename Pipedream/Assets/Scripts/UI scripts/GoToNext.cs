@@ -20,7 +20,7 @@ public class GoToNext : MonoBehaviour {
         sounds.PlayButtonEffect();
         //Invoke("Go", 0.4f);
     }
-    void Go()
+    public void Go()
     {        
         Debug.Log("loader invoked!");
         loader.showLoader(SceneToGo, SceneIsMenu);        
