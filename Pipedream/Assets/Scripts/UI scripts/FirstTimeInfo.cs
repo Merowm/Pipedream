@@ -4,10 +4,8 @@ using System.Collections;
 public class FirstTimeInfo : MonoBehaviour {
 
     public GameObject info;
-    public GameObject backButton;
     GoToNext gonext;
     VolControl sounds;
-    //public bool showTutorial;
 
     // for testing
     public float showtime;
@@ -26,7 +24,6 @@ public class FirstTimeInfo : MonoBehaviour {
         if (sounds.tutorialIsOn)
         {
             info.SetActive(true);
-            backButton.SetActive(false);
             Invoke("Go", showtime);
         }
         else gonext.GoToScene();

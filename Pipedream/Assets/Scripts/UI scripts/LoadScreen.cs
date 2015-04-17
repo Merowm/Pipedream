@@ -25,8 +25,7 @@ public class LoadScreen : MonoBehaviour {
         {
             if (!isMenu)
             {
-                Debug.Log("menu fade happening");
-                sound.menuMusic.volume -= 0.05f;
+                sound.menuMusic.volume -= 0.1f;
             }
             if (Application.loadedLevelName == nextlevel && !Application.isLoadingLevel)
             {
@@ -43,7 +42,6 @@ public class LoadScreen : MonoBehaviour {
 
     public void showLoader(string leveltoload, bool isMenuScene)
     {
-        Debug.Log("loader heard");
         loadingDone = false;
         nextlevel = leveltoload;
         isMenu = isMenuScene;

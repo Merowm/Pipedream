@@ -14,10 +14,11 @@ public class OptionsControl : MonoBehaviour {
     GameObject overlay;
     Health hpGUI;
     
-	void Start () 
+	void Start ()
     {
         overlay = GameObject.Find("pauseScreen");
-        globalVol = FindObjectOfType<VolControl>();
+        if (globalVol = FindObjectOfType<VolControl>()) { }
+        else Debug.Log("volume control not found!");
         if (hpGUI = FindObjectOfType<Health>())
             Debug.Log("pause control found health");
         musicSlider.value = globalVol.musicMaxVol;
@@ -26,6 +27,8 @@ public class OptionsControl : MonoBehaviour {
         muteBox.isOn = globalVol.isMute;
         if (globalVol.isInMenu)
             tutorialBox.isOn = globalVol.tutorialIsOn;
+
+        this.gameObject.SetActive(false);
 	}
 
     public void SetMusicVolume()
@@ -37,8 +40,13 @@ public class OptionsControl : MonoBehaviour {
         globalVol.SetSFXVolume(sfxSlider.value);
     }
     public void PlaySoundEffect()
-    {    
-        globalVol.PlayButtonEffect();        
+    {   
+        if (globalVol)
+            globalVol.PlayButtonEffect();
+        else 
+        {
+            Debug.Log("volumeControl missing");
+        }
     }
     public void SetMasterVolume()
     {

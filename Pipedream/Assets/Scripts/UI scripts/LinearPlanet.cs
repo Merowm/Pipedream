@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class LinearPlanet : MonoBehaviour {
+public class LinearPlanet : MonoBehaviour
+{
 
     public GameObject info;
     public int levelId;
@@ -25,12 +26,13 @@ public class LinearPlanet : MonoBehaviour {
     string secs;
     string points;
     int trophy;
+    bool hasTried;
 
-    //for android
+    // for android
     Vector3 lastTouchPos;
 
-	// Use this for initialization
-	void Start () {
+    void Start()
+    {
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
         e = FindObjectOfType<EventSystem>();
         Canvas[] all = FindObjectsOfType<Canvas>();
@@ -39,26 +41,35 @@ public class LinearPlanet : MonoBehaviour {
             if (c.tag == "gameLevelUI")
                 mainCanvas = c;
         }
-        offset = new Vector3(Screen.width/2, Screen.height/2, 0);
+        offset = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         anchor = new Vector2(0, 0);
         trophies = new GameObject[3];
-        level = levelId.ToString();        
-	}
-	
-	
-    void Update () 
+        level = levelId.ToString();
+        hasTried = false;
+    }
+    public void StartLevel()
     {
-        if (instantInfo != null)
+        if (!mainCanvas.GetComponent<LinearLevelSelect>().GoToPlanetRun(levelId))
+        {
+            DestroyInfo();
+            hasTried = true;
+        }
+    }
+
+    void Update()
+    {
+        if (instantInfo != null && hasTried == false)
         {
             Vector3 pos;
 #if UNITY_ANDROID
-            if (Input.touchCount > 0)
-            {
-                pos = Input.touches[0].position;
-            }
+                       if (Input.touchCount > 0) 
+             { 
+                 pos = Input.touches[0].position; 
+             } 
 #else
             pos = (Input.mousePosition);
 #endif
+
             pos.z = 0;
             if (pos.x > Screen.width * 2 / 3)
             {
@@ -78,41 +89,45 @@ public class LinearPlanet : MonoBehaviour {
             }
             infoRect.pivot = anchor;
 
-            //instantInfo.transform.localPosition = pos;
             infoRect.anchoredPosition = pos;
-
         }
-
-        
     }
 
     public void ShowInfo()
     {
-        Debug.Log("show info on " + mainCanvas.tag);
-        if (instantInfo == null)
+        if (!hasTried)
         {
-#if UNITY_ANDROID
-            if (Input.touchCount > 0)
+            if (instantInfo == null)
             {
-                instantInfo = Instantiate(info, Input.touches[0].position, Quaternion.identity) as GameObject;
-                instantInfo.transform.localPosition = Input.touches[0].position - offset;
-            }
+#if UNITY_ANDROID 
+            if (Input.touchCount > 0) 
+            { 
+                instantInfo = Instantiate(info, Input.touches[0].position, Quaternion.identity) as GameObject; 
+                instantInfo.transform.localPosition = Input.touches[0].position - offset; 
+            } 
 #else
-            instantInfo = Instantiate(info, Input.mousePosition, Quaternion.identity) as GameObject;
-            instantInfo.transform.localPosition = Input.mousePosition - offset;
-#endif
-            instantInfo.transform.SetParent(mainCanvas.transform, false);
-            SetLevelInfo(instantInfo);
-            infoRect = instantInfo.GetComponent<RectTransform>();
 
-        }
-        else
-        {
+                instantInfo = Instantiate(info, Input.mousePosition, Quaternion.identity) as GameObject;
+                instantInfo.transform.localPosition = Input.mousePosition - offset;
+#endif
+                instantInfo.transform.SetParent(mainCanvas.transform, false);
+                SetLevelInfo(instantInfo);
+                infoRect = instantInfo.GetComponent<RectTransform>();
+            }
+            else
+            {
 #if UNITY_ANDROID
 #else
-            instantInfo.transform.localPosition = Input.mousePosition - offset;
+
+                instantInfo.transform.localPosition = Input.mousePosition - offset;
 #endif
+            }
         }
+    }
+    public void LeavePlanet()
+    {
+        DestroyInfo();
+        hasTried = false;
     }
 
     public void DestroyInfo()
@@ -137,8 +152,8 @@ public class LinearPlanet : MonoBehaviour {
         }
 
         lvnumber.text = "run # " + level;
-        lengthInSeconds.text =  secs + " secs";
-        score.text =  points;
+        lengthInSeconds.text = secs + " secs";
+        score.text = points;
         if (trophy > 0)
         {
             trophies[trophy - 1].SetActive(true);

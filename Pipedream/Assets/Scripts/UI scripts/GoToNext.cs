@@ -14,16 +14,12 @@ public class GoToNext : MonoBehaviour {
     }
     public void GoToScene()
     {
-        Debug.Log("invoking Go...");
-        Debug.Log("timescale: " + Time.timeScale);
         Go();
         sounds.PlayButtonEffect();
-        //Invoke("Go", 0.4f);
     }
     public void Go()
     {        
-        Debug.Log("loader invoked!");
-        loader.showLoader(SceneToGo, SceneIsMenu);        
+        loader.showLoader(SceneToGo, SceneIsMenu);
         Application.LoadLevel(SceneToGo);
     }
 }
