@@ -26,6 +26,9 @@ public class LinearPlanet : MonoBehaviour {
     string points;
     int trophy;
 
+    //for android
+    Vector3 lastTouchPos;
+
 	// Use this for initialization
 	void Start () {
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
@@ -47,11 +50,17 @@ public class LinearPlanet : MonoBehaviour {
     {
         if (instantInfo != null)
         {
-
-            Vector3 pos = (Input.mousePosition);
-            
+            Vector3 pos;
+#if UNITY_ANDROID
+            if (Input.touchCount > 0)
+            {
+                pos = Input.touches[0].position;
+            }
+#else
+            pos = (Input.mousePosition);
+#endif
             pos.z = 0;
-            if (Input.mousePosition.x > Screen.width * 2 / 3)
+            if (pos.x > Screen.width * 2 / 3)
             {
                 anchor.x = 1.1f;
             }
@@ -59,7 +68,7 @@ public class LinearPlanet : MonoBehaviour {
             {
                 anchor.x = -0.1f;
             }
-            if (Input.mousePosition.y > Screen.height / 2)
+            if (pos.y > Screen.height / 2)
             {
                 anchor.y = 1.1f;
             }
@@ -81,17 +90,28 @@ public class LinearPlanet : MonoBehaviour {
     {
         Debug.Log("show info on " + mainCanvas.tag);
         if (instantInfo == null)
-        {            
+        {
+#if UNITY_ANDROID
+            if (Input.touchCount > 0)
+            {
+                instantInfo = Instantiate(info, Input.touches[0].position, Quaternion.identity) as GameObject;
+                instantInfo.transform.localPosition = Input.touches[0].position - offset;
+            }
+#else
             instantInfo = Instantiate(info, Input.mousePosition, Quaternion.identity) as GameObject;
-            instantInfo.transform.SetParent(mainCanvas.transform, false);
             instantInfo.transform.localPosition = Input.mousePosition - offset;
+#endif
+            instantInfo.transform.SetParent(mainCanvas.transform, false);
             SetLevelInfo(instantInfo);
             infoRect = instantInfo.GetComponent<RectTransform>();
 
         }
         else
         {
+#if UNITY_ANDROID
+#else
             instantInfo.transform.localPosition = Input.mousePosition - offset;
+#endif
         }
     }
 
@@ -123,5 +143,10 @@ public class LinearPlanet : MonoBehaviour {
         {
             trophies[trophy - 1].SetActive(true);
         }
+    }
+
+    public GameObject GetInstantInfo()
+    {
+        return instantInfo;
     }
 }

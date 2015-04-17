@@ -49,6 +49,13 @@ public class LinearLevelSelect : MonoBehaviour {
     // TODO: Set by script if time allows (and if REALLY necessary...for maintaining reasons)
 	public void GoToPlanetRun(int planetId)
     {
+        //for android
+        //if instant info not shown, dont go into level
+        if (planetButtons[planetId - 1].GetComponent<LinearPlanet>().GetInstantInfo() == null)
+        {
+            Debug.Log(planetButtons[planetId].GetComponent<LinearPlanet>().GetInstantInfo());
+            return;
+        }
 
         if (planets[planetId - 1].isAvailable)
         {
