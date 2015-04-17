@@ -4,7 +4,7 @@ using System.Collections;
 
 public class LoadScreen : MonoBehaviour {
 
-    public Canvas screenImage;
+    public GameObject screenImage;
     string nextlevel;
     VolControl sound;
     bool loadingDone;
@@ -47,11 +47,13 @@ public class LoadScreen : MonoBehaviour {
         loadingDone = false;
         nextlevel = leveltoload;
         isMenu = isMenuScene;
-        
-        screenImage.enabled = true;
+        Debug.Log(screenImage);
+        if (!isMenu)
+        screenImage.SetActive(true);        
     }
+
     public void hideLoader()
     {
-        screenImage.enabled = false;
+        screenImage.SetActive(false);
     }
 }
