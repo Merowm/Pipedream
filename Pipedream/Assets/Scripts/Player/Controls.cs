@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class Controls : MonoBehaviour
 {
@@ -30,6 +31,42 @@ public class Controls : MonoBehaviour
 
     void Update ()
     {
+#if UNITY_ANDROID
+        //if user is touching the screen
+        if (Input.touchCount > 0)
+        {
+            //check first touch (prevent issues with multi touch)
+            Touch touch = Input.touches[0];
+            int pointerID = touch.fingerId;
+            //if user is not touching a button (eg. pause button)
+            if (!EventSystem.current.IsPointerOverGameObject(pointerID))
+            {
+                //if user is touching left of screen
+                if (touch.position.x >= 0 && touch.position.x <= Screen.width * 0.5)
+                {
+                    controls["left"] = true;
+                    controls["right"] = false;
+                    controls["up"] = false;
+                    controls["down"] = false;
+                }
+                //if user is touching right of screen
+                else
+                {
+                    controls["right"] = true;
+                    controls["left"] = false;
+                    controls["up"] = false;
+                    controls["down"] = false;
+                }
+            }
+        }
+        else
+        {
+            controls["Left"] = false;
+            controls["Right"] = false;
+            controls["Up"] = false;
+            controls["Down"] = false;
+        }
+#else
         //Right
         if (Input.GetAxis("Horizontal") == 1)
         {
@@ -65,7 +102,8 @@ public class Controls : MonoBehaviour
         else
         {
             controls["Down"] = false;
-        }
+        }   
+#endif
 
         if (controlsActivated)
         {
