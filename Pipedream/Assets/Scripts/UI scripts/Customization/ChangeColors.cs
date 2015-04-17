@@ -6,10 +6,9 @@ using System.Linq;
 public class ChangeColors : MonoBehaviour
 {
     public List<UnityEngine.UI.Image> images;
-    public List<Color32> colors;
-    //public List<string> namesInMemory;
+    public List<Color32> colorsCurrent;
     public List<Color32> colorsInMemory;
-    public List<Color32> colorDefaults;
+    public List<Color32> colorsDefault;
     public Material hyperTunnelMaterial;
     public Material shipMaterial;
     public Material wireframeMaterial;
@@ -17,6 +16,7 @@ public class ChangeColors : MonoBehaviour
     private ChangeLighting lighting;
     private List<ParticleSystem> particles;
     private ParticleSystem shield;
+    private List<GameObject> buttons;
 
 	void Awake ()
     {
@@ -25,49 +25,77 @@ public class ChangeColors : MonoBehaviour
         {
             images[i].color = colorsInMemory[i];
         }
+        for (int i = 0; i < images.Count; i++)
+        {
+            colorsCurrent.Add(images[i].color);
+        }
         //UpdateLists();
         //hyperTunnelMaterial.color = new Color32(100,100,100,255);
         lighting = (ChangeLighting)FindObjectOfType(typeof(ChangeLighting));
         particles = GameObject.FindGameObjectWithTag("effects").GetComponentsInChildren<ParticleSystem>().ToList();
         shield = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").
             FindChild("Shield Particle System").GetComponent<ParticleSystem>();
+        
+        for (int i = 0; i < images.Count; i++)
+        {
+            images[i].transform.parent.parent.GetComponent<RGBColors>().colorIndex = i;
+        }
 	}
+
+    void Start ()
+    {
+        /*foreach (Transform child in transform)
+        {
+            foreach (Transform slider in child)
+            {
+                if (slider.name == "RGBSliders")
+                {
+                    buttons.Add(slider.gameObject);
+                }
+            }
+        }
+
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i].SetActive(false);
+        }*/
+    }
 
 	void Update ()
     {
-        for (int i = 0; i < colors.Count; i++)
+        for (int i = 0; i < images.Count; i++)
         {
-            colors[i] = images[i].color;
+            colorsCurrent[i] = images[i].color;
         }
 
         for (int i = 0; i < images.Count; i++)
         {
             if (images[i].transform.parent.parent.name == "RGBSliders_RingGates")
             {
-                lighting.color = colors[i];
+                lighting.color = colorsCurrent[i];
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_HyperTunnel")
             {
-                hyperTunnelMaterial.color = colors[i];
+                hyperTunnelMaterial.color = colorsCurrent[i];
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Outside")
             {
                 for (int n = 0; n < particles.Count; n++)
                 {
-                    particles[n].startColor = colors[i];
+                    particles[n].startColor = colorsCurrent[i];
                 }
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Wireframes")
             {
-                wireframeMaterial.color = colors[i];
+                wireframeMaterial.color = colorsCurrent[i];
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Hull")
             {
-                shipMaterial.color = colors[i];
+                shipMaterial.color = colorsCurrent[i];
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Shields")
             {
-                shield.startColor = new Color32(colors[i].r,colors[i].g,colors[i].b,170);
+                shield.startColor = new Color32(colorsCurrent[i].r,colorsCurrent[i].g,colorsCurrent[i].b,170);
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Thruster")
             {
@@ -78,10 +106,10 @@ public class ChangeColors : MonoBehaviour
 
     public void UpdateLists ()
     {
-        if (colorDefaults.Count != images.Count)
+        if (colorsDefault.Count != images.Count)
         {
             images.Clear();
-            colors.Clear();
+            colorsCurrent.Clear();
 
             GameObject[] colorPalettes = GameObject.FindGameObjectsWithTag("ColorPalette");
                 
@@ -91,7 +119,7 @@ public class ChangeColors : MonoBehaviour
             }
             for (int i = 0; i < images.Count; i++)
             {
-                colors.Add(images[i].transform.GetComponent<UnityEngine.UI.Image>().color);
+                colorsCurrent.Add(images[i].transform.GetComponent<UnityEngine.UI.Image>().color);
             }
         }
     }
@@ -115,7 +143,7 @@ public class ChangeColors : MonoBehaviour
 
         for (int i = 0; i < images.Count; i++)
         {
-            colorsInMemory.Add(colors[i]);
+            colorsInMemory.Add(colorsCurrent[i]);
         }
     }
 }

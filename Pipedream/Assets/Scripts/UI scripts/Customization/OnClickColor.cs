@@ -10,7 +10,7 @@ public class OnClickColor : MonoBehaviour
     private enum STATES { Main, Sub };
     private STATES currentState;
     private Vector3 originalPosition;
-    private GameObject sliders;
+    private GameObject slidersParent;
 
 	void Awake ()
     {
@@ -22,7 +22,7 @@ public class OnClickColor : MonoBehaviour
         buttonID = GetID(buttons);
         currentState = STATES.Main;
         originalPosition = transform.parent.localPosition;
-        sliders = transform.parent.FindChild("RGBSliders").gameObject;
+        slidersParent = transform.parent.FindChild("RGBSliders").gameObject;
 	}
 
     public void ButtonClicked()
@@ -32,14 +32,23 @@ public class OnClickColor : MonoBehaviour
             transform.parent.localPosition = subPosition;
             DisableOtherButtons();
             EnableSliders();
+            UpdateSliders();
             currentState = STATES.Sub;
         }
-        else
+        else if (currentState == STATES.Sub)
         {
             transform.parent.localPosition = originalPosition;
             EnableOtherButtons();
             DisableSliders();
             currentState = STATES.Main;
+        }
+    }
+
+    void UpdateSliders()
+    {
+        foreach (Transform child in slidersParent.transform)
+        {
+            child.GetComponent<RGBColors>().SetSliders("current");
         }
     }
 
@@ -64,12 +73,12 @@ public class OnClickColor : MonoBehaviour
 
     void EnableSliders()
     {
-        sliders.SetActive(true);
+        slidersParent.SetActive(true);
     }
 
     void DisableSliders()
     {
-        sliders.SetActive(false);
+        slidersParent.SetActive(false);
     }
 
     int GetID (List<GameObject> list)
