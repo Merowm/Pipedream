@@ -80,7 +80,7 @@ public class Statistics : MonoBehaviour
         levels = new List<levelData>();
         AddLevelData(1600, 16, 5500, 56, 1); 
         AddLevelData(1600, 16, 4200, 39, 2); // work in progress 
-        AddLevelData(1200, 12, 4700, 46, 3);
+        AddLevelData(1200, 12, 4900, 51, 3);
         AddLevelData(5, 5, 5, 5, 4);
         
 	}
