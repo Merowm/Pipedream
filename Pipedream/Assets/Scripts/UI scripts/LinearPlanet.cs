@@ -60,7 +60,7 @@ public class LinearPlanet : MonoBehaviour
     {
         if (instantInfo != null && hasTried == false)
         {
-            Vector3 pos;
+            Vector3 pos = new Vector3(0,0,0);
 #if UNITY_ANDROID
                        if (Input.touchCount > 0) 
              { 
@@ -102,8 +102,8 @@ public class LinearPlanet : MonoBehaviour
 #if UNITY_ANDROID 
             if (Input.touchCount > 0) 
             { 
-                instantInfo = Instantiate(info, Input.touches[0].position, Quaternion.identity) as GameObject; 
-                instantInfo.transform.localPosition = Input.touches[0].position - offset; 
+                instantInfo = Instantiate(info, Input.touches[0].position, Quaternion.identity) as GameObject;
+                instantInfo.transform.localPosition = new Vector3(Input.touches[0].position.x - offset.x, Input.touches[0].position.y - offset.y, offset.z); 
             } 
 #else
 

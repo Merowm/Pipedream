@@ -44,19 +44,19 @@ public class Controls : MonoBehaviour
                 //if user is touching left of screen
                 if (touch.position.x >= 0 && touch.position.x <= Screen.width * 0.5)
                 {
-                    controls["left"] = true;
-                    controls["right"] = false;
-                    controls["up"] = false;
-                    controls["down"] = false;
+                    controls["Left"] = true;
+                    controls["Right"] = false;
+                    controls["Up"] = false;
+                    controls["Down"] = false;
                 }
                 //if user is touching right of screen
                 else
                 {
-                    controls["right"] = true;
-                    controls["left"] = false;
-                    controls["up"] = false;
-                    controls["down"] = false;
-                }
+                    controls["Right"] = true;
+                    controls["Left"] = false;
+                    controls["Up"] = false;
+                    controls["Down"] = false;
+                }                
             }
         }
         else
@@ -107,6 +107,7 @@ public class Controls : MonoBehaviour
 
         if (controlsActivated)
         {
+            //tested
             right = controls ["Right"];
             left = controls ["Left"];
             up = controls ["Up"];
