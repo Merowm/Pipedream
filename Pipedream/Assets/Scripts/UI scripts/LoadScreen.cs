@@ -45,9 +45,9 @@ public class LoadScreen : MonoBehaviour {
         loadingDone = false;
         nextlevel = leveltoload;
         isMenu = isMenuScene;
-        Debug.Log(screenImage);
+
         if (!isMenu)
-        screenImage.SetActive(true);        
+        screenImage.SetActive(true);       
     }
 
     public void hideLoader()

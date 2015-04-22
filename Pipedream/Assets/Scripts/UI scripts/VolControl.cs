@@ -24,19 +24,13 @@ public class VolControl : MonoBehaviour {
     float dt;
     float fadeRate;
     
-	// Use this for initialization
+
 	void Start ()
     {
         AudioListener.volume = masterVol;
         fadeRate = 1;
-        isInMenu = true;
-        tutorialIsOn = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
     public void SetMusicVolume(float vol)
     {        
         musicMaxVol = vol;

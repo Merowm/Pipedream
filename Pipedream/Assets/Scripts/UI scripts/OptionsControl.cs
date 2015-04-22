@@ -16,7 +16,8 @@ public class OptionsControl : MonoBehaviour {
     
 	void Start ()
     {
-        overlay = GameObject.Find("pauseScreen");
+        if (!(overlay = GameObject.Find("pauseScreen")))
+            overlay = GameObject.Find("volumes");
         if (globalVol = FindObjectOfType<VolControl>()) { }
         else Debug.Log("volume control not found!");
         if (hpGUI = FindObjectOfType<Health>())
@@ -25,10 +26,11 @@ public class OptionsControl : MonoBehaviour {
         sfxSlider.value = globalVol.effectVol;
         mainSlider.value = globalVol.masterVol;
         muteBox.isOn = globalVol.isMute;
-        if (globalVol.isInMenu)
+        Debug.Log(overlay + ": Stats thinks we are in menu: " + globalVol.isInMenu);
+        if (globalVol.isInMenu && tutorialBox)
             tutorialBox.isOn = globalVol.tutorialIsOn;
 
-        this.gameObject.SetActive(false);
+        overlay.SetActive(false);
 	}
 
     public void SetMusicVolume()

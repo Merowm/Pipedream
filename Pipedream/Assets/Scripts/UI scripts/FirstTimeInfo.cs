@@ -24,6 +24,8 @@ public class FirstTimeInfo : MonoBehaviour {
         if (sounds.tutorialIsOn)
         {
             info.SetActive(true);
+            // tutorial only shown once per game session (unless toggled)
+            sounds.tutorialIsOn = false;
             Invoke("Go", showtime);
         }
         else gonext.GoToScene();

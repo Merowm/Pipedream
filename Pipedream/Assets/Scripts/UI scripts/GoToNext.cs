@@ -20,6 +20,7 @@ public class GoToNext : MonoBehaviour {
     public void Go()
     {        
         loader.showLoader(SceneToGo, SceneIsMenu);
+        sounds.isInMenu = SceneIsMenu;
         Application.LoadLevel(SceneToGo);
     }
 }

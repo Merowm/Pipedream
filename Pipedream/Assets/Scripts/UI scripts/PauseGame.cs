@@ -6,7 +6,7 @@ public class PauseGame : MonoBehaviour {
     public GameObject overlay;
 
 	void Start () {
-        overlay.SetActive(false);
+        //overlay.SetActive(false);
         Time.timeScale = 1;
        
 	}

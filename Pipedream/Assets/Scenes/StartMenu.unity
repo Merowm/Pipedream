@@ -661,6 +661,30 @@ Prefab:
       propertyPath: m_IsOn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11444216, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
+      propertyPath: m_Text
+      value: "show tutorial \nat start"
+      objectReference: {fileID: 0}
+    - target: {fileID: 22428928, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22428928, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -22.8999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 22428928, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.67572021e-06
+      objectReference: {fileID: 0}
+    - target: {fileID: 22428928, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 125040, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
   m_IsPrefabParent: 0
@@ -998,7 +1022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 522227076}
-  showtime: 2
+  showtime: 1.5
 --- !u!1 &522227076
 GameObject:
   m_ObjectHideFlags: 0
