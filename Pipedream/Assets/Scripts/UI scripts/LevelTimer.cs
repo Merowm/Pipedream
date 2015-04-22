@@ -62,7 +62,6 @@ public class LevelTimer : MonoBehaviour {
         
         playerShip = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
-        //CreateDistanceBar();
         distanceBar = GameObject.FindWithTag("travelIndicator").GetComponent<Slider>();
 
         pointsTextfield = GameObject.FindWithTag("Scoretext").GetComponent<Text>();
@@ -73,6 +72,7 @@ public class LevelTimer : MonoBehaviour {
         
         lastPlayerPosition = playerShip.position;
 
+        GameObject.Find("levelTextText").GetComponent<Text>().text = "level # " + levelId.ToString();
     }
 	
     
