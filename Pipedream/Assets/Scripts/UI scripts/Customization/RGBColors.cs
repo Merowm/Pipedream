@@ -16,6 +16,7 @@ public class RGBColors : MonoBehaviour
     private Color32 R = new Color32(0,0,0,0);
     private Color32 G = new Color32(0,0,0,0);
     private Color32 B = new Color32(0,0,0,0);
+    private Color32 A = new Color32(0,0,0,255);
 
 	void Awake ()
     {
@@ -35,7 +36,7 @@ public class RGBColors : MonoBehaviour
         G = new Color32(0,(byte)gValue,0,255);
         B = new Color32(0,0,(byte)bValue,255);
 
-        color = new Color32(R.r, G.g, B.b, 255);
+        color = new Color32(R.r, G.g, B.b, A.a);
 
         if (image != null)
         {
@@ -74,6 +75,7 @@ public class RGBColors : MonoBehaviour
         sliderR.value = color.r;
         sliderG.value = color.g;
         sliderB.value = color.b;
+        A = new Color32(0,0,0,color.a);
     }
 
     void UpdateRGB ()
@@ -82,5 +84,11 @@ public class RGBColors : MonoBehaviour
         RGB.Add(R);
         RGB.Add(G);
         RGB.Add(B);
+
+        RGBValues.Clear();
+        RGBValues.Add(R.r);
+        RGBValues.Add(G.g);
+        RGBValues.Add(B.b);
+        RGBValues.Add(A.a);
     }
 }

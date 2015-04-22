@@ -4220,8 +4220,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 280013525}
   - 114: {fileID: 280013526}
+  - 114: {fileID: 280013527}
   m_Layer: 0
-  m_Name: Obstacles1
+  m_Name: Obstacles 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4256,10 +4257,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 60
-  distanceReset: 500
+  distanceReset: 1000
   direction: {x: 0, y: 0, z: -1}
   infinite: 0
   infiniteStart: {x: 0, y: 0, z: 0}
+--- !u!114 &280013527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 280013524}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a5454eae54c9d43b178f21fae42459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theObject: {fileID: 0}
+  transfrom: {fileID: 0}
+  amount: 0
+  positionGap: 0
+  nextObjectAngleRange: 0
+  distanceFromParent: 0
+  randomizeDistanceFromParent: 0
+  distanceFromParentMax: 10
+  noGraphicsRotation: 0
 --- !u!1 &290314213
 GameObject:
   m_ObjectHideFlags: 0
@@ -9434,7 +9455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 60
-  distanceReset: 500
+  distanceReset: 1000
   direction: {x: 0, y: 0, z: -1}
   infinite: 0
   infiniteStart: {x: 0, y: 0, z: 0}
@@ -19334,7 +19355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1366508401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21351,10 +21372,6 @@ Prefab:
     - target: {fileID: 406538, guid: ae696fa20aa7ce442bb5ef97e62d3a2a, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19859584, guid: ae696fa20aa7ce442bb5ef97e62d3a2a, type: 2}
-      propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 2868903935
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae696fa20aa7ce442bb5ef97e62d3a2a, type: 2}
