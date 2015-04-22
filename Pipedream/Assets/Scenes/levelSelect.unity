@@ -100,6 +100,7 @@ GameObject:
   - 114: {fileID: 27428545}
   - 114: {fileID: 27428544}
   - 114: {fileID: 27428548}
+  - 114: {fileID: 27428549}
   m_Layer: 5
   m_Name: planet1
   m_TagString: planetButton
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
+  noGoText: {fileID: 183194, guid: 713693d3252e10a428c2863dc4fa5c98, type: 2}
   levelId: 1
 --- !u!114 &27428545
 MonoBehaviour:
@@ -273,6 +275,19 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &27428549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27428542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b7b73418ffdb842a97d5f7100f6f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToGo: 
+  SceneIsMenu: 0
 --- !u!1 &254827838
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +301,7 @@ GameObject:
   - 114: {fileID: 254827841}
   - 114: {fileID: 254827840}
   - 114: {fileID: 254827844}
+  - 114: {fileID: 254827845}
   m_Layer: 5
   m_Name: planet2
   m_TagString: planetButton
@@ -326,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
+  noGoText: {fileID: 183194, guid: 713693d3252e10a428c2863dc4fa5c98, type: 2}
   levelId: 2
 --- !u!114 &254827841
 MonoBehaviour:
@@ -459,6 +476,19 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &254827845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254827838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b7b73418ffdb842a97d5f7100f6f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToGo: 
+  SceneIsMenu: 0
 --- !u!1 &432200086
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +502,7 @@ GameObject:
   - 114: {fileID: 432200090}
   - 114: {fileID: 432200089}
   - 114: {fileID: 432200088}
+  - 114: {fileID: 432200093}
   m_Layer: 5
   m_Name: planet5
   m_TagString: planetButton
@@ -561,6 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
+  noGoText: {fileID: 183194, guid: 713693d3252e10a428c2863dc4fa5c98, type: 2}
   levelId: 5
 --- !u!114 &432200090
 MonoBehaviour:
@@ -645,6 +677,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 432200086}
+--- !u!114 &432200093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 432200086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b7b73418ffdb842a97d5f7100f6f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToGo: 
+  SceneIsMenu: 0
 --- !u!1 &533110024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1166,7 @@ GameObject:
   - 114: {fileID: 976644441}
   - 114: {fileID: 976644440}
   - 114: {fileID: 976644444}
+  - 114: {fileID: 976644445}
   m_Layer: 5
   m_Name: planet3
   m_TagString: planetButton
@@ -1161,6 +1207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
+  noGoText: {fileID: 183194, guid: 713693d3252e10a428c2863dc4fa5c98, type: 2}
   levelId: 3
 --- !u!114 &976644441
 MonoBehaviour:
@@ -1294,6 +1341,19 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &976644445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976644438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b7b73418ffdb842a97d5f7100f6f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToGo: 
+  SceneIsMenu: 0
 --- !u!1 &1087504826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,6 +1367,7 @@ GameObject:
   - 114: {fileID: 1087504829}
   - 114: {fileID: 1087504828}
   - 114: {fileID: 1087504832}
+  - 114: {fileID: 1087504833}
   m_Layer: 5
   m_Name: planet4
   m_TagString: planetButton
@@ -1347,6 +1408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 174780, guid: fa20db32976afce459f0ff002494a753, type: 2}
+  noGoText: {fileID: 183194, guid: 713693d3252e10a428c2863dc4fa5c98, type: 2}
   levelId: 4
 --- !u!114 &1087504829
 MonoBehaviour:
@@ -1480,6 +1542,19 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1087504833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087504826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b7b73418ffdb842a97d5f7100f6f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToGo: 
+  SceneIsMenu: 0
 --- !u!1 &1281852295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,7 +2005,6 @@ GameObject:
   - 223: {fileID: 1533950874}
   - 114: {fileID: 1533950873}
   - 114: {fileID: 1533950872}
-  - 114: {fileID: 1533950875}
   m_Layer: 5
   m_Name: mainCanvas
   m_TagString: gameLevelUI
@@ -2022,19 +2096,6 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!114 &1533950875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11495604, guid: 5d6dca67c59b55b43b6f3adac423aee7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1533950870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aac32e69b3d78418844f558fd3a909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noGoText: {fileID: 183194, guid: 713693d3252e10a428c2863dc4fa5c98, type: 2}
 --- !u!1 &1691517593
 GameObject:
   m_ObjectHideFlags: 0

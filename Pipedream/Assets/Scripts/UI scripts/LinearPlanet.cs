@@ -7,18 +7,21 @@ public class LinearPlanet : MonoBehaviour
 {
 
     public GameObject info;
+    public GameObject noGoText;
     public int levelId;
 
     Statistics stats;
-    EventSystem e;
     Canvas mainCanvas;
     GameObject instantInfo;
+    GameObject instantNoGo;
     RectTransform infoRect;
     Vector3 offset;
     Text lvnumber;
     Text lengthInSeconds;
     Text score;
     GameObject[] trophies;
+    GoToNext goScript;
+    GameObject lockPic;
 
     Vector2 anchor;
 
@@ -34,25 +37,43 @@ public class LinearPlanet : MonoBehaviour
     void Start()
     {
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
-        e = FindObjectOfType<EventSystem>();
+
         Canvas[] all = FindObjectsOfType<Canvas>();
         foreach (Canvas c in all)
         {
             if (c.tag == "gameLevelUI")
                 mainCanvas = c;
         }
+
         offset = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         anchor = new Vector2(0, 0);
         trophies = new GameObject[3];
         level = levelId.ToString();
+        goScript = this.gameObject.GetComponent<GoToNext>();
+        goScript.SceneToGo = stats.GetLevelNameAsString(levelId);
         hasTried = false;
+        lockPic = GameObject.Find("locked" + levelId);
+        if (stats.GetAvailability(levelId))
+            lockPic.SetActive(false);
     }
     public void StartLevel()
     {
-        if (!mainCanvas.GetComponent<LinearLevelSelect>().GoToPlanetRun(levelId))
+        if (instantInfo)
         {
-            DestroyInfo();
-            hasTried = true;
+            if (stats.GetAvailability(levelId))
+            {
+                goScript.GoToScene();
+            }
+            else
+            {
+                DestroyInfo();
+
+                instantNoGo = Instantiate(noGoText, this.transform.position, Quaternion.identity) as GameObject;
+                instantNoGo.transform.SetParent(this.transform);
+                instantNoGo.transform.localScale = new Vector3(1, 1, 1);
+                instantNoGo.transform.localPosition = this.transform.position;
+                hasTried = true;
+            }
         }
     }
 
@@ -108,7 +129,7 @@ public class LinearPlanet : MonoBehaviour
 #else
 
                 instantInfo = Instantiate(info, Input.mousePosition, Quaternion.identity) as GameObject;
-                instantInfo.transform.localPosition = Input.mousePosition - offset;
+                //instantInfo.transform.localPosition = Input.mousePosition - offset;
 #endif
                 instantInfo.transform.SetParent(mainCanvas.transform, false);
                 SetLevelInfo(instantInfo);
