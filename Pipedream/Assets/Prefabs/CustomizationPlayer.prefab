@@ -59,8 +59,7 @@ GameObject:
   - 4: {fileID: 403446}
   - 33: {fileID: 3384144}
   - 23: {fileID: 2300780}
-  - 95: {fileID: 9568958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,9 +213,10 @@ MeshRenderer:
   m_GameObject: {fileID: 129680}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 604d50cdb9bc213499017a8595b2d5fb, type: 2}
+  - {fileID: 2100000, guid: d8731179fde0f6245a57e29f601f9d2c, type: 2}
+  - {fileID: 2100000, guid: 9cc4d41cd51036c4a9021703d716cea5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -264,23 +264,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: bf8cd72739c9b884c8f9900d217320a0, type: 3}
---- !u!95 &9568958
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129680}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 46b32a67f658aeb40a5322d349347690, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11415042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dbd75e5e6bba94699e72a9b078f957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temp: 0
   accelerateToHyperspace: 0
   decelerateToSpaceSpeed: 0
   currentSpeed: 0

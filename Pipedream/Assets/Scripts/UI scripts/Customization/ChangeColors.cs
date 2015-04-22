@@ -10,7 +10,8 @@ public class ChangeColors : MonoBehaviour
     public List<Color32> colorsInMemory;
     public List<Color32> colorsDefault;
     public Material hyperTunnelMaterial;
-    public Material shipMaterial;
+    public Material shipHullMaterial;
+    public Material shipMarkingsMaterial;
     public Material wireframeMaterial;
 
     private ChangeLighting lighting;
@@ -70,13 +71,13 @@ public class ChangeColors : MonoBehaviour
 
         for (int i = 0; i < images.Count; i++)
         {
-            if (images[i].transform.parent.parent.name == "RGBSliders_RingGates")
-            {
-                lighting.color = colorsCurrent[i];
-            }
-            else if (images[i].transform.parent.parent.name == "RGBSliders_HyperTunnel")
+            if (images[i].transform.parent.parent.name == "RGBSliders_HyperTunnel")
             {
                 hyperTunnelMaterial.color = colorsCurrent[i];
+            }
+            else if (images[i].transform.parent.parent.name == "RGBSliders_RingGates")
+            {
+                lighting.color = colorsCurrent[i];
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Outside")
             {
@@ -85,13 +86,13 @@ public class ChangeColors : MonoBehaviour
                     particles[n].startColor = colorsCurrent[i];
                 }
             }
-            else if (images[i].transform.parent.parent.name == "RGBSliders_Wireframes")
-            {
-                wireframeMaterial.color = colorsCurrent[i];
-            }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Hull")
             {
-                shipMaterial.color = colorsCurrent[i];
+                shipHullMaterial.color = colorsCurrent[i];
+            }
+            else if (images[i].transform.parent.parent.name == "RGBSliders_Markings")
+            {
+                shipMarkingsMaterial.color = colorsCurrent[i];
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Shields")
             {
@@ -100,6 +101,10 @@ public class ChangeColors : MonoBehaviour
             else if (images[i].transform.parent.parent.name == "RGBSliders_Thruster")
             {
                 
+            }
+            else if (images[i].transform.parent.parent.name == "RGBSliders_Wireframes")
+            {
+                wireframeMaterial.color = colorsCurrent[i];
             }
         }
 	}

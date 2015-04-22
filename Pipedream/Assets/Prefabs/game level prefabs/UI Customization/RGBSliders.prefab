@@ -91,7 +91,7 @@ GameObject:
   - 222: {fileID: 22281514}
   - 114: {fileID: 11402910}
   m_Layer: 5
-  m_Name: HyperTunnel_ColorPalette
+  m_Name: Wireframe_ColorPalette
   m_TagString: ColorPalette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 4f4c36dc432d20b4ea378804b69314b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6529b9f8a339a546a70dec1a8a617a1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -544,9 +544,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .176470593, g: .176470593, b: .176470593, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a854d1a7ff396204ab2134fa52515364, type: 3}
+  m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 1
@@ -753,7 +753,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hyper Tunnel
+  m_Text: Wireframe
 --- !u!114 &11456294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1031,7 +1031,7 @@ MonoBehaviour:
     rgba: 4278255360
   - serializedVersion: 2
     rgba: 4294901760
-  RGBValues: 
+  RGBValues: ff000000ff000000ff000000ff000000
 --- !u!114 &11483154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1335,7 +1335,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: -199, y: -140}
+  m_AnchoredPosition: {x: -166.5, y: -140}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &22449064

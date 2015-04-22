@@ -48,7 +48,10 @@ public class OnClickColor : MonoBehaviour
     {
         foreach (Transform child in slidersParent.transform)
         {
-            child.GetComponent<RGBColors>().SetSliders("current");
+            if (child.GetComponent<RGBColors>() != null)
+            {
+                child.GetComponent<RGBColors>().SetSliders("current");
+            }
         }
     }
 

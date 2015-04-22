@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MovementForward : MonoBehaviour
 {
+    public bool temp = false;
     public static bool inHyperspace = true;
     public bool accelerateToHyperspace = false;
     public bool decelerateToSpaceSpeed = false;
@@ -30,6 +31,11 @@ public class MovementForward : MonoBehaviour
         acceleration = (hyperspaceSpeed - spaceSpeed) / accelerationTime;
         deceleration = (hyperspaceSpeed - spaceSpeed) / decelerationTime;
 	}
+
+    void Update ()
+    {
+        temp = inHyperspace;
+    }
 
 	void FixedUpdate ()
     {

@@ -13,6 +13,13 @@ public class ChangeLighting : MonoBehaviour
     {
         lights = transform.GetComponentsInChildren<Light>();
         lastColor = color;
+
+        Light transformLight = transform.GetComponent<Light>();
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            //lights[i].cullingMask = transformLight.cullingMask;
+        }
     }
     
     void Update ()
