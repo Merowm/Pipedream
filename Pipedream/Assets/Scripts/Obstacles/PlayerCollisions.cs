@@ -26,6 +26,9 @@ public class PlayerCollisions : MonoBehaviour
         //Obstacle collisions
         if (other.gameObject.tag == "Obstacle")
         {
+#if UNITY_ANDROID
+            Handheld.Vibrate();
+#endif
             //Collision in hyperspace
             if (MovementForward.inHyperspace)
             {

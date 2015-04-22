@@ -101,6 +101,7 @@ GameObject:
   - 114: {fileID: 27428544}
   - 114: {fileID: 27428548}
   - 114: {fileID: 27428549}
+  - 58: {fileID: 27428550}
   m_Layer: 5
   m_Name: planet1
   m_TagString: planetButton
@@ -288,6 +289,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToGo: 
   SceneIsMenu: 0
+--- !u!58 &27428550
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27428542}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &254827838
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +316,7 @@ GameObject:
   - 114: {fileID: 254827840}
   - 114: {fileID: 254827844}
   - 114: {fileID: 254827845}
+  - 58: {fileID: 254827846}
   m_Layer: 5
   m_Name: planet2
   m_TagString: planetButton
@@ -489,6 +504,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToGo: 
   SceneIsMenu: 0
+--- !u!58 &254827846
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254827838}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &432200086
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +531,7 @@ GameObject:
   - 114: {fileID: 432200089}
   - 114: {fileID: 432200088}
   - 114: {fileID: 432200093}
+  - 58: {fileID: 432200094}
   m_Layer: 5
   m_Name: planet5
   m_TagString: planetButton
@@ -690,6 +719,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToGo: 
   SceneIsMenu: 0
+--- !u!58 &432200094
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 432200086}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &533110024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1209,7 @@ GameObject:
   - 114: {fileID: 976644440}
   - 114: {fileID: 976644444}
   - 114: {fileID: 976644445}
+  - 58: {fileID: 976644446}
   m_Layer: 5
   m_Name: planet3
   m_TagString: planetButton
@@ -1354,6 +1397,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToGo: 
   SceneIsMenu: 0
+--- !u!58 &976644446
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976644438}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &1087504826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1424,7 @@ GameObject:
   - 114: {fileID: 1087504828}
   - 114: {fileID: 1087504832}
   - 114: {fileID: 1087504833}
+  - 58: {fileID: 1087504834}
   m_Layer: 5
   m_Name: planet4
   m_TagString: planetButton
@@ -1555,6 +1612,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToGo: 
   SceneIsMenu: 0
+--- !u!58 &1087504834
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087504826}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &1281852295
 GameObject:
   m_ObjectHideFlags: 0

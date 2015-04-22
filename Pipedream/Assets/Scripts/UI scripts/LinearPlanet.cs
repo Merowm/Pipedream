@@ -32,7 +32,8 @@ public class LinearPlanet : MonoBehaviour
     bool hasTried;
 
     // for android
-    Vector3 lastTouchPos;
+    bool infoToggle = false;
+    bool infoPositionSet = false;
 
     void Start()
     {
@@ -56,7 +57,17 @@ public class LinearPlanet : MonoBehaviour
         if (stats.GetAvailability(levelId))
             lockPic.SetActive(false);
     }
+
     public void StartLevel()
+    {
+#if UNITY_ANDROID
+        return;
+#else
+        StartLevel1();
+#endif
+    }
+
+    public void StartLevel1()
     {
         if (instantInfo)
         {
@@ -79,14 +90,65 @@ public class LinearPlanet : MonoBehaviour
 
     void Update()
     {
+#if UNITY_ANDROID
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.touches[0];
+            if (touch.phase == TouchPhase.Began)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), new Vector3(0, 0, 1));
+                if (hit)// (Camera.main.ScreenPointToRay(touch.position), out hit))
+                {
+                    if (hit.collider.gameObject == gameObject)
+                    {
+                        if (!infoToggle)
+                        {
+                            //toggle info
+                            infoToggle = true;
+                            infoPositionSet = false;
+                            ShowInfo1();
+                        }
+                        else
+                        {
+                            //start level
+                            StartLevel1();
+                        }
+                    }
+                    else
+                    {
+                        //cancel
+                        infoToggle = false;
+                        LeavePlanet1();
+                        infoPositionSet = false;
+                    }
+                }
+                else
+                {
+                    //cancel
+                    infoToggle = false;
+                    LeavePlanet1();
+                    infoPositionSet = false;
+                }
+            }
+        }
+#endif
         if (instantInfo != null && hasTried == false)
         {
             Vector3 pos = new Vector3(0,0,0);
 #if UNITY_ANDROID
-                       if (Input.touchCount > 0) 
-             { 
-                 pos = Input.touches[0].position; 
-             } 
+            if (infoPositionSet)
+            {
+                return;
+            }
+            if (Input.touchCount > 0) 
+            { 
+                pos = Input.touches[0].position;
+                infoPositionSet = true;
+            }
+            else
+            {
+                return;
+            }
 #else
             pos = (Input.mousePosition);
 #endif
@@ -116,16 +178,25 @@ public class LinearPlanet : MonoBehaviour
 
     public void ShowInfo()
     {
+#if UNITY_ANDROID
+        return;
+#else
+        ShowInfo1();
+#endif
+    }
+
+    public void ShowInfo1()
+    {
         if (!hasTried)
         {
             if (instantInfo == null)
             {
-#if UNITY_ANDROID 
-            if (Input.touchCount > 0) 
-            { 
-                instantInfo = Instantiate(info, Input.touches[0].position, Quaternion.identity) as GameObject;
-                instantInfo.transform.localPosition = new Vector3(Input.touches[0].position.x - offset.x, Input.touches[0].position.y - offset.y, offset.z); 
-            } 
+#if UNITY_ANDROID
+                if (Input.touchCount > 0)
+                {
+                    instantInfo = Instantiate(info, Input.touches[0].position, Quaternion.identity) as GameObject;
+                    instantInfo.transform.localPosition = new Vector3(Input.touches[0].position.x - offset.x, Input.touches[0].position.y - offset.y, offset.z);
+                }
 #else
 
                 instantInfo = Instantiate(info, Input.mousePosition, Quaternion.identity) as GameObject;
@@ -145,7 +216,17 @@ public class LinearPlanet : MonoBehaviour
             }
         }
     }
+
     public void LeavePlanet()
+    {
+#if UNITY_ANDROID
+        return;
+#else
+        LeavePlanet1();
+#endif
+    }
+
+    public void LeavePlanet1()
     {
         DestroyInfo();
         hasTried = false;
@@ -185,4 +266,6 @@ public class LinearPlanet : MonoBehaviour
     {
         return instantInfo;
     }
+
+
 }
