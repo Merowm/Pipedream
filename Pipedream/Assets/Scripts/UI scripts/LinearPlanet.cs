@@ -34,7 +34,7 @@ public class LinearPlanet : MonoBehaviour
     // for android
     bool infoToggle = false;
     bool infoPositionSet = false;
-
+    public Text text;
     void Start()
     {
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
@@ -172,7 +172,14 @@ public class LinearPlanet : MonoBehaviour
             }
             infoRect.pivot = anchor;
 
+//#if UNITY_ANDROID
+            pos.x = pos.x * 800 / Screen.width;
+            pos.y = pos.y * 600 / Screen.height;
+//#endif
+
             infoRect.anchoredPosition = pos;
+            text.text = "offset = " + offset + '\n' +
+                "created = " + infoRect.anchoredPosition;
         }
     }
 
