@@ -26,7 +26,7 @@ public class OptionsControl : MonoBehaviour {
         sfxSlider.value = globalVol.effectVol;
         mainSlider.value = globalVol.masterVol;
         muteBox.isOn = globalVol.isMute;
-        Debug.Log(overlay + ": Stats thinks we are in menu: " + globalVol.isInMenu);
+
         if (globalVol.isInMenu && tutorialBox)
             tutorialBox.isOn = globalVol.tutorialIsOn;
 
