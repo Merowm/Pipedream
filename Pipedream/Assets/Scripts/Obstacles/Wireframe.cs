@@ -5,13 +5,15 @@ public class Wireframe : MonoBehaviour
 {
     public float displayDistance = 100.0f;
     public float asteroidSpeedMultiplier = 3.0f;
+    public bool customizationObject = false;
 
     private Transform player;
     private MovementForward playerMovement;
     private Transform wireframe;
     private Transform asteroid;
+    public HyperTunnelMovement parentMovement;
     private float distance = 0.0f;
-    private float asteroidSpeedPerSecond;
+    public float asteroidSpeedPerSecond;
     private bool positionSet = false;
     
     void Awake ()
@@ -21,6 +23,14 @@ public class Wireframe : MonoBehaviour
         wireframe = transform.GetChild(0).transform;
         asteroid = wireframe.FindChild("AsteroidGraphics").transform;
     }
+
+    void Start ()
+    {
+        if (customizationObject)
+        {
+            parentMovement = transform.parent.GetComponent<HyperTunnelMovement>();
+        }
+    }
     
     void FixedUpdate ()
     {
@@ -28,9 +38,24 @@ public class Wireframe : MonoBehaviour
         {
             distance = Vector3.Distance(new Vector3(0,0,player.transform.position.z),
                                         new Vector3(0,0,transform.position.z));
-            asteroidSpeedPerSecond = playerMovement.currentSpeedPerSecond * asteroidSpeedMultiplier;
 
-            if (transform.position.z <= player.transform.position.z + playerMovement.currentSpeedPerSecond)
+            float playerSpeedPerSecond = 0.0f;
+
+            if (playerMovement.currentSpeedPerSecond > 0)
+            {
+                playerSpeedPerSecond = playerMovement.currentSpeedPerSecond;
+            }
+            else
+            {
+                if (parentMovement != null)
+                {
+                    playerSpeedPerSecond = -parentMovement.speedPerSecond;
+                }
+            }
+
+            asteroidSpeedPerSecond = playerSpeedPerSecond * asteroidSpeedMultiplier;
+
+            if (transform.position.z <= player.transform.position.z + playerSpeedPerSecond)
             {
                 if (distance <= displayDistance)
                 {

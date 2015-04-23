@@ -170,7 +170,7 @@ public class Movement2D : MonoBehaviour
         transform.Rotate(Vector3.forward * (currentRotationSpeed * 10) * Time.deltaTime);
 
 
-        if (controls.controls["Up"])
+        /*if (controls.controls["Up"])
         {
             if (shipTransform.localPosition.y < -0.5f)
             {
@@ -192,7 +192,7 @@ public class Movement2D : MonoBehaviour
             {
                 shipTransform.localPosition = new Vector3(0, -5.0f, 0);
             }
-        }
+        }*/
     }
 
     void SpaceMovement()
