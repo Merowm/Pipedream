@@ -79,4 +79,10 @@ public class OptionsControl : MonoBehaviour {
     {
         globalVol.TutorialYesNo(tutorialBox.isOn);
     }
+    public void DeleteSave()
+    {
+        Statistics stats;
+        if (stats = GameObject.FindObjectOfType<Statistics>())
+            stats.GetComponent<DataSave>().ClearSlot("defaultslot");
+    }
 }
