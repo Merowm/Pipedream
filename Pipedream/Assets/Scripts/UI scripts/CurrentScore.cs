@@ -50,6 +50,7 @@ public class CurrentScore : MonoBehaviour {
         CheckGoal(bonusObjectives[1], stats.GetCurrentBonus() == maxBonus);
         CheckGoal(bonusObjectives[2], stats.GetLongestStreak() >= maxBonus * 0.5f); ////////////// Placeholder value!
         CheckGoal(bonusObjectives[3], stats.GetSpecialAcquired());
+        saver.SendScore();
     }
 
 	
@@ -67,7 +68,7 @@ public class CurrentScore : MonoBehaviour {
 
     public void Reset()
     {
-        saver.SendScore();
+
         stats.ResetScore();
     }
 

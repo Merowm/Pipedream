@@ -50,17 +50,21 @@ public class DataSave : MonoBehaviour
                 scoreData.Add(new PlayerScores(l.levelID));
             }
             Debug.Log("new data setup");
+            if (!stats.GetAvailability(1))
+                stats.UnlockLevel(1);
         }
     }
     // clear slot (call from menu) Used only if slots are used.
     public void ClearSlot(string slotname)
     {
         File.Delete(Application.persistentDataPath + "/" + slotname + ".dat");
+        SetupStats();
     }
 
 	void Start () 
     {
-        stats = GetComponent<Statistics>();
+        if (!(stats = GetComponent<Statistics>()))
+            Debug.Log("no stats in saving system");
         if (!usesSlots)
         {
             UseSlot("defaultslot");          
@@ -83,7 +87,9 @@ public class DataSave : MonoBehaviour
             d.highScore = p.highScore;
             d.isUnlocked = p.isUnlocked;
         }        
-
+        // unlock first level! So game can be played.
+        if (!stats.GetAvailability(1))
+            stats.UnlockLevel(1);
     }
 
     // call this from wherever game has to save

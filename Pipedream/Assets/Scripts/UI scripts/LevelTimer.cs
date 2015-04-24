@@ -9,12 +9,10 @@ public class LevelTimer : MonoBehaviour {
     public float distanceMeter;
     public float updateInterval;
     public Transform playerShip;
-    //public GameObject distance;
     public float timeInSecs;
 
     Statistics stats;
     EndLevelScore end;
-    //GameObject instantBar;
     Slider distanceBar;
     Canvas UI_c;
     public int fullDistance;
@@ -135,9 +133,10 @@ public class LevelTimer : MonoBehaviour {
         {
             stats.AddToBonusCount();
             WriteToGuiBonus(stats.GetCurrentBonus());
+            ++bonusWithoutHit;
             if (longestStreak < bonusWithoutHit)
                 longestStreak = bonusWithoutHit;
-            ++bonusWithoutHit;
+
         }
         else
         {
@@ -157,24 +156,6 @@ public class LevelTimer : MonoBehaviour {
         Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
         // also saves best trophy
         int medal = stats.CompareToTrophyRequirements(levelId);
-
-        /////////////////////////////////////////////////// for testing purposes
-        switch (medal)
-        {
-            case 1:
-                Debug.Log("You got gold!");
-                break;
-            case 2:
-                Debug.Log("You got silver!");
-                break;
-            case 3:
-                Debug.Log("You got bronze!");
-                break;
-            default:
-                Debug.Log("No medal!");
-                break;
-        }
-        //////////////////////////////////////////////////// end testing
         
     }
 
@@ -194,14 +175,5 @@ public class LevelTimer : MonoBehaviour {
     {
         return distanceMeter;
     }
-    //void CreateDistanceBar()
-    //{
-    //    Vector3 pos = new Vector3(50, -328, 0);
-    //    UI_c = FindObjectOfType<Canvas>();
-    //    instantBar = Instantiate(distance, pos, Quaternion.identity) as GameObject;
-    //    instantBar.transform.SetParent(UI_c.transform, false);
-    //    instantBar.transform.localPosition = pos;
-    //    //instantBar.GetComponent<DistanceMeter>().SendLength(fullDistance);
-    //    distanceBar = instantBar.GetComponent<Slider>();
-    //}
+
 }
