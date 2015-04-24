@@ -5,7 +5,7 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-
+// TODO: Use PlayerPrefs anyway?
 public class DataSave : MonoBehaviour
 {
     string _name;
@@ -20,6 +20,11 @@ public class DataSave : MonoBehaviour
         public int highScore;
         public int currentTrophy;
         public bool isUnlocked;
+        // special goals
+        public bool allCollected;
+        public bool nothingHit;
+        public bool bonusStreakDone;
+        public bool specialFound;
                
         public PlayerScores(int id)
         {
@@ -86,6 +91,10 @@ public class DataSave : MonoBehaviour
             d.currentTrophy = p.currentTrophy;
             d.highScore = p.highScore;
             d.isUnlocked = p.isUnlocked;
+            d.allCollected = p.allCollected;
+            d.nothingHit = p.nothingHit;
+            d.bonusStreakDone = p.bonusStreakDone;
+            d.specialFound = p.bonusStreakDone;
         }        
         // unlock first level! So game can be played.
         if (!stats.GetAvailability(1))
@@ -101,7 +110,11 @@ public class DataSave : MonoBehaviour
             Statistics.levelData d = stats.FindLevel(p.levelID);
             p.currentTrophy = d.currentTrophy;
             p.highScore = d.highScore;
-            p.isUnlocked = d.isUnlocked; 
+            p.isUnlocked = d.isUnlocked;
+            p.allCollected = d.allCollected;
+            p.nothingHit = d.nothingHit;
+            p.bonusStreakDone = d.bonusStreakDone;
+            p.specialFound = d.bonusStreakDone;
         }
         // then save to binary file.
         SaveData();

@@ -46,10 +46,23 @@ public class CurrentScore : MonoBehaviour {
         pointScore.text = stats.GetCurrentScore().ToString();
         bonusScore.text = (stats.GetCurrentBonus() + " / " + maxBonus).ToString();
         SetMedal(stats.CompareToTrophyRequirements(level));
-        CheckGoal(bonusObjectives[0], stats.GetCurrentHitCount() == 0);
-        CheckGoal(bonusObjectives[1], stats.GetCurrentBonus() == maxBonus);
-        CheckGoal(bonusObjectives[2], stats.GetLongestStreak() >= maxBonus * 0.5f); ////////////// Placeholder value!
-        CheckGoal(bonusObjectives[3], stats.GetSpecialAcquired());
+
+        if (!(stats.GetCurrentHitCount() == 0))
+            UnCheckGoal(bonusObjectives[0]);
+        else stats.GotNothingHit(level);
+
+        if (!(stats.GetCurrentBonus() == maxBonus))
+            UnCheckGoal(bonusObjectives[1]);
+        else stats.GotAllCollected(level);
+
+        if (!(stats.GetLongestStreak() >= maxBonus * 0.5f))////////////// Placeholder value!
+            UnCheckGoal(bonusObjectives[2]);
+        else stats.GotBonusStreakDone(level);
+
+        if (!(stats.GetSpecialAcquired()))
+            UnCheckGoal(bonusObjectives[3]);
+        else stats.GotSpecialFound(level);
+
         saver.SendScore();
     }
 
@@ -59,11 +72,11 @@ public class CurrentScore : MonoBehaviour {
         if (trophy > 0)
         medals[trophy - 1].SetActive(true);
     }
-    void CheckGoal(GameObject yesno, bool gotIt)
+    void UnCheckGoal(GameObject yesno)
     {
         Transform yes = yesno.transform.Find("yes");
-        if (!gotIt)
-            yes.gameObject.SetActive(false);
+        yes.gameObject.SetActive(false);
+         
     }
 
     public void Reset()

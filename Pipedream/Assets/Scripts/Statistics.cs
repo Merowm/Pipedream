@@ -42,6 +42,10 @@ public class Statistics : MonoBehaviour
         public int bonusCount;
         public int distanceToRace;
         public float timeToRace;
+        public bool allCollected;
+        public bool nothingHit;
+        public bool bonusStreakDone;
+        public bool specialFound;
 
         public levelData(int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelLength, float levelTime, int levelId)
         {
@@ -55,6 +59,10 @@ public class Statistics : MonoBehaviour
             highScore = 0;
             currentTrophy = 0;
             isUnlocked = false;
+            allCollected = false;
+            nothingHit = false;
+            bonusStreakDone = false;
+            specialFound = false;
         }
     }
     public List<levelData> levels;
@@ -197,6 +205,24 @@ public class Statistics : MonoBehaviour
             SetNewTrophy(lastLevelTrophy, current);
         }
         return lastLevelTrophy;
+    }
+
+    // Extra objective updating methods.
+    public void GotAllCollected(int levelId)
+    {
+        FindLevel(levelId).allCollected = true;
+    }
+    public void GotNothingHit(int levelId)
+    {
+        FindLevel(levelId).nothingHit = true;
+    }
+    public void GotBonusStreakDone(int levelId)
+    {
+        FindLevel(levelId).bonusStreakDone = true;
+    }
+    public void GotSpecialFound(int levelId)
+    {
+        FindLevel(levelId).specialFound = true;
     }
 
     //////////////////////////////////////
