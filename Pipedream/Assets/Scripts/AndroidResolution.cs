@@ -29,6 +29,7 @@ public class AndroidResolution : MonoBehaviour {
         Debug.Log("Setting screen resolution: " + newW + " X " + newH);
         Screen.SetResolution(newW, newH, true);
         Debug.Log("Current resolution: " + Screen.currentResolution.width + " X " + Screen.currentResolution.height);
+        
 
 #endif
     }
