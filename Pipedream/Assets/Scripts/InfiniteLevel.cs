@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class InfiniteLevel : MonoBehaviour {
 
@@ -42,6 +43,9 @@ public class InfiniteLevel : MonoBehaviour {
     public Transform partsParent;
 
     void Awake(){
+        //list available parts
+        UpdateAvailableParts();
+
         //spawn objects for pooling
         foreach (GameObject go in availablePartsList)
         {
@@ -125,4 +129,15 @@ public class InfiniteLevel : MonoBehaviour {
         Application.LoadLevel(Application.loadedLevelName);
     }
 
+    public void UpdateAvailableParts()
+    {
+        availablePartsList.Clear();
+
+        Object[] objects = Resources.LoadAll("");
+
+        for (int i = 0; i < objects.Length; i++)
+        {
+            availablePartsList.Add((GameObject)objects[i]);
+        }
+    }
 }

@@ -4,11 +4,12 @@ using System.Collections;
 public class MineSticking : MonoBehaviour
 {
     public GameObject target; //Same as in mineAI
-    public float countdownTimer = 5.0f;
+    public float countdownTimer = 3.0f;
     public bool stickToTarget = false; //Makes mine stick to the target when true
     public bool stuckToTarget = false; //Whether or not the mine is continuously stuck to the target, true = stuck
 
     private Health health;
+    private ReducePoints points;
     private Transform bodyTransform;
     private Vector3 stuckPosition;
 
@@ -16,6 +17,7 @@ public class MineSticking : MonoBehaviour
     {
         target = transform.GetComponent<MineAI>().target;
         health = target.GetComponent<Health>();
+        points = transform.GetComponent<ReducePoints>();
         bodyTransform = transform.GetChild(0).transform;
 	}
 
@@ -60,6 +62,7 @@ public class MineSticking : MonoBehaviour
     void Explosion ()
     {
         health.Damage();
-        Destroy(gameObject);
+        points.HitObstacle(true);
+        //Destroy(gameObject);
     }
 }

@@ -4,6 +4,7 @@ using System.Collections;
 public class MovementForward : MonoBehaviour
 {
     public static bool inHyperspace = true;
+    public static float difficultyMultiplier = 0.75f;
     public bool accelerateToHyperspace = false;
     public bool decelerateToSpaceSpeed = false;
     public float currentSpeed;
@@ -26,6 +27,16 @@ public class MovementForward : MonoBehaviour
 	void Awake ()
     {
         spaceDriveState = transform.GetComponent<SpaceDriveState>();
+
+        if (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.beginner)
+        {
+            difficultyMultiplier = 0.75f;
+        }
+        else if (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal)
+        {
+            difficultyMultiplier = 1.0f;
+        }
+        hyperspaceSpeed *= difficultyMultiplier;
 
         acceleration = (hyperspaceSpeed - spaceSpeed) / accelerationTime;
         deceleration = (hyperspaceSpeed - spaceSpeed) / decelerationTime;

@@ -22,22 +22,25 @@ public class MineAI : MonoBehaviour
 
 	void FixedUpdate ()
     {
-        //If the target is close enough on the z-axis, continue
-        if (followingDistance > Vector3.Distance(new Vector3(0,0,transform.position.z),
-                                                 new Vector3(0,0,target.transform.position.z)))
+        if (MovementForward.inHyperspace)
         {
-            //Setting target position
-            targetPosition = new Vector3(target.transform.position.x,target.transform.position.y,targetPosition.z);
-            //Setting targetPositionObject's position
-            targetPositionObject.transform.position = targetPosition;
-            //Direction calculation
-            direction = (targetPosition - bodyTransform.position).normalized;
-
-            //If target is not yet passed the mine, continue
-            if (transform.position.z >= target.transform.position.z - 50.0f)
+            //If the target is close enough on the z-axis, continue
+            if (followingDistance > Vector3.Distance(new Vector3(0, 0, transform.position.z),
+                                                 new Vector3(0, 0, target.transform.position.z)))
             {
-                //Moves the mine
-                bodyTransform.position += direction * speed2D * Time.deltaTime;
+                //Setting target position
+                targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, targetPosition.z);
+                //Setting targetPositionObject's position
+                targetPositionObject.transform.position = targetPosition;
+                //Direction calculation
+                direction = (targetPosition - bodyTransform.position).normalized;
+
+                //If target is not yet passed the mine, continue
+                if (transform.position.z >= target.transform.position.z - 50.0f)
+                {
+                    //Moves the mine
+                    bodyTransform.position += direction * speed2D * Time.deltaTime;
+                }
             }
         }
 	}

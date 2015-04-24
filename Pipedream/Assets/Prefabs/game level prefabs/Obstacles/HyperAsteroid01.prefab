@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 365.710724, y: 589.246399, z: -116.840225}
+  m_LocalPosition: {x: 155.286743, y: 114.241798, z: 370.04364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 489148}
@@ -236,6 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayDistance: 25
   asteroidSpeedMultiplier: 10
+  customizationObject: 0
+  parentMovement: {fileID: 0}
+  asteroidSpeedPerSecond: 0
 --- !u!114 &11459870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,11 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4acb12046c21f274b9ae47f1b644a38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: {x: 0, y: 0, z: 0}
-  randomizeRotation: 1
-  rotationRangeMax: 2
-  rotationRangeMin: -2
-  displayDistance: 400
+  rotation: 0
 --- !u!114 &11472018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b6b654f9b446440852f2459b2bc540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScorePoints: 50
+  itemScorePoints: 100
 --- !u!114 &11492684
 MonoBehaviour:
   m_ObjectHideFlags: 1

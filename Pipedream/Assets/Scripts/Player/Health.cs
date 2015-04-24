@@ -11,7 +11,7 @@ public class Health : MonoBehaviour {
 
     //for shield regen
     private float shieldRegenTimer = 0;
-    private float shieldRegenTime = 5;
+    public float shieldRegenTime = 5;
 
     //maximum number of hull the player starts out with
     private int maxHull = 3;

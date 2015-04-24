@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 451994}
   - 114: {fileID: 11487030}
   - 114: {fileID: 11491872}
+  - 114: {fileID: 11421996}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -117,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 750}
+  m_LocalPosition: {x: 150.202347, y: 115.949409, z: 373.964691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 451996}
@@ -262,6 +263,18 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11421996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b6b654f9b446440852f2459b2bc540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemScorePoints: 100
 --- !u!114 &11445084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  countdownTimer: 5
+  countdownTimer: 3
   stickToTarget: 0
   stuckToTarget: 0
 --- !u!1001 &100100000

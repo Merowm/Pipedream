@@ -4,7 +4,7 @@ using System.Collections;
 public class ReducePoints : MonoBehaviour {
 
     // Set negative if points should be reduced
-    public int itemScorePoints;
+    public int itemScorePoints = 100;
 
     private Canvas levelUI;
     private LevelTimer timer;
@@ -13,6 +13,8 @@ public class ReducePoints : MonoBehaviour {
 
     void Awake()
     {
+        itemScorePoints = (int)(itemScorePoints * MovementForward.difficultyMultiplier);
+
         if (GameObject.FindWithTag("levelTimer") != null)
         {
             timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();

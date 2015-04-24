@@ -19,6 +19,8 @@ public class CollectPoints : MonoBehaviour
     
 	void Awake ()
     {
+        itemScorePoints = (int)(itemScorePoints * MovementForward.difficultyMultiplier);
+
         levelUI = FindObjectOfType<Canvas>();
 
         Canvas[] all = FindObjectsOfType<Canvas>();
@@ -31,7 +33,6 @@ public class CollectPoints : MonoBehaviour
         {
             timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
         }
-        ;
         if (volCtrl = FindObjectOfType<VolControl>())
         {
             sound = volCtrl.bonusEffect;
