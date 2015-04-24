@@ -4,7 +4,7 @@ using System.Collections;
 public class PlaceHolderSpawner : MonoBehaviour
 {
     public GameObject prefab;
-    public Vector3 scale = new Vector3(1,1,1);
+    public Vector3 scale = new Vector3(0,0,0);
     public float wallRotatingSpeed = 0.0f;
 
     private Transform placeHolderChild;
@@ -16,14 +16,16 @@ public class PlaceHolderSpawner : MonoBehaviour
         obj = (GameObject)Instantiate(prefab, placeHolderChild.position, placeHolderChild.rotation);
         obj.transform.parent = transform.parent;
 
-        foreach (Transform child in obj.transform)
+        if (scale != new Vector3(0,0,0))
         {
-            child.transform.localScale = scale;
+            foreach (Transform child in obj.transform)
+            {
+                child.transform.localScale = scale;
+            }
         }
 
         if (prefab.transform.name == "RotatingWall")
         {
-            Debug.Log("asdadasdadsadasdasdasdas");
             if (wallRotatingSpeed != 0)
             {
                 obj.transform.GetComponent<ObstacleRotation>().rotation = wallRotatingSpeed;

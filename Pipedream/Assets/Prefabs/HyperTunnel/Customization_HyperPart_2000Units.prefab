@@ -4707,6 +4707,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
+  scale: {x: 1, y: 1, z: 1}
+  wallRotatingSpeed: 0
 --- !u!114 &11423496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4718,7 +4720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9395fd7a6c98ad4b8b0f57bb5491119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 155
   speedPerSecond: 0
   distanceReset: 1000
   direction: {x: 0, y: 0, z: -1}
@@ -4738,6 +4740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
+  scale: {x: 1, y: 1, z: 1}
+  wallRotatingSpeed: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

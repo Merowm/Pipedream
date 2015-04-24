@@ -32,12 +32,12 @@ public class PlayerCollisions : MonoBehaviour
             //Collision in hyperspace
             if (MovementForward.inHyperspace)
             {
-                Debug.Log("Hyperspace collison");
+                Debug.Log("Hyperspace collision");
                 health.Damage();
                 rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
                 leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
                 //movement.ForcedDodge();
-                other.transform.parent.parent.GetComponent<ReducePoints>().HitObstacle(false);
+                other.transform.parent.parent.GetComponentInChildren<ReducePoints>().HitObstacle(false);
             }
             //Collision out of hyperspace
             else
