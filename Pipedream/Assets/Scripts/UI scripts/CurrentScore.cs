@@ -47,21 +47,18 @@ public class CurrentScore : MonoBehaviour {
         bonusScore.text = (stats.GetCurrentBonus() + " / " + maxBonus).ToString();
         SetMedal(stats.CompareToTrophyRequirements(level));
 
-        if (!(stats.GetCurrentHitCount() == 0))
+        if (!stats.HasNothingHit(level))
             UnCheckGoal(bonusObjectives[0]);
-        else stats.GotNothingHit(level);
+        
 
-        if (!(stats.GetCurrentBonus() == maxBonus))
+        if (!stats.HasAllCollected(level))
             UnCheckGoal(bonusObjectives[1]);
-        else stats.GotAllCollected(level);
 
-        if (!(stats.GetLongestStreak() >= maxBonus * 0.5f))////////////// Placeholder value!
+        if (!stats.HasBonusStreakDone(level))////////////// Placeholder value!
             UnCheckGoal(bonusObjectives[2]);
-        else stats.GotBonusStreakDone(level);
 
-        if (!(stats.GetSpecialAcquired()))
+        if (!stats.HasSpecialFound(level))
             UnCheckGoal(bonusObjectives[3]);
-        else stats.GotSpecialFound(level);
 
         saver.SendScore();
     }

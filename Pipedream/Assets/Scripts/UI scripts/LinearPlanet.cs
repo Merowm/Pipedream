@@ -20,6 +20,7 @@ public class LinearPlanet : MonoBehaviour
     Text lengthInSeconds;
     Text score;
     GameObject[] trophies;
+    GameObject[] extras;
     GoToNext goScript;
     GameObject lockPic;
 
@@ -49,6 +50,7 @@ public class LinearPlanet : MonoBehaviour
         offset = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         anchor = new Vector2(0, 0);
         trophies = new GameObject[3];
+        extras = new GameObject[4];
         level = levelId.ToString();
         goScript = this.gameObject.GetComponent<GoToNext>();
         goScript.SceneToGo = stats.GetLevelNameAsString(levelId);
@@ -253,17 +255,37 @@ public class LinearPlanet : MonoBehaviour
         trophies[0] = panel.transform.Find("trophy/gold").gameObject;
         trophies[1] = panel.transform.Find("trophy/silver").gameObject;
         trophies[2] = panel.transform.Find("trophy/bronze").gameObject;
+        // TODO: check order!
+        extras[0] = panel.transform.Find("trophy/all").gameObject;
+        extras[1] = panel.transform.Find("trophy/nohit").gameObject;
+        extras[2] = panel.transform.Find("trophy/getex").gameObject;
+        extras[3] = panel.transform.Find("trophy/streak").gameObject;
         foreach (GameObject t in trophies)
         {
             t.SetActive(false);
         }
-
+        foreach (GameObject t in extras)
+        {
+            t.SetActive(false);
+        }
         lvnumber.text = "run # " + level;
         lengthInSeconds.text = secs + " secs";
         score.text = points;
         if (trophy > 0)
         {
             trophies[trophy - 1].SetActive(true);
+        }
+        if (stats.HasAllCollected(levelId))
+            extras[0].SetActive(true);
+        if (stats.HasNothingHit(levelId))
+            extras[1].SetActive(true);
+        if (stats.HasSpecialFound(levelId))
+            extras[2].SetActive(true);
+        if (stats.HasBonusStreakDone(levelId))
+            extras[3].SetActive(true);
+        foreach (GameObject g in extras)
+        {
+            Debug.Log(g.name + " " + g.activeSelf);
         }
     }
 
