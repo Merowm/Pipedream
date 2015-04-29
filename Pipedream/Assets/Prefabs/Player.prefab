@@ -46,6 +46,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 438530}
   - 114: {fileID: 11458908}
+  - 114: {fileID: 11431106}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -297,6 +298,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleObjectList: []
+--- !u!114 &11431106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0edadde649b2a64e82e0acef2282181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNames:
+  - Repair
+  - Invulnerability
+  - TimeSlow
+  items: 000000
+  timeSlowed: 0
+  slowDownDuration: 5
+  slowDownAmount: .5
 --- !u!114 &11438248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,8 +370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   right: 0
   left: 0
-  up: 0
-  down: 0
 --- !u!114 &11438534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,6 +426,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldRegenTime: 4
+  invulnerable: 0
+  invulnerabilityTimer: 0
+  invulnerabilityTime: 5
 --- !u!198 &19845184
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -652,7 +673,7 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1000
+    maxNumParticles: 10
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -671,7 +692,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 25
+      scalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:

@@ -3,10 +3,9 @@ using System.Collections;
 //TODO:Remove bug creating unwanted acceleration
 public class CameraFollow : MonoBehaviour
 {
-    public float distanceFromTarget = 10f;
-    public float hyperPosition = 2.0f;
-    public float spacePosition = 2.0f;
-	public float dampTime = 0.15f;
+    public float distanceFromTarget = 15.0f;
+    public float position = 9.0f;
+	public float dampTime = 0.3f;
 	public Transform target;
 
     private Transform rotator;
@@ -30,8 +29,8 @@ public class CameraFollow : MonoBehaviour
 		{
             transform.position = target.parent.position;
 
-            if (MovementForward.inHyperspace)
-            {
+            //if (MovementForward.inHyperspace)
+            //{
                 /*mainCamera.position = Vector3.SmoothDamp(mainCamera.position,
                                                          //new Vector3(target.position.x,target.position.y + spacePosition,target.position.z - distanceFromTarget),
                                                          new Vector3(transform.position.x - ((transform.position.x - target.position.x) / hyperPosition),
@@ -48,8 +47,8 @@ public class CameraFollow : MonoBehaviour
                 //mainCamera.position = new Vector3((target.parent.position.x + target.position.x) / hyperPosition,
                   //                                (target.parent.position.y + target.position.y) / hyperPosition,
                     //                              target.position.z - distanceFromTarget);
-                mainCamera.position = new Vector3(transform.position.x - ((transform.position.x - target.position.x) / hyperPosition),
-                                                  transform.position.y - ((transform.position.y - target.position.y) / hyperPosition),
+                mainCamera.position = new Vector3(transform.position.x - ((transform.position.x - target.position.x) / position),
+                                                  transform.position.y - ((transform.position.y - target.position.y) / position),
                                                   target.position.z - distanceFromTarget);
                 //transform.Rotate(Vector3.forward *
                  //                Time.deltaTime *
@@ -57,7 +56,7 @@ public class CameraFollow : MonoBehaviour
                 rotator.rotation = target.parent.rotation;
                 effectSys.rotation = new Quaternion(0, 0, -rotator.rotation.z, 0);
 
-            }
+            /*}
             else
             {
                 rotator.rotation = new Quaternion(0,0,0,0);
@@ -71,7 +70,7 @@ public class CameraFollow : MonoBehaviour
                 //mainCamera.position = new Vector3(target.position.x,
                 //                                  target.position.y + 2,
                 //                                  target.position.z - distanceFromTarget);
-            }
+            }*/
 		}
 	}
 }

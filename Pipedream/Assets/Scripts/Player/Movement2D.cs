@@ -170,7 +170,7 @@ public class Movement2D : MonoBehaviour
         transform.Rotate(Vector3.forward * (currentRotationSpeed * 10) * Time.deltaTime);
 
 
-        /*if (controls.controls["Up"])
+        /*if (Input.GetButton(KeyCode.T))
         {
             if (shipTransform.localPosition.y < -0.5f)
             {
@@ -182,7 +182,7 @@ public class Movement2D : MonoBehaviour
             }
         }
 
-        if (controls.controls["Down"])
+        if (Input.GetButton(KeyCode.G))
         {
             if (shipTransform.localPosition.y > -5.0f)
             {

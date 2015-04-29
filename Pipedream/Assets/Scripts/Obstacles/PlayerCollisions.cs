@@ -61,5 +61,10 @@ public class PlayerCollisions : MonoBehaviour
         {
             other.GetComponentInParent<CollectPoints>().HitCollectable();
         }
+        //Pickup collisions
+        if (other.gameObject.tag == "Pickup")
+        {
+            other.GetComponentInParent<Pickup>().Collect();
+        }
 	}
 }

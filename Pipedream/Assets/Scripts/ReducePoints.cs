@@ -13,8 +13,6 @@ public class ReducePoints : MonoBehaviour {
 
     void Awake()
     {
-        itemScorePoints = (int)(itemScorePoints * MovementForward.difficultyMultiplier);
-
         if (GameObject.FindWithTag("levelTimer") != null)
         {
             timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
@@ -42,6 +40,10 @@ public class ReducePoints : MonoBehaviour {
         //hpCounter = GameObject.FindObjectOfType<Health>();
     }
 
+    void Start ()
+    {
+        itemScorePoints = (int)(itemScorePoints * MovementForward.difficultyMultiplier);
+    }
 
     public void HitObstacle(bool destroyWhenHit)
     {

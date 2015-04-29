@@ -13,6 +13,11 @@ public class Health : MonoBehaviour {
     private float shieldRegenTimer = 0;
     public float shieldRegenTime = 5;
 
+    //for invulnerability
+    public bool invulnerable = false;
+    public float invulnerabilityTimer = 0;
+    public float invulnerabilityTime = 5;
+
     //maximum number of hull the player starts out with
     private int maxHull = 3;
     //current number of hull the player has left
@@ -30,6 +35,7 @@ public class Health : MonoBehaviour {
 
     //shield particle system
     private ParticleSystem partSysShield;
+    private float originalEmissionRate;
 
     //particles
     //public GameObject partSysDead;
@@ -43,11 +49,13 @@ public class Health : MonoBehaviour {
         healthGUIShield = healthParent.transform.FindChild("shield").gameObject;
         gameOverGUI = GameObject.Find("gameOverGUI");
         partSysShield = GameObject.Find("Shield Particle System").GetComponent <ParticleSystem>();
+        originalEmissionRate = partSysShield.emissionRate;
         Reset();
     }
 
     void Update(){
         UpdateShieldRegen();
+        UpdateInvulnerability();
 
         if (!alive)
         {
@@ -61,32 +69,36 @@ public class Health : MonoBehaviour {
         {
             return;
         }
-        //if no shield left
-        if (currentShield <= 0)
+        //if not invulnerable
+        if (!invulnerable)
         {
-            //damage hull
-            --currentHull;
-            Debug.Log("Received damage to hull");
-            if (currentHull <= 0){
-                Debug.Log("Game Over");
-                gameOverGUI.SetActive(true);
-                alive = false;
-                Time.timeScale = 0.0f;
-                //partSysDead.SetActive(true);
+            //if no shield left
+            if (currentShield <= 0)
+            {
+                //damage hull
+                --currentHull;
+                Debug.Log("Received damage to hull");
+                if (currentHull <= 0){
+                    Debug.Log("Game Over");
+                    gameOverGUI.SetActive(true);
+                    alive = false;
+                    Time.timeScale = 0.0f;
+                    //partSysDead.SetActive(true);
+                }
             }
-        }
-        //else
-        else
-        {
-            //damage shield
-            --currentShield;
-            partSysShield.emissionRate = 0;
-            Debug.Log("Received damage to shields");
-        }
-        //reset shield regen timer
-        shieldRegenTimer = 0;
+            //else
+            else
+            {
+                //damage shield
+                --currentShield;
+                partSysShield.emissionRate = 0;
+                Debug.Log("Received damage to shields");
+            }
+            //reset shield regen timer
+            shieldRegenTimer = 0;
 
-        UpdateHealthGUI();
+            UpdateHealthGUI();
+        }
     }
 
     //to repair hull
@@ -106,7 +118,35 @@ public class Health : MonoBehaviour {
         UpdateHealthGUI();
     }
 
-    //updats shield regen
+    //activates/deactivates invulnerability
+    public void SetInvulnerability(){
+        if (!alive)
+        {
+            return;
+        }
+        //activate invulnerability
+        if (!invulnerable)
+        {
+            //set shield particles to overdrive
+            partSysShield.maxParticles = (int)(originalEmissionRate * 0.8f);
+            partSysShield.emissionRate = partSysShield.maxParticles / 2;
+            currentShield = maxShield;
+            UpdateHealthGUI();
+            invulnerable = true;
+            Debug.Log("Invulnerability activated");
+        }
+        //deactivate invulnerability
+        else
+        {
+            //set shield particles to normal
+            partSysShield.maxParticles = (int)(originalEmissionRate / 10);
+            partSysShield.emissionRate = originalEmissionRate;
+            invulnerable = false;
+            Debug.Log("Invulnerability deactivated");
+        }
+    }
+
+    //updates shield regen
     private void UpdateShieldRegen(){
         if (!alive)
         {
@@ -122,15 +162,38 @@ public class Health : MonoBehaviour {
                 //reset timer
                 shieldRegenTimer -= shieldRegenTime;
                 //add shield
-                ++currentShield;
+                currentShield = maxShield;
                 //if shields full
                 if (currentShield >= maxShield){
                     //set timer to 0
                     shieldRegenTimer = 0;
                 }
                 Debug.Log("Shield regenerated");
-                partSysShield.emissionRate = 15;
+                if (!invulnerable)
+                {
+                    partSysShield.emissionRate = originalEmissionRate;
+                }
                 UpdateHealthGUI();
+            }
+        }
+    }
+
+    //updates shield regen
+    private void UpdateInvulnerability(){
+        if (!alive)
+        {
+            return;
+        }
+        //if shields not full
+        if (invulnerable)
+        {
+            //update timer
+            invulnerabilityTimer += Time.deltaTime;
+            //if timer is up
+            if (invulnerabilityTimer >= invulnerabilityTime){
+                //set timer to 0
+                invulnerabilityTimer = 0;
+                SetInvulnerability();
             }
         }
     }
