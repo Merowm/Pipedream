@@ -12,7 +12,6 @@ public class LevelTimer : MonoBehaviour {
     public float timeInSecs;
 
     Statistics stats;
-    EndLevelScore end;
     Slider distanceBar;
     Canvas UI_c;
     public int fullDistance;

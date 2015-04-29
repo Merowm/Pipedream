@@ -135,7 +135,12 @@ public class Statistics : MonoBehaviour
         if (level != null)
         {
             SetNewHighscore(currentLevelPoints, level);
+            level.specialFound = special;
+            level.nothingHit = (currentObstaclesHit == 0);
+            level.bonusStreakDone = (currentLongestBonusStreak >= level.bonusCount / 2);
+            level.allCollected = (currentBonusAmount == level.bonusCount);
         }
+
         return currentLevelPoints;
     }
 
@@ -297,6 +302,25 @@ public class Statistics : MonoBehaviour
         return false;
     }
 
+    // specials
+    public bool HasAllCollected(int levelId)
+    {
+        return FindLevel(levelId).allCollected;
+    }
+    public bool HasNothingHit(int levelId)
+    {
+        return FindLevel(levelId).nothingHit;
+    }
+    public bool HasBonusStreakDone(int levelId)
+    {
+        return FindLevel(levelId).bonusStreakDone;
+    }
+    public bool HasSpecialFound(int levelId)
+    {
+        return FindLevel(levelId).specialFound;
+    }
+
+    // for getting level time (debugging only)
     public float GetLevelTime(int levelId)
     {
         return FindLevel(levelId).timeToRace;
