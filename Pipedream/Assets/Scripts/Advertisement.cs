@@ -110,8 +110,8 @@ public class Advertisement : MonoBehaviour
     private AdRequest createAdRequest()
     {
         Debug.Log("Creating ad request");
-        //AdRequest.Builder builder = new AdRequest.Builder();
-/*
+        AdRequest.Builder builder = new AdRequest.Builder();
+
         //add keywords
         foreach (String keyword in keywords) {
             builder.AddKeyword(keyword);
@@ -121,9 +121,9 @@ public class Advertisement : MonoBehaviour
         //gender
         builder.SetGender(gender);
         //tag for child directed treatment
-        builder.TagForChildDirectedTreatment(tagForChildDirectedTreatment);*/
+        builder.TagForChildDirectedTreatment(tagForChildDirectedTreatment);
 
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = builder.Build();
         Debug.Log("Created ad request");
         return request;
 
