@@ -36,7 +36,18 @@ public class Advertisement : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            if (this != Instance)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         switch(adType)
         {
