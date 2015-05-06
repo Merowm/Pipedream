@@ -177,7 +177,13 @@ public class Statistics : MonoBehaviour
             ld.highScore = 0;
             ld.currentTrophy = 0;
             ld.isUnlocked = false;
+            ld.allCollected = false;
+            ld.nothingHit = false;
+            ld.bonusStreakDone = false;
+            ld.specialFound = false;
         }
+        // unlock first lvl
+        UnlockLevel(1);
         Debug.Log("Levels found: " + levels.Count);
     }
 
