@@ -47,7 +47,7 @@ public class ObstacleUpDown : MonoBehaviour {
     }
 
     void UpdateUp(){
-        transform.position += transform.up * maxVelocity * Time.deltaTime;
+        transform.GetChild(0).transform.position += transform.up * maxVelocity * Time.deltaTime;
         movedDistanceSqr += (transform.up * maxVelocity * Time.deltaTime).sqrMagnitude;
         if (movedDistanceSqr >= maxDistance * maxDistance)
         {
@@ -57,7 +57,7 @@ public class ObstacleUpDown : MonoBehaviour {
     }
 
     void UpdateDown(){
-        transform.position -= transform.up * maxVelocity * Time.deltaTime;
+        transform.GetChild(0).transform.position -= transform.up * maxVelocity * Time.deltaTime;
         movedDistanceSqr += (transform.up * maxVelocity * Time.deltaTime).sqrMagnitude;
         if (movedDistanceSqr >= maxDistance * maxDistance)
         {

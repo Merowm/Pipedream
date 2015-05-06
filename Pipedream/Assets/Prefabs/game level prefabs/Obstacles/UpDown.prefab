@@ -42,6 +42,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409054}
+  - 114: {fileID: 11473780}
+  - 135: {fileID: 13586780}
   m_Layer: 0
   m_Name: Wireframe
   m_TagString: Untagged
@@ -76,8 +78,6 @@ GameObject:
   - 4: {fileID: 484924}
   - 114: {fileID: 11425330}
   - 114: {fileID: 11472018}
-  - 114: {fileID: 11492684}
-  - 135: {fileID: 13552096}
   - 114: {fileID: 11489740}
   m_Layer: 0
   m_Name: UpDown
@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 154.106354, y: 110.963577, z: 371.251221}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409054}
@@ -238,8 +238,6 @@ MonoBehaviour:
   displayDistance: 25
   asteroidSpeedMultiplier: 10
   customizationObject: 0
-  parentMovement: {fileID: 0}
-  asteroidSpeedPerSecond: 0
 --- !u!114 &11472018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,6 +250,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemScorePoints: 100
+--- !u!114 &11473780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0e4f9272bcb154da2bba103a66731a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11489740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,18 +275,7 @@ MonoBehaviour:
   maxDistance: 1
   movedDistanceSqr: 0
   maxVelocity: 10
-  displayDistance: 400
---- !u!114 &11492684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0e4f9272bcb154da2bba103a66731a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  displayDistance: 500
 --- !u!114 &11493910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,17 +288,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: 0
---- !u!135 &13552096
+--- !u!135 &13586780
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184924}
+  m_GameObject: {fileID: 138434}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:

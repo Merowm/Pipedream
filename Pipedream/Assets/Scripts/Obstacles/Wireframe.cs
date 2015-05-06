@@ -11,9 +11,9 @@ public class Wireframe : MonoBehaviour
     private MovementForward playerMovement;
     private Transform wireframe;
     private Transform asteroid;
-    public HyperTunnelMovement parentMovement;
+    private HyperTunnelMovement parentMovement; //Used in customization
     private float distance = 0.0f;
-    public float asteroidSpeedPerSecond;
+    private float asteroidSpeedPerSecond;
     private bool positionSet = false;
     
     void Awake ()
@@ -47,6 +47,7 @@ public class Wireframe : MonoBehaviour
             }
             else
             {
+                //Used in customization
                 if (parentMovement != null)
                 {
                     playerSpeedPerSecond = -parentMovement.speedPerSecond;

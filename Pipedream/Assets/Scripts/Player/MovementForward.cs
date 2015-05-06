@@ -4,7 +4,7 @@ using System.Collections;
 public class MovementForward : MonoBehaviour
 {
     public static bool inHyperspace = true;
-    public static float difficultyMultiplier = 0.75f;
+    public static float difficultyMultiplier = 1.0f;
     public bool accelerateToHyperspace = false;
     public bool decelerateToSpaceSpeed = false;
     public float currentSpeed;
