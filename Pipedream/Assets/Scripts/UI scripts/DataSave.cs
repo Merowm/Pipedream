@@ -20,6 +20,7 @@ public class DataSave : MonoBehaviour
             Debug.Log("no stats in saving system");
         LoadSettings();
         LoadScores();
+        stats.UnlockLevel(1);
 	}
     // clear save (called from OptionsControl)
     public void ClearSlot()
@@ -34,7 +35,8 @@ public class DataSave : MonoBehaviour
     // call this from wherever game has to save
     public void SendScore(int level)
     {
-        SaveLevelScore(level);
+        SaveScores();
+        //SaveLevelScore(level);
     }
 
     ////////////////////////////////
@@ -86,7 +88,8 @@ public class DataSave : MonoBehaviour
         PlayerPrefs.SetInt("difficulty", stats.difficulty);
         PlayerPrefs.Save();
     }
-    // save all game data. Is this needed at all
+    // save all game data. Is this needed at all?
+    // TODO: get rid of redundant function calls.
     private void SaveScores()
     {
         foreach (Statistics.levelData d in stats.levels)
@@ -96,6 +99,7 @@ public class DataSave : MonoBehaviour
         }
         // general settings data 
         SetSettings();
+        PlayerPrefs.Save();
     }
     // change saved data for one level (called at end of level)
     private void SaveLevelScore(int id)
@@ -103,13 +107,14 @@ public class DataSave : MonoBehaviour
         Statistics.levelData d = stats.FindLevel(id);
         SetSavedStatInt(id, "highScore", d.highScore);
         SetSavedStatInt(id, "currentTrophy", d.currentTrophy);
-        SetSavedStatBool(id, "isUnlocked", d.isUnlocked);
+        SetSavedStatBool(id, "isUnlocked", d.isUnlocked); 
+        //Debug.Log("saved unlock: " + GetSavedStatBool(id, "isUnlocked"));
         // special goals
         SetSavedStatBool(id, "allCollected", d.allCollected);
         SetSavedStatBool(id, "nothingHit", d.nothingHit);
         SetSavedStatBool(id, "bonusStreakDone", d.bonusStreakDone);
         SetSavedStatBool(id, "specialFound", d.specialFound);
-        PlayerPrefs.Save();
+
     }
     private int GetSavedStatInt(int level, string stat)
     {
