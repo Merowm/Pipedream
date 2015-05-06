@@ -60,7 +60,7 @@ public class CurrentScore : MonoBehaviour {
         if (!stats.HasSpecialFound(level))
             UnCheckGoal(bonusObjectives[3]);
 
-        saver.SendScore();
+        saver.SendScore(level);
     }
 
 	

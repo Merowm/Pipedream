@@ -83,6 +83,6 @@ public class OptionsControl : MonoBehaviour {
     {
         Statistics stats;
         if (stats = GameObject.FindObjectOfType<Statistics>())
-            stats.GetComponent<DataSave>().ClearSlot("defaultslot");
+            stats.GetComponent<DataSave>().ClearSlot();
     }
 }
