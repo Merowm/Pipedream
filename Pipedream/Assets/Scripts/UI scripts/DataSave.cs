@@ -18,16 +18,17 @@ public class DataSave : MonoBehaviour
     {
         if (!(stats = GetComponent<Statistics>()))
             Debug.Log("no stats in saving system");
+        LoadSettings();
+        LoadScores();
 	}
     // clear save (called from OptionsControl)
     public void ClearSlot()
     {
-
-        PlayerPrefs.DeleteAll(); // save settings though?
+        PlayerPrefs.DeleteAll();
         // set in-game data to default
         stats.ResetGame();
+        // save custom settings
         SetSettings();
-
     }
 
     // call this from wherever game has to save
@@ -57,12 +58,35 @@ public class DataSave : MonoBehaviour
         }
         // get general settings data
     }
-    // save general settings
-    private void SetSettings()
+    private void LoadSettings()
     {
+        string colname;
+        for (int i = 0; i < 8; i++)
+        {
+           colname = "color" + i.ToString();
+           stats.colors[i].r = (byte)PlayerPrefs.GetInt(colname + "R");
+           stats.colors[i].b = (byte)PlayerPrefs.GetInt(colname + "B");
+           stats.colors[i].g = (byte)PlayerPrefs.GetInt(colname + "G");
+           stats.colors[i].a = (byte)PlayerPrefs.GetInt(colname + "A");
+        }
+        stats.difficulty = PlayerPrefs.GetInt("difficulty");
+    }      
+    // save general settings
+    public void SetSettings()
+    {
+        string colname;
+        for (int i = 0; i < 8; i++)
+        {   
+            colname = "color" + i.ToString();
+            PlayerPrefs.SetInt(colname + "R", stats.colors[i].r);
+            PlayerPrefs.SetInt(colname + "B", stats.colors[i].b);
+            PlayerPrefs.SetInt(colname + "G", stats.colors[i].g);
+            PlayerPrefs.SetInt(colname + "A", stats.colors[i].a);
+        }
+        PlayerPrefs.SetInt("difficulty", stats.difficulty);
         PlayerPrefs.Save();
     }
-    // save all game data
+    // save all game data. Is this needed at all
     private void SaveScores()
     {
         foreach (Statistics.levelData d in stats.levels)

@@ -19,6 +19,8 @@ public class Statistics : MonoBehaviour
             return instance;
         }
     }
+    public Color32[] colors = new Color32[8];
+    public int difficulty;
 
     private int currentLevelPoints;
     private int currentBonusAmount;
