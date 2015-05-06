@@ -24,6 +24,10 @@ public class MovementForward : MonoBehaviour
     private float deceleration; //How many floats need to be detracted from currentSpeed
                                 //every second to achieve hyperspaceSpeed in decelerationTime (seconds)
 
+    //for testing
+    public bool forceDifficulty = false;
+    public Difficulty.DIFFICULTY forcedDifficulty;
+
 	void Awake ()
     {
         spaceDriveState = transform.GetComponent<SpaceDriveState>();
@@ -36,6 +40,20 @@ public class MovementForward : MonoBehaviour
         {
             difficultyMultiplier = 1.0f;
         }
+        //for testing
+        if (forceDifficulty)
+        {
+            switch(forcedDifficulty)
+            {
+                case Difficulty.DIFFICULTY.beginner:
+                    difficultyMultiplier = 0.75f;
+                    break;
+                case Difficulty.DIFFICULTY.normal:
+                    difficultyMultiplier = 1.0f;
+                    break;
+            }
+        }
+
         hyperspaceSpeed *= difficultyMultiplier;
 
         acceleration = (hyperspaceSpeed - spaceSpeed) / accelerationTime;
