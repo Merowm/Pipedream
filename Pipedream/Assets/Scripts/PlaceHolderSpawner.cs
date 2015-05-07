@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class PlaceHolderSpawner : MonoBehaviour
 {
     public GameObject prefab;
-    public Vector3 scale = new Vector3(0,0,0);
+    //public Vector3 scale = new Vector3(0,0,0);
     public bool movingObject = false;
     public bool negativeRotation = false;
     public float wallRotatingSpeed = 0.0f;
@@ -36,13 +36,13 @@ public class PlaceHolderSpawner : MonoBehaviour
             obj.transform.GetChild(0).transform.position = placeHolderChild.position;
         }
 
-        if (scale != new Vector3(0,0,0))
+        /*if (scale != new Vector3(0,0,0))
         {
             foreach (Transform child in obj.transform)
             {
                 child.transform.localScale = scale;
             }
-        }
+        }*/
 
         if (prefab.transform.name == "HyperAsteroid01")
         {
