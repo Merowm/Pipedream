@@ -6,6 +6,7 @@ public class LoadScreen : MonoBehaviour {
 
     public GameObject screenImage;
     string nextlevel;
+    int nextlvlNumber;
     VolControl sound;
     bool loadingDone;
     public bool isMenu;
@@ -13,8 +14,6 @@ public class LoadScreen : MonoBehaviour {
 	void Start()
     {
         sound = GetComponent<VolControl>();
-        //screenImage = GameObject.Find("loadOverlay");
-        //screenImage.SetActive(false);
         loadingDone = true;
         isMenu = true;
 	}
@@ -23,29 +22,26 @@ public class LoadScreen : MonoBehaviour {
     {
         if (!loadingDone)
         {
-            if (!isMenu)
-            {
-                sound.menuMusic.volume -= 0.1f;
-            }
             if (Application.loadedLevelName == nextlevel && !Application.isLoadingLevel)
             {
                 sound = GetComponent<VolControl>();
                 hideLoader();
-                //AudioSource music = Camera.main.GetComponent<AudioSource>();
-                sound.SetMusicType(isMenu);
-                //music.volume = sound.musicMaxVol;
+                
+
+                
                 Time.timeScale = 1;
                 loadingDone = true;
             }
         }
 	}
 
-    public void showLoader(string leveltoload, bool isMenuScene)
+    public void showLoader(string leveltoload, int levelId)
     {
         loadingDone = false;
         nextlevel = leveltoload;
-        isMenu = isMenuScene;
-
+        nextlvlNumber = levelId;
+        isMenu = (levelId == 0);
+        sound.SetMusicType(isMenu, nextlvlNumber);
         if (!isMenu)
         screenImage.SetActive(true);       
     }

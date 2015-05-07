@@ -4,7 +4,7 @@ using System.Collections;
 public class GoToNext : MonoBehaviour {
 
     public string SceneToGo;
-    public bool SceneIsMenu;
+    public int levelId;
     LoadScreen loader;
     VolControl sounds;
     void Awake()
@@ -19,8 +19,8 @@ public class GoToNext : MonoBehaviour {
     }
     public void Go()
     {        
-        loader.showLoader(SceneToGo, SceneIsMenu);
-        sounds.isInMenu = SceneIsMenu;
+        loader.showLoader(SceneToGo, levelId);
+        //sounds.isInMenu = (levelId == 0);
         Application.LoadLevel(SceneToGo);
     }
 }

@@ -74,7 +74,7 @@ public class LinearLevelSelect : MonoBehaviour
         {
             levelname = stats.GetLevelNameAsString(planetId);
 
-            loader.showLoader(levelname, false);
+            //loader.showLoader(levelname, false);
             stats.GetComponent<VolControl>().isInMenu = false;
             Application.LoadLevel(levelname);
             return true;

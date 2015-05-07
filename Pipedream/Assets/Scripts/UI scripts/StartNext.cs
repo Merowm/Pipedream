@@ -17,7 +17,7 @@ public class StartNext : MonoBehaviour {
         st.ResetScore();
         int level = st.GetCurrentLevel() + 1;
         string levelname = st.GetLevelNameAsString(level);
-        GameObject.FindWithTag("statistics").GetComponent<LoadScreen>().showLoader(levelname, false);
+        GameObject.FindWithTag("statistics").GetComponent<LoadScreen>().showLoader(levelname, level);
         Application.LoadLevel(levelname);
     }
 }

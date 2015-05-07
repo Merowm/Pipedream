@@ -15,7 +15,9 @@ public class VolControl : MonoBehaviour {
     public AudioClip crashEffect;
     // set from each scene? NB smooth transitions!
     public AudioSource music;
-    public AudioSource menuMusic;
+    public AudioClip[] jukebox;
+    //playlist index is level number (0 for menu)
+    public int[] playlist;
     public bool isInMenu;
 
     // vars for collectible fade/reset
@@ -23,23 +25,29 @@ public class VolControl : MonoBehaviour {
     float timeFromCollect;
     float dt;
     float fadeRate;
-    
+
+    // var for saving last value of masterVol when muted
+    float lastMaster;
+
+    // smooth changing of tracks
+    bool fadingOut = false;
+    bool fadingIn = false;
+    float fadeval = 1;
+    int currentTrack = 0;
 
 	void Start ()
     {
-        AudioListener.volume = masterVol;
-        fadeRate = 1;
+        masterVol = 1;
+        fadeRate = 1;        
+        music.clip = jukebox[currentTrack];
+        music.volume = musicMaxVol * masterVol * fadeRate;
+        music.Play();
 	}
 
     public void SetMusicVolume(float vol)
     {        
         musicMaxVol = vol;
-        if (isInMenu)
-            menuMusic.volume = musicMaxVol;
-        else if (music)
-        {
-            music.volume = musicMaxVol * fadeRate;
-        }
+        music.volume = musicMaxVol * fadeRate * masterVol;
     }
     public void SetSFXVolume(float vol)
     {
@@ -48,16 +56,18 @@ public class VolControl : MonoBehaviour {
     public void SetMasterVolume(float vol)
     {
         masterVol = vol;
-        AudioListener.volume = masterVol;
+        music.volume = musicMaxVol * masterVol * fadeRate;        
     }
     public void MuteAudio(bool muted)
     {
         isMute = muted;
         if (muted)
         {
-            AudioListener.volume = 0;
+            lastMaster = masterVol;
+            masterVol = 0;
         }
-        else AudioListener.volume = masterVol;
+        else masterVol = lastMaster;
+        music.volume = musicMaxVol * masterVol * fadeRate;
     }
     public void TutorialYesNo(bool yesno)
     {
@@ -66,6 +76,27 @@ public class VolControl : MonoBehaviour {
     // updating collectible fade/reset
     void FixedUpdate()
     {
+        if (fadingOut)
+        {
+            if (masterVol > 0)
+                masterVol -= Time.deltaTime;
+            else
+            {
+                StartNextTrack();
+                fadingOut = false;
+                fadingIn = true;
+            }
+        }
+        if (fadingIn)
+        {
+            if (masterVol < lastMaster)
+                masterVol += Time.deltaTime;
+            else
+            {
+                masterVol = lastMaster;
+                fadingIn = false;
+            }
+        }
         if (!isInMenu)
         {
             dt = Time.deltaTime;
@@ -83,53 +114,47 @@ public class VolControl : MonoBehaviour {
                     fadeRate = 1;
                     hasCollectedItem = false;
                     timeFromCollect = 0;
-
                 }
             }
             // If no items are collected, music fades out slowly
             else if (fadeRate > 0.3f && timeFromCollect > 5)
             {
                 fadeRate -= 0.05f * dt;
-            }
-            if (music)
-            music.volume = musicMaxVol * fadeRate;
+            }           
         }
-        
+        if (music)
+            music.volume = musicMaxVol * fadeRate * masterVol;
     }
     public void PlayButtonEffect()
     {
-        buttonEffect.volume = effectVol;
+        buttonEffect.volume = effectVol * masterVol;
         buttonEffect.Play();
     }
-    public void SetMusicType(bool isMenu)
+    public void SetMusicType(bool isMenu, int level)
     {
-        if (isMenu)
+        if (currentTrack != level)
         {
-            isInMenu = true;
-            if (music)
-                music.enabled = false;
-            if (!menuMusic.enabled)
-                menuMusic.enabled = true;
-            menuMusic.volume = musicMaxVol;
+            currentTrack = level;
+            Debug.Log("changing music...");
+            fadingOut = true;
+            lastMaster = masterVol; // remember vol settings
         }
-        else
-        {
-            isInMenu = false;
-            music = Camera.main.GetComponent<AudioSource>();
-            if (music)
-                music.enabled = true;
-            menuMusic.enabled = false;
-        }
+        isInMenu = isMenu;
     }
 
     // sound effect tester methods
     public void TestCollectSound()
     {
-        AudioSource.PlayClipAtPoint(bonusEffect, Input.mousePosition, effectVol);
+        AudioSource.PlayClipAtPoint(bonusEffect, Input.mousePosition, effectVol * masterVol);
         hasCollectedItem = true;
     }
     public void TestCrashEffect()
     {
-
+        // To be implemented if/when we have crash effect.
+    }
+    void StartNextTrack()
+    {
+        music.clip = jukebox[currentTrack];
+        music.Play();
     }
 }
