@@ -27,7 +27,7 @@ public class RevertColors : MonoBehaviour
 
         if (amountIndex[0] == 0)
         {
-            Debug.Log("No buttons active");
+            Debug.Log("No buttons active!");
         }
         else if (amountIndex[0] == buttonSlots.Count)
         {
@@ -40,7 +40,10 @@ public class RevertColors : MonoBehaviour
         {
             foreach (Transform child in buttonSlots[amountIndex[1]].transform.FindChild("RGBSliders").transform)
             {
-                child.GetComponent<RGBColors>().SetSliders("default");
+                if (child.tag == "RGBSliders")
+                {
+                    child.GetComponent<RGBColors>().SetSliders("default");
+                }
             }
         }
 	}
@@ -64,7 +67,10 @@ public class RevertColors : MonoBehaviour
         {
             foreach (Transform child in buttonSlots[amountIndex[1]].transform.FindChild("RGBSliders").transform)
             {
-                child.GetComponent<RGBColors>().SetSliders("inMemory");
+                if (child.tag == "RGBSliders")
+                {
+                    child.GetComponent<RGBColors>().SetSliders("inMemory");
+                }
             }
         }
     }

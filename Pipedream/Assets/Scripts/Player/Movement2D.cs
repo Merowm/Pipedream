@@ -169,8 +169,7 @@ public class Movement2D : MonoBehaviour
         currentRotationSpeed = directionForceRightRotation - directionForceLeftRotation;
         transform.Rotate(Vector3.forward * (currentRotationSpeed * 10) * Time.deltaTime);
 
-
-        /*if (Input.GetButton(KeyCode.T))
+        if (Input.GetKey(KeyCode.R))
         {
             if (shipTransform.localPosition.y < -0.5f)
             {
@@ -182,7 +181,7 @@ public class Movement2D : MonoBehaviour
             }
         }
 
-        if (Input.GetButton(KeyCode.G))
+        if (Input.GetKey(KeyCode.F))
         {
             if (shipTransform.localPosition.y > -5.0f)
             {
@@ -192,7 +191,7 @@ public class Movement2D : MonoBehaviour
             {
                 shipTransform.localPosition = new Vector3(0, -5.0f, 0);
             }
-        }*/
+        }
     }
 
     void SpaceMovement()

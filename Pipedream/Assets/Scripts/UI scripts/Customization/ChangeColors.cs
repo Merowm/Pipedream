@@ -12,11 +12,13 @@ public class ChangeColors : MonoBehaviour
     public Material hyperTunnelMaterial;
     public Material shipHullMaterial;
     public Material shipMarkingsMaterial;
+    public Material shipThrusterMaterial;
     public Material wireframeMaterial;
 
     private ChangeLighting lighting;
     private List<ParticleSystem> particles;
     private ParticleSystem shield;
+    private ParticleSystem thruster;
     private List<GameObject> buttons;
 
 	void Awake ()
@@ -36,6 +38,8 @@ public class ChangeColors : MonoBehaviour
         particles = GameObject.FindGameObjectWithTag("effects").GetComponentsInChildren<ParticleSystem>().ToList();
         shield = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").
             FindChild("Shield Particle System").GetComponent<ParticleSystem>();
+        thruster = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").
+            FindChild("ThrusterParticles").GetComponent<ParticleSystem>();
         
         for (int i = 0; i < images.Count; i++)
         {
@@ -100,7 +104,8 @@ public class ChangeColors : MonoBehaviour
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Thruster")
             {
-                
+                shipThrusterMaterial.color = colorsCurrent[i];
+                thruster.startColor = new Color32(colorsCurrent[i].r,colorsCurrent[i].g,colorsCurrent[i].b,255);
             }
             else if (images[i].transform.parent.parent.name == "RGBSliders_Wireframes")
             {
