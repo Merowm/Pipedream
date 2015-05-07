@@ -92,7 +92,8 @@ public class Statistics : MonoBehaviour
         AddLevelData(1600, 16, 4200, 39, 2); // work in progress 
         AddLevelData(1200, 12, 4900, 51, 3);
         AddLevelData(2100, 21, 5500, 56, 4);
-        AddLevelData(1500, 15, 5600, 57, 5);
+        AddLevelData(1500, 15, 5500, 56, 5);
+        AddLevelData(1500, 15, 5500, 56, 6);//temp
         
 	}
 

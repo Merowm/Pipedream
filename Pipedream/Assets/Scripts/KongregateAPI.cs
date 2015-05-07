@@ -12,11 +12,15 @@ public class KongregateAPI : MonoBehaviour {
     public static string GameAuthToken = "";
 
     void Awake(){
+#if UNITY_WEBPLAYER
         //make object persistent throughout game 
         DontDestroyOnLoad(gameObject);
 
         //connect to Kongregate API
         Connect();
+#else
+        Destroy(gameObject);
+#endif
     }
 
     //function to connect to Kongregate API
