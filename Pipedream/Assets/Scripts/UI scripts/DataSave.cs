@@ -10,14 +10,20 @@ public class DataSave : MonoBehaviour
 {
     string _name;
     Statistics stats;
+    VolControl vol;
 
     // PlayerPerfs: data saved as key/value pairs
     // only float and int type values accepted (and string; may cause errors though)
     // keys: level id + stat name e.g. "2highScore"
-	void Start () 
+    void Awake()
     {
         if (!(stats = GetComponent<Statistics>()))
             Debug.Log("no stats in saving system");
+        if (!(vol = GetComponent<VolControl>()))
+            Debug.Log("no volControl in saving system");
+    }
+	void Start ()
+    {
         LoadSettings();
         LoadScores();
         stats.UnlockLevel(1);
@@ -72,7 +78,12 @@ public class DataSave : MonoBehaviour
            stats.colors[i].a = (byte)PlayerPrefs.GetInt(colname + "A");
         }
         stats.difficulty = PlayerPrefs.GetInt("difficulty");
-    }      
+        vol.masterVol = PlayerPrefs.GetFloat("masterVol");
+    }
+    public void SetVolume()
+    {
+        PlayerPrefs.SetFloat("masterVol", vol.masterVol);
+    }
     // save general settings
     public void SetSettings()
     {
@@ -86,6 +97,7 @@ public class DataSave : MonoBehaviour
             PlayerPrefs.SetInt(colname + "A", stats.colors[i].a);
         }
         PlayerPrefs.SetInt("difficulty", stats.difficulty);
+
         PlayerPrefs.Save();
     }
     // save all game data. Is this needed at all?

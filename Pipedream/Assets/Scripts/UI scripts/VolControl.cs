@@ -16,7 +16,8 @@ public class VolControl : MonoBehaviour {
     // set from each scene? NB smooth transitions!
     public AudioSource music;
     public AudioClip[] jukebox;
-    //playlist index is level number (0 for menu)
+    // playlist index is level number (0 for menu)
+    // TODO: Change to interactive list?
     public int[] playlist;
     public bool isInMenu;
 
@@ -26,18 +27,22 @@ public class VolControl : MonoBehaviour {
     float dt;
     float fadeRate;
 
+    DataSave saver;
     // var for saving last value of masterVol when muted
     float lastMaster;
 
     // smooth changing of tracks
     bool fadingOut = false;
     bool fadingIn = false;
-    float fadeval = 1;
     int currentTrack = 0;
 
+    void Awake ()
+    {
+        saver = GetComponent<DataSave>();
+    }
 	void Start ()
     {
-        masterVol = 1;
+        
         fadeRate = 1;        
         music.clip = jukebox[currentTrack];
         music.volume = musicMaxVol * masterVol * fadeRate;
@@ -48,6 +53,7 @@ public class VolControl : MonoBehaviour {
     {        
         musicMaxVol = vol;
         music.volume = musicMaxVol * fadeRate * masterVol;
+
     }
     public void SetSFXVolume(float vol)
     {
@@ -56,7 +62,8 @@ public class VolControl : MonoBehaviour {
     public void SetMasterVolume(float vol)
     {
         masterVol = vol;
-        music.volume = musicMaxVol * masterVol * fadeRate;        
+        music.volume = musicMaxVol * masterVol * fadeRate;  
+        saver.SetVolume();      
     }
     public void MuteAudio(bool muted)
     {
