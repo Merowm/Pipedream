@@ -79,7 +79,7 @@ public class VolControl : MonoBehaviour {
         if (fadingOut)
         {
             if (masterVol > 0)
-                masterVol -= Time.deltaTime;
+                masterVol -= Time.deltaTime * 2;
             else
             {
                 StartNextTrack();
@@ -90,7 +90,7 @@ public class VolControl : MonoBehaviour {
         if (fadingIn)
         {
             if (masterVol < lastMaster)
-                masterVol += Time.deltaTime;
+                masterVol += Time.deltaTime * 2;
             else
             {
                 masterVol = lastMaster;
@@ -154,7 +154,7 @@ public class VolControl : MonoBehaviour {
     }
     void StartNextTrack()
     {
-        music.clip = jukebox[currentTrack];
+        music.clip = jukebox[playlist[currentTrack]];
         music.Play();
     }
 }
