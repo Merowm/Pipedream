@@ -7,7 +7,7 @@ public class PlaceHolderSpawner : MonoBehaviour
 {
     public GameObject prefab;
     public Vector3 scale = new Vector3(0,0,0);
-    public bool movingAsteroid = false;
+    public bool movingObject = false;
     public bool negativeRotation = false;
     public float wallRotatingSpeed = 0.0f;
     public float lotusRotatingSpeed = 0.0f;
@@ -22,17 +22,7 @@ public class PlaceHolderSpawner : MonoBehaviour
         obj = (GameObject)Instantiate(prefab, transform.position, transform.rotation);
         obj.transform.parent = transform.parent;
 
-        if (negativeRotation)
-        {
-            wallRotatingSpeed = -wallRotatingSpeed;
-            lotusRotatingSpeed = -lotusRotatingSpeed;
-            if (prefab.transform.name == "lotus" || prefab.transform.name == "RotatingWall")
-            {
-                obj.transform.GetComponent<ObstacleRotation>().rotation *= -1.0f;
-            }
-        }
-
-        if (prefab.transform.name == "lotus")
+        if (prefab.transform.name == "lotus" || prefab.transform.name == "goldenLotus")
         {
             placeHolderChild.localPosition = new Vector3(0,-5.5f,0);
         }
@@ -41,24 +31,9 @@ public class PlaceHolderSpawner : MonoBehaviour
             placeHolderChild.localPosition = new Vector3(0,-5.0f,0);
         }
 
-        if (prefab.transform.name != "RotatingWall")
+        if (prefab.transform.name != "RotatingWall" && prefab.transform.name != "TriWall")
         {
             obj.transform.GetChild(0).transform.position = placeHolderChild.position;
-        }
-
-        if (prefab.transform.name == "lotus" && lotusRotatingSpeed != 0)
-        {
-            //obj = (GameObject)Instantiate(prefab, transform.position, transform.rotation);
-            //obj.transform.parent = transform.parent;
-            //obj.transform.GetChild(0).transform.localPosition = new Vector3(0,-4,0);
-
-            obj.transform.GetComponent<ObstacleRotation>().rotation = lotusRotatingSpeed;
-            Debug.Log("...");
-        }
-        else
-        {
-            //obj = (GameObject)Instantiate(prefab, placeHolderChild.position, placeHolderChild.rotation);
-            //obj.transform.parent = transform.parent;
         }
 
         if (scale != new Vector3(0,0,0))
@@ -71,16 +46,41 @@ public class PlaceHolderSpawner : MonoBehaviour
 
         if (prefab.transform.name == "HyperAsteroid01")
         {
-            if (movingAsteroid)
+            if (movingObject)
             {
                 obj.GetComponent<ObstacleUpDown>().enabled = true;
             }
         }
-        else if (prefab.transform.name == "RotatingWall")
+        else if (prefab.transform.name == "lotus" || prefab.transform.name == "goldenLotus")
+        {
+            if (movingObject)
+            {
+                obj.GetComponent<ObjectRotation>().enabled = true;
+
+                if (lotusRotatingSpeed != 0)
+                {
+                    obj.transform.GetComponent<ObjectRotation>().rotationSpeed = lotusRotatingSpeed;
+                }
+            }
+        }
+        else if (prefab.transform.name == "RotatingWall" || prefab.transform.name == "TriWall")
         {
             if (wallRotatingSpeed != 0)
             {
-                obj.transform.GetComponent<ObstacleRotation>().rotation = wallRotatingSpeed;
+                obj.transform.GetComponent<ObjectRotation>().rotationSpeed = wallRotatingSpeed;
+            }
+        }
+
+        if (negativeRotation)
+        {
+            wallRotatingSpeed = -wallRotatingSpeed;
+            lotusRotatingSpeed = -lotusRotatingSpeed;
+            if (prefab.transform.name == "lotus" ||
+                prefab.transform.name == "goldenLotus" ||
+                prefab.transform.name == "RotatingWall" ||
+                prefab.transform.name == "TriWall")
+            {
+                obj.transform.GetComponent<ObjectRotation>().rotationSpeed *= -1.0f;
             }
         }
 

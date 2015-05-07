@@ -68,7 +68,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0b0035fe90cd62d498a994088842c1ab, type: 2}
+  - {fileID: 2100000, guid: 1add038a202863642bc4066399423b77, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -102,9 +102,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
   scale: {x: 0, y: 0, z: 0}
-  movingAsteroid: 0
+  movingObject: 1
+  negativeRotation: 0
   wallRotatingSpeed: 0
-  lotusRotatingSpeed: .75
+  lotusRotatingSpeed: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

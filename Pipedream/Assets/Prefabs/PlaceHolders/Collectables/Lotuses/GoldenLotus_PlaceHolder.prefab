@@ -39,8 +39,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172352}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.0827713, y: 99.0197296, z: -228.851151}
+  m_LocalRotation: {x: 0, y: 0, z: -.707106829, w: .707106709}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483858}
@@ -100,9 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f82d3c21ec334e459dc001325225d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
+  prefab: {fileID: 150456, guid: 52ab7ec9f1f973e4f832207d0354bfb1, type: 2}
   scale: {x: 0, y: 0, z: 0}
-  movingAsteroid: 0
+  rotatingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
   lotusRotatingSpeed: 0
 --- !u!1001 &100100000

@@ -8,14 +8,14 @@ public class MineSticking : MonoBehaviour
     public bool stickToTarget = false; //Makes mine stick to the target when true
     public bool stuckToTarget = false; //Whether or not the mine is continuously stuck to the target, true = stuck
 
-    private Health health;
+    public Health health;
     private ReducePoints points;
     private Transform bodyTransform;
     private Vector3 stuckPosition;
 
 	void Awake ()
     {
-        target = transform.GetComponent<MineAI>().target;
+        target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
         health = target.GetComponent<Health>();
         points = transform.GetComponent<ReducePoints>();
         bodyTransform = transform.GetChild(0).transform;
