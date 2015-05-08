@@ -92,6 +92,9 @@ public class InfiniteLevel : MonoBehaviour {
             cameraParent = GameObject.FindGameObjectWithTag("CameraParent");
         }
         movingHyperPart = GameObject.FindGameObjectWithTag("MovingHyperPart");
+
+        //spawn the first pickup
+        SpawnPickup();
     }
 	
 	// Update is called once per frame
@@ -103,6 +106,12 @@ public class InfiniteLevel : MonoBehaviour {
             lengthTravelled += lengthOfPart;
         }
         ScoreOverTime();
+
+        //pickup spawning
+        if (lengthTravelled == 1000)
+        {
+
+        }
 	}
 
     private void ScoreOverTime ()
@@ -124,11 +133,23 @@ public class InfiniteLevel : MonoBehaviour {
 
     private void SpawnPickup()
     {
+        //spawn a random pickup
         int index;
         index = Random.Range(0,pickups.Count);
-
-        obj = (GameObject)Instantiate(pickups[index], transform.position, transform.rotation);
+        obj = (GameObject)Instantiate(pickups[index]);
         obj.transform.parent = transform.parent;
+        //set position
+        obj.transform.position = new Vector3(0.0f,0.0f,1000.0f);
+        //set rotation
+        Vector3 rotation = new Vector3(0,0,0);//Random.Range(0.0f,360.0f));
+        obj.transform.Rotate(rotation);
+        //reset rotation if needed
+        bool colliding = obj.transform.GetChild(0).transform.FindChild("SpawningCollider").GetComponent<SpawnCollision>().colliding;
+        while (colliding)
+        {
+            rotation = new Vector3(0,0,Random.Range(0.0f,360.0f));
+            obj.transform.Rotate(rotation);
+        }
     }
 
     //spawns specified part at specified position
@@ -196,14 +217,14 @@ public class InfiniteLevel : MonoBehaviour {
         availablePartsList.Clear();
 
         Object[] objects = Resources.LoadAll("");
-        availablePartsList.Add((GameObject)objects[0]);
+        /*.Add((GameObject)objects[0]);
         availablePartsList.Add((GameObject)objects[1]);
         availablePartsList.Add((GameObject)objects[2]);
         availablePartsList.Add((GameObject)objects[3]);
-        availablePartsList.Add((GameObject)objects[4]);
+        availablePartsList.Add((GameObject)objects[4]);*/
         for (int i = 0; i < objects.Length; i++)
         {
-            //availablePartsList.Add((GameObject)objects[i]);
+            availablePartsList.Add((GameObject)objects[i]);
         }
     }
 }
