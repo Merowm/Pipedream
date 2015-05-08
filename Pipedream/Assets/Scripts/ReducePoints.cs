@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ReducePoints : MonoBehaviour {
+public class ReducePoints : MonoBehaviour
+{
 
     // Set negative if points should be reduced
     public int itemScorePoints = 100;
 
     private Canvas levelUI;
     private LevelTimer timer;
+    private VolControl volCtrl;
     //private Health hpCounter;
 
 
@@ -27,20 +29,12 @@ public class ReducePoints : MonoBehaviour {
             if (c.tag == "gameLevelUI")
                 levelUI = c;
         }
-        //if (FindObjectOfType<Canvas>() != null)
-        //{
-        //    levelUI = FindObjectOfType<Canvas>();
-
-        //    if (levelUI.tag != "gameLevelUI")
-        //    {
-        //        //Debug.Log("Item found wrong UI!");
-        //    }
-        //}
+        volCtrl = GameObject.FindWithTag("statistics").GetComponent<VolControl>();
 
         //hpCounter = GameObject.FindObjectOfType<Health>();
     }
 
-    void Start ()
+    void Start()
     {
         itemScorePoints = (int)(itemScorePoints * MovementForward.difficultyMultiplier);
     }
@@ -56,11 +50,11 @@ public class ReducePoints : MonoBehaviour {
             timer.AddScore(-1 * itemScorePoints);
             timer.ContinueBonusStreak(false);
         }
+        volCtrl.TestCrashEffect(this.transform.position);
         //hpCounter.Damage();
         if (disableWhenHit)
         {
             transform.gameObject.SetActive(false);
-            //Destroy(this.gameObject);
         }
     }
 }

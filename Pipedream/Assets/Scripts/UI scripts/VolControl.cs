@@ -104,31 +104,32 @@ public class VolControl : MonoBehaviour {
                 fadingIn = false;
             }
         }
-        if (!isInMenu)
-        {
-            dt = Time.deltaTime;
-            timeFromCollect += dt;
+        // //////// Code for music fading if items not collected
+        //if (!isInMenu)
+        //{
+        //    dt = Time.deltaTime;
+        //    timeFromCollect += dt;
             
-            if (hasCollectedItem == true && music.isPlaying)
-            {
-                Debug.Log("music reset!");
-                if (fadeRate < 1)
-                {
-                    fadeRate += 0.5f * dt;
-                }
-                else
-                {
-                    fadeRate = 1;
-                    hasCollectedItem = false;
-                    timeFromCollect = 0;
-                }
-            }
-            // If no items are collected, music fades out slowly
-            else if (fadeRate > 0.3f && timeFromCollect > 5)
-            {
-                fadeRate -= 0.05f * dt;
-            }           
-        }
+        //    if (hasCollectedItem == true && music.isPlaying)
+        //    {
+        //        Debug.Log("music reset!");
+        //        if (fadeRate < 1)
+        //        {
+        //            fadeRate += 0.5f * dt;
+        //        }
+        //        else
+        //        {
+        //            fadeRate = 1;
+        //            hasCollectedItem = false;
+        //            timeFromCollect = 0;
+        //        }
+        //    }
+        //    // If no items are collected, music fades out slowly
+        //    else if (fadeRate > 0.3f && timeFromCollect > 5)
+        //    {
+        //        fadeRate -= 0.05f * dt;
+        //    }           
+        //}
         if (music)
             music.volume = musicMaxVol * fadeRate * masterVol;
     }
@@ -136,6 +137,10 @@ public class VolControl : MonoBehaviour {
     {
         buttonEffect.volume = effectVol * masterVol;
         buttonEffect.Play();
+    }
+    public void PlayCollectSound(Vector3 position)
+    {
+        AudioSource.PlayClipAtPoint(bonusEffect, position, effectVol * masterVol);
     }
     public void SetMusicType(bool isMenu, int level)
     {
@@ -153,11 +158,12 @@ public class VolControl : MonoBehaviour {
     public void TestCollectSound()
     {
         AudioSource.PlayClipAtPoint(bonusEffect, Input.mousePosition, effectVol * masterVol);
-        hasCollectedItem = true;
+        //hasCollectedItem = true;
     }
-    public void TestCrashEffect()
+    public void TestCrashEffect(Vector3 position)
     {
         // To be implemented if/when we have crash effect.
+        AudioSource.PlayClipAtPoint(crashEffect, position, effectVol * masterVol);
     }
     void StartNextTrack()
     {

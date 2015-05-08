@@ -4,7 +4,7 @@ using System.Collections;
 
 // Handles everything that should happen when player hits the bonus item.
 
-public class CollectPoints : MonoBehaviour 
+public class CollectPoints : MonoBehaviour
 {
     public int itemScorePoints;
     public bool thisIsSpecial;
@@ -14,10 +14,9 @@ public class CollectPoints : MonoBehaviour
     public Canvas levelUI;
     public LevelTimer timer;
 
-    AudioClip sound;
     VolControl volCtrl;
-    
-	void Awake ()
+
+    void Awake()
     {
         levelUI = FindObjectOfType<Canvas>();
 
@@ -31,32 +30,26 @@ public class CollectPoints : MonoBehaviour
         {
             timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
         }
-        if (volCtrl = FindObjectOfType<VolControl>())
-        {
-            sound = volCtrl.bonusEffect;
-        }
-	}
-	
-    void Start ()
+        volCtrl = GameObject.FindWithTag("statistics").GetComponent<VolControl>();
+
+    }
+
+    void Start()
     {
         itemScorePoints = (int)(itemScorePoints * MovementForward.difficultyMultiplier);
     }
-	
-	public void HitCollectable()
-	{
+
+    public void HitCollectable()
+    {
         levelUI.GetComponent<FloatPointUI>().GeneratePoints(itemScorePoints);
-		timer.AddScore(itemScorePoints);
+        timer.AddScore(itemScorePoints);
         timer.ContinueBonusStreak(true);
         if (thisIsSpecial)
         {
             timer.GotSpecial();
         }
-        if (sound != null)
-        {
-            AudioSource.PlayClipAtPoint(sound, this.transform.position, volCtrl.effectVol);
-        }
-        volCtrl.hasCollectedItem = true;
-        //Destroy(this.transform.parent.gameObject);
+        volCtrl.PlayCollectSound(this.transform.position);
+
         Debug.Log("collected bonus # " + bonusItemNumber);
         gameObject.transform.parent.gameObject.SetActive(false);
     }
