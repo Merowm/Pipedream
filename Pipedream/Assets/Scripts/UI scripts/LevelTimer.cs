@@ -38,7 +38,7 @@ public class LevelTimer : MonoBehaviour {
     {   
         // Components set to variables, now with debug checks!
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
-
+        Debug.Log(Difficulty.currentDifficulty);
         // reset temp scores, just in case
         stats.ResetScore();
 
