@@ -29,7 +29,7 @@ public class InfiniteLevel : MonoBehaviour {
     private List<GameObject> poolList = new List<GameObject>();
 
     //length of each part
-    public int LengthOfPart = 1000;
+    public int lengthOfPart = 1000;
 
     //player object
     public GameObject player;
@@ -42,6 +42,20 @@ public class InfiniteLevel : MonoBehaviour {
     //parent containing parts
     public Transform partsParent;
 
+    //accumulative score stuff
+    public int scoreGain = 20;
+    public float scoreAddingInterval = 1.0f;
+    private float timer = 0.0f;
+
+    private LevelTimer levelTimer;
+    private GameObject cameraParent;
+
+    //for pickup spawning
+    public List<GameObject> pickups;
+    private GameObject obj;
+    private GameObject movingHyperPart;
+    private int lengthTravelled = 0;
+
     void Awake(){
         //list available parts
         UpdateAvailableParts();
@@ -51,7 +65,7 @@ public class InfiniteLevel : MonoBehaviour {
         {
             GameObject go1 = Instantiate(go);
             go1.transform.parent = partsParent;
-            go1.transform.position = new Vector3(startingOffset.x, startingOffset.y, startingOffset.z + LengthOfPart * InitialSpawnNumber);
+            go1.transform.position = new Vector3(startingOffset.x, startingOffset.y, startingOffset.z + lengthOfPart * InitialSpawnNumber);
             //go1.transform.FindChild("HyperParts").gameObject.SetActive(true);
             go1.SetActive(false);
             poolList.Add(go1);
@@ -60,7 +74,7 @@ public class InfiniteLevel : MonoBehaviour {
         //spawn initial half of available tubes
         for (int i = 0; i < InitialSpawnNumber; ++i)
         {
-            SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, startingOffset.z + activePartsList.Count * LengthOfPart));
+            SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, startingOffset.z + activePartsList.Count * lengthOfPart));
         }
         //empty out first tube so player doesn't collide when just spawning in
         activePartsList [0].transform.FindChild("Obstacles").gameObject.SetActive(false);
@@ -68,16 +82,54 @@ public class InfiniteLevel : MonoBehaviour {
         activePartsList [0].transform.FindChild("Collectables").gameObject.SetActive(false);
         activePartsList [1].transform.FindChild("Collectables").gameObject.SetActive(false);
         //activePartsList [2].transform.FindChild("Obstacles").gameObject.SetActive(false);
+
+        if (GameObject.FindWithTag("levelTimer") != null)
+        {
+            levelTimer = GameObject.FindGameObjectWithTag("levelTimer").GetComponent<LevelTimer>();
+        }
+        if (GameObject.FindWithTag("CameraParent") != null)
+        {
+            cameraParent = GameObject.FindGameObjectWithTag("CameraParent");
+        }
+        movingHyperPart = GameObject.FindGameObjectWithTag("MovingHyperPart");
     }
 	
 	// Update is called once per frame
 	void Update () {
 	    //check if player has reached end of first tube
-        if (player.transform.position.z -startingOffset.z >= LengthOfPart)
+        if (player.transform.position.z -startingOffset.z >= lengthOfPart)
         {
             OnFirstPartEnd();
+            lengthTravelled += lengthOfPart;
         }
+        ScoreOverTime();
 	}
+
+    private void ScoreOverTime ()
+    {
+        //Update timer
+        timer += Time.deltaTime;
+        //When timer finishes
+        if (timer >= scoreAddingInterval)
+        {
+            //Add score
+            if (MovementForward.inHyperspace)
+            {
+                levelTimer.AddScore((int)(scoreGain * MovementForward.difficultyMultiplier));
+            }
+            //Reset timer
+            timer = 0.0f;
+        }
+    }
+
+    private void SpawnPickup()
+    {
+        int index;
+        index = Random.Range(0,pickups.Count);
+
+        obj = (GameObject)Instantiate(pickups[index], transform.position, transform.rotation);
+        obj.transform.parent = transform.parent;
+    }
 
     //spawns specified part at specified position
     private void SpawnPart(int indexToSpawn, Vector3 position){
@@ -86,7 +138,15 @@ public class InfiniteLevel : MonoBehaviour {
         go.transform.position = position;
         go.SetActive(true);
         go.transform.FindChild("Obstacles").gameObject.SetActive(true);
+        foreach (Transform child in go.transform.FindChild("Obstacles").transform)
+        {
+            child.gameObject.SetActive(true);
+        }
         go.transform.FindChild("Collectables").gameObject.SetActive(true);
+        foreach (Transform child in go.transform.FindChild("Collectables").transform)
+        {
+            child.gameObject.SetActive(true);
+        }
         //remove part from pool
         poolList.Remove(go);
         //add new part to active list for easy management
@@ -101,20 +161,22 @@ public class InfiniteLevel : MonoBehaviour {
         //deactivate first tube
         GameObject go = activePartsList[0];
         go.SetActive(false);
-        go.transform.Translate(0, 0, activePartsList.Count * LengthOfPart);
+        go.transform.Translate(0, 0, activePartsList.Count * lengthOfPart);
         //remove from list
         activePartsList.Remove(go);
         //add back to pool
         poolList.Add(go);
         //shift second tube and player back to origin
-        player.transform.position -= new Vector3(0, 0, LengthOfPart);
-        Camera.main.transform.position -= new Vector3(0, 0, LengthOfPart);
+        //Camera.main.transform.position -= new Vector3(0, 0, LengthOfPart);
+        cameraParent.transform.position -= new Vector3(0, 0, lengthOfPart);
+        player.transform.position -= new Vector3(0, 0, lengthOfPart);
+
         for (int i = 0; i < activePartsList.Count; ++i)
         {
-            activePartsList[i].transform.position -= new Vector3(0, 0, LengthOfPart);
+            activePartsList[i].transform.position -= new Vector3(0, 0, lengthOfPart);
         }
         //spawn new tube
-        SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, startingOffset.z + activePartsList.Count * LengthOfPart));
+        SpawnPart(Random.Range(0, poolList.Count), new Vector3(startingOffset.x, startingOffset.y, startingOffset.z + activePartsList.Count * lengthOfPart));
     }
 
     public static void SetActiveRecursively(GameObject root, bool active){ 
@@ -134,10 +196,14 @@ public class InfiniteLevel : MonoBehaviour {
         availablePartsList.Clear();
 
         Object[] objects = Resources.LoadAll("");
-
+        availablePartsList.Add((GameObject)objects[0]);
+        availablePartsList.Add((GameObject)objects[1]);
+        availablePartsList.Add((GameObject)objects[2]);
+        availablePartsList.Add((GameObject)objects[3]);
+        availablePartsList.Add((GameObject)objects[4]);
         for (int i = 0; i < objects.Length; i++)
         {
-            availablePartsList.Add((GameObject)objects[i]);
+            //availablePartsList.Add((GameObject)objects[i]);
         }
     }
 }

@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
             //When timer finishes
             if (timer >= slowDownDuration)
             {
-                //Reset time to normal
+                //Reset timescale to normal
                 Time.timeScale = 1.0f;
                 timeSlowed = false;
                 //Reset timer

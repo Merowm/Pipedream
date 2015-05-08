@@ -29,24 +29,12 @@ public class PlayerCollisions : MonoBehaviour
 #if UNITY_ANDROID
             Handheld.Vibrate();
 #endif
-            //Collision in hyperspace
-            if (MovementForward.inHyperspace)
-            {
-                Debug.Log("Hyperspace collision");
-                health.Damage();
-                rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
-                leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
-                //movement.ForcedDodge();
-                other.transform.parent.parent.GetComponentInChildren<ReducePoints>().HitObstacle(false);
-            }
-            //Collision out of hyperspace
-            else
-            {
-                Debug.Log("Space collision");
-                health.Damage();
-                other.transform.parent.parent.GetComponent<ReducePoints>().HitObstacle(true);
-                //TODO:Add explosion
-            }
+            Debug.Log("Collision");
+            health.Damage();
+            //rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
+            //leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
+            //movement.ForcedDodge();
+            other.transform.parent.parent.GetComponentInChildren<ReducePoints>().HitObstacle(false);
         }
         //Mine collisions
         if (other.gameObject.tag == "Mine")

@@ -58,6 +58,6 @@ public class CollectPoints : MonoBehaviour
         volCtrl.hasCollectedItem = true;
         //Destroy(this.transform.parent.gameObject);
         Debug.Log("collected bonus # " + bonusItemNumber);
-        gameObject.SetActive(false);
+        gameObject.transform.parent.gameObject.SetActive(false);
     }
 }

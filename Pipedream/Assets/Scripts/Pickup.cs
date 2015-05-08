@@ -17,7 +17,7 @@ public class Pickup : MonoBehaviour
         if (transform.name == "Repair")
         {
             inventory.items[0] = true;
-            inventory.UseItem(0);
+            //inventory.UseItem(0);
         }
         else if (transform.name == "Invulnerability")
         {

@@ -45,7 +45,7 @@ public class ReducePoints : MonoBehaviour {
         itemScorePoints = (int)(itemScorePoints * MovementForward.difficultyMultiplier);
     }
 
-    public void HitObstacle(bool destroyWhenHit)
+    public void HitObstacle(bool disableWhenHit)
     {
         if (levelUI != null)
         {
@@ -57,9 +57,10 @@ public class ReducePoints : MonoBehaviour {
             timer.ContinueBonusStreak(false);
         }
         //hpCounter.Damage();
-        if (destroyWhenHit)
+        if (disableWhenHit)
         {
-            Destroy(this.gameObject);
+            transform.gameObject.SetActive(false);
+            //Destroy(this.gameObject);
         }
     }
 }
