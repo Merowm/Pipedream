@@ -167,7 +167,11 @@ public class VolControl : MonoBehaviour {
     }
     void StartNextTrack()
     {
-        music.clip = jukebox[playlist[currentTrack]];
+        int track;
+        if (currentTrack == 99)
+            track = 2;
+        else track = playlist[currentTrack];
+        music.clip = jukebox[track];
         music.Play();
     }
 }

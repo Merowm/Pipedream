@@ -28,6 +28,8 @@ public class FloatPointUI : MonoBehaviour
         pointImg.transform.SetParent(this.transform);
         pointImg.transform.localPosition = pointPosition;
         pointImg.GetComponent<Text>().text = scoreAmount.ToString();
+        if (scoreAmount < 0)
+            pointImg.GetComponent<Text>().color = Color.red;
 
     }
     public void GeneratePointImage(int scoreAmount)

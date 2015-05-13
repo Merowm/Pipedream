@@ -84,6 +84,7 @@ public class DataSave : MonoBehaviour
     public void SetVolume()
     {
         PlayerPrefs.SetFloat("masterVol", vol.masterVol);
+        PlayerPrefs.Save();
     }
     // save general settings
     public void SetSettings()
