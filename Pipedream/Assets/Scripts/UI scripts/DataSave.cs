@@ -61,7 +61,7 @@ public class DataSave : MonoBehaviour
             // special goals
             l.allCollected = GetSavedStatBool(id, "allCollected");
             l.nothingHit = GetSavedStatBool(id, "nothingHit");
-            l.bonusStreakDone = GetSavedStatBool(id, "bonusStreakDone");
+            l.finishedOnNormal = GetSavedStatBool(id, "bonusStreakDone");
             l.specialFound = GetSavedStatBool(id, "specialFound");
         }
         // get general settings data
@@ -77,7 +77,6 @@ public class DataSave : MonoBehaviour
            stats.colors[i].g = (byte)PlayerPrefs.GetInt(colname + "G");
            stats.colors[i].a = (byte)PlayerPrefs.GetInt(colname + "A");
         }
-        stats.difficulty = PlayerPrefs.GetInt("difficulty");
         vol.masterVol = PlayerPrefs.GetFloat("masterVol");
     }
     public void SetVolume()
@@ -96,8 +95,6 @@ public class DataSave : MonoBehaviour
             PlayerPrefs.SetInt(colname + "G", stats.colors[i].g);
             PlayerPrefs.SetInt(colname + "A", stats.colors[i].a);
         }
-        PlayerPrefs.SetInt("difficulty", stats.difficulty);
-
         PlayerPrefs.Save();
     }
     // save all game data. Is this needed at all?
@@ -124,7 +121,7 @@ public class DataSave : MonoBehaviour
         // special goals
         SetSavedStatBool(id, "allCollected", d.allCollected);
         SetSavedStatBool(id, "nothingHit", d.nothingHit);
-        SetSavedStatBool(id, "bonusStreakDone", d.bonusStreakDone);
+        SetSavedStatBool(id, "bonusStreakDone", d.finishedOnNormal);
         SetSavedStatBool(id, "specialFound", d.specialFound);
 
     }

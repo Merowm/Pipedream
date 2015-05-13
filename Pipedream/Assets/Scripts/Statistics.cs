@@ -20,13 +20,13 @@ public class Statistics : MonoBehaviour
         }
     }
     public Color32[] colors = new Color32[8];
-    public int difficulty;
+    
 
     private int currentLevelPoints;
     private int currentBonusAmount;
     private int currentObstaclesHit;
-    private int currentLongestBonusStreak;
-
+    private int currentLongestBonusStreak; // remove if not needed
+    
     private int lastPlayedLevel;
     private int lastVisitedPlanet;
     private int lastLevelTrophy;
@@ -46,7 +46,7 @@ public class Statistics : MonoBehaviour
         public float timeToRace;
         public bool allCollected;
         public bool nothingHit;
-        public bool bonusStreakDone;
+        public bool finishedOnNormal;
         public bool specialFound;
 
         public levelData(int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelLength, float levelTime, int levelId)
@@ -63,7 +63,7 @@ public class Statistics : MonoBehaviour
             isUnlocked = false;
             allCollected = false;
             nothingHit = false;
-            bonusStreakDone = false;
+            finishedOnNormal = false;
             specialFound = false;
         }
     }
@@ -141,7 +141,7 @@ public class Statistics : MonoBehaviour
             SetNewHighscore(currentLevelPoints, level);
             level.specialFound = special;
             level.nothingHit = (currentObstaclesHit == 0);
-            level.bonusStreakDone = (currentLongestBonusStreak >= level.bonusCount / 2);
+            level.finishedOnNormal = (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal);
             level.allCollected = (currentBonusAmount == level.bonusCount);
         }
 
@@ -183,7 +183,7 @@ public class Statistics : MonoBehaviour
             ld.isUnlocked = false;
             ld.allCollected = false;
             ld.nothingHit = false;
-            ld.bonusStreakDone = false;
+            ld.finishedOnNormal = false;
             ld.specialFound = false;
         }
         // unlock first lvl
@@ -223,22 +223,22 @@ public class Statistics : MonoBehaviour
     }
 
     // Extra objective updating methods.
-    public void GotAllCollected(int levelId)
-    {
-        FindLevel(levelId).allCollected = true;
-    }
-    public void GotNothingHit(int levelId)
-    {
-        FindLevel(levelId).nothingHit = true;
-    }
-    public void GotBonusStreakDone(int levelId)
-    {
-        FindLevel(levelId).bonusStreakDone = true;
-    }
-    public void GotSpecialFound(int levelId)
-    {
-        FindLevel(levelId).specialFound = true;
-    }
+    //public void GotAllCollected(int levelId)
+    //{
+    //    FindLevel(levelId).allCollected = true;
+    //}
+    //public void GotNothingHit(int levelId)
+    //{
+    //    FindLevel(levelId).nothingHit = true;
+    //}
+    //public void GotFinishedOnNormal(int levelId)
+    //{
+    //    FindLevel(levelId).finishedOnNormal = true;
+    //}
+    //public void GotSpecialFound(int levelId)
+    //{
+    //    FindLevel(levelId).specialFound = true;
+    //}
 
     //////////////////////////////////////
     // Get methods
@@ -321,9 +321,9 @@ public class Statistics : MonoBehaviour
     {
         return FindLevel(levelId).nothingHit;
     }
-    public bool HasBonusStreakDone(int levelId)
+    public bool HasFinishedOnNormal(int levelId)
     {
-        return FindLevel(levelId).bonusStreakDone;
+        return FindLevel(levelId).finishedOnNormal;
     }
     public bool HasSpecialFound(int levelId)
     {

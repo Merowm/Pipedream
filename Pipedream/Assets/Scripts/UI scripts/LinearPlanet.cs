@@ -281,7 +281,7 @@ public class LinearPlanet : MonoBehaviour
             extras[1].SetActive(true);
         if (stats.HasSpecialFound(levelId))
             extras[2].SetActive(true);
-        if (stats.HasBonusStreakDone(levelId))
+        if (stats.HasFinishedOnNormal(levelId))
             extras[3].SetActive(true);
         foreach (GameObject g in extras)
         {

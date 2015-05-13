@@ -41,6 +41,7 @@ public class LevelTimer : MonoBehaviour {
         Debug.Log(Difficulty.currentDifficulty);
         // reset temp scores, just in case
         stats.ResetScore();
+        
 
         // For debugging and testing, no level data defined, no ending
         if (levelId > 0)

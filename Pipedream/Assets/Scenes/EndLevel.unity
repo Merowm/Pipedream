@@ -397,8 +397,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 108.199997, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 116.900002, y: 0}
+  m_SizeDelta: {x: 177.399994, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &89329167
 MonoBehaviour:
@@ -425,7 +425,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Get Streak!
+  m_Text: Finish on normal!
 --- !u!222 &89329168
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToGo: StartMenu
-  SceneIsMenu: 1
+  levelId: 0
 --- !u!114 &807425965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,6 +1802,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22413162, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125040, guid: 658642a7cfa6d8b4bae46f1f360463e4, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2804,8 +2808,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 108.199997, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 117.699997, y: 0}
+  m_SizeDelta: {x: 179.100006, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1909841657
 MonoBehaviour:
@@ -2832,7 +2836,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Get Extra!
+  m_Text: Find golden lotus!
 --- !u!222 &1909841658
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ public class CurrentScore : MonoBehaviour {
         if (!stats.HasAllCollected(level))
             UnCheckGoal(bonusObjectives[1]);
 
-        if (!stats.HasBonusStreakDone(level))////////////// Placeholder value!
+        if (!stats.HasFinishedOnNormal(level))////////////// Placeholder value!
             UnCheckGoal(bonusObjectives[2]);
 
         if (!stats.HasSpecialFound(level))
