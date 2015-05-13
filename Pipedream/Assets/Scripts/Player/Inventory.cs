@@ -8,8 +8,8 @@ public class Inventory : MonoBehaviour
     public List<string> itemNames = new List<string>();
     public List<bool> items = new List<bool>();
     public bool timeSlowed = false;
-    public float slowDownDuration = 5.0f;
-    public float slowDownAmount = 0.5f;
+    public float slowDownDuration = 7.0f;
+    public float slowDownAmount = 0.75f;
 
     private Health health;
     private float timer = 0.0f;

@@ -10,6 +10,7 @@ public class PlayerCollisions : MonoBehaviour
 
     private Movement2D movement;
     private Health health;
+    private Inventory inventory;
     private Transform rightWingtip;
     private Transform leftWingtip;
 
@@ -17,6 +18,7 @@ public class PlayerCollisions : MonoBehaviour
     {
         movement = transform.parent.parent.GetComponent<Movement2D>();
         health = transform.parent.GetComponent<Health>();
+        inventory = transform.parent.GetComponent<Inventory>();
         rightWingtip = transform.parent.parent.FindChild("RightWingtip").transform;
         leftWingtip = transform.parent.parent.FindChild("LeftWingtip").transform;
     }
@@ -30,19 +32,12 @@ public class PlayerCollisions : MonoBehaviour
             Handheld.Vibrate();
 #endif
             Debug.Log("Collision");
+            //Activate invulnerability if possible
+            inventory.UseItem(1);
+            //Take damage
             health.Damage();
-            //rightDistance = Vector3.Distance(rightWingtip.position, other.transform.position);
-            //leftDistance = Vector3.Distance(leftWingtip.position, other.transform.position);
-            //movement.ForcedDodge();
+            //Reduce points
             other.transform.parent.parent.GetComponentInChildren<ReducePoints>().HitObstacle(false);
-        }
-        //Mine collisions
-        if (other.gameObject.tag == "Mine")
-        {
-            if (!other.transform.parent.parent.GetComponent<MineSticking>().stickToTarget)
-            {
-                other.transform.parent.parent.GetComponent<MineSticking>().stickToTarget = true;
-            }
         }
         //Collectible collisions
         if (other.gameObject.tag == "Collectible")

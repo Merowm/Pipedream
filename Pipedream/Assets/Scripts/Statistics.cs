@@ -249,6 +249,8 @@ public class Statistics : MonoBehaviour
     }
     public string GetLevelNameAsString(int levelId)
     {        
+        if (levelId == 99)
+            return "infinite";
         return ("level" + levelId).ToString();
     }
     public int GetCurrentScore()

@@ -15,12 +15,11 @@ public class GoToNext : MonoBehaviour {
     public void GoToScene()
     {
         Go();
-        sounds.PlayButtonEffect();
+        //sounds.PlayButtonEffect();
     }
     public void Go()
     {        
         loader.showLoader(SceneToGo, levelId);
-        //sounds.isInMenu = (levelId == 0);
         Application.LoadLevel(SceneToGo);
     }
 }

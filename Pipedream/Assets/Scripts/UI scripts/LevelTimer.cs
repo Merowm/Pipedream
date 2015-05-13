@@ -10,11 +10,13 @@ public class LevelTimer : MonoBehaviour {
     public float updateInterval;
     public Transform playerShip;
     public float timeInSecs;
+    public int fullDistance;
 
     Statistics stats;
     Slider distanceBar;
     Canvas UI_c;
-    public int fullDistance;
+    bool infinite;
+    string timeBonus;
      
     float deltaDistance;
     float updateDelay;
@@ -28,6 +30,9 @@ public class LevelTimer : MonoBehaviour {
     Text bonusTextField;
 
     GooglePlayServices gps;
+
+    Text timeTextField;
+
 	
 	void Awake ()
     {
@@ -36,6 +41,9 @@ public class LevelTimer : MonoBehaviour {
         timeInSecs = 0;
 
         gps = GameObject.FindObjectOfType<GooglePlayServices>();
+
+        if (levelId == 99)
+            infinite = true;    
 	}
 	void Start()
     {   
@@ -45,25 +53,37 @@ public class LevelTimer : MonoBehaviour {
         // reset temp scores, just in case
         stats.ResetScore();
         
-
-        // For debugging and testing, no level data defined, no ending
-        if (levelId > 0)
-        {
-            fullDistance = stats.GetLevelDistance(levelId);
-            maxBonusCount = stats.GetMaxBonusAmount(levelId);
-            stats.SetLevelPlayed(levelId);
-        }
-        else
-        {
-            fullDistance = 1000;
-            maxBonusCount = 100;
-            Debug.Log("Timer in testing mode");
-        }
-
-        
         playerShip = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
         distanceBar = GameObject.FindWithTag("travelIndicator").GetComponent<Slider>();
+
+        timeTextField = GameObject.Find("timeText").GetComponent<Text>();
+
+        if (!infinite)
+        {
+            if (levelId > 0)
+            {
+                fullDistance = stats.GetLevelDistance(levelId);
+                maxBonusCount = stats.GetMaxBonusAmount(levelId);
+                stats.SetLevelPlayed(levelId);
+                GameObject.Find("timePanel").SetActive(false);
+                GameObject.Find("levelTextText").GetComponent<Text>().text = "level # " + levelId.ToString();
+            }
+            else
+            {
+                fullDistance = 1000;
+                maxBonusCount = 100;
+                Debug.Log("Timer in testing mode");
+            }
+        }
+        else
+        {
+            stats.SetLevelPlayed(levelId);
+            distanceBar.gameObject.SetActive(false);
+            if (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal)
+                timeBonus = "20";
+            else timeBonus = "10";
+        }
 
         pointsTextfield = GameObject.FindWithTag("Scoretext").GetComponent<Text>();
         WriteToGuiPoints(0);
@@ -72,41 +92,48 @@ public class LevelTimer : MonoBehaviour {
         WriteToGuiBonus(0);
         
         lastPlayerPosition = playerShip.position;
-
-        GameObject.Find("levelTextText").GetComponent<Text>().text = "level # " + levelId.ToString();
     }
 	
     
 	void Update ()
     {
-        updateDelay += Time.deltaTime;
         timeInSecs += Time.deltaTime;
-        
-        // TODO: Change to use percentage of full distance? (why?)
-        if (updateDelay >= updateInterval)
+
+        if (!infinite)
         {
-            currentPlayerPosition = playerShip.position;
-            deltaDistance = currentPlayerPosition.z - lastPlayerPosition.z;
-            // save travelled distance at jump
-            // NB! only works if player position jumps to (*,*,0)!
-            if (deltaDistance < 0)
+            updateDelay += Time.deltaTime;
+
+            // TODO: Change to use percentage of full distance? (why?)
+            if (updateDelay >= updateInterval)
             {
-                distanceMeter += lastPlayerPosition.z;
-                Debug.Log("jumped at point " + lastPlayerPosition.z);
+                currentPlayerPosition = playerShip.position;
+                deltaDistance = currentPlayerPosition.z - lastPlayerPosition.z;
+                // save travelled distance at jump
+                // NB! only works if player position jumps to (*,*,0)!
+                if (deltaDistance < 0)
+                {
+                    distanceMeter += lastPlayerPosition.z;
+                    Debug.Log("jumped at point " + lastPlayerPosition.z);
+                }
+                distanceMeter += deltaDistance;
+
+                distanceBar.value = (distanceMeter / fullDistance);
+
+                lastPlayerPosition = currentPlayerPosition;
+                updateDelay = 0;
             }
-            distanceMeter += deltaDistance;
-
-            distanceBar.value = (distanceMeter/fullDistance);
-
-            lastPlayerPosition = currentPlayerPosition;
-            updateDelay = 0;
+            if (distanceMeter >= fullDistance && levelId > 0)
+            {
+                Debug.Log("level length: " + timeInSecs + "seconds");
+                FinalLevelScore();
+                stats.UnlockLevel(levelId + 1);
+                Application.LoadLevel("EndLevel");
+            }
         }
-        if (distanceMeter >= fullDistance && levelId > 0)
+        else
         {
-            Debug.Log("level length: " + timeInSecs + "seconds");
-            FinalLevelScore();
-            stats.UnlockLevel(levelId + 1);
-            Application.LoadLevel("EndLevel");
+            // update timer GUI
+            timeTextField.text = ((int)timeInSecs).ToString();
         }
 	}
 
@@ -116,7 +143,11 @@ public class LevelTimer : MonoBehaviour {
     }
     private void WriteToGuiBonus(int collected)
     {
-        bonusTextField.text = collected.ToString() + " / " + maxBonusCount;
+        if (infinite)
+        {
+            bonusTextField.text = collected.ToString();
+        }
+        else bonusTextField.text = collected.ToString() + " / " + maxBonusCount;
     }
 
     // Called from bonus object when triggered. Changes GUI text.
@@ -183,5 +214,14 @@ public class LevelTimer : MonoBehaviour {
     {
         return distanceMeter;
     }
-
+    public void Gameover(GameObject res)
+    {
+        res.transform.FindChild("time").GetComponent<Text>().text = (((int)timeInSecs).ToString() + " X " + timeBonus); // NB! check decimal count!
+        res.transform.FindChild("score").GetComponent<Text>().text = stats.GetCurrentScore().ToString();
+        res.transform.FindChild("collected").GetComponent<Text>().text = stats.GetCurrentBonus().ToString();
+    }
+    public bool IsInfinite()
+    {
+        return infinite;
+    }
 }
