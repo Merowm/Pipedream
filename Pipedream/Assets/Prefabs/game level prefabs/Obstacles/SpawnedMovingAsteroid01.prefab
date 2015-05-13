@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 468240}
   - 33: {fileID: 3368248}
   - 23: {fileID: 2368248}
+  - 114: {fileID: 11404350}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Obstacle
@@ -42,7 +43,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 468244}
   - 114: {fileID: 11468246}
-  - 114: {fileID: 11458786}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 644.678894, y: 924.480042, z: -875.838989}
+  m_LocalPosition: {x: -43.4333153, y: 34.0957069, z: 839.820862}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 468244}
@@ -147,22 +147,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168240}
   m_Mesh: {fileID: 4300000, guid: 20412d116114e854d84e3b5e4c2c427c, type: 3}
---- !u!114 &11458786
+--- !u!114 &11404350
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 168244}
+  m_GameObject: {fileID: 168240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4acb12046c21f274b9ae47f1b644a38f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a361f472a4f6924391e51c5c9ff0873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 0, z: 0}
-  randomizeRotation: 1
-  rotationRangeMax: 1.5
-  rotationRangeMin: -1.5
-  displayDistance: 400
+  rotationRangeMax: .5
+  rotationRangeMin: -.5
+  displayDistance: 700
 --- !u!114 &11468244
 MonoBehaviour:
   m_ObjectHideFlags: 1
