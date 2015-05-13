@@ -77,7 +77,9 @@ public class DataSave : MonoBehaviour
            stats.colors[i].g = (byte)PlayerPrefs.GetInt(colname + "G");
            stats.colors[i].a = (byte)PlayerPrefs.GetInt(colname + "A");
         }
-        vol.masterVol = PlayerPrefs.GetFloat("masterVol");
+        if (PlayerPrefs.HasKey("masterVol"))
+            vol.masterVol = PlayerPrefs.GetFloat("masterVol");
+        else vol.masterVol = 0.5f;
     }
     public void SetVolume()
     {
