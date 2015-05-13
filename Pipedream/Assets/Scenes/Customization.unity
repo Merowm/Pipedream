@@ -6048,6 +6048,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1749881536}
     m_Modifications:
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 22402210, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6137,6 +6141,26 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 8ed4eac9e20b7ef4ea6e3a621c1ea840,
         type: 3}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1366508402}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
   m_IsPrefabParent: 0
@@ -6556,8 +6580,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_NormalColor: {r: .572549045, g: .823529422, b: .992156863, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -6590,6 +6614,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2110733480}
         m_MethodName: DeactivateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1366508402}
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8122,8 +8158,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_NormalColor: {r: .572549045, g: .823529422, b: .992156863, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -8144,6 +8180,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1209840490}
         m_MethodName: SaveColorsToMemory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1366508402}
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22360,12 +22408,6 @@ Transform:
   - {fileID: 21970651}
   m_Father: {fileID: 1984874318}
   m_RootOrder: 3
---- !u!114 &463558350 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11429284, guid: 10c8fce73535fa44696c0cbeb710e8e7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1215579185}
-  m_Script: {fileID: 11500000, guid: 89dbc05ac785ac24bb56dbbdf0c8b641, type: 3}
 --- !u!1 &464805666
 GameObject:
   m_ObjectHideFlags: 0
@@ -31386,8 +31428,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_NormalColor: {r: .572549045, g: .823529422, b: .992156863, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -31420,6 +31462,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2110733480}
         m_MethodName: DeactivateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1366508402}
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -55763,9 +55817,13 @@ Prefab:
     m_TransformParent: {fileID: 705218617}
     m_Modifications:
     - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1406186082}
+      objectReference: {fileID: 1366508402}
     - target: {fileID: 156800, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_Name
       value: PlayerColor
@@ -55784,7 +55842,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: UpdateSliders
+      value: PlaySoundEffect
       objectReference: {fileID: 0}
     - target: {fileID: 11461672, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_Sprite
@@ -55830,6 +55888,18 @@ Prefab:
     - target: {fileID: 22402210, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_LocalScale.y
       value: .799999952
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
@@ -55901,6 +55971,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 93411844}
     m_Modifications:
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 22402210, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55988,10 +56062,10 @@ Prefab:
     - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 463558350}
+      objectReference: {fileID: 1366508402}
     - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: UpdateSliders
+      value: PlaySoundEffect
       objectReference: {fileID: 0}
     - target: {fileID: 11461672, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_Sprite
@@ -56021,6 +56095,18 @@ Prefab:
     - target: {fileID: 11461672, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404044, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10c8fce73535fa44696c0cbeb710e8e7, type: 2}
@@ -64736,12 +64822,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1405978424}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1406186082 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11429284, guid: 10c8fce73535fa44696c0cbeb710e8e7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1209927232}
-  m_Script: {fileID: 11500000, guid: 89dbc05ac785ac24bb56dbbdf0c8b641, type: 3}
 --- !u!1 &1406446400
 GameObject:
   m_ObjectHideFlags: 0
@@ -79500,8 +79580,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_NormalColor: {r: .572549045, g: .823529422, b: .992156863, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -79522,6 +79602,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1209840491}
         m_MethodName: RevertChanges
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1366508402}
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -84377,7 +84469,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_HighlightedColor: {r: .889705896, g: .889705896, b: .889705896, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -90648,8 +90740,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_NormalColor: {r: .572549045, g: .823529422, b: .992156863, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -90670,6 +90762,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1933374307}
         m_MethodName: GoToScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1366508402}
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -98620,8 +98724,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_NormalColor: {r: .572549045, g: .823529422, b: .992156863, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -98642,6 +98746,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1209840491}
         m_MethodName: RestoreDefaults
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1366508402}
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
