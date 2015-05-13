@@ -5,7 +5,7 @@ public class MineAI : MonoBehaviour
 {
     public float speedForward = 100.0f;
     public float speed2D = 5.0f;
-    public float followingDistance = 100.0f;
+    public float followingDistance = 500.0f;
     public GameObject target;
     public GameObject targetPositionObject; //Where the target will be at, on the xy-axis,
     public Vector3 targetPosition; //When the target's z-axis aligns with that of the following object
@@ -28,8 +28,9 @@ public class MineAI : MonoBehaviour
             if (followingDistance > Vector3.Distance(new Vector3(0, 0, transform.position.z),
                                                  new Vector3(0, 0, target.transform.position.z)))
             {
+                //Debug.Log("Mine tracking target...");
                 //Setting target position
-                targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, targetPosition.z);
+                targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
                 //Setting targetPositionObject's position
                 targetPositionObject.transform.position = targetPosition;
                 //Direction calculation
@@ -47,9 +48,8 @@ public class MineAI : MonoBehaviour
 
     void ForwardMovement ()
     {
-        Vector3 lastPosition = transform.position;
-        transform.position += direction * speedForward * Time.deltaTime;
-        Vector3 currentPosition = transform.position;
+        Vector3 forwardDirection = new Vector3(0.0f,0.0f,1.0f);
+        transform.position += forwardDirection.normalized * speedForward * Time.deltaTime;
     }
 
     void OnDrawGizmos ()

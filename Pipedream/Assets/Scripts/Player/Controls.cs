@@ -13,14 +13,12 @@ public class Controls : MonoBehaviour
     private Movement2D movement2D;
     private MovementForward movementForward;
     private SpaceDriveState spaceDriveState;
-    private Inventory inventory;
 
 	void Awake ()
     {
         movement2D = transform.GetComponent<Movement2D>();
         movementForward = transform.GetComponent<MovementForward>();
         spaceDriveState = transform.GetComponent<SpaceDriveState>();
-        inventory = transform.GetComponentInChildren<Inventory>();
 
         controls = new Dictionary<string, bool>();
         controls.Add("Right", false);
@@ -76,22 +74,6 @@ public class Controls : MonoBehaviour
         else
         {
             controls["Left"] = false;
-        }
-        //Input for items
-        //Repair
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //inventory.UseItem(0);
-        }
-        //Invulnerability
-        if (Input.GetButtonDown("Fire1"))
-        {
-            inventory.UseItem(1);
-        }
-        //Time slow
-        if (Input.GetButtonDown("Fire2"))
-        {
-            inventory.UseItem(2);
         }
 #endif
 

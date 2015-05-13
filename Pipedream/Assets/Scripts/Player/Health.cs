@@ -34,8 +34,10 @@ public class Health : MonoBehaviour {
     private GameObject gameOverGUI;
 
     //shield particle system
-    private ParticleSystem partSysShield;
-    private float originalEmissionRate;
+    public ParticleSystem partSysShield;
+    public float originalEmissionRate;
+
+    private Inventory inventory;
 
     //particles
     //public GameObject partSysDead;
@@ -48,7 +50,8 @@ public class Health : MonoBehaviour {
         healthGUI3 = healthParent.transform.FindChild("health_3").gameObject;
         healthGUIShield = healthParent.transform.FindChild("shield").gameObject;
         gameOverGUI = GameObject.Find("gameOverGUI");
-        partSysShield = GameObject.Find("Shield Particle System").GetComponent <ParticleSystem>();
+        partSysShield = GameObject.Find("Shield Particle System").GetComponent<ParticleSystem>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Inventory>();
         originalEmissionRate = partSysShield.emissionRate;
         Reset();
     }
@@ -59,7 +62,7 @@ public class Health : MonoBehaviour {
 
         if (!alive)
         {
-           // Controls.controlsActivated = false;
+            Controls.controlsActivated = false;
         }
     }
 
@@ -127,9 +130,9 @@ public class Health : MonoBehaviour {
         //activate invulnerability
         if (!invulnerable)
         {
-            //set shield particles to overdrive
-            partSysShield.maxParticles = (int)(originalEmissionRate * 0.8f);
-            partSysShield.emissionRate = partSysShield.maxParticles / 2;
+            //set shield particles to overdrive moved to script "PickUp"
+            //partSysShield.maxParticles = (int)(originalEmissionRate * 0.8f);
+            //partSysShield.emissionRate = partSysShield.maxParticles / 2;
             currentShield = maxShield;
             UpdateHealthGUI();
             invulnerable = true;
@@ -178,13 +181,13 @@ public class Health : MonoBehaviour {
         }
     }
 
-    //updates shield regen
+    //updates invulnerability
     private void UpdateInvulnerability(){
         if (!alive)
         {
             return;
         }
-        //if shields not full
+        //if invulnerable
         if (invulnerable)
         {
             //update timer
@@ -193,7 +196,7 @@ public class Health : MonoBehaviour {
             if (invulnerabilityTimer >= invulnerabilityTime){
                 //set timer to 0
                 invulnerabilityTimer = 0;
-                SetInvulnerability();
+                SetInvulnerability(); //to false
             }
         }
     }

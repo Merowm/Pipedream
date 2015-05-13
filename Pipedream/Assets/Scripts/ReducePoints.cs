@@ -10,8 +10,7 @@ public class ReducePoints : MonoBehaviour
     private Canvas levelUI;
     private LevelTimer timer;
     private VolControl volCtrl;
-    //private Health hpCounter;
-
+    private Health health;
 
     void Awake()
     {
@@ -31,7 +30,8 @@ public class ReducePoints : MonoBehaviour
         }
         volCtrl = GameObject.FindWithTag("statistics").GetComponent<VolControl>();
 
-        //hpCounter = GameObject.FindObjectOfType<Health>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        health = player.GetComponentInChildren<Health>();
     }
 
     void Start()
@@ -41,17 +41,19 @@ public class ReducePoints : MonoBehaviour
 
     public void HitObstacle(bool disableWhenHit)
     {
-        if (levelUI != null)
+        if (!health.invulnerable)
         {
-            levelUI.GetComponent<FloatPointUI>().GeneratePoints(-itemScorePoints);
-        }
-        if (timer != null)
-        {
-            timer.AddScore(-1 * itemScorePoints);
-            timer.ContinueBonusStreak(false);
+            if (levelUI != null)
+            {
+                levelUI.GetComponent<FloatPointUI>().GeneratePoints(-itemScorePoints);
+            }
+            if (timer != null)
+            {
+                timer.AddScore(-1 * itemScorePoints);
+                timer.ContinueBonusStreak(false);
+            }
         }
         volCtrl.TestCrashEffect(this.transform.position);
-        //hpCounter.Damage();
         if (disableWhenHit)
         {
             transform.gameObject.SetActive(false);
