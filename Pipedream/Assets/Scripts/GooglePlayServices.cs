@@ -24,12 +24,11 @@ public class GooglePlayServices : MonoBehaviour {
 
     public ACHIEVEMENT[] achievementData;
 
-    void Awake()
+    void Start()
     {
 #if UNITY_ANDROID
         DontDestroyOnLoad(gameObject);     
         Initialize();
-        SignIn();
 #else
         Destroy(gameObject);
 #endif
@@ -51,13 +50,24 @@ public class GooglePlayServices : MonoBehaviour {
         PlayGamesPlatform.DebugLogEnabled = true;
         // Activate the Google Play Games platform
         PlayGamesPlatform.Activate();
+
+        SignIn();
     }
 
     void SignIn()
     {  
         Social.localUser.Authenticate((bool success) => {
         // handle success or failure
-            connected = true;
+            if (success)
+            {
+                connected = true;
+                Social.ShowAchievementsUI();
+                Application.LoadLevel("StartMenu");
+            }
+            else
+            {
+                Handheld.Vibrate();
+            }
         });
     }
 
