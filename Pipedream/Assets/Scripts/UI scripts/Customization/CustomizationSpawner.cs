@@ -24,6 +24,15 @@ public class CustomizationSpawner : MonoBehaviour
         SpawnObjects();
     }
 
+    public void MoveObjects()
+    {
+        foreach(Transform child in transform)
+        {
+            float z = child.localPosition.z - movement.distanceReset;
+            child.localPosition = new Vector3(0,0,z);
+        }
+    }
+
     public void SpawnObjects()
     {
         nextPosition = transform.position;

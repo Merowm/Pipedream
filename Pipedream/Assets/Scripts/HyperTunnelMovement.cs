@@ -7,17 +7,15 @@ public class HyperTunnelMovement : MonoBehaviour
     public float speedPerSecond = 0.0f;
     public float distanceReset = 500.0f;
     public Vector3 direction = new Vector3(0,0,-1);
+    public bool customization = false;
     public bool infinite = false;
     public Vector3 infiniteStart;
-    public bool customization = false;
-    public Vector3 resettingPosition = new Vector3(0,0,0);
 
     private Transform player;
 
 	void Awake ()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        resettingPosition = new Vector3(0,0,distanceReset);
 	}
 
 	void FixedUpdate ()
@@ -41,12 +39,13 @@ public class HyperTunnelMovement : MonoBehaviour
             {
                 if (transform.position.z <= -distanceReset)
                 {
-                    transform.position = resettingPosition;
+                    transform.position = new Vector3(0,0,distanceReset);
 
                     if (transform.GetComponent<CustomizationSpawner>() != null)
                     {
-                        transform.GetComponent<CustomizationSpawner>().ClearObjects();
-                        transform.GetComponent<CustomizationSpawner>().SpawnObjects();
+                        //transform.GetComponent<CustomizationSpawner>().MoveObjects();
+                        //transform.GetComponent<CustomizationSpawner>().ClearObjects();
+                        //transform.GetComponent<CustomizationSpawner>().SpawnObjects();
                     }
                 }
             }
