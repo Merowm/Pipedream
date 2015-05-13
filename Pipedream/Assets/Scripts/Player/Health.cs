@@ -32,6 +32,9 @@ public class Health : MonoBehaviour {
 
     //gameover screen
     private GameObject gameOverGUI;
+    private GameObject infResults;
+    private LevelTimer timer;
+    private bool isInfinite;
 
     //shield particle system
     public ParticleSystem partSysShield;
@@ -50,9 +53,12 @@ public class Health : MonoBehaviour {
         healthGUI3 = healthParent.transform.FindChild("health_3").gameObject;
         healthGUIShield = healthParent.transform.FindChild("shield").gameObject;
         gameOverGUI = GameObject.Find("gameOverGUI");
+        infResults = GameObject.Find("infiniteResults");
+        timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
         partSysShield = GameObject.Find("Shield Particle System").GetComponent<ParticleSystem>();
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Inventory>();
         originalEmissionRate = partSysShield.emissionRate;
+        isInfinite = timer.IsInfinite();
         Reset();
     }
 
@@ -84,6 +90,14 @@ public class Health : MonoBehaviour {
                 if (currentHull <= 0){
                     Debug.Log("Game Over");
                     gameOverGUI.SetActive(true);
+                    if (timer.IsInfinite())
+                    {
+                        timer.Gameover(infResults);
+                    }
+                    else
+                    {
+                        infResults.SetActive(false);
+                    }
                     alive = false;
                     Time.timeScale = 0.0f;
                     //partSysDead.SetActive(true);
