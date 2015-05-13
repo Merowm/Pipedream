@@ -26,13 +26,16 @@ public class LevelTimer : MonoBehaviour {
     int maxBonusCount;
     Text pointsTextfield;
     Text bonusTextField;
+
+    GooglePlayServices gps;
 	
 	void Awake ()
     {
         distanceMeter = 0;
         updateDelay = 0;
         timeInSecs = 0;
-        
+
+        gps = GameObject.FindObjectOfType<GooglePlayServices>();
 	}
 	void Start()
     {   
@@ -156,7 +159,12 @@ public class LevelTimer : MonoBehaviour {
         Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
         // also saves best trophy
         int medal = stats.CompareToTrophyRequirements(levelId);
-        
+#if UNITY_ANDROID
+        if (medal == 1)//if gold
+        {
+            gps.UnlockAchievement(levelId, GooglePlayServices.ACHIEVEMENT_TYPE.GOLD);
+        }
+#endif
     }
 
     // if needed to call from elsewhere / next mode NOT starting from same z point as last!
