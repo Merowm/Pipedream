@@ -70,6 +70,7 @@ public class Health : MonoBehaviour {
         {
             Controls.controlsActivated = false;
         }
+        else Controls.controlsActivated = true;
     }
 
     //to damage ship

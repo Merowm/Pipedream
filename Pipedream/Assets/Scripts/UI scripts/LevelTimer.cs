@@ -28,6 +28,7 @@ public class LevelTimer : MonoBehaviour {
     int maxBonusCount;
     Text pointsTextfield;
     Text bonusTextField;
+    Text timeTextField;
 	
 	void Awake ()
     {
@@ -35,7 +36,7 @@ public class LevelTimer : MonoBehaviour {
         updateDelay = 0;
         timeInSecs = 0;
         if (levelId == 99)
-            infinite = true;        
+            infinite = true;    
 	}
 	void Start()
     {   
@@ -49,6 +50,7 @@ public class LevelTimer : MonoBehaviour {
 
         distanceBar = GameObject.FindWithTag("travelIndicator").GetComponent<Slider>();
 
+        timeTextField = GameObject.Find("timeText").GetComponent<Text>();
 
         if (!infinite)
         {
@@ -57,6 +59,7 @@ public class LevelTimer : MonoBehaviour {
                 fullDistance = stats.GetLevelDistance(levelId);
                 maxBonusCount = stats.GetMaxBonusAmount(levelId);
                 stats.SetLevelPlayed(levelId);
+                GameObject.Find("timePanel").SetActive(false);
                 GameObject.Find("levelTextText").GetComponent<Text>().text = "level # " + levelId.ToString();
             }
             else
@@ -122,6 +125,7 @@ public class LevelTimer : MonoBehaviour {
         else
         {
             // update timer GUI
+            timeTextField.text = ((int)timeInSecs).ToString();
         }
 	}
 
