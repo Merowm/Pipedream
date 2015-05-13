@@ -50,11 +50,8 @@ public class InfiniteLevel : MonoBehaviour {
     private LevelTimer levelTimer;
     private GameObject cameraParent;
 
-    //for pickup spawning
-    public List<GameObject> pickups;
-    private GameObject obj;
-    private GameObject movingHyperPart;
-    private int lengthTravelled = 0;
+    //For pickup spawning
+    public PickupSpawning spawning;
 
     void Awake(){
         //list available parts
@@ -91,10 +88,7 @@ public class InfiniteLevel : MonoBehaviour {
         {
             cameraParent = GameObject.FindGameObjectWithTag("CameraParent");
         }
-        movingHyperPart = GameObject.FindGameObjectWithTag("MovingHyperPart");
-
-        //spawn the first pickup
-        SpawnPickup();
+        spawning = transform.GetComponent<PickupSpawning>();
     }
 	
 	// Update is called once per frame
@@ -103,15 +97,10 @@ public class InfiniteLevel : MonoBehaviour {
         if (player.transform.position.z -startingOffset.z >= lengthOfPart)
         {
             OnFirstPartEnd();
-            lengthTravelled += lengthOfPart;
+            spawning.MovePickups();
+            spawning.lengthTravelled += lengthOfPart;
         }
         ScoreOverTime();
-
-        //pickup spawning
-        if (lengthTravelled == 1000)
-        {
-
-        }
 	}
 
     private void ScoreOverTime ()
@@ -128,27 +117,6 @@ public class InfiniteLevel : MonoBehaviour {
             }
             //Reset timer
             timer = 0.0f;
-        }
-    }
-
-    private void SpawnPickup()
-    {
-        //spawn a random pickup
-        int index;
-        index = Random.Range(0,pickups.Count);
-        obj = (GameObject)Instantiate(pickups[index]);
-        obj.transform.parent = transform.parent;
-        //set position
-        obj.transform.position = new Vector3(0.0f,0.0f,1000.0f);
-        //set rotation
-        Vector3 rotation = new Vector3(0,0,0);//Random.Range(0.0f,360.0f));
-        obj.transform.Rotate(rotation);
-        //reset rotation if needed
-        bool colliding = obj.transform.GetChild(0).transform.FindChild("SpawningCollider").GetComponent<SpawnCollision>().colliding;
-        while (colliding)
-        {
-            rotation = new Vector3(0,0,Random.Range(0.0f,360.0f));
-            obj.transform.Rotate(rotation);
         }
     }
 
