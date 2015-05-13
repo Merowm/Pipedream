@@ -14,9 +14,11 @@ public class Restart : MonoBehaviour
     {
         st.ResetScore();
         int level = st.GetCurrentLevel();
+        // very evil patch for endless mode: returns "infinite" if level id is 99...
         string levelname = st.GetLevelNameAsString(level);
         GameObject.FindWithTag("statistics").GetComponent<LoadScreen>().showLoader(levelname,level);
         Time.timeScale = 1.0f;
+        Debug.Log(levelname);
         Application.LoadLevel(levelname);
     }
 

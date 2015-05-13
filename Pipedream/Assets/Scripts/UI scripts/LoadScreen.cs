@@ -25,10 +25,7 @@ public class LoadScreen : MonoBehaviour {
             if (Application.loadedLevelName == nextlevel && !Application.isLoadingLevel)
             {
                 sound = GetComponent<VolControl>();
-                hideLoader();
-                
-
-                
+                hideLoader();                
                 Time.timeScale = 1;
                 loadingDone = true;
             }

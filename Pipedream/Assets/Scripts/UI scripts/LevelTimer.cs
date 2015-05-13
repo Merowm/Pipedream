@@ -71,6 +71,7 @@ public class LevelTimer : MonoBehaviour {
         }
         else
         {
+            stats.SetLevelPlayed(levelId);
             distanceBar.gameObject.SetActive(false);
             if (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal)
                 timeBonus = "20";
