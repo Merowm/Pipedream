@@ -32,6 +32,7 @@ public class LevelTimer : MonoBehaviour {
     GooglePlayServices gps;
 
     Text timeTextField;
+    DataSave saver;
 
 	
 	void Awake ()
@@ -41,14 +42,15 @@ public class LevelTimer : MonoBehaviour {
         timeInSecs = 0;
 
         gps = GameObject.FindObjectOfType<GooglePlayServices>();
+        
 
         if (levelId == 99)
             infinite = true;    
 	}
 	void Start()
-    {   
-        // Components set to variables, now with debug checks!
+    {           
         stats = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
+        saver = GameObject.FindWithTag("statistics").GetComponent<DataSave>();
         Debug.Log(Difficulty.currentDifficulty);
         // reset temp scores, just in case
         stats.ResetScore();
@@ -216,9 +218,14 @@ public class LevelTimer : MonoBehaviour {
     }
     public void Gameover(GameObject res)
     {
-        res.transform.FindChild("time").GetComponent<Text>().text = (((int)timeInSecs).ToString() + " X " + timeBonus); // NB! check decimal count!
+        res.transform.FindChild("time").GetComponent<Text>().text = (((int)timeInSecs).ToString() + "\n X " + timeBonus);
         res.transform.FindChild("score").GetComponent<Text>().text = stats.GetCurrentScore().ToString();
         res.transform.FindChild("collected").GetComponent<Text>().text = stats.GetCurrentBonus().ToString();
+        // save endless results & mark personal best
+        stats.UpdateEndlessRecord((int)timeInSecs);
+        res.transform.FindChild("timeBest").GetComponent<Text>().text = stats.GetSecsSurvived().ToString();
+        res.transform.FindChild("scoreBest").GetComponent<Text>().text = stats.GetBestScore().ToString();
+        saver.SaveEndlessScore();
     }
     public bool IsInfinite()
     {

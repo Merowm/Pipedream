@@ -64,6 +64,9 @@ public class DataSave : MonoBehaviour
             l.finishedOnNormal = GetSavedStatBool(id, "bonusStreakDone");
             l.specialFound = GetSavedStatBool(id, "specialFound");
         }
+        stats.SetBestTime(PlayerPrefs.GetInt("endlessTime"));
+        stats.SetBestPoints(PlayerPrefs.GetInt("endlessScore"));
+        stats.SetBestCollected(PlayerPrefs.GetInt("endlessItems"));
         // get general settings data
     }
     private void LoadSettings()
@@ -109,6 +112,7 @@ public class DataSave : MonoBehaviour
             int id = d.levelID;
             SaveLevelScore(id);
         }
+        SaveEndlessScore();
         // general settings data 
         SetSettings();
         PlayerPrefs.Save();
@@ -127,6 +131,13 @@ public class DataSave : MonoBehaviour
         SetSavedStatBool(id, "bonusStreakDone", d.finishedOnNormal);
         SetSavedStatBool(id, "specialFound", d.specialFound);
 
+    }
+    public void SaveEndlessScore()
+    {
+        PlayerPrefs.SetInt("endlessTime", stats.GetSecsSurvived());
+        PlayerPrefs.SetInt("endlessScore", stats.GetBestScore());
+        PlayerPrefs.SetInt("endlessItems", stats.GetBestCollected());
+        PlayerPrefs.Save();
     }
     private int GetSavedStatInt(int level, string stat)
     {

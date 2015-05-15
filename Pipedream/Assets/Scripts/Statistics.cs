@@ -19,8 +19,7 @@ public class Statistics : MonoBehaviour
             return instance;
         }
     }
-    public Color32[] colors = new Color32[8];
-    
+    public Color32[] colors = new Color32[8];    
 
     private int currentLevelPoints;
     private int currentBonusAmount;
@@ -31,6 +30,10 @@ public class Statistics : MonoBehaviour
     private int lastVisitedPlanet;
     private int lastLevelTrophy;
     private bool special;
+    // endless mode scores
+    private int secondsSurvived;
+    private int bestPoints;
+    private int bestCollected;
 
     public class levelData
     {
@@ -139,10 +142,14 @@ public class Statistics : MonoBehaviour
         if (level != null)
         {
             SetNewHighscore(currentLevelPoints, level);
-            level.specialFound = special;
-            level.nothingHit = (currentObstaclesHit == 0);
-            level.finishedOnNormal = (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal);
-            level.allCollected = (currentBonusAmount == level.bonusCount);
+            if (!level.specialFound)
+                level.specialFound = special;
+            if (!level.nothingHit)
+                level.nothingHit = (currentObstaclesHit == 0);
+            if (!level.finishedOnNormal)
+                level.finishedOnNormal = (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal);
+            if (!level.allCollected)
+                level.allCollected = (currentBonusAmount == level.bonusCount);
         }
 
         return currentLevelPoints;
@@ -222,24 +229,28 @@ public class Statistics : MonoBehaviour
         return lastLevelTrophy;
     }
 
-    // Extra objective updating methods.
-    //public void GotAllCollected(int levelId)
-    //{
-    //    FindLevel(levelId).allCollected = true;
-    //}
-    //public void GotNothingHit(int levelId)
-    //{
-    //    FindLevel(levelId).nothingHit = true;
-    //}
-    //public void GotFinishedOnNormal(int levelId)
-    //{
-    //    FindLevel(levelId).finishedOnNormal = true;
-    //}
-    //public void GotSpecialFound(int levelId)
-    //{
-    //    FindLevel(levelId).specialFound = true;
-    //}
-
+    public void UpdateEndlessRecord(int secs)
+    {
+        if (secondsSurvived < secs)
+            secondsSurvived = secs;
+        if (bestPoints < currentLevelPoints)
+            bestPoints = currentLevelPoints;
+        if (bestCollected < currentBonusAmount)
+            bestCollected = currentBonusAmount;
+    }
+    // for loading scores from save file
+    public void SetBestTime(int time)
+    {
+        secondsSurvived = time;
+    }
+    public void SetBestPoints(int points)
+    {
+        bestPoints = points;
+    }
+    public void SetBestCollected(int collected)
+    {
+        bestCollected = collected;
+    }
     //////////////////////////////////////
     // Get methods
     //////////////////////////////////////
@@ -330,6 +341,19 @@ public class Statistics : MonoBehaviour
     public bool HasSpecialFound(int levelId)
     {
         return FindLevel(levelId).specialFound;
+    }
+    // endless mode
+    public int GetSecsSurvived()
+    {
+        return secondsSurvived;
+    }
+    public int GetBestScore()
+    {
+        return bestPoints;
+    }
+    public int GetBestCollected()
+    {
+        return bestCollected;
     }
 
     // for getting level time (debugging only)
