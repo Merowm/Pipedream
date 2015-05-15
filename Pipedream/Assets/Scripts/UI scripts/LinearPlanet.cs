@@ -56,7 +56,7 @@ public class LinearPlanet : MonoBehaviour
         goScript.SceneToGo = stats.GetLevelNameAsString(levelId);
         hasTried = false;
         lockPic = GameObject.Find("locked" + levelId);
-        if (stats.GetAvailability(levelId))
+        if (levelId != 99 && stats.GetAvailability(levelId))
             lockPic.SetActive(false);
     }
 
@@ -73,7 +73,7 @@ public class LinearPlanet : MonoBehaviour
     {
         if (instantInfo)
         {
-            if (stats.GetAvailability(levelId))
+            if (stats.GetAvailability(levelId) || levelId == 99)
             {
                 goScript.GoToScene();
             }
@@ -210,7 +210,10 @@ public class LinearPlanet : MonoBehaviour
                 //instantInfo.transform.localPosition = Input.mousePosition - offset;
 #endif
                 instantInfo.transform.SetParent(mainCanvas.transform, false);
-                SetLevelInfo(instantInfo);
+                if (levelId == 99)
+                    SetInfiniteInfo(instantInfo);
+                else
+                    SetLevelInfo(instantInfo);
                 infoRect = instantInfo.GetComponent<RectTransform>();
             }
             else
@@ -246,6 +249,7 @@ public class LinearPlanet : MonoBehaviour
     }
     void SetLevelInfo(GameObject panel)
     {
+
         secs = stats.GetLevelTime(levelId).ToString();
         points = stats.GetlevelHighScore(levelId).ToString();
         trophy = stats.GetLevelTrophy(levelId);
@@ -282,17 +286,24 @@ public class LinearPlanet : MonoBehaviour
         if (stats.HasSpecialFound(levelId))
             extras[2].SetActive(true);
         if (stats.HasFinishedOnNormal(levelId))
-            extras[3].SetActive(true);
-        foreach (GameObject g in extras)
-        {
-            Debug.Log(g.name + " " + g.activeSelf);
-        }
+            extras[3].SetActive(true);        
     }
 
     public GameObject GetInstantInfo()
     {
         return instantInfo;
     }
-
-
+    void SetInfiniteInfo(GameObject panel)
+    {
+        // TODO: design infinite info panel!
+        secs = stats.GetSecsSurvived().ToString();
+        points = stats.GetBestScore().ToString();
+        panel.transform.Find("seconds").GetComponent<Text>().text = secs + " secs";
+        panel.transform.Find("score").GetComponent<Text>().text = points;
+    }
+    public void lockLevel()
+    {
+        if (levelId != 99 && !stats.GetAvailability(levelId))
+            lockPic.SetActive(true);
+    }
 }

@@ -8,7 +8,6 @@ public class OptionsControl : MonoBehaviour {
     public Slider musicSlider;
     public Slider sfxSlider;
     public Toggle muteBox;
-    public Toggle tutorialBox;
     VolControl globalVol;
 
     GameObject overlay;
@@ -26,9 +25,6 @@ public class OptionsControl : MonoBehaviour {
         sfxSlider.value = globalVol.effectVol;
         mainSlider.value = globalVol.masterVol;
         muteBox.isOn = globalVol.isMute;
-
-        if (globalVol.isInMenu && tutorialBox)
-            tutorialBox.isOn = globalVol.tutorialIsOn;
 
         overlay.SetActive(false);
 	}
@@ -75,14 +71,19 @@ public class OptionsControl : MonoBehaviour {
     {
         globalVol.MuteAudio(muteBox.isOn);
     }
-    public void ToggleTutorial()
-    {
-        globalVol.TutorialYesNo(tutorialBox.isOn);
-    }
+
     public void DeleteSave()
     {
         Statistics stats;
         if (stats = GameObject.FindObjectOfType<Statistics>())
             stats.GetComponent<DataSave>().ClearSlot();
+    }
+    public void LockPlanets()
+    {
+        GameObject[] planets = GameObject.FindGameObjectsWithTag("planetButton");
+        foreach (GameObject p in planets)
+        {
+            p.GetComponent<LinearPlanet>().lockLevel();
+        }
     }
 }
