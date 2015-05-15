@@ -72,12 +72,6 @@ public class PickupSpawning : MonoBehaviour
         //Set rotation
         Vector3 rotation = new Vector3(0,0,0);//Random.Range(0.0f,360.0f));
         obj.transform.Rotate(rotation);
-        //Reset rotation if needed
-        /*bool colliding = obj.transform.GetChild(0).transform.FindChild("SpawningCollider").GetComponent<SpawnCollision>().colliding;
-        while (colliding)
-        {
-            rotation = new Vector3(0,0,Random.Range(0.0f,360.0f));
-            obj.transform.Rotate(rotation);
-        }*/
+        //Reset rotation if needed in script "SpaenCollision"
     }
 }
