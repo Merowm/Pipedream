@@ -26,12 +26,12 @@ public class FirstTimeInfo : MonoBehaviour {
             info.SetActive(true);
             // tutorial only shown once per game session (unless toggled)
             sounds.tutorialIsOn = false;
-            Invoke("Go", showtime);
+            //Invoke("Go", showtime);
         }
         else gonext.GoToScene();
     }
     void Go()
     {
-        gonext.Go();
+        //gonext.Go();
     }
 }

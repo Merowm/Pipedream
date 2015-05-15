@@ -130,8 +130,8 @@ public class VolControl : MonoBehaviour {
         //        fadeRate -= 0.05f * dt;
         //    }           
         //}
-        if (music)
-            music.volume = musicMaxVol * fadeRate * masterVol;
+        //if (music)
+        //    music.volume = musicMaxVol * fadeRate * masterVol;
     }
     public void PlayButtonEffect()
     {

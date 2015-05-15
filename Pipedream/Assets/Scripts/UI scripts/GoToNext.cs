@@ -14,12 +14,8 @@ public class GoToNext : MonoBehaviour {
     }
     public void GoToScene()
     {
-        Go();
-        //sounds.PlayButtonEffect();
-    }
-    public void Go()
-    {        
         loader.showLoader(SceneToGo, levelId);
         Application.LoadLevel(SceneToGo);
     }
+
 }

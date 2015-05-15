@@ -25,6 +25,7 @@ public class LinearPlanet : MonoBehaviour
     GameObject lockPic;
 
     Vector2 anchor;
+    Vector3 pos;
 
     string level;
     string secs;
@@ -47,6 +48,7 @@ public class LinearPlanet : MonoBehaviour
                 mainCanvas = c;
         }
 
+        pos = new Vector3(0, 0, 0);
         offset = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         anchor = new Vector2(0, 0);
         trophies = new GameObject[3];
@@ -136,7 +138,7 @@ public class LinearPlanet : MonoBehaviour
 #endif
         if (instantInfo != null && hasTried == false)
         {
-            Vector3 pos = new Vector3(0,0,0);
+            
 #if UNITY_ANDROID
             if (infoPositionSet)
             {

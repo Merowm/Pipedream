@@ -5,41 +5,26 @@ using System.Collections;
 public class Instructions : MonoBehaviour {
 
     public GameObject[] tutPics;
-    public float showTime;
     GameObject current;
-    //CanvasGroup tutPanel;
+    int num = 0;
 
-    float timer;
-    float dt;
-    int num;
-	
-	void Start ()
+    void Awake()
     {
-        timer = 0;
-        num = 0;
         current = tutPics[num];
         current.SetActive(true);
-	}
-    // simple looping through tutorial slides
-	void Update ()
+    }
+    public void Next(bool forward)
     {
-        dt = Time.deltaTime;
-        timer += dt;
-        if (timer >= showTime)
-        {
-            current.SetActive(false);
+        current.SetActive(false);
+        if (forward)
             num++;
-            if (num >= tutPics.Length)
-                num = 0;
-            current = tutPics[num];
-            current.SetActive(true);
-            timer = 0;
-        }
+        else num--;
 
-	}
-    // TODO: fading?
-    void FadeOld(float deltatime)
-    {
-        //tutPanel.alpha -= 0.5f * deltatime;
+        if (num >= tutPics.Length)
+            num = 0;
+        else if (num < 0)
+            num = tutPics.Length - 1;
+        current = tutPics[num];
+        current.SetActive(true);
     }
 }

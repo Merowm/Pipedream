@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EffectControl : MonoBehaviour {
@@ -9,8 +10,11 @@ public class EffectControl : MonoBehaviour {
     ParticleSystem slowDown;
     
     GameObject tunnel;
+    Text countdown;
 
     float time;
+    int timeSecsLeft;
+    bool counting;
     bool hasJumped;    
     bool inHyper;
 
@@ -21,26 +25,31 @@ public class EffectControl : MonoBehaviour {
         slowDown = GameObject.Find("slowdownEffect").GetComponent<ParticleSystem>();
         hyper = GameObject.Find("hyperTubeEffect").GetComponent<ParticleSystem>();
         hasJumped = false;
-        
+        countdown = GameObject.Find("countDown").GetComponent<Text>();
+        countdown.text = "";
+        counting = true;
         time = 0;        
 	}
 	
 	void Update () 
     {
         time += Time.deltaTime;
+        timeSecsLeft = 5 - (int)time;
+        countdown.text = timeSecsLeft.ToString();
+
         if (!hasJumped && time >= 4.0f)
+        {            
             Warp();
+        }
+        if (counting && time >= 5.0f)
+        {
+            countdown.gameObject.SetActive(false);
+            counting = false;
+        }
         // Back to normal space criteria here. NB! slowing effect has to be called earlier.
 
 	}
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "HyperspaceGateExit")
-    //    {
-    //        SlowDown();
-    //        Debug.Log("Slow effect triggered");
-    //    }
-    //}
+
     void Warp()
     {
         warpForm.Play();
@@ -53,7 +62,7 @@ public class EffectControl : MonoBehaviour {
     {        
         slowDown.Play();
         inHyper = false;
-        Invoke("SetHyperEffect", 0.0f);        
+        Invoke("SetHyperEffect", 0.0f);      
     }
     void SetHyperEffect()
     {
