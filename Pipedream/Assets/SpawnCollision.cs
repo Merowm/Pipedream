@@ -9,7 +9,6 @@ public class SpawnCollision : MonoBehaviour
     {
         if (colliding)
         {
-            Debug.Break();
             Vector3 rotation = new Vector3(0,0,Random.Range(0.0f,360.0f));
             transform.parent.parent.transform.Rotate(rotation);
             colliding = false;
@@ -28,7 +27,6 @@ public class SpawnCollision : MonoBehaviour
     {
         if (other.tag != "Whoosh" && other.tag != "Pickup")
         {
-            Debug.Log(other.transform.parent.name);
             colliding = true;
         }
     }
@@ -37,7 +35,6 @@ public class SpawnCollision : MonoBehaviour
     {
         if (other.tag != "Whoosh" && other.tag != "Pickup")
         {
-            Debug.Log(other.transform.parent.name);
             colliding = true;
         }
     }

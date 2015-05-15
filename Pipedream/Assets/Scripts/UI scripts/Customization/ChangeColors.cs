@@ -14,6 +14,7 @@ public class ChangeColors : MonoBehaviour
     public Material shipMarkingsMaterial;
     public Material shipThrusterMaterial;
     public Material wireframeMaterial;
+    public Material orbMaterial;
 
     private ChangeLighting lighting;
     private List<ParticleSystem> particles;
@@ -110,6 +111,10 @@ public class ChangeColors : MonoBehaviour
             else if (images[i].transform.parent.parent.name == "RGBSliders_Wireframes")
             {
                 wireframeMaterial.color = colorsCurrent[i];
+            }
+            else if (images[i].transform.parent.parent.name == "RGBSliders_Orbs")
+            {
+                orbMaterial.color = colorsCurrent[i];
             }
         }
 	}
