@@ -22,7 +22,7 @@ public class AsteroidSpin : MonoBehaviour
         rotation = new Vector3(rotationSpeedX, rotationSpeedY, rotationSpeedZ);
     }
     
-    void Update ()
+    void FixedUpdate ()
     {
         if (displayDistance > Vector3.Distance(new Vector3(0.0f, 0.0f, transform.position.z),
                                                new Vector3(0.0f, 0.0f, player.position.z)))

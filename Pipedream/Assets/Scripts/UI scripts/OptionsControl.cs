@@ -66,6 +66,7 @@ public class OptionsControl : MonoBehaviour {
             Time.timeScale = 1;
             overlay.SetActive(false);
         }
+        PauseGame.gamePaused = false;
     }
     public void MuteAll()
     {

@@ -24,24 +24,30 @@ public class Inventory : MonoBehaviour
         //If time is slowed
         if (timeSlowed)
         {
-            //Slow down time
-            Time.timeScale = slowDownAmount;
-            //Update timer with compensation for the slow down
-            timer += Time.deltaTime * (1.0f / slowDownAmount);
-            //When timer finishes
-            if (timer >= slowDownDuration)
+            if (!PauseGame.gamePaused)
             {
-                //Reset timescale to normal
-                Time.timeScale = 1.0f;
-                timeSlowed = false;
-                //Reset timer
-                timer = 0.0f;
-            }
-            //Apply slow down effect to all audio aswell
-            AudioSource[] audioSources = Object.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
-            for (int i = 0; i < audioSources.Length; ++i)
-            {
-                audioSources [i].pitch = Time.timeScale;
+                if (health.IsAlive())
+                {
+                    //Slow down time
+                    Time.timeScale = slowDownAmount;
+                    //Update timer with compensation for the slow down
+                    timer += Time.deltaTime * (1.0f / slowDownAmount);
+                    //When timer finishes
+                    if (timer >= slowDownDuration)
+                    {
+                        //Reset timescale to normal
+                        Time.timeScale = 1.0f;
+                        timeSlowed = false;
+                        //Reset timer
+                        timer = 0.0f;
+                    }
+                    //Apply slow down effect to all audio aswell
+                    AudioSource[] audioSources = Object.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+                    for (int i = 0; i < audioSources.Length; ++i)
+                    {
+                        audioSources [i].pitch = Time.timeScale;
+                    }
+                }
             }
         }
     }

@@ -5,6 +5,13 @@ public class SpawnCollision : MonoBehaviour
 {
     public bool colliding = false;
 
+    private GameObject player;
+
+    void Awake ()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").gameObject;
+    }
+
     void FixedUpdate ()
     {
         if (colliding)
@@ -17,7 +24,9 @@ public class SpawnCollision : MonoBehaviour
 
     void Update ()
     {
-        if (!colliding)
+        float distanceToPlayer = transform.position.z - player.transform.position.z;
+
+        if (!colliding && distanceToPlayer <= 200.0f)
         {
             transform.GetComponent<BoxCollider>().enabled = false;
         }

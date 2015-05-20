@@ -6,9 +6,15 @@ public class CustomizationUI : MonoBehaviour
     public List<GameObject> objectsUI;
     public GameObject pauseScreen;
 
+    private GameObject customizationSheet;
+    private GameObject collapseUI;
+    private bool uiCollapsed = false;
+
 	void Awake ()
     {
         pauseScreen = transform.FindChild("pauseScreen").gameObject;
+        customizationSheet = transform.FindChild("CustomizationSheet").gameObject;
+        collapseUI = customizationSheet.transform.FindChild("CollapseUI").gameObject;
 
         foreach (Transform child in transform)
         {
@@ -39,12 +45,28 @@ public class CustomizationUI : MonoBehaviour
 
     public void CollapseUI ()
     {
-        if (transform.FindChild("CustomizationSheet").gameObject.activeSelf)
+        if (!uiCollapsed)
         {
-            transform.FindChild("CustomizationSheet").gameObject.SetActive(false);
+            foreach(Transform child in customizationSheet.transform)
+            {
+                if (child.name != "CollapseUI")
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+            uiCollapsed = true;
         }
-        else transform.FindChild("CustomizationSheet").gameObject.SetActive(true);
-
-        transform.FindChild("CollapseUI").transform.Rotate(new Vector3(0,0,180));
+        else
+        {
+            foreach(Transform child in customizationSheet.transform)
+            {
+                if (child.name != "CollapseUI")
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+            uiCollapsed = false;
+        }
+        collapseUI.transform.Rotate(new Vector3(0,0,180));
     }
 }

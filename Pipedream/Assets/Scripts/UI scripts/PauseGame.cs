@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PauseGame : MonoBehaviour {
 
+    public static bool gamePaused = false;
     public GameObject overlay;
 
 	void Start () {
@@ -14,7 +15,7 @@ public class PauseGame : MonoBehaviour {
     public void Pause() 
     {
         // TODO: animate?
-
+        gamePaused = true;
         overlay.SetActive(true);
         Time.timeScale = 0;
     }
