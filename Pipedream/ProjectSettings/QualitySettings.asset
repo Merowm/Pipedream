@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 0
+  m_CurrentQuality: 6
   m_QualitySettings:
   - serializedVersion: 2
     name: Fastest
@@ -24,11 +24,12 @@ QualitySettings:
     softVegetation: 0
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
-    vSyncCount: 0
+    vSyncCount: 1
     lodBias: .300000012
     maximumLODLevel: 0
     particleRaycastBudget: 4
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
   - serializedVersion: 2
     name: Fast
     pixelLightCount: 0
@@ -51,7 +52,8 @@ QualitySettings:
     lodBias: .400000006
     maximumLODLevel: 0
     particleRaycastBudget: 16
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
   - serializedVersion: 2
     name: Simple
     pixelLightCount: 1
@@ -74,7 +76,8 @@ QualitySettings:
     lodBias: .699999988
     maximumLODLevel: 0
     particleRaycastBudget: 64
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
   - serializedVersion: 2
     name: Good
     pixelLightCount: 2
@@ -97,7 +100,8 @@ QualitySettings:
     lodBias: 1
     maximumLODLevel: 0
     particleRaycastBudget: 256
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
   - serializedVersion: 2
     name: Beautiful
     pixelLightCount: 3
@@ -120,7 +124,8 @@ QualitySettings:
     lodBias: 1.5
     maximumLODLevel: 0
     particleRaycastBudget: 1024
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
   - serializedVersion: 2
     name: Fantastic
     pixelLightCount: 4
@@ -143,9 +148,40 @@ QualitySettings:
     lodBias: 2
     maximumLODLevel: 0
     particleRaycastBudget: 4096
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
+  - serializedVersion: 2
+    name: Android
+    pixelLightCount: 0
+    shadows: 0
+    shadowResolution: 0
+    shadowProjection: 1
+    shadowCascades: 1
+    shadowDistance: 15
+    shadowCascade2Split: .333333343
+    shadowCascade4Split: {x: .0666666701, y: .199999988, z: .466666639}
+    blendWeights: 1
+    textureQuality: 0
+    anisotropicTextures: 0
+    antiAliasing: 0
+    softParticles: 0
+    softVegetation: 1
+    realtimeReflectionProbes: 0
+    billboardsFaceCameraPosition: 0
+    vSyncCount: 1
+    lodBias: .300000012
+    maximumLODLevel: 0
+    particleRaycastBudget: 4
+    excludedTargetPlatforms:
+    - Web
+    - Standalone
+    - iPhone
+    - BlackBerry
+    - Windows Store Apps
+    - WP8
+    - WebGL
   m_PerPlatformDefaultQuality:
-    Android: 0
+    Android: 6
     BlackBerry: 0
     Standalone: 0
     WP8: 0
