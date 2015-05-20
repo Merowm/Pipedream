@@ -132,11 +132,12 @@ public class LevelTimer : MonoBehaviour {
                 Application.LoadLevel("EndLevel");
             }
         }
-        else
+        else if (timeInSecs > 5)
         {
-            // update timer GUI
-            timeTextField.text = ((int)timeInSecs).ToString();
+            // update timer GUI            
+            timeTextField.text = ((int)timeInSecs - 5).ToString();
         }
+        
 	}
 
     void WriteToGuiPoints(int score)
@@ -218,7 +219,7 @@ public class LevelTimer : MonoBehaviour {
     }
     public void Gameover(GameObject res)
     {
-        res.transform.FindChild("time").GetComponent<Text>().text = (((int)timeInSecs).ToString() + "\n X " + timeBonus);
+        res.transform.FindChild("time").GetComponent<Text>().text = (((int)timeInSecs - 5).ToString() + "\n X " + timeBonus);
         res.transform.FindChild("score").GetComponent<Text>().text = stats.GetCurrentScore().ToString();
         res.transform.FindChild("collected").GetComponent<Text>().text = stats.GetCurrentBonus().ToString();
         // save endless results & mark personal best
