@@ -92,7 +92,7 @@ public class Statistics : MonoBehaviour
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
         AddLevelData(2700, 23, 5500, 56, 2); 
-        AddLevelData(2000, 16, 4200, 40, 1); // work in progress 
+        AddLevelData(2000, 16, 4000, 40, 1); // work in progress 
         AddLevelData(1200, 12, 4900, 51, 3);
         AddLevelData(2100, 21, 5500, 56, 4);
         AddLevelData(1500, 15, 5500, 56, 5);
@@ -251,6 +251,17 @@ public class Statistics : MonoBehaviour
     {
         bestCollected = collected;
     }
+
+    public void SaveCustoms(Color32[] col)
+    {
+        for (int i = 0; i < colors.Length; ++i)
+        {
+            colors[i].a = col[i].a;
+            colors[i].r = col[i].r;
+            colors[i].g = col[i].g;
+            colors[i].b = col[i].b;
+        }
+    }
     //////////////////////////////////////
     // Get methods
     //////////////////////////////////////
@@ -316,6 +327,8 @@ public class Statistics : MonoBehaviour
 
     public bool GetAvailability(int levelId)
     {
+        if (levelId == 99)
+            return true;
         levelData lv = FindLevel(levelId);
 
         if (lv != null)
