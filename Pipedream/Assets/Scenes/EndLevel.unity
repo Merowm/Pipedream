@@ -1595,6 +1595,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PlaySoundEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: .541176498
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
   m_IsPrefabParent: 0
@@ -2856,8 +2860,8 @@ RectTransform:
   m_RootOrder: 17
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 239.600006, y: 60.2000008}
-  m_SizeDelta: {x: -520.400024, y: -161.899994}
+  m_AnchoredPosition: {x: 239.600006, y: 46.4000015}
+  m_SizeDelta: {x: -520.400024, y: -134.399994}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1209859416
 GameObject:
@@ -2938,7 +2942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .792156875}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 21300000, guid: fac368f66685bac4aa9fef612715a0d0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3485,11 +3489,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22470854, guid: 2ed23821788e3b349b85589cda711d46, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 3.63589993e-06
+      value: -.0499969982
       objectReference: {fileID: 0}
     - target: {fileID: 22470854, guid: 2ed23821788e3b349b85589cda711d46, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 88.9000015
+      value: 104.699997
       objectReference: {fileID: 0}
     - target: {fileID: 22470854, guid: 2ed23821788e3b349b85589cda711d46, type: 2}
       propertyPath: m_SizeDelta.x
@@ -3497,7 +3501,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22470854, guid: 2ed23821788e3b349b85589cda711d46, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 128
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 22470854, guid: 2ed23821788e3b349b85589cda711d46, type: 2}
       propertyPath: m_AnchorMin.x

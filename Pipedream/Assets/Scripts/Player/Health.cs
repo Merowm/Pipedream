@@ -29,6 +29,7 @@ public class Health : MonoBehaviour {
     private GameObject healthGUI2;
     private GameObject healthGUI3;
     private GameObject healthGUIShield;
+    private ParticleSystem shieldOn;
 
     //gameover screen
     private GameObject gameOverGUI;
@@ -52,6 +53,7 @@ public class Health : MonoBehaviour {
         healthGUI2 = healthParent.transform.FindChild("health_2").gameObject;
         healthGUI3 = healthParent.transform.FindChild("health_3").gameObject;
         healthGUIShield = healthParent.transform.FindChild("shield").gameObject;
+        shieldOn = GameObject.Find("shieldEffect").GetComponent<ParticleSystem>();
         gameOverGUI = GameObject.Find("gameOverGUI");
         infResults = GameObject.Find("infiniteResults");
         timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
@@ -181,6 +183,8 @@ public class Health : MonoBehaviour {
                 shieldRegenTimer -= shieldRegenTime;
                 //add shield
                 currentShield = maxShield;
+                // play GUI effect
+                shieldOn.Play();
                 //if shields full
                 if (currentShield >= maxShield){
                     //set timer to 0
