@@ -4,11 +4,9 @@ using System.Collections.Generic;
 public class OnClickColor : MonoBehaviour
 {
     public int buttonID;
-    public Vector3 subPosition = new Vector3(-375.0f, 273.5f, 0.0f);
-    public List<GameObject> buttons;
+    public Vector3 subPosition = new Vector3(0.0f, 270.0f, 0.0f);
+    public List<GameObject> buttons = new List<GameObject>();
 
-    private enum STATES { Main, Sub };
-    private STATES currentState;
     private Vector3 originalPosition;
     private GameObject slidersParent;
 
@@ -20,28 +18,24 @@ public class OnClickColor : MonoBehaviour
         }
 
         buttonID = GetID(buttons);
-        currentState = STATES.Main;
         originalPosition = transform.parent.localPosition;
         slidersParent = transform.parent.FindChild("RGBSliders").gameObject;
 	}
 
     public void ButtonClicked()
     {
-        if (currentState == STATES.Main)
-        {
-            transform.parent.localPosition = subPosition;
-            DisableOtherButtons();
-            EnableSliders();
-            UpdateSliders();
-            currentState = STATES.Sub;
-        }
-        else if (currentState == STATES.Sub)
-        {
-            transform.parent.localPosition = originalPosition;
-            EnableOtherButtons();
-            DisableSliders();
-            currentState = STATES.Main;
-        }
+        transform.parent.localPosition = subPosition;
+        DisableButtons();
+        EnableSliders();
+        UpdateSliders();
+        BackButton.editingColors = true;
+    }
+
+    public void Back()
+    {
+        transform.parent.localPosition = originalPosition;
+        DisableSliders();
+        BackButton.editingColors = false;
     }
 
     void UpdateSliders()
@@ -55,7 +49,7 @@ public class OnClickColor : MonoBehaviour
         }
     }
 
-    void DisableOtherButtons()
+    void DisableButtons()
     {
         for (int i = 0; i < buttons.Count; i++)
         {
@@ -63,15 +57,12 @@ public class OnClickColor : MonoBehaviour
             {
                 buttons[i].gameObject.SetActive(false);
             }
+            else
+            {
+                buttons[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
         }
-    }
 
-    void EnableOtherButtons()
-    {
-        for (int i = 0; i < buttons.Count; i++)
-        {
-            buttons[i].gameObject.SetActive(true);
-        }
     }
 
     void EnableSliders()
