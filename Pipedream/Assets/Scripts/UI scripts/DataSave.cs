@@ -72,7 +72,7 @@ public class DataSave : MonoBehaviour
     private void LoadSettings()
     {
         string colname;
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 9; i++)
         {
            colname = "color" + i.ToString();
            stats.colors[i].r = (byte)PlayerPrefs.GetInt(colname + "R");
@@ -93,7 +93,7 @@ public class DataSave : MonoBehaviour
     public void SetSettings()
     {
         string colname;
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 9; i++)
         {   
             colname = "color" + i.ToString();
             PlayerPrefs.SetInt(colname + "R", stats.colors[i].r);

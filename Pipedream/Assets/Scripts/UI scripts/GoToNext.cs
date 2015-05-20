@@ -5,8 +5,8 @@ public class GoToNext : MonoBehaviour {
 
     public string SceneToGo;
     public int levelId;
-    LoadScreen loader;
-    VolControl sounds;
+    public LoadScreen loader;
+    public VolControl sounds;
     void Awake()
     {
         loader = GameObject.FindWithTag("statistics").GetComponent<LoadScreen>();

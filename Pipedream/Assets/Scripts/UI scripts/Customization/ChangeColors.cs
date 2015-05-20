@@ -22,9 +22,13 @@ public class ChangeColors : MonoBehaviour
     private ParticleSystem thruster;
     private List<GameObject> buttons;
 
+    private Statistics statistics;
+
 	void Awake ()
     {
+        statistics = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
         LoadColorsInMemory();
+
         for (int i = 0; i < images.Count; i++)
         {
             images[i].color = colorsInMemory[i];
@@ -47,25 +51,6 @@ public class ChangeColors : MonoBehaviour
             images[i].transform.parent.parent.GetComponent<RGBColors>().colorIndex = i;
         }
 	}
-
-    void Start ()
-    {
-        /*foreach (Transform child in transform)
-        {
-            foreach (Transform slider in child)
-            {
-                if (slider.name == "RGBSliders")
-                {
-                    buttons.Add(slider.gameObject);
-                }
-            }
-        }
-
-        for (int i = 0; i < buttons.Count; i++)
-        {
-            buttons[i].SetActive(false);
-        }*/
-    }
 
 	void Update ()
     {
@@ -141,15 +126,14 @@ public class ChangeColors : MonoBehaviour
 
     public void LoadColorsInMemory ()
     {
-        //colorsInMemory.Clear();
+        List<Color32> col = statistics.GetCustoms().ToList();
 
-        /*colorsInMemory.Add(hyperTunnelMaterial.color);
-        colorsInMemory.Add(lighting.color);
-        colorsInMemory.Add(particles[0].startColor);
-        colorsInMemory.Add(shipMaterial.color);
-        colorsInMemory.Add(shield.startColor);
-        colorsInMemory.Add(new Color32(255,255,255,255)); //TODO:colorsInMemory.Add(thruster.color);
-        colorsInMemory.Add(wireframeMaterial.color);*/
+        colorsInMemory.Clear();
+
+        for (int i = 0; i < col.Count; i++)
+        {
+            colorsInMemory.Add(col[i]);
+        }
     }
 
     public void SaveColorsToMemory ()
@@ -160,5 +144,8 @@ public class ChangeColors : MonoBehaviour
         {
             colorsInMemory.Add(colorsCurrent[i]);
         }
+
+        Color32[] memorized = colorsInMemory.ToArray();
+        statistics.SaveCustoms(memorized);
     }
 }

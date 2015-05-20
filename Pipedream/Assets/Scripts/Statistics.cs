@@ -19,7 +19,8 @@ public class Statistics : MonoBehaviour
             return instance;
         }
     }
-    public Color32[] colors = new Color32[9];    
+    public Color32[] colors = new Color32[9];
+    private DataSave data;
 
     private int currentLevelPoints;
     private int currentBonusAmount;
@@ -87,7 +88,6 @@ public class Statistics : MonoBehaviour
             }
         }
 
-
         // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
@@ -97,7 +97,6 @@ public class Statistics : MonoBehaviour
         AddLevelData(2100, 21, 5500, 56, 4);
         AddLevelData(1500, 15, 5500, 56, 5);
         AddLevelData(1500, 15, 5500, 56, 6);//temp
-        
 	}
 
 
@@ -107,8 +106,7 @@ public class Statistics : MonoBehaviour
     // levelTime is the playing time of level in seconds.
     void Start()
     {
-
-
+        data = transform.GetComponent<DataSave>();
     }
 
     // Update statistics temp data 
@@ -252,6 +250,10 @@ public class Statistics : MonoBehaviour
         bestCollected = collected;
     }
 
+    public Color32[] GetCustoms()
+    {
+        return colors;
+    }
     public void SaveCustoms(Color32[] col)
     {
         for (int i = 0; i < colors.Length; ++i)
@@ -261,6 +263,7 @@ public class Statistics : MonoBehaviour
             colors[i].g = col[i].g;
             colors[i].b = col[i].b;
         }
+        data.SetSettings();
     }
     //////////////////////////////////////
     // Get methods
