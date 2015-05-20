@@ -214,23 +214,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &110856
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 434634}
-  - 33: {fileID: 3379212}
-  - 23: {fileID: 2364184}
-  m_Layer: 0
-  m_Name: Position
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &111286
 GameObject:
   m_ObjectHideFlags: 1
@@ -265,17 +248,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &113274
+--- !u!1 &114640
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 493234}
-  - 114: {fileID: 11458192}
+  - 4: {fileID: 473428}
+  - 33: {fileID: 3354334}
+  - 23: {fileID: 2302302}
   m_Layer: 0
-  m_Name: Lotus_PlaceHolder
+  m_Name: Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -467,6 +451,22 @@ GameObject:
   - 4: {fileID: 468072}
   m_Layer: 0
   m_Name: Obstacles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &139572
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 433488}
+  - 114: {fileID: 11470680}
+  m_Layer: 0
+  m_Name: GoldenLotus_PlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1353,6 +1353,19 @@ Transform:
   - {fileID: 413456}
   m_Father: {fileID: 446680}
   m_RootOrder: 19
+--- !u!4 &433488
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139572}
+  m_LocalRotation: {x: 0, y: 0, z: -.382683456, w: .923879504}
+  m_LocalPosition: {x: 0, y: 0, z: 103.400002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 473428}
+  m_Father: {fileID: 452668}
+  m_RootOrder: 0
 --- !u!4 &434630
 Transform:
   m_ObjectHideFlags: 1
@@ -1366,18 +1379,6 @@ Transform:
   - {fileID: 436624}
   m_Father: {fileID: 446680}
   m_RootOrder: 5
---- !u!4 &434634
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110856}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 493234}
-  m_RootOrder: 0
 --- !u!4 &436624
 Transform:
   m_ObjectHideFlags: 1
@@ -1551,7 +1552,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 493234}
+  - {fileID: 433488}
   m_Father: {fileID: 499050}
   m_RootOrder: 1
 --- !u!4 &453130
@@ -1859,6 +1860,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 417356}
   m_RootOrder: 0
+--- !u!4 &473428
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.5, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 433488}
+  m_RootOrder: 0
 --- !u!4 &475470
 Transform:
   m_ObjectHideFlags: 1
@@ -1971,19 +1984,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 414044}
   m_RootOrder: 0
---- !u!4 &493234
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113274}
-  m_LocalRotation: {x: 0, y: 0, z: .379052043, w: -.925375342}
-  m_LocalPosition: {x: 0, y: 0, z: 103.800003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 434634}
-  m_Father: {fileID: 452668}
-  m_RootOrder: 0
 --- !u!4 &493418
 Transform:
   m_ObjectHideFlags: 1
@@ -2015,7 +2015,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1400}
+  m_LocalPosition: {x: 0, y: 0, z: 3600}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 468072}
@@ -2034,6 +2034,30 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 85d0eb7f88fd95c4fa2f90458c882a9d, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!23 &2302302
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114640}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: d744c3a9e3ea95849962f1b3a52ea312, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2551,30 +2575,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!23 &2364184
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110856}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 154d1e7123d39c34d990a7ca290df253, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!23 &2369566
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -2872,6 +2872,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106558}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &3354334
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114640}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3360016
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2906,13 +2913,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168730}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &3379212
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110856}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3382122
 MeshFilter:
@@ -3071,8 +3071,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11411792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3085,8 +3087,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11413844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3099,8 +3103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11415754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3113,8 +3119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11417734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3127,8 +3135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11417914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3141,8 +3151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11425236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3155,8 +3167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11431556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3169,8 +3183,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11433878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3183,8 +3199,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11437420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3197,8 +3215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11440878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3211,8 +3231,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11443554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3225,8 +3247,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11449508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3239,8 +3263,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11452388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3253,8 +3279,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11457504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3267,22 +3295,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
---- !u!114 &11458192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f82d3c21ec334e459dc001325225d2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
-  scale: {x: 0, y: 0, z: 0}
-  wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11458416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3295,8 +3311,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11459412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3309,8 +3327,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11467152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3323,8 +3343,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11470438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3337,8 +3359,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
+--- !u!114 &11470680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f82d3c21ec334e459dc001325225d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 150456, guid: 52ab7ec9f1f973e4f832207d0354bfb1, type: 2}
+  movingObject: 0
+  negativeRotation: 0
+  wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11478924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3351,8 +3391,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11479110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3365,8 +3407,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11489940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3379,8 +3423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11490952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3393,8 +3439,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11491026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3407,8 +3455,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11499416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3421,8 +3471,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11499974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3435,8 +3487,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 184924, guid: 41b28894a0bd3ca42b4145f1862d1e96, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
