@@ -61,12 +61,12 @@ public class GooglePlayServices : MonoBehaviour {
             if (success)
             {
                 connected = true;
-                Social.ShowAchievementsUI();
                 Application.LoadLevel("StartMenu");
             }
             else
             {
-                Handheld.Vibrate();
+                connected = false;
+                Application.LoadLevel("StartMenu");
             }
         });
     }
