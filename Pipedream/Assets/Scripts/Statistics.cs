@@ -36,6 +36,15 @@ public class Statistics : MonoBehaviour
     private int bestPoints;
     private int bestCollected;
 
+    // stats to send to kongregate
+    private int goldMedalsCount;
+    public int levelsFinishedOnNormal;
+    // NB! hard coded to set to true if levelsFinishedOnNormal == 6!
+    // TODO: 
+    private int gameFinishedOnNormal;
+    private int endlessSurviveTimeOnNormal;
+    private int extraHonorsEarned;
+
     public class levelData
     {
         public int levelID;
@@ -144,14 +153,17 @@ public class Statistics : MonoBehaviour
         if (level != null)
         {
             SetNewHighscore(currentLevelPoints, level);
-            if (!level.specialFound)
-                level.specialFound = special;
-            if (!level.nothingHit)
-                level.nothingHit = (currentObstaclesHit == 0);
-            if (!level.finishedOnNormal)
-                level.finishedOnNormal = (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal);
-            if (!level.allCollected)
-                level.allCollected = (currentBonusAmount == level.bonusCount);
+            if (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal)
+            {
+                if (!level.specialFound)
+                    level.specialFound = special;
+                if (!level.nothingHit)
+                    level.nothingHit = (currentObstaclesHit == 0);
+                if (!level.finishedOnNormal)
+                    level.finishedOnNormal = true;
+                if (!level.allCollected)
+                    level.allCollected = (currentBonusAmount == level.bonusCount);
+            }
         }
 
         return currentLevelPoints;
@@ -235,6 +247,8 @@ public class Statistics : MonoBehaviour
     {
         if (secondsSurvived < secs)
             secondsSurvived = secs;
+        if (Difficulty.currentDifficulty == Difficulty.DIFFICULTY.normal && endlessSurviveTimeOnNormal < secs)
+            endlessSurviveTimeOnNormal = secs;
         if (bestPoints < currentLevelPoints)
         {
             bestPoints = currentLevelPoints;
@@ -255,8 +269,6 @@ public class Statistics : MonoBehaviour
         }
         if (bestCollected < currentBonusAmount)
             bestCollected = currentBonusAmount;
-
-
     }
     // for loading scores from save file
     public void SetBestTime(int time)
@@ -394,6 +406,52 @@ public class Statistics : MonoBehaviour
         return bestCollected;
     }
 
+    public int GetAllGold()
+    {
+        int gold = 0;
+        foreach (levelData l in levels)
+        {
+            if (l.currentTrophy == 1)
+                ++gold;
+        }
+        goldMedalsCount = gold;
+        return gold;
+    }
+    public int GetAllExtras()
+    {
+        int ext = 0;
+        foreach (levelData l in levels)
+        {
+            if (l.allCollected)
+                ++ext;
+            if (l.finishedOnNormal)
+                ++ext;
+            if (l.nothingHit)
+                ++ext;
+            if (l.specialFound)
+                ++ext;
+        }
+        extraHonorsEarned = ext;
+        return ext;
+    }
+    public int GetFinishedOnNormalCount()
+    {
+        int temp = 0;
+        foreach (levelData l in levels)
+        {
+            if (l.finishedOnNormal)
+                temp++;
+        }
+        levelsFinishedOnNormal = temp;
+        return temp;
+    }
+    public int GetAllFinished()
+    {
+        int temp = 0;
+        if (levelsFinishedOnNormal == levels.Count)
+            temp = 1;
+        return temp;
+    }
     // for getting level time (debugging only)
     public float GetLevelTime(int levelId)
     {

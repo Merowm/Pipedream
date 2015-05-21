@@ -24,7 +24,8 @@ public class KongregateAPI : MonoBehaviour {
     }
 
     //function to connect to Kongregate API
-    public void Connect(){
+    public void Connect()
+    {
         Debug.Log("Trying to connect to Kongregate API");
         //if game is not connected to Kongregate API
         if (!Connected) {

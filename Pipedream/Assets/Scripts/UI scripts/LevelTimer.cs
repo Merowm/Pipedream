@@ -31,6 +31,8 @@ public class LevelTimer : MonoBehaviour {
 
     GooglePlayServices gps;
 
+    KongregateAPI kong;
+
     Text timeTextField;
     DataSave saver;
 
@@ -42,7 +44,6 @@ public class LevelTimer : MonoBehaviour {
         timeInSecs = 0;
 
         gps = GameObject.FindObjectOfType<GooglePlayServices>();
-        
 
         if (levelId == 99)
             infinite = true;    
@@ -192,10 +193,15 @@ public class LevelTimer : MonoBehaviour {
     {
         stats.SetCurrentStreak(longestStreak);
         stats.SetFinalLevelScore(levelId);
-        Debug.Log("new: " + stats.GetCurrentScore());
-        Debug.Log("highest: " + stats.GetlevelHighScore(levelId));
         // also saves best trophy
-        int medal = stats.CompareToTrophyRequirements(levelId);
+        int medal = stats.CompareToTrophyRequirements(levelId);        
+        // sends new best kongregate statistics
+        if (KongregateAPI.Connected)
+        {
+            // submit level data to kong
+            KongregateAPI.SubmitData("gameFinishedOnNormal", stats.GetAllFinished());
+            KongregateAPI.SubmitData("levelsFinishedOnNormal", stats.GetFinishedOnNormalCount());
+        }
 #if UNITY_ANDROID
         if (medal == 1)//if gold
         {

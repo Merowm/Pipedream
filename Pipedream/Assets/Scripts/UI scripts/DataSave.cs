@@ -30,7 +30,7 @@ public class DataSave : MonoBehaviour
 	}
     // clear save (called from OptionsControl)
     public void ClearSlot()
-    {
+    {        
         PlayerPrefs.DeleteAll();
         // set in-game data to default
         stats.ResetGame();
@@ -64,9 +64,9 @@ public class DataSave : MonoBehaviour
             l.finishedOnNormal = GetSavedStatBool(id, "bonusStreakDone");
             l.specialFound = GetSavedStatBool(id, "specialFound");
         }
-        stats.SetBestTime(PlayerPrefs.GetInt("endlessTime"));
-        stats.SetBestPoints(PlayerPrefs.GetInt("endlessScore"));
-        stats.SetBestCollected(PlayerPrefs.GetInt("endlessItems"));
+        stats.SetBestTime(PlayerPrefs.GetInt(StatName("endlessTime")));
+        stats.SetBestPoints(PlayerPrefs.GetInt(StatName("endlessScore")));
+        stats.SetBestCollected(PlayerPrefs.GetInt(StatName("endlessItems")));
         // get general settings data
     }
     private void LoadSettings()
@@ -134,31 +134,38 @@ public class DataSave : MonoBehaviour
     }
     public void SaveEndlessScore()
     {
-        PlayerPrefs.SetInt("endlessTime", stats.GetSecsSurvived());
-        PlayerPrefs.SetInt("endlessScore", stats.GetBestScore());
-        PlayerPrefs.SetInt("endlessItems", stats.GetBestCollected());
+        PlayerPrefs.SetInt(StatName("endlessTime"), stats.GetSecsSurvived());
+        PlayerPrefs.SetInt(StatName("endlessScore"), stats.GetBestScore());
+        PlayerPrefs.SetInt(StatName("endlessItems"), stats.GetBestCollected());
         PlayerPrefs.Save();
     }
     private int GetSavedStatInt(int level, string stat)
     {
-        string statname = level.ToString() + stat;
-        return PlayerPrefs.GetInt(statname);        
+        return PlayerPrefs.GetInt(StatName(stat, level));        
     }
     private bool GetSavedStatBool(int level, string stat)
     {
-        string statname = level.ToString() + stat;
-        return (PlayerPrefs.GetInt(statname) != 0);
+        return (PlayerPrefs.GetInt(StatName(stat, level)) != 0);
     }
     private void SetSavedStatInt(int level, string stat, int val)
     {
-        string statname = level.ToString() + stat;
-        PlayerPrefs.SetInt(statname, val);
+
+        PlayerPrefs.SetInt(StatName(stat, level), val);
     }
     private void SetSavedStatBool(int level, string stat, bool val)
-    {
-        string statname = level.ToString() + stat;        
+    {      
         if (val)
-            PlayerPrefs.SetInt(statname, 1);
-        else PlayerPrefs.SetInt(statname, 0);        
+            PlayerPrefs.SetInt(StatName(stat, level), 1);
+        else PlayerPrefs.SetInt(StatName(stat, level), 0);        
+    }
+    private string StatName(string stat, int level = 99)
+    {
+        string statname = stat;
+        if (level != 99)
+            statname = level.ToString() + statname;
+        if (KongregateAPI.Connected)
+            statname = KongregateAPI.Username + statname;
+        Debug.Log(statname);
+        return statname;
     }
 }
