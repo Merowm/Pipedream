@@ -26,8 +26,11 @@ public class ChangeColors : MonoBehaviour
 
 	void Awake ()
     {
-        statistics = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
-        LoadColorsInMemory();
+        if (GameObject.FindWithTag("statistics") != null)
+        {
+            statistics = GameObject.FindWithTag("statistics").GetComponent<Statistics>();
+            LoadColorsInMemory();
+        }
 
         for (int i = 0; i < images.Count; i++)
         {
