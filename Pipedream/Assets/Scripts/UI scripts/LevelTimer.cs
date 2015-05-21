@@ -146,9 +146,10 @@ public class LevelTimer : MonoBehaviour {
         pointsTextfield.text = score.ToString();
     }
     private void WriteToGuiBonus(int collected)
-    {
+    {        
         if (infinite)
         {
+           
             bonusTextField.text = collected.ToString();
         }
         else bonusTextField.text = collected.ToString() + " / " + maxBonusCount;
@@ -158,8 +159,7 @@ public class LevelTimer : MonoBehaviour {
     public void AddScore(int newPoints)
     {
         stats.AddToCurrentPoints(newPoints);
-        WriteToGuiPoints(stats.GetCurrentScore());
-        Debug.Log("text written to GUI");
+        WriteToGuiPoints(stats.GetCurrentScore());        
     }
     public void GotSpecial()
     {
@@ -168,6 +168,7 @@ public class LevelTimer : MonoBehaviour {
 
     public void ContinueBonusStreak(bool gotMoreBonus)
     {
+        
         if (gotMoreBonus)
         {
             stats.AddToBonusCount();
@@ -220,8 +221,7 @@ public class LevelTimer : MonoBehaviour {
         return distanceMeter;
     }
     public void Gameover(GameObject res)
-    {
-        Debug.Log("final score fetched");
+    {        
         res.transform.FindChild("time").GetComponent<Text>().text = (((int)timeInSecs - 5).ToString() + "\n X " + timeBonus);
         res.transform.FindChild("score").GetComponent<Text>().text = stats.GetCurrentScore().ToString();
         res.transform.FindChild("collected").GetComponent<Text>().text = stats.GetCurrentBonus().ToString();
