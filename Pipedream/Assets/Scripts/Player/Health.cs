@@ -146,8 +146,6 @@ public class Health : MonoBehaviour {
         if (!invulnerable)
         {
             //set shield particles to overdrive moved to script "PickUp"
-            //partSysShield.maxParticles = (int)(originalEmissionRate * 0.8f);
-            //partSysShield.emissionRate = partSysShield.maxParticles / 2;
             currentShield = maxShield;
             UpdateHealthGUI();
             invulnerable = true;            
@@ -156,7 +154,7 @@ public class Health : MonoBehaviour {
         else
         {
             //set shield particles to normal
-            partSysShield.maxParticles = (int)(originalEmissionRate / 10);
+            partSysShield.maxParticles = (int)(originalEmissionRate * 2);
             partSysShield.emissionRate = originalEmissionRate;
             invulnerable = false;            
         }
@@ -179,7 +177,7 @@ public class Health : MonoBehaviour {
                 shieldRegenTimer -= shieldRegenTime;
                 //add shield
                 currentShield = maxShield;
-                // play GUI effect
+                //play GUI effect
                 shieldOn.Play();
                 //if shields full
                 if (currentShield >= maxShield){
