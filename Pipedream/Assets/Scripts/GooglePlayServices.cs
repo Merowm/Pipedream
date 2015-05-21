@@ -24,8 +24,9 @@ public class GooglePlayServices : MonoBehaviour {
 
     public ACHIEVEMENT[] achievementData;
     public string leaderboardID;
+    public string progressID;
 
-    void Start()
+    void Awake()
     {
 #if UNITY_ANDROID
         DontDestroyOnLoad(gameObject);     
@@ -39,7 +40,7 @@ public class GooglePlayServices : MonoBehaviour {
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
         // enables saving game progress.
-        //.EnableSavedGames()
+        .EnableSavedGames()
         // registers a callback to handle game invitations received while the game is not running.
         //.WithInvitationDelegate(<callback method>)
         // registers a callback for turn based match notifications received while the
@@ -72,6 +73,7 @@ public class GooglePlayServices : MonoBehaviour {
         });
     }
 
+    #region ACHIEVEMENTS
     string FindID(int level, ACHIEVEMENT_TYPE type)
     {
         //search through data base for ID
@@ -100,6 +102,24 @@ public class GooglePlayServices : MonoBehaviour {
         return true;
     }
 
+    public double ReadAchievement(string id)
+    {
+        double progress = 0;
+        Social.LoadAchievements(achievements =>
+        {
+            for (int i = 0; i < achievements.Length; ++i)
+            {
+                if (achievements[i].id == id)
+                {
+                    progress = achievements[i].percentCompleted;
+                }
+            }
+        });
+        return progress;
+    }
+    #endregion
+
+    #region LEADERBOARD
     public bool UpdateLeaderboard(long score)
     {
         Social.ReportScore(score, leaderboardID, (bool success) =>
@@ -107,5 +127,6 @@ public class GooglePlayServices : MonoBehaviour {
         });
         return true;
     }
+    #endregion
 
 }
