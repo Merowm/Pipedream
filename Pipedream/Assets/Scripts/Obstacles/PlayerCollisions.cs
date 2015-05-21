@@ -34,10 +34,10 @@ public class PlayerCollisions : MonoBehaviour
             Debug.Log("Collision");
             //Activate invulnerability if possible
             inventory.UseItem(1);
-            //Take damage
-            health.Damage();
             //Reduce points
             other.transform.parent.parent.GetComponentInChildren<ReducePoints>().HitObstacle(false);
+            //Take damage
+            health.Damage();
         }
         //Collectible collisions
         if (other.gameObject.tag == "Collectible")

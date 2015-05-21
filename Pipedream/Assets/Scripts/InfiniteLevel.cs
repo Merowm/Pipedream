@@ -113,6 +113,7 @@ public class InfiniteLevel : MonoBehaviour {
             //Add score
             if (MovementForward.inHyperspace)
             {
+                Debug.Log("time points added");
                 levelTimer.AddScore((int)(scoreGain * MovementForward.difficultyMultiplier));
             }
             //Reset timer
