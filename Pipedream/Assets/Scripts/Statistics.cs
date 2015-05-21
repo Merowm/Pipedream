@@ -73,6 +73,8 @@ public class Statistics : MonoBehaviour
     }
     public List<levelData> levels;
 
+    private GooglePlayServices gps;
+
 	void Awake ()
     {
         if (instance == null)
@@ -87,7 +89,9 @@ public class Statistics : MonoBehaviour
                 DestroyImmediate(this.gameObject);
             }
         }
-
+#if UNITY_ANDROID
+        gps = FindObjectOfType<GooglePlayServices>();
+#endif
         // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
@@ -232,9 +236,27 @@ public class Statistics : MonoBehaviour
         if (secondsSurvived < secs)
             secondsSurvived = secs;
         if (bestPoints < currentLevelPoints)
+        {
             bestPoints = currentLevelPoints;
+#if UNITY_ANDROID
+        if (gps != null)
+        {
+            Social.localUser.Authenticate((bool success) =>
+            {
+                // handle success or failure
+                if (success)
+                {
+                    gps.UpdateLeaderboard(currentLevelPoints);
+                    Social.ShowLeaderboardUI();
+                }
+            });
+        }
+#endif
+        }
         if (bestCollected < currentBonusAmount)
             bestCollected = currentBonusAmount;
+
+
     }
     // for loading scores from save file
     public void SetBestTime(int time)

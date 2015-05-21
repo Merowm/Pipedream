@@ -23,6 +23,7 @@ public class GooglePlayServices : MonoBehaviour {
     }
 
     public ACHIEVEMENT[] achievementData;
+    public string leaderboardID;
 
     void Start()
     {
@@ -95,6 +96,14 @@ public class GooglePlayServices : MonoBehaviour {
         Social.ReportProgress(id, 100.0f, (bool success) =>
         {
             // handle success or failure
+        });
+        return true;
+    }
+
+    public bool UpdateLeaderboard(long score)
+    {
+        Social.ReportScore(score, leaderboardID, (bool success) =>
+        {
         });
         return true;
     }
