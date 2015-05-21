@@ -10,6 +10,8 @@ public class StartNext : MonoBehaviour {
     void Start()
     {
         st = FindObjectOfType<Statistics>();
+        if (st.GetCurrentLevel() >= 6)
+            this.gameObject.SetActive(false);
     }
 
     public void ChangeToNextScene()
@@ -17,6 +19,7 @@ public class StartNext : MonoBehaviour {
         st.ResetScore();
         int level = st.GetCurrentLevel() + 1;
         string levelname = st.GetLevelNameAsString(level);
+        Debug.Log("starting level " + levelname);
         GameObject.FindWithTag("statistics").GetComponent<LoadScreen>().showLoader(levelname, level);
         Application.LoadLevel(levelname);
     }
