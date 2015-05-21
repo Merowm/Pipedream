@@ -41,11 +41,14 @@ public class Inventory : MonoBehaviour
                         //Reset timer
                         timer = 0.0f;
                     }
-                    //Apply slow down effect to all audio aswell
+                    //Apply slow down effect to all audio (except music) aswell
                     AudioSource[] audioSources = Object.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
                     for (int i = 0; i < audioSources.Length; ++i)
                     {
-                        audioSources [i].pitch = Time.timeScale;
+                        if (!audioSources[i].playOnAwake && !audioSources[i].loop)
+                        {
+                            audioSources[i].pitch = Time.timeScale;
+                        }
                     }
                 }
             }
