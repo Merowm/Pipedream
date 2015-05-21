@@ -111,8 +111,7 @@ public class Health : MonoBehaviour {
             {
                 //damage shield
                 --currentShield;
-                partSysShield.emissionRate = 0;
-                Debug.Log("Received damage to shields");
+                partSysShield.emissionRate = 0;                
             }
             //reset shield regen timer
             shieldRegenTimer = 0;
@@ -131,8 +130,7 @@ public class Health : MonoBehaviour {
         if (currentHull < maxHull)
         {
             //add hull
-            ++currentHull;
-            Debug.Log("Hull repaired");
+            ++currentHull;            
         }
 
         UpdateHealthGUI();
@@ -152,8 +150,7 @@ public class Health : MonoBehaviour {
             //partSysShield.emissionRate = partSysShield.maxParticles / 2;
             currentShield = maxShield;
             UpdateHealthGUI();
-            invulnerable = true;
-            Debug.Log("Invulnerability activated");
+            invulnerable = true;            
         }
         //deactivate invulnerability
         else
@@ -161,8 +158,7 @@ public class Health : MonoBehaviour {
             //set shield particles to normal
             partSysShield.maxParticles = (int)(originalEmissionRate / 10);
             partSysShield.emissionRate = originalEmissionRate;
-            invulnerable = false;
-            Debug.Log("Invulnerability deactivated");
+            invulnerable = false;            
         }
     }
 
@@ -190,7 +186,7 @@ public class Health : MonoBehaviour {
                     //set timer to 0
                     shieldRegenTimer = 0;
                 }
-                Debug.Log("Shield regenerated");
+                
                 if (!invulnerable)
                 {
                     partSysShield.emissionRate = originalEmissionRate;

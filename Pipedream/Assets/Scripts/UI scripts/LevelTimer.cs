@@ -128,7 +128,8 @@ public class LevelTimer : MonoBehaviour {
             {
                 Debug.Log("level length: " + timeInSecs + "seconds");
                 FinalLevelScore();
-                stats.UnlockLevel(levelId + 1);
+                if (levelId < 6)
+                    stats.UnlockLevel(levelId + 1);
                 Application.LoadLevel("EndLevel");
             }
         }
