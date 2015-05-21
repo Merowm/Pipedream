@@ -45,6 +45,8 @@ public class Inventory : MonoBehaviour
                     AudioSource[] audioSources = Object.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
                     for (int i = 0; i < audioSources.Length; ++i)
                     {
+                        //If playOnAwake and loop are true audio source must be playing music
+                        //and it will not be affected
                         if (!audioSources[i].playOnAwake && !audioSources[i].loop)
                         {
                             audioSources[i].pitch = Time.timeScale;
