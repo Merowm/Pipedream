@@ -20,6 +20,7 @@ public class Statistics : MonoBehaviour
         }
     }
     public Color32[] colors = new Color32[9];
+    public Color32[] defaultColors = new Color32[9];
     private DataSave data;
 
     private int currentLevelPoints;
@@ -289,6 +290,10 @@ public class Statistics : MonoBehaviour
     public Color32[] GetCustoms()
     {
         return colors;
+    }
+    public Color32[] GetDefaultCustoms()
+    {
+        return defaultColors;
     }
     public void SaveCustoms(Color32[] col)
     {

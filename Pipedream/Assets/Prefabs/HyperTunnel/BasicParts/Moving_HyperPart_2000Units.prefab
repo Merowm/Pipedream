@@ -1213,6 +1213,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 460318}
   - 114: {fileID: 11405666}
+  - 114: {fileID: 11416782}
   m_Layer: 0
   m_Name: Moving_HyperPart_2000Units
   m_TagString: MovingHyperPart
@@ -2110,7 +2111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 360, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409062}
@@ -4526,8 +4527,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9395fd7a6c98ad4b8b0f57bb5491119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpeed: 140
+  speed: 100
+  speedPerSecond: 0
+  distanceReset: 500
   direction: {x: 0, y: 0, z: -1}
+  customization: 0
+  infinite: 0
+  infiniteStart: {x: 0, y: 0, z: 0}
+--- !u!114 &11416782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59916340d007924e8a18e45415fd1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

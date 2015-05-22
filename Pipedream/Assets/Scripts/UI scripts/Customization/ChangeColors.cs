@@ -5,10 +5,10 @@ using System.Linq;
 //[ExecuteInEditMode]
 public class ChangeColors : MonoBehaviour
 {
-    public List<UnityEngine.UI.Image> images;
-    public List<Color32> colorsCurrent;
-    public List<Color32> colorsInMemory;
-    public List<Color32> colorsDefault;
+    public List<UnityEngine.UI.Image> images = new List<UnityEngine.UI.Image>();
+    public List<Color32> colorsCurrent = new List<Color32>();
+    public List<Color32> colorsInMemory = new List<Color32>();
+    public List<Color32> colorsDefault = new List<Color32>();
     public Material hyperTunnelMaterial;
     public Material shipHullMaterial;
     public Material shipMarkingsMaterial;
@@ -17,10 +17,9 @@ public class ChangeColors : MonoBehaviour
     public Material orbMaterial;
 
     private ChangeLighting lighting;
-    private List<ParticleSystem> particles;
+    private List<ParticleSystem> particles = new List<ParticleSystem>();
     private ParticleSystem shield;
     private ParticleSystem thruster;
-    private List<GameObject> buttons;
 
     private Statistics statistics;
 
@@ -130,12 +129,18 @@ public class ChangeColors : MonoBehaviour
     public void LoadColorsInMemory ()
     {
         List<Color32> col = statistics.GetCustoms().ToList();
+        List<Color32> defCol = statistics.GetDefaultCustoms().ToList();
 
         colorsInMemory.Clear();
+        colorsDefault.Clear();
 
         for (int i = 0; i < col.Count; i++)
         {
             colorsInMemory.Add(col[i]);
+        }
+        for (int i = 0; i < defCol.Count; i++)
+        {
+            colorsDefault.Add(defCol[i]);
         }
     }
 

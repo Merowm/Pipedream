@@ -831,9 +831,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 496434}
   - 114: {fileID: 11423496}
+  - 114: {fileID: 11435450}
   m_Layer: 0
   m_Name: Customization_HyperPart_2000Units
-  m_TagString: Untagged
+  m_TagString: MovingHyperPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4707,8 +4708,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
-  scale: {x: 1, y: 1, z: 1}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!114 &11423496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4724,10 +4727,21 @@ MonoBehaviour:
   speedPerSecond: 0
   distanceReset: 1000
   direction: {x: 0, y: 0, z: -1}
+  customization: 0
   infinite: 0
   infiniteStart: {x: 0, y: 0, z: 0}
-  customization: 0
-  resettingPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &11435450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59916340d007924e8a18e45415fd1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11448782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4740,8 +4754,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 111866, guid: 9b6f74b0c8f097c4f920d68f7e22a2fe, type: 2}
-  scale: {x: 1, y: 1, z: 1}
+  movingObject: 0
+  negativeRotation: 0
   wallRotatingSpeed: 0
+  lotusRotatingSpeed: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

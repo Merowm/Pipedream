@@ -28,10 +28,11 @@ GameObject:
   - 114: {fileID: 11453564}
   - 114: {fileID: 11472202}
   - 114: {fileID: 11417326}
+  - 114: {fileID: 11496182}
+  - 114: {fileID: 11463212}
   - 114: {fileID: 11417446}
   - 82: {fileID: 8282822}
   - 82: {fileID: 8269708}
-  - 114: {fileID: 11463212}
   m_Layer: 0
   m_Name: Statistics
   m_TagString: statistics
@@ -300,7 +301,25 @@ MonoBehaviour:
     rgba: 0
   - serializedVersion: 2
     rgba: 0
-  levelsFinishedOnNormal: 0
+  defaultColors:
+  - serializedVersion: 2
+    rgba: 4294956800
+  - serializedVersion: 2
+    rgba: 4294956800
+  - serializedVersion: 2
+    rgba: 4292345855
+  - serializedVersion: 2
+    rgba: 4289697420
+  - serializedVersion: 2
+    rgba: 4294922320
+  - serializedVersion: 2
+    rgba: 2862014870
+  - serializedVersion: 2
+    rgba: 4278241535
+  - serializedVersion: 2
+    rgba: 4278190335
+  - serializedVersion: 2
+    rgba: 4278199295
 --- !u!114 &11462792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -360,6 +379,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11496182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb767fc6ee7c7f04587083c96a626dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hyperTunnelMaterial: {fileID: 0}
+  shipHullMaterial: {fileID: 0}
+  shipMarkingsMaterial: {fileID: 0}
+  shipThrusterMaterial: {fileID: 0}
+  wireframeMaterial: {fileID: 0}
+  orbMaterial: {fileID: 0}
+  lighting: {fileID: 0}
+  particles: []
+  shield: {fileID: 0}
+  thruster: {fileID: 0}
 --- !u!222 &22219878
 CanvasRenderer:
   m_ObjectHideFlags: 1
