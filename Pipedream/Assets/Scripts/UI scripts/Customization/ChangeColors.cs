@@ -33,7 +33,11 @@ public class ChangeColors : MonoBehaviour
 
         for (int i = 0; i < images.Count; i++)
         {
-            images[i].color = colorsInMemory[i];
+            if(images[i].transform.parent.parent.name == "RGBSliders_Shields")
+            {
+                images[i].color = new Color32(colorsInMemory[i].r,colorsInMemory[i].g,colorsInMemory[i].b,255);
+            }
+            else images[i].color = colorsInMemory[i];
         }
         for (int i = 0; i < images.Count; i++)
         {
@@ -43,6 +47,13 @@ public class ChangeColors : MonoBehaviour
         //hyperTunnelMaterial.color = new Color32(100,100,100,255);
         lighting = (ChangeLighting)FindObjectOfType(typeof(ChangeLighting));
         particles = GameObject.FindGameObjectWithTag("effects").GetComponentsInChildren<ParticleSystem>().ToList();
+        for (int i = 0; i < particles.Count; i++)
+        {
+            if (particles[i].transform.name == "starsystem")
+            {
+                particles.Remove(particles[i]);
+            }
+        }
         shield = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").
             FindChild("Shield Particle System").GetComponent<ParticleSystem>();
         thruster = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").

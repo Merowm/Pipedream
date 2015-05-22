@@ -7,7 +7,8 @@ public class BackButton : MonoBehaviour
     public static bool editingColors = false;
     public List<GameObject> buttons = new List<GameObject>();
 
-    private GoToNext goTo;
+    private GameObject exitWarning;
+    private GameObject overrideWarning;
 
     void Awake ()
     {
@@ -15,14 +16,17 @@ public class BackButton : MonoBehaviour
         {
             buttons.Add(child.gameObject);
         }
-        goTo = transform.GetComponent<GoToNext>();
+        exitWarning = GameObject.FindGameObjectWithTag("ExitCheck").gameObject;
+        exitWarning.SetActive(false);
+        overrideWarning = GameObject.FindGameObjectWithTag("OverrideCheck").gameObject;
+        overrideWarning.SetActive(false);
     }
 
     public void BackClicked()
     {
         if (!editingColors)
         {
-            goTo.GoToScene();
+            exitWarning.SetActive(true);
         }
         else
         {

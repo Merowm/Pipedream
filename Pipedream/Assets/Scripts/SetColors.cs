@@ -27,6 +27,13 @@ public class SetColors : MonoBehaviour
 
         lighting = GameObject.FindGameObjectWithTag("MovingHyperPart").GetComponent<ChangeLighting>();
         particles = GameObject.FindGameObjectWithTag("effects").GetComponentsInChildren<ParticleSystem>().ToList();
+        for (int i = 0; i < particles.Count; i++)
+        {
+            if (particles[i].transform.name == "starsystem")
+            {
+                particles.Remove(particles[i]);
+            }
+        }
         shield = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").
             FindChild("Shield Particle System").GetComponent<ParticleSystem>();
         thruster = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Ship").

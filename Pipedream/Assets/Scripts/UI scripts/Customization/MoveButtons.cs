@@ -3,11 +3,10 @@ using System.Collections.Generic;
 
 public class MoveButtons : MonoBehaviour
 {
+    public static bool relocated = false;
     public List<GameObject> buttons;
     public List<Vector3> newPositions;
     public List<Vector3> originalPositions;
-
-    private bool relocated = false;
 
     void Awake ()
     {
@@ -35,6 +34,5 @@ public class MoveButtons : MonoBehaviour
             }
             relocated = false;
         }
-        transform.Rotate(new Vector3(0,0,180));
 	}
 }
