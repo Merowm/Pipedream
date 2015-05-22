@@ -123,10 +123,10 @@ public class Statistics : MonoBehaviour
         levels = new List<levelData>();
         AddLevelData(2700, 23, 5500, 56, 2); 
         AddLevelData(2000, 16, 4000, 40, 1); // work in progress 
-        AddLevelData(1200, 12, 4900, 51, 3);
-        AddLevelData(2100, 21, 5500, 56, 4);
-        AddLevelData(1500, 15, 5500, 56, 5);
-        AddLevelData(1500, 15, 6500, 56, 6);//temp
+        AddLevelData(2400, 20, 4800, 48, 3);
+        AddLevelData(2700, 23, 5500, 56, 4);
+        AddLevelData(2700, 23, 5500, 56, 5);
+        AddLevelData(3700, 33, 7500, 74, 6);//temp
 	}
     // Add basic level info here. When making new level, call AddLevelData() to add it to the game.
     // BonusAmount is the max score for the level; 
