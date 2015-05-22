@@ -6,7 +6,7 @@ public class Whoosh : MonoBehaviour {
     AudioClip sound;
     VolControl volCtrl;
 
-    void Start()
+    void Awake()
     {
         volCtrl = FindObjectOfType<VolControl>();
         if (volCtrl != null)
