@@ -252,7 +252,7 @@ public class LinearPlanet : MonoBehaviour
     void SetLevelInfo(GameObject panel)
     {
 
-        secs = stats.GetLevelTime(levelId).ToString();
+        secs = stats.TextWithMinutes((int)stats.GetLevelTime(levelId));
         points = stats.GetlevelHighScore(levelId).ToString();
         trophy = stats.GetLevelTrophy(levelId);
         lvnumber = panel.transform.Find("levelnum").GetComponent<Text>();
@@ -275,7 +275,7 @@ public class LinearPlanet : MonoBehaviour
             t.SetActive(false);
         }
         lvnumber.text = "run # " + level;
-        lengthInSeconds.text = secs + " secs";
+        lengthInSeconds.text = secs;
         score.text = points;
         if (trophy > 0)
         {
@@ -298,9 +298,9 @@ public class LinearPlanet : MonoBehaviour
     void SetInfiniteInfo(GameObject panel)
     {
         // TODO: design infinite info panel!
-        secs = stats.GetSecsSurvived().ToString();
+        secs = stats.TextWithMinutes((int)stats.GetSecsSurvived());
         points = stats.GetBestScore().ToString();
-        panel.transform.Find("seconds").GetComponent<Text>().text = secs + " secs";
+        panel.transform.Find("seconds").GetComponent<Text>().text = secs;
         panel.transform.Find("score").GetComponent<Text>().text = points;
     }
     public void lockLevel()

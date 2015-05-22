@@ -31,9 +31,8 @@ public class LevelTimer : MonoBehaviour {
 
     GooglePlayServices gps;
 
-    KongregateAPI kong;
-
     Text timeTextField;
+    int runtime;
     DataSave saver;
 
 	
@@ -136,8 +135,9 @@ public class LevelTimer : MonoBehaviour {
         }
         else if (timeInSecs > 5)
         {
-            // update timer GUI            
-            timeTextField.text = ((int)timeInSecs - 5).ToString();
+            // update timer GUI
+            runtime = (int)timeInSecs - 5;          
+            timeTextField.text = stats.TextWithMinutes(runtime);            
         }
         
 	}
@@ -233,7 +233,7 @@ public class LevelTimer : MonoBehaviour {
         res.transform.FindChild("collected").GetComponent<Text>().text = stats.GetCurrentBonus().ToString();
         // save endless results & mark personal best
         stats.UpdateEndlessRecord((int)timeInSecs - 5);
-        res.transform.FindChild("timeBest").GetComponent<Text>().text = stats.GetSecsSurvived().ToString();
+        res.transform.FindChild("timeBest").GetComponent<Text>().text = stats.TextWithMinutes(stats.GetSecsSurvived());
         res.transform.FindChild("scoreBest").GetComponent<Text>().text = stats.GetBestScore().ToString();
         saver.SaveEndlessScore();
     }
@@ -241,4 +241,5 @@ public class LevelTimer : MonoBehaviour {
     {
         return infinite;
     }
+
 }

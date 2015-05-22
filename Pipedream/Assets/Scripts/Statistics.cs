@@ -529,4 +529,14 @@ public class Statistics : MonoBehaviour
         
         return temp;
     }
+    // Converts (secs) seconds into string which shows minutes and seconds as "00:00"
+    public string TextWithMinutes(int secs)
+    {
+        string txt;
+        if (secs % 60 > 9)
+            txt = ((secs / 60).ToString() + ":" + (secs % 60).ToString());
+        else
+            txt = ((secs / 60).ToString() + ":0" + (secs % 60).ToString());
+        return txt;
+    }
 }
