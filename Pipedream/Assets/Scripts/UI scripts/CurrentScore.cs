@@ -31,8 +31,8 @@ public class CurrentScore : MonoBehaviour {
         bonusObjectives = new GameObject[4];
         bonusObjectives[0] = GameObject.Find("nohit");
         bonusObjectives[1] = GameObject.Find("getall");
-        bonusObjectives[2] = GameObject.Find("getstreak");
-        bonusObjectives[3] = GameObject.Find("getextra");
+        bonusObjectives[2] = GameObject.Find("getextra");
+        bonusObjectives[3] = GameObject.Find("getmax");
 
         pointScore = GameObject.FindWithTag("Scoretext").GetComponent<Text>();
         bonusScore = GameObject.FindWithTag("Bonustext").GetComponent<Text>();
@@ -43,23 +43,25 @@ public class CurrentScore : MonoBehaviour {
     void Start()
     {
         int maxBonus = stats.GetMaxBonusAmount(level);
+        int maxScore = stats.GetLevelMaxpoints(level);
         pointScore.text = stats.GetCurrentScore().ToString();
         bonusScore.text = (stats.GetCurrentBonus() + " / " + maxBonus).ToString();
         SetMedal(stats.CompareToTrophyRequirements(level));
 
-        if (stats.GetCurrentHitCount() != 0)
-            UnCheckGoal(bonusObjectives[0]);        
 
-        if (stats.GetCurrentBonus() != maxBonus)
-            UnCheckGoal(bonusObjectives[1]);
+            if (Difficulty.currentDifficulty != Difficulty.DIFFICULTY.normal || stats.GetCurrentHitCount() != 0)
+                UnCheckGoal(bonusObjectives[0]);
 
-        if (Difficulty.currentDifficulty != Difficulty.DIFFICULTY.normal)
-            UnCheckGoal(bonusObjectives[2]);
+            if (Difficulty.currentDifficulty != Difficulty.DIFFICULTY.normal || stats.GetCurrentBonus() != maxBonus)
+                UnCheckGoal(bonusObjectives[1]);
 
-        if (!stats.GetSpecialAcquired())
-            UnCheckGoal(bonusObjectives[3]);
+            if (Difficulty.currentDifficulty != Difficulty.DIFFICULTY.normal || !stats.GetSpecialAcquired())
+                UnCheckGoal(bonusObjectives[2]);
 
-        saver.SendScore(level);
+            if (Difficulty.currentDifficulty != Difficulty.DIFFICULTY.normal || stats.GetCurrentScore() != maxScore)
+                UnCheckGoal(bonusObjectives[3]);
+        
+        //saver.SendScore(level);
     }
 
 	

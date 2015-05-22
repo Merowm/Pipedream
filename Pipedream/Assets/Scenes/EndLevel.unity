@@ -267,7 +267,7 @@ GameObject:
   - 224: {fileID: 22263397}
   - 222: {fileID: 22263399}
   m_Layer: 5
-  m_Name: getstreak
+  m_Name: getmax
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,7 +291,7 @@ RectTransform:
   m_RootOrder: 14
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 34.2999992, y: -60}
+  m_AnchoredPosition: {x: 34.2999992, y: -120}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: .5, y: .5}
 --- !u!222 &22263399
@@ -489,7 +489,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Finish on normal!
+  m_Text: Get full score!
 --- !u!222 &89329168
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1467,7 +1467,7 @@ RectTransform:
   m_RootOrder: 15
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 34.2999992, y: -120}
+  m_AnchoredPosition: {x: 34.2999992, y: -60}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: .5, y: .5}
 --- !u!222 &485352232
@@ -1560,69 +1560,9 @@ Prefab:
       value: 
       objectReference: {fileID: 1209859416}
     - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_Colors.m_NormalColor.r
-      value: .572549045
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_Colors.m_NormalColor.g
-      value: .823529422
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_Colors.m_NormalColor.b
-      value: .992156863
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1209859417}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlaySoundEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449424, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: .541176498
-      objectReference: {fileID: 0}
-    - target: {fileID: 22487632, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22487632, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22487632, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22487632, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22487632, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 176
-      objectReference: {fileID: 0}
-    - target: {fileID: 22487632, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65b03e832b85bcf459dd60a431d43be4, type: 2}
   m_IsPrefabParent: 0

@@ -20,8 +20,10 @@ public class Statistics : MonoBehaviour
         }
     }
     public Color32[] colors = new Color32[9];
-    public Color32[] defaultColors = new Color32[9];
+    public Color32[] defaultColors;
+    public bool hasCustoms = false;
     private DataSave data;
+    
 
     private int currentLevelPoints;
     private int currentBonusAmount;
@@ -49,6 +51,7 @@ public class Statistics : MonoBehaviour
         public int levelID;
         public int highScore;
         public int currentTrophy;
+        public int maxPoints;
         public int goldLimit;
         public int silverLimit;
         public int bronzeLimit;
@@ -60,12 +63,14 @@ public class Statistics : MonoBehaviour
         public bool nothingHit;
         public bool finishedOnNormal;
         public bool specialFound;
+        public bool fullPoints;
 
-        public levelData(int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelLength, float levelTime, int levelId)
+        public levelData(int maxpoints, int goldLim, int silverLim, int bronzeLim,int bonusAmount, int levelLength, float levelTime, int levelId)
         {
             goldLimit = goldLim;
             silverLimit = silverLim;
             bronzeLimit = bronzeLim;
+            maxPoints = maxpoints;
             bonusCount = bonusAmount;
             levelID = levelId;
             distanceToRace = levelLength;
@@ -77,6 +82,7 @@ public class Statistics : MonoBehaviour
             nothingHit = false;
             finishedOnNormal = false;
             specialFound = false;
+            fullPoints = false;
         }
     }
     public List<levelData> levels;
@@ -100,6 +106,18 @@ public class Statistics : MonoBehaviour
 #if UNITY_ANDROID
         gps = FindObjectOfType<GooglePlayServices>();
 #endif
+
+        // Define default colors!
+        defaultColors = new Color32[9];
+        defaultColors[0] = new Color32(0, 215, 255, 255);
+        defaultColors[1] = new Color32(0, 215, 255, 255);
+        defaultColors[2] = new Color32(255, 255, 215, 255);
+        defaultColors[3] = new Color32(140, 150, 175, 255);
+        defaultColors[4] = new Color32(80, 80, 255, 255);
+        defaultColors[5] = new Color32(150, 225, 150, 170);
+        defaultColors[6] = new Color32(255, 200, 0, 255);
+        defaultColors[7] = new Color32(255, 0, 0, 255);
+        defaultColors[8] = new Color32(255, 35, 0, 255);
         // TODO: Move level data setup back to Start(). This initializes levels and should happen (only) in menu scene.
         // Moved to Awake() for testing reasons.
         levels = new List<levelData>();
@@ -110,8 +128,6 @@ public class Statistics : MonoBehaviour
         AddLevelData(1500, 15, 5500, 56, 5);
         AddLevelData(1500, 15, 6500, 56, 6);//temp
 	}
-
-
     // Add basic level info here. When making new level, call AddLevelData() to add it to the game.
     // BonusAmount is the max score for the level; 
     // levelLength is the total distance player has to move along z axis;
@@ -119,6 +135,8 @@ public class Statistics : MonoBehaviour
     void Start()
     {
         data = transform.GetComponent<DataSave>();
+        if (!hasCustoms)
+            colors = defaultColors;
     }
 
     // Update statistics temp data 
@@ -162,9 +180,11 @@ public class Statistics : MonoBehaviour
                     level.finishedOnNormal = true;
                 if (!level.allCollected)
                     level.allCollected = (currentBonusAmount == level.bonusCount);
+                if (!level.fullPoints)
+                    level.fullPoints = (currentLevelPoints == level.maxPoints);
             }
         }
-
+        data.SaveScores();
         return currentLevelPoints;
     }
 
@@ -304,6 +324,7 @@ public class Statistics : MonoBehaviour
             colors[i].g = col[i].g;
             colors[i].b = col[i].b;
         }
+        hasCustoms = true;
         data.SetSettings();
     }
     public void SetlevelsFinished(int amount)
@@ -415,6 +436,10 @@ public class Statistics : MonoBehaviour
     {
         return FindLevel(levelId).specialFound;
     }
+    public bool HasMaxPoints(int levelId)
+    {
+        return FindLevel(levelId).fullPoints;
+    }
     // endless mode
     public int GetSecsSurvived()
     {
@@ -479,6 +504,10 @@ public class Statistics : MonoBehaviour
             temp = 1;
         return temp;
     }
+    public int GetLevelMaxpoints(int level)
+    {
+        return FindLevel(level).maxPoints;
+    }
     // for getting level time (debugging only)
     public float GetLevelTime(int levelId)
     {
@@ -510,7 +539,7 @@ public class Statistics : MonoBehaviour
         int goldLimit = (int)(bonusAmount * 0.85f);
         int silverLimit = (int)(bonusAmount * 0.5f);
         int bronzeLimit = (int)(bonusAmount * 0.2f);
-        levels.Add(new levelData(goldLimit, silverLimit, bronzeLimit, bonusItemCount, levelLength, levelTime, levelId));
+        levels.Add(new levelData(bonusAmount, goldLimit, silverLimit, bronzeLimit, bonusItemCount, levelLength, levelTime, levelId));
     }
 
     // returns true if new trophy is  better than old one and saves it in the level data. 

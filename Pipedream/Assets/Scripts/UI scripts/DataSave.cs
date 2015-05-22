@@ -13,6 +13,7 @@ public class DataSave : MonoBehaviour
     // only float and int type values accepted (and string; may cause errors though)
     // keys: username + level id + stat name e.g. "Guest2highScore"
     // Use StatName() to form key name
+    // default name if not connected: "player"
     void Awake()
     {
         if (!(stats = GetComponent<Statistics>()))
@@ -30,21 +31,34 @@ public class DataSave : MonoBehaviour
     // clear save (called from OptionsControl)
     public void ClearSlot()
     {
-        // TODO: Only clear out current user's data!
-        PlayerPrefs.DeleteAll();
+        // Only clear out current user's game progress data!
+        clearthings();        
         // set in-game data to default
         stats.ResetGame();
         // save custom settings
         SetSettings();
     }
-
-    // call this from wherever game has to save
-    public void SendScore(int level)
-    {
-        SaveScores();
-        //SaveLevelScore(level);
+    private void clearthings()
+    {        
+        for (int i = 1; i < stats.levels.Count + 1; ++i)
+        {
+            PlayerPrefs.DeleteKey(StatName("highScore", i));
+            PlayerPrefs.DeleteKey(StatName("currentTrophy", i));
+            PlayerPrefs.DeleteKey(StatName("isUnlocked", i));
+            PlayerPrefs.DeleteKey(StatName("allCollected", i));
+            PlayerPrefs.DeleteKey(StatName("nothingHit", i));
+            PlayerPrefs.DeleteKey(StatName("bonusStreakDone", i));
+            PlayerPrefs.DeleteKey(StatName("specialFound", i));
+        }
+        PlayerPrefs.DeleteKey(StatName("endlessTime"));
+        PlayerPrefs.DeleteKey(StatName("endlessScore"));
+        PlayerPrefs.DeleteKey(StatName("endlessItems"));
+        PlayerPrefs.DeleteKey(StatName("endlessSurvivalTimeOnNormal"));
+        PlayerPrefs.DeleteKey(StatName("gameFinishedOnNormal"));
+        PlayerPrefs.DeleteKey(StatName("levelsFinishedOnNormal"));
+        PlayerPrefs.DeleteKey(StatName("goldMedalsEarned"));
+        PlayerPrefs.DeleteKey(StatName("extraHonorsEarned"));
     }
-
     ////////////////////////////////
     /// Helpers.
     ////////////////////////////////
@@ -74,18 +88,24 @@ public class DataSave : MonoBehaviour
     private void LoadSettings()
     {
         // TODO: define default settings!
-        string colname;
-        for (int i = 0; i < 9; i++)
+        // if all values == 0, returns false
+        stats.hasCustoms = GetSavedStatBool(0, "hasCustoms");
+        if (stats.hasCustoms)
         {
-           colname = "color" + i.ToString();
-           stats.colors[i].r = (byte)PlayerPrefs.GetInt(colname + "R");
-           stats.colors[i].b = (byte)PlayerPrefs.GetInt(colname + "B");
-           stats.colors[i].g = (byte)PlayerPrefs.GetInt(colname + "G");
-           stats.colors[i].a = (byte)PlayerPrefs.GetInt(colname + "A");
+            string colname;
+            for (int i = 0; i < 9; i++)
+            {
+                colname = "color" + i.ToString();
+                stats.colors[i].r = (byte)PlayerPrefs.GetInt(StatName(colname + "R"));
+                stats.colors[i].b = (byte)PlayerPrefs.GetInt(StatName(colname + "B"));
+                stats.colors[i].g = (byte)PlayerPrefs.GetInt(StatName(colname + "G"));
+                stats.colors[i].a = (byte)PlayerPrefs.GetInt(StatName(colname + "A"));
+
+            }
         }
-        if (PlayerPrefs.HasKey("masterVol"))
-            vol.masterVol = PlayerPrefs.GetFloat("masterVol");
-        else vol.masterVol = 0.5f;
+        if (PlayerPrefs.HasKey(StatName("masterVol")))
+            vol.masterVol = PlayerPrefs.GetFloat(StatName("masterVol"));
+        else vol.masterVol = 0.5f;        
     }
     public void LoadKongStats()
     {
@@ -96,7 +116,7 @@ public class DataSave : MonoBehaviour
     }
     public void SetVolume()
     {
-        PlayerPrefs.SetFloat("masterVol", vol.masterVol);
+        PlayerPrefs.SetFloat(StatName("masterVol"), vol.masterVol);
         PlayerPrefs.Save();
     }
     // save color settings!! not general anymore...
@@ -106,16 +126,17 @@ public class DataSave : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {   
             colname = "color" + i.ToString();
-            PlayerPrefs.SetInt(colname + "R", stats.colors[i].r);
-            PlayerPrefs.SetInt(colname + "B", stats.colors[i].b);
-            PlayerPrefs.SetInt(colname + "G", stats.colors[i].g);
-            PlayerPrefs.SetInt(colname + "A", stats.colors[i].a);
+            PlayerPrefs.SetInt(StatName(colname + "R"), stats.colors[i].r);
+            PlayerPrefs.SetInt(StatName(colname + "B"), stats.colors[i].b);
+            PlayerPrefs.SetInt(StatName(colname + "G"), stats.colors[i].g);
+            PlayerPrefs.SetInt(StatName(colname + "A"), stats.colors[i].a);
         }
+        SetSavedStatBool(0, "hasCustoms", stats.hasCustoms);
         PlayerPrefs.Save();
     }
     // save all game data. Is this needed at all?
     // TODO: get rid of redundant function calls.
-    private void SaveScores()
+    public void SaveScores()
     {
         foreach (Statistics.levelData d in stats.levels)
         {
@@ -188,6 +209,7 @@ public class DataSave : MonoBehaviour
             statname = level.ToString() + statname;
         if (KongregateAPI.Connected)
             statname = KongregateAPI.Username + statname;
+        else statname = "player" + statname;
         Debug.Log(statname);
         return statname;
     }

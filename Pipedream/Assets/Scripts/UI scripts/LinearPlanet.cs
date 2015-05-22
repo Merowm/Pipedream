@@ -209,7 +209,7 @@ public class LinearPlanet : MonoBehaviour
 #else
 
                 instantInfo = Instantiate(info, Input.mousePosition, Quaternion.identity) as GameObject;
-                //instantInfo.transform.localPosition = Input.mousePosition - offset;
+                
 #endif
                 instantInfo.transform.SetParent(mainCanvas.transform, false);
                 if (levelId == 99)
@@ -287,7 +287,7 @@ public class LinearPlanet : MonoBehaviour
             extras[1].SetActive(true);
         if (stats.HasSpecialFound(levelId))
             extras[2].SetActive(true);
-        if (stats.HasFinishedOnNormal(levelId))
+        if (stats.HasMaxPoints(levelId))
             extras[3].SetActive(true);        
     }
 
