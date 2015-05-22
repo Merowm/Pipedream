@@ -210,7 +210,7 @@ public class DataSave : MonoBehaviour
         if (KongregateAPI.Connected)
             statname = KongregateAPI.Username + statname;
         else statname = "player" + statname;
-        Debug.Log(statname);
+        
         return statname;
     }
 }
