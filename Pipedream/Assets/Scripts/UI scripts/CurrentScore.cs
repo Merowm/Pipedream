@@ -9,6 +9,7 @@ public class CurrentScore : MonoBehaviour {
     Text bonusScore;
     int level;
     DataSave saver;
+    VolControl sound;
 
     GameObject[] medals;
     GameObject[] bonusObjectives;
@@ -20,6 +21,7 @@ public class CurrentScore : MonoBehaviour {
         GameObject s = GameObject.FindWithTag("statistics");
         stats = s.GetComponent<Statistics>();
         saver = s.GetComponent<DataSave>();
+        sound = s.GetComponent<VolControl>();
         medals = new GameObject[3];
         medals[0] = GameObject.Find("gold");
         medals[1] = GameObject.Find("silver");
@@ -60,7 +62,8 @@ public class CurrentScore : MonoBehaviour {
 
             if (Difficulty.currentDifficulty != Difficulty.DIFFICULTY.normal || stats.GetCurrentScore() != maxScore)
                 UnCheckGoal(bonusObjectives[3]);
-        
+
+            sound.PlayVictorySound();
         //saver.SendScore(level);
     }
 

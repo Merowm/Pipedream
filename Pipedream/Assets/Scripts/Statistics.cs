@@ -225,7 +225,16 @@ public class Statistics : MonoBehaviour
             ld.nothingHit = false;
             ld.finishedOnNormal = false;
             ld.specialFound = false;
+            ld.fullPoints = false;
         }
+        secondsSurvived = 0;
+        bestPoints = 0;
+        bestCollected = 0;
+        goldMedalsCount = 0;
+        levelsFinishedOnNormal = 0;    
+        gameFinishedOnNormal = 0;
+        endlessSurviveTimeOnNormal = 0;
+        extraHonorsEarned = 0;
         // unlock first lvl
         UnlockLevel(1);
         Debug.Log("Levels found: " + levels.Count);

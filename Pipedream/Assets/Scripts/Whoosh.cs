@@ -15,7 +15,7 @@ public class Whoosh : MonoBehaviour {
         }
     }
     void OnTriggerEnter(Collider coll){
-        AudioSource.PlayClipAtPoint(sound, transform.position, volCtrl.effectVol * 0.3f * volCtrl.masterVol);
+        AudioSource.PlayClipAtPoint(sound, transform.position, volCtrl.effectVol * 0.2f * volCtrl.masterVol);
     }
 
 }

@@ -105,7 +105,13 @@ public class DataSave : MonoBehaviour
         }
         if (PlayerPrefs.HasKey(StatName("masterVol")))
             vol.masterVol = PlayerPrefs.GetFloat(StatName("masterVol"));
-        else vol.masterVol = 0.5f;        
+        else vol.masterVol = 0.5f;
+        if (PlayerPrefs.HasKey(StatName("effectVol")))
+            vol.effectVol = PlayerPrefs.GetFloat(StatName("effectVol"));
+        else vol.effectVol = 0.5f;
+        if (PlayerPrefs.HasKey(StatName("musicVol")))
+            vol.musicMaxVol = PlayerPrefs.GetFloat(StatName("musicVol"));
+        else vol.musicMaxVol = 0.5f;
     }
     public void LoadKongStats()
     {
@@ -117,6 +123,8 @@ public class DataSave : MonoBehaviour
     public void SetVolume()
     {
         PlayerPrefs.SetFloat(StatName("masterVol"), vol.masterVol);
+        PlayerPrefs.SetFloat(StatName("effectVol"), vol.effectVol);
+        PlayerPrefs.SetFloat(StatName("musicVol"), vol.musicMaxVol);
         PlayerPrefs.Save();
     }
     // save color settings!! not general anymore...

@@ -13,6 +13,7 @@ public class VolControl : MonoBehaviour {
     public AudioSource buttonEffect;
     public AudioClip bonusEffect;
     public AudioClip crashEffect;
+    public AudioClip victorySound;
     // set from each scene? NB smooth transitions!
     public AudioSource music;
     public AudioClip[] jukebox;
@@ -53,11 +54,12 @@ public class VolControl : MonoBehaviour {
     {        
         musicMaxVol = vol;
         music.volume = musicMaxVol * fadeRate * masterVol;
-
+        saver.SetVolume(); 
     }
     public void SetSFXVolume(float vol)
     {
         effectVol = vol;
+        saver.SetVolume(); 
     }
     public void SetMasterVolume(float vol)
     {
@@ -141,6 +143,10 @@ public class VolControl : MonoBehaviour {
     public void PlayCollectSound(Vector3 position)
     {
         AudioSource.PlayClipAtPoint(bonusEffect, position, effectVol * masterVol);
+    }
+    public void PlayVictorySound()
+    {
+        AudioSource.PlayClipAtPoint(victorySound, new Vector3(0, 1, -10), effectVol * masterVol);
     }
     public void SetMusicType(bool isMenu, int level)
     {
