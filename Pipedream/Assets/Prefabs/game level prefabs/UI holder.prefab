@@ -372,7 +372,7 @@ GameObject:
   - 114: {fileID: 11470296}
   m_Layer: 5
   m_Name: pauseScreen
-  m_TagString: Untagged
+  m_TagString: PauseScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1418,7 +1418,7 @@ GameObject:
   - 114: {fileID: 11444100}
   m_Layer: 5
   m_Name: Pause
-  m_TagString: Untagged
+  m_TagString: PauseButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2573,7 +2573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcde3901ab898d4fa526676b3f00d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelId: 99
+  levelId: 1
   distanceMeter: 0
   updateInterval: .00999999978
   playerShip: {fileID: 0}
@@ -3509,9 +3509,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'items
+  m_Text: 'Lotuses
 
-    collected:'
+    Collected:'
 --- !u!114 &11461886
 MonoBehaviour:
   m_ObjectHideFlags: 1

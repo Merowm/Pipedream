@@ -18,7 +18,7 @@ public class SetColors : MonoBehaviour
     public ParticleSystem thruster;
 
     private Statistics statistics;
-    private Color32[] colors;
+    public Color32[] colors;
 
 	void Awake ()
     {

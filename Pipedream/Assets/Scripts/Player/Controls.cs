@@ -13,12 +13,16 @@ public class Controls : MonoBehaviour
     private Movement2D movement2D;
     private MovementForward movementForward;
     private SpaceDriveState spaceDriveState;
+    private PauseGame pause;
+    private OptionsControl options;
 
 	void Awake ()
     {
         movement2D = transform.GetComponent<Movement2D>();
         movementForward = transform.GetComponent<MovementForward>();
         spaceDriveState = transform.GetComponent<SpaceDriveState>();
+        pause = GameObject.FindGameObjectWithTag("PauseButton").transform.GetComponent<PauseGame>();
+        options = GameObject.FindGameObjectWithTag("PauseScreen").transform.GetComponent<OptionsControl>();
 
         controls = new Dictionary<string, bool>();
         controls.Add("Right", false);
@@ -74,6 +78,20 @@ public class Controls : MonoBehaviour
         else
         {
             controls["Left"] = false;
+        }
+        //Pause and resume
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //Pause
+            if (!PauseGame.gamePaused)
+            {
+                pause.Pause();
+            }
+            //Resume
+            else
+            {
+                options.ResumeGame();
+            }
         }
 #endif
 
