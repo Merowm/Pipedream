@@ -201,6 +201,8 @@ public class LevelTimer : MonoBehaviour {
             // submit level data to kong
             KongregateAPI.SubmitData("gameFinishedOnNormal", stats.GetAllFinished());
             KongregateAPI.SubmitData("levelsFinishedOnNormal", stats.GetFinishedOnNormalCount());
+            KongregateAPI.SubmitData("goldMedalsEarned", stats.GetAllGold());
+            KongregateAPI.SubmitData("extraHonorsEarned", stats.GetAllExtras());
         }
 #if UNITY_ANDROID
         if (medal == 1)//if gold
@@ -236,6 +238,13 @@ public class LevelTimer : MonoBehaviour {
         res.transform.FindChild("timeBest").GetComponent<Text>().text = stats.TextWithMinutes(stats.GetSecsSurvived());
         res.transform.FindChild("scoreBest").GetComponent<Text>().text = stats.GetBestScore().ToString();
         saver.SaveEndlessScore();
+        // update records on Kongre
+        if (KongregateAPI.Connected)
+        {
+            KongregateAPI.SubmitData("endlessSurvivalTimeOnNormal", stats.GetSecsSurvived());
+            KongregateAPI.SubmitData("endlessScore", stats.GetBestScore());
+            KongregateAPI.SubmitData("endlessItemsCollected", stats.GetBestCollected());
+        }
     }
     public bool IsInfinite()
     {

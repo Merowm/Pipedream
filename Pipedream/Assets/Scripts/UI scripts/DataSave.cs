@@ -2,10 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-//using System.Runtime.Serialization.Formatters.Binary;
-//using System.IO;
 
-// TODO: Use PlayerPrefs anyway?
 public class DataSave : MonoBehaviour
 {
     string _name;
@@ -14,7 +11,8 @@ public class DataSave : MonoBehaviour
 
     // PlayerPerfs: data saved as key/value pairs
     // only float and int type values accepted (and string; may cause errors though)
-    // keys: level id + stat name e.g. "2highScore"
+    // keys: username + level id + stat name e.g. "Guest2highScore"
+    // Use StatName() to form key name
     void Awake()
     {
         if (!(stats = GetComponent<Statistics>()))
@@ -26,11 +24,13 @@ public class DataSave : MonoBehaviour
     {
         LoadSettings();
         LoadScores();
+        LoadKongStats();
         stats.UnlockLevel(1);
 	}
     // clear save (called from OptionsControl)
     public void ClearSlot()
-    {        
+    {
+        // TODO: Only clear out current user's data!
         PlayerPrefs.DeleteAll();
         // set in-game data to default
         stats.ResetGame();
@@ -67,10 +67,13 @@ public class DataSave : MonoBehaviour
         stats.SetBestTime(PlayerPrefs.GetInt(StatName("endlessTime")));
         stats.SetBestPoints(PlayerPrefs.GetInt(StatName("endlessScore")));
         stats.SetBestCollected(PlayerPrefs.GetInt(StatName("endlessItems")));
-        // get general settings data
+        stats.SetBestNormalTime(PlayerPrefs.GetInt(StatName("endlessSurvivalTimeOnNormal")));
+        
     }
+    // get general settings data
     private void LoadSettings()
     {
+        // TODO: define default settings!
         string colname;
         for (int i = 0; i < 9; i++)
         {
@@ -84,12 +87,19 @@ public class DataSave : MonoBehaviour
             vol.masterVol = PlayerPrefs.GetFloat("masterVol");
         else vol.masterVol = 0.5f;
     }
+    public void LoadKongStats()
+    {
+        stats.SetGameFinished(PlayerPrefs.GetInt(StatName("gameFinishedOnNormal")));
+        stats.SetlevelsFinished(PlayerPrefs.GetInt(StatName("levelsFinishedOnNormal")));
+        stats.SetGold(PlayerPrefs.GetInt(StatName("goldMedalsEarned")));
+        stats.SetExtras(PlayerPrefs.GetInt(StatName("extraHonorsEarned")));
+    }
     public void SetVolume()
     {
         PlayerPrefs.SetFloat("masterVol", vol.masterVol);
         PlayerPrefs.Save();
     }
-    // save general settings
+    // save color settings!! not general anymore...
     public void SetSettings()
     {
         string colname;
@@ -113,8 +123,10 @@ public class DataSave : MonoBehaviour
             SaveLevelScore(id);
         }
         SaveEndlessScore();
+        SaveKongStats();
         // general settings data 
         SetSettings();
+        SetVolume();
         PlayerPrefs.Save();
     }
     // change saved data for one level (called at end of level)
@@ -130,15 +142,24 @@ public class DataSave : MonoBehaviour
         SetSavedStatBool(id, "nothingHit", d.nothingHit);
         SetSavedStatBool(id, "bonusStreakDone", d.finishedOnNormal);
         SetSavedStatBool(id, "specialFound", d.specialFound);
-
+    }
+    // save Kongregate related stats
+    private void SaveKongStats()
+    {
+        PlayerPrefs.SetInt(StatName("gameFinishedOnNormal"), stats.GetAllFinished());
+        PlayerPrefs.SetInt(StatName("levelsFinishedOnNormal"), stats.GetFinishedOnNormalCount());
+        PlayerPrefs.SetInt(StatName("goldMedalsEarned"), stats.GetAllGold());
+        PlayerPrefs.SetInt(StatName("extraHonorsEarned"), stats.GetAllExtras());        
     }
     public void SaveEndlessScore()
     {
         PlayerPrefs.SetInt(StatName("endlessTime"), stats.GetSecsSurvived());
         PlayerPrefs.SetInt(StatName("endlessScore"), stats.GetBestScore());
         PlayerPrefs.SetInt(StatName("endlessItems"), stats.GetBestCollected());
+        PlayerPrefs.SetInt(StatName("endlessSurvivalTimeOnNormal"), stats.GetSecsSurvivedNormal());
         PlayerPrefs.Save();
     }
+    // Helper methods for saving/loading scores by level
     private int GetSavedStatInt(int level, string stat)
     {
         return PlayerPrefs.GetInt(StatName(stat, level));        
@@ -158,6 +179,8 @@ public class DataSave : MonoBehaviour
             PlayerPrefs.SetInt(StatName(stat, level), 1);
         else PlayerPrefs.SetInt(StatName(stat, level), 0);        
     }
+    // Helper for forming keyname
+    // (username) + levelnumber + statistic name
     private string StatName(string stat, int level = 99)
     {
         string statname = stat;

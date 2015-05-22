@@ -38,9 +38,7 @@ public class Statistics : MonoBehaviour
 
     // stats to send to kongregate
     private int goldMedalsCount;
-    public int levelsFinishedOnNormal;
-    // NB! hard coded to set to true if levelsFinishedOnNormal == 6!
-    // TODO: 
+    private int levelsFinishedOnNormal;    
     private int gameFinishedOnNormal;
     private int endlessSurviveTimeOnNormal;
     private int extraHonorsEarned;
@@ -275,6 +273,10 @@ public class Statistics : MonoBehaviour
     {
         secondsSurvived = time;
     }
+    public void SetBestNormalTime(int time)
+    {
+        endlessSurviveTimeOnNormal = time;
+    }
     public void SetBestPoints(int points)
     {
         bestPoints = points;
@@ -298,6 +300,22 @@ public class Statistics : MonoBehaviour
             colors[i].b = col[i].b;
         }
         data.SetSettings();
+    }
+    public void SetlevelsFinished(int amount)
+    {
+        levelsFinishedOnNormal = amount;
+    }
+    public void SetGameFinished(int finished)
+    {
+        gameFinishedOnNormal = finished;
+    }
+    public void SetGold(int gold)
+    {
+        goldMedalsCount = gold;
+    }
+    public void SetExtras(int amount)
+    {
+        extraHonorsEarned = amount;
     }
     //////////////////////////////////////
     // Get methods
@@ -396,6 +414,10 @@ public class Statistics : MonoBehaviour
     public int GetSecsSurvived()
     {
         return secondsSurvived;
+    }
+    public int GetSecsSurvivedNormal()
+    {
+        return endlessSurviveTimeOnNormal;
     }
     public int GetBestScore()
     {
