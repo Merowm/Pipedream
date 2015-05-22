@@ -19,7 +19,6 @@ public class KongregateAPI : MonoBehaviour {
         //connect to Kongregate API
         Connect();
 #else
-        Destroy(gameObject);
 #endif
     }
 
