@@ -6,6 +6,7 @@ public class SpawnCollision : MonoBehaviour
     public bool colliding = false;
 
     private GameObject player;
+    public int count = 0;
 
     void Awake ()
     {
@@ -14,10 +15,12 @@ public class SpawnCollision : MonoBehaviour
 
     void FixedUpdate ()
     {
-        if (colliding)
+        if (colliding && count < 5)
         {
+            Debug.Break();
             Vector3 rotation = new Vector3(0,0,Random.Range(0.0f,360.0f));
             transform.parent.parent.transform.Rotate(rotation);
+            count++;
             colliding = false;
         }
     }
@@ -36,6 +39,11 @@ public class SpawnCollision : MonoBehaviour
     {
         if (other.tag != "Whoosh" && other.tag != "Pickup")
         {
+            if (count >= 5)
+            {
+                //other.transform.parent.gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
+            }
             colliding = true;
         }
     }
@@ -44,6 +52,11 @@ public class SpawnCollision : MonoBehaviour
     {
         if (other.tag != "Whoosh" && other.tag != "Pickup")
         {
+            if (count >= 5)
+            {
+                //other.transform.parent.gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
+            }
             colliding = true;
         }
     }

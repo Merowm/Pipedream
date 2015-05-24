@@ -60,7 +60,7 @@ public class CustomizationUI : MonoBehaviour
         {
             foreach(Transform child in customizationSheet.transform)
             {
-                if (child.name != "CollapseUI")
+                if (child.name != "CollapseUI" && child.tag != "ExitCheck" && child.tag != "OverrideCheck")
                 {
                     child.gameObject.SetActive(true);
                 }

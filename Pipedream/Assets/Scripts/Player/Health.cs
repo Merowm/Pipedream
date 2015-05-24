@@ -38,8 +38,10 @@ public class Health : MonoBehaviour {
     private bool isInfinite;
 
     //shield particle system
-    public ParticleSystem partSysShield;
-    public float originalEmissionRate;
+    public bool shieldInOverdrive = false;
+    private ParticleSystem partSysShield;
+    private int originalMaxParticles;
+    private float originalEmissionRate;
 
     private Inventory inventory;
 
@@ -59,6 +61,7 @@ public class Health : MonoBehaviour {
         timer = GameObject.FindWithTag("levelTimer").GetComponent<LevelTimer>();
         partSysShield = GameObject.Find("Shield Particle System").GetComponent<ParticleSystem>();
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Inventory>();
+        originalMaxParticles = partSysShield.maxParticles;
         originalEmissionRate = partSysShield.emissionRate;
         isInfinite = timer.IsInfinite();
         Reset();
@@ -67,6 +70,8 @@ public class Health : MonoBehaviour {
     void Update(){
         UpdateShieldRegen();
         UpdateInvulnerability();
+
+
 
         if (!alive)
         {
@@ -145,7 +150,6 @@ public class Health : MonoBehaviour {
         //activate invulnerability
         if (!invulnerable)
         {
-            //set shield particles to overdrive moved to script "PickUp"
             currentShield = maxShield;
             UpdateHealthGUI();
             invulnerable = true;            
@@ -156,6 +160,7 @@ public class Health : MonoBehaviour {
             //set shield particles to normal
             partSysShield.maxParticles = (int)(originalEmissionRate * 2);
             partSysShield.emissionRate = originalEmissionRate;
+            shieldInOverdrive = false;
             invulnerable = false;            
         }
     }
@@ -184,11 +189,6 @@ public class Health : MonoBehaviour {
                     //set timer to 0
                     shieldRegenTimer = 0;
                 }
-                
-                if (!invulnerable)
-                {
-                    partSysShield.emissionRate = originalEmissionRate;
-                }
                 UpdateHealthGUI();
             }
         }
@@ -200,6 +200,12 @@ public class Health : MonoBehaviour {
         {
             return;
         }
+        //Setting shield particles to overdrive and keeping them there
+        if (shieldInOverdrive)
+        {
+            partSysShield.maxParticles = originalMaxParticles * 3;
+            partSysShield.emissionRate = originalEmissionRate * 3.0f;
+        }
         //if invulnerable
         if (invulnerable)
         {
@@ -210,6 +216,18 @@ public class Health : MonoBehaviour {
                 //set timer to 0
                 invulnerabilityTimer = 0;
                 SetInvulnerability(); //to false
+            }
+        }
+        else
+        {
+            if (currentShield == maxShield)
+            {
+                if (!shieldInOverdrive)
+                {
+                    //Setting shield particles to normal and keeping them there
+                    partSysShield.maxParticles = originalMaxParticles;
+                    partSysShield.emissionRate = originalEmissionRate;
+                }
             }
         }
     }

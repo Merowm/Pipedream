@@ -33,11 +33,8 @@ public class Pickup : MonoBehaviour
                     inventory.items[1] = true;
                     //Play GUI effect
                     shieldOn.Play();
-                    //Activates when a collision happens in script "PlayerCollisions"
-                    Debug.Log((int)(health.originalEmissionRate * 0.8f) + " MAX");
-                    Debug.Log((health.partSysShield.maxParticles / 2) + " EMISSION");
-                    health.partSysShield.maxParticles = 6;
-                    health.partSysShield.emissionRate = health.originalEmissionRate * 3.0f;
+                    //Set shield to overdrive
+                    health.shieldInOverdrive = true;
                 }
                 else
                 {
