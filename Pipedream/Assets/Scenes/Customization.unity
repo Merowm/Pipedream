@@ -5289,6 +5289,14 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11455768, guid: 798355192877fd242bacdad97be1e4eb, type: 2}
+      propertyPath: m_Text
+      value: Wireframe
+      objectReference: {fileID: 0}
+    - target: {fileID: 22444314, guid: 798355192877fd242bacdad97be1e4eb, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -212.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 798355192877fd242bacdad97be1e4eb, type: 2}
   m_IsPrefabParent: 0
@@ -6235,6 +6243,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 363603670}
     m_Modifications:
+    - target: {fileID: 11496710, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
+      propertyPath: buttons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496710, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
+      propertyPath: newPositions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 22401968, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6342,6 +6358,14 @@ Prefab:
     - target: {fileID: 11498438, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496710, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
+      propertyPath: newPositions.Array.data[2].x
+      value: -400
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496710, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
+      propertyPath: newPositions.Array.data[3].x
+      value: 475
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
@@ -6522,6 +6546,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2110733480}
         m_MethodName: CollapseUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1366508402}
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6775,6 +6811,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 363603670}
     m_Modifications:
+    - target: {fileID: 11496710, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
+      propertyPath: buttons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496710, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
+      propertyPath: newPositions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 22401968, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6874,6 +6918,14 @@ Prefab:
     - target: {fileID: 11498438, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496710, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
+      propertyPath: newPositions.Array.data[2].x
+      value: -400
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496710, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
+      propertyPath: newPositions.Array.data[3].x
+      value: 475
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5dadfd1258210a148bf765b5ca27aa37, type: 2}
