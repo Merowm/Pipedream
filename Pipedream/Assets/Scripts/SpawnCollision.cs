@@ -17,7 +17,6 @@ public class SpawnCollision : MonoBehaviour
     {
         if (colliding && count < 5)
         {
-            Debug.Break();
             Vector3 rotation = new Vector3(0,0,Random.Range(0.0f,360.0f));
             transform.parent.parent.transform.Rotate(rotation);
             count++;

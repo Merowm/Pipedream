@@ -10,6 +10,11 @@ public class ObjectRotation : MonoBehaviour
     private enum ROTATE{ positive, negative };
     private ROTATE currentState = ROTATE.positive;
 
+    void Start()
+    {
+        rotationSpeed *= MovementForward.difficultyMultiplier;
+    }
+
 	void FixedUpdate ()
     {
         //Rotation for everything but TriWall
