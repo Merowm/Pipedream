@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 488550}
   - 114: {fileID: 11457470}
   - 114: {fileID: 11498114}
+  - 114: {fileID: 11436694}
   m_Layer: 0
   m_Name: TriWall
   m_TagString: Untagged
@@ -341,6 +342,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11436694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e11d1f4746cbab447b29f13dd0cc7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color:
+    serializedVersion: 2
+    rgba: 4278199295
+  mat: {fileID: 2100000, guid: 3ea5306645dc7734d8e0ce03ba93cbff, type: 2}
+  partSys: []
 --- !u!114 &11457470
 MonoBehaviour:
   m_ObjectHideFlags: 1
