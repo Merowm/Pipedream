@@ -126,10 +126,10 @@ public class LevelTimer : MonoBehaviour {
             }
             if (distanceMeter >= fullDistance && levelId > 0)
             {
-                Debug.Log("level length: " + timeInSecs + "seconds");
-                FinalLevelScore();
+                Debug.Log("level length: " + timeInSecs + "seconds");                
                 if (levelId < 6)
                     stats.UnlockLevel(levelId + 1);
+                FinalLevelScore();
                 Application.LoadLevel("EndLevel");
             }
         }

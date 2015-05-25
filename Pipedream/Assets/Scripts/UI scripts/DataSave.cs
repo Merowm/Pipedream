@@ -49,6 +49,7 @@ public class DataSave : MonoBehaviour
             PlayerPrefs.DeleteKey(StatName("nothingHit", i));
             PlayerPrefs.DeleteKey(StatName("bonusStreakDone", i));
             PlayerPrefs.DeleteKey(StatName("specialFound", i));
+            PlayerPrefs.DeleteKey(StatName("fullPoints", i));
         }
         PlayerPrefs.DeleteKey(StatName("endlessTime"));
         PlayerPrefs.DeleteKey(StatName("endlessScore"));
@@ -77,6 +78,7 @@ public class DataSave : MonoBehaviour
             l.nothingHit = GetSavedStatBool(id, "nothingHit");
             l.finishedOnNormal = GetSavedStatBool(id, "bonusStreakDone");
             l.specialFound = GetSavedStatBool(id, "specialFound");
+            l.fullPoints = GetSavedStatBool(id, "fullPoints");
         }
         stats.SetBestTime(PlayerPrefs.GetInt(StatName("endlessTime")));
         stats.SetBestPoints(PlayerPrefs.GetInt(StatName("endlessScore")));
@@ -165,12 +167,12 @@ public class DataSave : MonoBehaviour
         SetSavedStatInt(id, "highScore", d.highScore);
         SetSavedStatInt(id, "currentTrophy", d.currentTrophy);
         SetSavedStatBool(id, "isUnlocked", d.isUnlocked); 
-        //Debug.Log("saved unlock: " + GetSavedStatBool(id, "isUnlocked"));
         // special goals
         SetSavedStatBool(id, "allCollected", d.allCollected);
         SetSavedStatBool(id, "nothingHit", d.nothingHit);
         SetSavedStatBool(id, "bonusStreakDone", d.finishedOnNormal);
         SetSavedStatBool(id, "specialFound", d.specialFound);
+        SetSavedStatBool(id, "fullPoints", d.fullPoints);
     }
     // save Kongregate related stats
     private void SaveKongStats()
