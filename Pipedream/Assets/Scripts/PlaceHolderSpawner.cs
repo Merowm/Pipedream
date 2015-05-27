@@ -36,14 +36,6 @@ public class PlaceHolderSpawner : MonoBehaviour
             obj.transform.GetChild(0).transform.position = placeHolderChild.position;
         }
 
-        /*if (scale != new Vector3(0,0,0))
-        {
-            foreach (Transform child in obj.transform)
-            {
-                child.transform.localScale = scale;
-            }
-        }*/
-
         if (prefab.transform.name == "HyperAsteroid01")
         {
             if (movingObject)
@@ -53,7 +45,7 @@ public class PlaceHolderSpawner : MonoBehaviour
         }
         else if (prefab.transform.name == "lotus" || prefab.transform.name == "goldenLotus")
         {
-            if (movingObject)
+            /*if (movingObject)
             {
                 obj.GetComponent<ObjectRotation>().enabled = true;
 
@@ -61,7 +53,7 @@ public class PlaceHolderSpawner : MonoBehaviour
                 {
                     obj.transform.GetComponent<ObjectRotation>().rotationSpeed = lotusRotatingSpeed;
                 }
-            }
+            }*/
         }
         else if (prefab.transform.name == "RotatingWall" || prefab.transform.name == "TriWall")
         {

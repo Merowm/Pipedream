@@ -158,7 +158,7 @@ public class Health : MonoBehaviour {
         else
         {
             //set shield particles to normal
-            partSysShield.maxParticles = (int)(originalEmissionRate * 2);
+            partSysShield.maxParticles = originalMaxParticles;
             partSysShield.emissionRate = originalEmissionRate;
             shieldInOverdrive = false;
             invulnerable = false;            
@@ -200,15 +200,19 @@ public class Health : MonoBehaviour {
         {
             return;
         }
-        //Setting shield particles to overdrive and keeping them there
+        //Setting shield particles to superdrive and keeping them there
         if (shieldInOverdrive)
         {
-            partSysShield.maxParticles = originalMaxParticles * 3;
-            partSysShield.emissionRate = originalEmissionRate * 3.0f;
+            partSysShield.maxParticles = originalMaxParticles * 6;
+            partSysShield.emissionRate = originalEmissionRate * 6.0f;
         }
         //if invulnerable
         if (invulnerable)
         {
+            //Setting shield particles to overdrive and keeping them there
+            partSysShield.maxParticles = originalMaxParticles * 3;
+            partSysShield.emissionRate = originalEmissionRate * 2.0f;
+            shieldInOverdrive = false;
             //update timer
             invulnerabilityTimer += Time.deltaTime;
             //if timer is up

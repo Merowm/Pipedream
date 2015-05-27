@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PickupSpawning : MonoBehaviour
 {
     public List<GameObject> pickups = new List<GameObject>();
+    public float spawnDistance;
     public float lengthTravelled = 0.0f;
 
     private InfiniteLevel infinite;
@@ -17,18 +18,18 @@ public class PickupSpawning : MonoBehaviour
         lengthTravelled = -infinite.lengthOfPart;
         pickupMover = transform.GetChild(0).gameObject;
         //Spawn the first pickup
-        SpawnPickup(new Vector3(0.0f,0.0f,1000.0f));
+        SpawnPickup(new Vector3(0.0f,0.0f,spawnDistance));
 	}
 
 	void Update ()
     {
-	    if (lengthTravelled == 1000.0f)
+        if (lengthTravelled == spawnDistance)
         {
             foreach(Transform child in transform.GetChild(0))
             {
                 Destroy(child.gameObject);
             }
-            SpawnPickup(new Vector3(0.0f,0.0f,800.0f));
+            SpawnPickup(new Vector3(0.0f,0.0f,spawnDistance - infinite.lengthOfPart));
             lengthTravelled = 0.0f;
         }
 	}

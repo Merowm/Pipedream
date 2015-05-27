@@ -1488,14 +1488,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 19843924, guid: c03e33bccc12da240abb4370f578c860, type: 2}
-      propertyPath: EmissionModule.rate.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19843924, guid: c03e33bccc12da240abb4370f578c860, type: 2}
-      propertyPath: InitialModule.maxNumParticles
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c03e33bccc12da240abb4370f578c860, type: 2}
   m_IsPrefabParent: 0
@@ -1694,6 +1686,7 @@ MonoBehaviour:
   - {fileID: 126802, guid: 0822aec85cb084f40b8076b8ce8aab2e, type: 2}
   - {fileID: 107964, guid: 4fb41ed9f8d323f48804e192a9ded74e, type: 2}
   - {fileID: 188820, guid: c957eaf04933b264f838d5b1c01f2233, type: 2}
+  spawnDistance: 1600
   lengthTravelled: 0
 --- !u!1001 &1812148830
 Prefab:
