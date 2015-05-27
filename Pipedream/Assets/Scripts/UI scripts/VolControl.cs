@@ -15,6 +15,7 @@ public class VolControl : MonoBehaviour {
     public AudioClip crashEffect;
     public AudioClip victorySound;
     public AudioSource countdown;
+    public AudioClip[] voiceOver;
     // set from each scene? NB smooth transitions!
     public AudioSource music;
     public AudioClip[] jukebox;
@@ -38,6 +39,7 @@ public class VolControl : MonoBehaviour {
     bool fadingOut = false;
     bool fadingIn = false;
     int currentTrack = 0;
+    int track;
 
     void Awake ()
     {
@@ -161,6 +163,7 @@ public class VolControl : MonoBehaviour {
             lastMaster = masterVol; // remember vol settings
         }
         isInMenu = isMenu;
+        CountNextTrack();
     }
 
     // sound effect tester methods
@@ -175,19 +178,22 @@ public class VolControl : MonoBehaviour {
         AudioSource.PlayClipAtPoint(crashEffect, position, effectVol * masterVol);
     }
     public void CountDown()
-    {
-        if (!isInMenu)
+    {        
+        countdown.volume = effectVol * masterVol;
+        countdown.Play();       
+    }
+    void CountNextTrack()
+    {        
+        if (currentTrack == 99)
+            track = (Random.Range(0, 100) % 2) + 1;
+        else track = playlist[currentTrack];
+        if (track > 0)
         {
-            countdown.volume = effectVol * masterVol;
-            countdown.Play();
+            countdown.clip = voiceOver[track - 1];
         }
     }
     void StartNextTrack()
     {
-        int track;
-        if (currentTrack == 99)
-            track = (Random.Range(0, 100) % 2) + 1;
-        else track = playlist[currentTrack];
         music.clip = jukebox[track];
         music.Play();        
     }

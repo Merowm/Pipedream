@@ -5,7 +5,7 @@ public class GoToSceneSprite : MonoBehaviour
 {
     void Start()
     {
-        Invoke("startgame", 2.0f);
+        Invoke("startgame", 1.5f);
     }
     void startgame()
     {        
