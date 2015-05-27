@@ -36,6 +36,9 @@ public class Advertisement : MonoBehaviour
 
     void Awake()
     {
+#if !UNITY_ANDROID
+        Destroy(gameObject);
+#endif
         if (Instance == null)
         {
             Instance = this;
@@ -53,7 +56,6 @@ public class Advertisement : MonoBehaviour
         {
             case AD_TYPE.Banner:
             RequestBanner();
-            bannerView.Show();
                 break;
             case AD_TYPE.Interstitial:
             RequestInterstitial();
@@ -132,6 +134,12 @@ public class Advertisement : MonoBehaviour
         Debug.Log("Created ad request");
         return builder.Build();
 
+    }
+
+    public void ShowBanner()
+    {
+        Debug.Log("Showing banner");
+        bannerView.Show();
     }
 
     public void ShowInterstitial()

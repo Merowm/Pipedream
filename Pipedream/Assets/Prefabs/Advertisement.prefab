@@ -1,27 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &125326
+--- !u!1 &176176
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 22487534}
-  - 114: {fileID: 11463946}
-  m_Layer: 5
-  m_Name: Ad
+  - 4: {fileID: 452328}
+  - 114: {fileID: 11433852}
+  m_Layer: 0
+  m_Name: Advertisement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11463946
+--- !u!4 &452328
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 471, y: 402.166534, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11433852
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125326}
+  m_GameObject: {fileID: 176176}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac615be3a622c3943af03d7193eafd90, type: 3}
@@ -29,9 +41,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adType: 1
   bannerPosition: 1
-  adUnitId_Android: ca-app-pub-9149054133809820/5983408995
-  adUnitId_iPhone: 
-  adUnitId_Others: 
+  adUnitId_Android: ca-app-pub-3940256099942544/1033173712
+  adUnitId_iPhone: ca-app-pub-3940256099942544/1033173712
+  adUnitId_Others: ca-app-pub-3940256099942544/1033173712
   keywords:
   - game
   year: 1990
@@ -39,24 +51,7 @@ MonoBehaviour:
   day: 1
   gender: 0
   tagForChildDirectedTreatment: 0
-  showWhenReady: 1
---- !u!224 &22487534
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: .0076980032, y: .0076980032, z: .009622504}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 349.17572, y: -108.750008}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
+  showWhenReady: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -66,5 +61,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 125326}
+  m_RootGameObject: {fileID: 176176}
   m_IsPrefabParent: 1
