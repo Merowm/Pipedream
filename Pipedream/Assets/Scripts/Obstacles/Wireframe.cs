@@ -70,13 +70,6 @@ public class Wireframe : MonoBehaviour
                     float z = asteroid.position.z;
                     z -= asteroidSpeedPerSecond * Time.deltaTime;
                     asteroid.position = new Vector3(asteroid.position.x,asteroid.position.y,z);
-
-                    /*if (transform.position.z <= player.transform.position.z)
-                    {
-                        asteroid.GetComponent<MeshRenderer>().enabled = false;
-                        asteroid.position = wireframe.position;
-                        positionSet = false;
-                    }*/
                 }
             }
             else
@@ -88,16 +81,14 @@ public class Wireframe : MonoBehaviour
         }
     }
 
-    void setPosition()
+    void setPosition ()
     {
         if (!positionSet)
         {
-            //Debug.Log("aste");
             asteroid.position = new Vector3(asteroid.position.x,
                                             asteroid.position.y,
                                             wireframe.position.z + asteroidSpeedPerSecond);
             positionSet = true;
-            //Debug.Break();
         }
     }
 }

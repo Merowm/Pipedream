@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class MoveButtons : MonoBehaviour
 {
-    public static bool relocated = false;
     public List<GameObject> buttons;
     public List<Vector3> newPositions;
     public List<Vector3> originalPositions;
@@ -18,21 +17,17 @@ public class MoveButtons : MonoBehaviour
 
 	public void Relocate ()
     {
-        if (!relocated)
+        //If buttons are at their original position move them to their new position and vice versa
+        for (int i = 0; i < buttons.Count; i++)
         {
-            for (int i = 0; i < buttons.Count; i++)
+            if (buttons[i].transform.localPosition == originalPositions[i])
             {
                 buttons[i].transform.localPosition = newPositions[i];
             }
-            relocated = true;
-        }
-        else
-        {
-            for (int i = 0; i < buttons.Count; i++)
+            else
             {
                 buttons[i].transform.localPosition = originalPositions[i];
             }
-            relocated = false;
         }
 	}
 }
