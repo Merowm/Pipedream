@@ -6,12 +6,12 @@ public class Standby : MonoBehaviour {
     void Update()
     {
 #if UNITY_EDITOR
-    Application.LoadLevel("StartMenu");
+    Application.LoadLevel("splash");
 #elif UNITY_WEBPLAYER
-    Application.LoadLevel("StartMenu");
+    Application.LoadLevel("splash");
 #elif UNITY_ANDROID
 #else
-    Application.LoadLevel("StartMenu");
+    Application.LoadLevel("splash");
 #endif
     }
 
