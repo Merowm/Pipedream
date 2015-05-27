@@ -11,6 +11,7 @@ public class EffectControl : MonoBehaviour {
     
     GameObject tunnel;
     Text countdown;
+    VolControl sound;
 
     float time;
     int timeSecsLeft;
@@ -25,10 +26,12 @@ public class EffectControl : MonoBehaviour {
         slowDown = GameObject.Find("slowdownEffect").GetComponent<ParticleSystem>();
         hyper = GameObject.Find("hyperTubeEffect").GetComponent<ParticleSystem>();
         hasJumped = false;
+        sound = GameObject.FindGameObjectWithTag("statistics").GetComponent<VolControl>();
         countdown = GameObject.Find("countDown").GetComponent<Text>();
         countdown.text = "";
         counting = true;
-        time = 0;        
+        time = 0;
+        sound.CountDown();
 	}
 	
 	void Update () 

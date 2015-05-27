@@ -14,6 +14,7 @@ public class VolControl : MonoBehaviour {
     public AudioClip bonusEffect;
     public AudioClip crashEffect;
     public AudioClip victorySound;
+    public AudioSource countdown;
     // set from each scene? NB smooth transitions!
     public AudioSource music;
     public AudioClip[] jukebox;
@@ -48,6 +49,7 @@ public class VolControl : MonoBehaviour {
         fadeRate = 1;        
         music.clip = jukebox[currentTrack];
         music.volume = musicMaxVol * masterVol * fadeRate;
+        countdown.volume = effectVol * masterVol;
         music.Play();
 	}
 
@@ -172,6 +174,14 @@ public class VolControl : MonoBehaviour {
         // To be implemented if/when we have crash effect.
         AudioSource.PlayClipAtPoint(crashEffect, position, effectVol * masterVol);
     }
+    public void CountDown()
+    {
+        if (!isInMenu)
+        {
+            countdown.volume = effectVol * masterVol;
+            countdown.Play();
+        }
+    }
     void StartNextTrack()
     {
         int track;
@@ -179,6 +189,6 @@ public class VolControl : MonoBehaviour {
             track = (Random.Range(0, 100) % 2) + 1;
         else track = playlist[currentTrack];
         music.clip = jukebox[track];
-        music.Play();
+        music.Play();        
     }
 }
