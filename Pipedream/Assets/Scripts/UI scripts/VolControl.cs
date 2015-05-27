@@ -17,6 +17,7 @@ public class VolControl : MonoBehaviour {
     // set from each scene? NB smooth transitions!
     public AudioSource music;
     public AudioClip[] jukebox;
+    
     // playlist index is level number (0 for menu)
     // TODO: Change to interactive list?
     public int[] playlist;
@@ -175,7 +176,7 @@ public class VolControl : MonoBehaviour {
     {
         int track;
         if (currentTrack == 99)
-            track = 2;
+            track = (Random.Range(0, 100) % 2) + 1;
         else track = playlist[currentTrack];
         music.clip = jukebox[track];
         music.Play();

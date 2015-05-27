@@ -7,6 +7,7 @@ public class Pickup : MonoBehaviour
     private Inventory inventory;
     private Health health;
     private ParticleSystem shieldOn;
+    private VolControl sound;
 
 	void Awake ()
     {
@@ -14,10 +15,12 @@ public class Pickup : MonoBehaviour
         inventory = player.GetComponentInChildren<Inventory>();
         health = player.GetComponentInChildren<Health>();
         shieldOn = GameObject.Find("shieldEffect").GetComponent<ParticleSystem>();
+        sound = GameObject.FindGameObjectWithTag("statistics").GetComponent<VolControl>();
 	}
 
     public void Collect()
     {
+        sound.PlayCollectSound(this.transform.position);
         if (transform.name == "Repair")
         {
             inventory.items[0] = true;
