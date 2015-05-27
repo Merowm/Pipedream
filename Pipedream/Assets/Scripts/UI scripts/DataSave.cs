@@ -5,7 +5,7 @@ using System;
 
 public class DataSave : MonoBehaviour
 {
-    string _name;
+    string _name = "player";
     Statistics stats;
     VolControl vol;
 
@@ -23,11 +23,32 @@ public class DataSave : MonoBehaviour
     }
 	void Start ()
     {
+        // define user name for statistics
+        if (KongregateAPI.Connected)
+        {
+            _name = KongregateAPI.Username;
+        }
+        // load saved data
         LoadSettings();
         LoadScores();
         LoadKongStats();
+        // submit statistics in case they have not registered due to connection problems
+        if (KongregateAPI.Connected)
+        {           
+            SubmitKongStats();
+        }
         stats.UnlockLevel(1);
 	}
+    void SubmitKongStats()
+    {
+        KongregateAPI.SubmitData("gameFinishedOnNormal", stats.GetAllFinished());
+        KongregateAPI.SubmitData("levelsFinishedOnNormal", stats.GetFinishedOnNormalCount());
+        KongregateAPI.SubmitData("goldMedalsEarned", stats.GetAllGold());
+        KongregateAPI.SubmitData("extraHonorsEarned", stats.GetAllExtras());
+        KongregateAPI.SubmitData("endlessSurvivalTimeOnNormal", stats.GetSecsSurvived());
+        KongregateAPI.SubmitData("endlessScore", stats.GetBestScore());
+        KongregateAPI.SubmitData("endlessItemsCollected", stats.GetBestCollected());
+    }
     // clear save (called from OptionsControl)
     public void ClearSlot()
     {
@@ -217,9 +238,8 @@ public class DataSave : MonoBehaviour
         string statname = stat;
         if (level != 99)
             statname = level.ToString() + statname;
-        if (KongregateAPI.Connected)
-            statname = KongregateAPI.Username + statname;
-        else statname = "player" + statname;
+        statname = _name + statname;
+        
         
         return statname;
     }
