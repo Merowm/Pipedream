@@ -94,9 +94,9 @@ public class Health : MonoBehaviour {
             {
                 //damage hull
                 --currentHull;
-                Debug.Log("Received damage to hull");
+                //Debug.Log("Received damage to hull");
                 if (currentHull <= 0){
-                    Debug.Log("Game Over");
+                    //Debug.Log("Game Over");
                     gameOverGUI.SetActive(true);
                     if (timer.IsInfinite())
                     {

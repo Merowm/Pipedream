@@ -32,6 +32,7 @@ GameObject:
   - 82: {fileID: 8282822}
   - 82: {fileID: 8269708}
   - 82: {fileID: 8229386}
+  - 82: {fileID: 8228740}
   m_Layer: 0
   m_Name: Statistics
   m_TagString: statistics
@@ -70,6 +71,75 @@ Transform:
   - {fileID: 22433954}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &8228740
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153564}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!82 &8229386
 AudioSource:
   m_ObjectHideFlags: 1
@@ -311,15 +381,18 @@ MonoBehaviour:
   bonusEffect: {fileID: 8300000, guid: 49c74f8a19584dd4397d252f351c54df, type: 3}
   crashEffect: {fileID: 8300000, guid: 592a4e259bf526d4e921061bd727505d, type: 3}
   victorySound: {fileID: 8300000, guid: 403b617a51dfc6642be4e0d87474ed9b, type: 3}
-  countdown: {fileID: 8229386}
   voiceOver:
   - {fileID: 8300000, guid: 60825982f7ca6b54d9378c58deb52231, type: 3}
   - {fileID: 8300000, guid: 35afef5c2ec856a49b5464de6e02a701, type: 3}
-  music: {fileID: 8282822}
+  - {fileID: 8300000, guid: 7cad107d249b3884298f24fb807bef1e, type: 3}
+  - {fileID: 8300000, guid: 2a464f48bbb96b7408f14afc308f1f96, type: 3}
   jukebox:
   - {fileID: 8300000, guid: 031bc342937b92647a67fe31093ec8b6, type: 3}
   - {fileID: 8300000, guid: 5fab93294c6829d46a2c8249397d64d2, type: 3}
   - {fileID: 8300000, guid: efbd62ccba7bcb8489ccadb772c97625, type: 3}
+  countdown: {fileID: 8229386}
+  music: {fileID: 8282822}
+  disengage: {fileID: 8228740}
   playlist: 00000000010000000200000001000000020000000100000002000000
   isInMenu: 1
   hasCollectedItem: 0

@@ -63,13 +63,17 @@ public class EffectControl : MonoBehaviour {
     }
     public void SlowDown()
     {        
-        slowDown.Play();
+        
+        sound.Disengage();
         inHyper = false;
-        Invoke("SetHyperEffect", 0.0f);      
+        Invoke("SetHyperEffect", 1.1f);      
     }
     void SetHyperEffect()
     {
-        hyper.enableEmission = inHyper;
-        Debug.Log("inHyper");
+        if (!inHyper)
+        {
+            slowDown.Play();
+        }
+        hyper.enableEmission = inHyper;       
     }
 }

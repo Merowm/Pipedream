@@ -13,13 +13,14 @@ public class VolControl : MonoBehaviour {
     public AudioSource buttonEffect;
     public AudioClip bonusEffect;
     public AudioClip crashEffect;
-    public AudioClip victorySound;
-    public AudioSource countdown;
+    public AudioClip victorySound;    
     public AudioClip[] voiceOver;
     // set from each scene? NB smooth transitions!
-    public AudioSource music;
     public AudioClip[] jukebox;
-    
+    public AudioSource countdown;
+    public AudioSource music;
+    public AudioSource disengage;
+
     // playlist index is level number (0 for menu)
     // TODO: Change to interactive list?
     public int[] playlist;
@@ -52,6 +53,7 @@ public class VolControl : MonoBehaviour {
         music.clip = jukebox[currentTrack];
         music.volume = musicMaxVol * masterVol * fadeRate;
         countdown.volume = effectVol * masterVol;
+        disengage.volume = effectVol * masterVol;
         music.Play();
 	}
 
@@ -87,7 +89,7 @@ public class VolControl : MonoBehaviour {
     {
         tutorialIsOn = yesno;
     }
-    // updating collectible fade/reset
+    // smooth(er) track change
     void FixedUpdate()
     {
         if (fadingOut)
@@ -111,34 +113,6 @@ public class VolControl : MonoBehaviour {
                 fadingIn = false;
             }
         }
-        // //////// Code for music fading if items not collected
-        //if (!isInMenu)
-        //{
-        //    dt = Time.deltaTime;
-        //    timeFromCollect += dt;
-            
-        //    if (hasCollectedItem == true && music.isPlaying)
-        //    {
-        //        Debug.Log("music reset!");
-        //        if (fadeRate < 1)
-        //        {
-        //            fadeRate += 0.5f * dt;
-        //        }
-        //        else
-        //        {
-        //            fadeRate = 1;
-        //            hasCollectedItem = false;
-        //            timeFromCollect = 0;
-        //        }
-        //    }
-        //    // If no items are collected, music fades out slowly
-        //    else if (fadeRate > 0.3f && timeFromCollect > 5)
-        //    {
-        //        fadeRate -= 0.05f * dt;
-        //    }           
-        //}
-        //if (music)
-        //    music.volume = musicMaxVol * fadeRate * masterVol;
     }
     public void PlayButtonEffect()
     {
@@ -153,6 +127,10 @@ public class VolControl : MonoBehaviour {
     {
         AudioSource.PlayClipAtPoint(victorySound, new Vector3(0, 1, -10), effectVol * masterVol);
     }
+    public void TestCrashEffect(Vector3 position)
+    {
+        AudioSource.PlayClipAtPoint(crashEffect, position, effectVol * masterVol);
+    }
     public void SetMusicType(bool isMenu, int level)
     {
         if (currentTrack != level)
@@ -166,21 +144,15 @@ public class VolControl : MonoBehaviour {
         CountNextTrack();
     }
 
-    // sound effect tester methods
-    public void TestCollectSound()
-    {
-        AudioSource.PlayClipAtPoint(bonusEffect, Input.mousePosition, effectVol * masterVol);
-        //hasCollectedItem = true;
-    }
-    public void TestCrashEffect(Vector3 position)
-    {
-        // To be implemented if/when we have crash effect.
-        AudioSource.PlayClipAtPoint(crashEffect, position, effectVol * masterVol);
-    }
     public void CountDown()
     {        
         countdown.volume = effectVol * masterVol;
         countdown.Play();       
+    }
+    public void Disengage()
+    {
+        disengage.volume = effectVol * masterVol;
+        disengage.Play(); 
     }
     void CountNextTrack()
     {        
@@ -190,6 +162,7 @@ public class VolControl : MonoBehaviour {
         if (track > 0)
         {
             countdown.clip = voiceOver[track - 1];
+            disengage.clip = voiceOver[track + 1];
         }
     }
     void StartNextTrack()
