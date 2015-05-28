@@ -63,12 +63,12 @@ public class GooglePlayServices : MonoBehaviour {
             if (success)
             {
                 connected = true;
-                Application.LoadLevel("StartMenu");
+                Application.LoadLevel("splash");
             }
             else
             {
                 connected = false;
-                Application.LoadLevel("StartMenu");
+                Application.LoadLevel("splash");
             }
         });
     }
